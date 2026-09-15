@@ -1,0 +1,19 @@
+---
+layout: default
+---
+<section class="hero">
+  <h1>{{ page.title | default: site.title }}</h1>
+  <p>{{ site.description }}</p>
+</section>
+
+<section>
+  <h2>Topics</h2>
+  <div class="topic-grid">
+    {% for topic in site.data.topics | sort: "order" %}
+      <a class="topic-card" href="{{ topic.folder | relative_url }}">
+        <h3>{{ topic.title }}</h3>
+        <p>{{ topic.description }}</p>
+      </a>
+    {% endfor %}
+  </div>
+</section>

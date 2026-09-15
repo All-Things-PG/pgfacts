@@ -1,0 +1,15 @@
+{% assign docs = include.docs | sort: "title" %}
+{% if docs.size > 0 %}
+  <ul class="topic-list">
+    {% for doc in docs %}
+      <li class="topic-list__item">
+        <a href="{{ doc.url | relative_url }}">{{ doc.title }}</a>
+        {% if doc.excerpt %}
+          <div class="topic-list__excerpt">{{ doc.excerpt | strip_html | truncate: 160 }}</div>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No documents are available in this topic yet.</p>
+{% endif %}

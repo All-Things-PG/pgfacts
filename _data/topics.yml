@@ -1,0 +1,24 @@
+- title: Executive Summary
+  folder: docs/executive-summary
+  description: Sponsor-facing overview of Phase 2
+  order: 10
+
+- title: DCMS
+  folder: docs/dcms
+  description: Proof-of-concept and design notes
+  order: 20
+
+- title: Database Design
+  folder: docs/database-design
+  description: Schema, migration, and data flow
+  order: 30
+
+- title: Proposals
+  folder: docs/proposals
+  description: Ideas and recommendations
+  order: 40
+
+- title: Meetings
+  folder: docs/meetings
+  description: Handouts and meeting notes
+  order: 50

@@ -1,0 +1,13 @@
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-brand" href="{{ '/' | relative_url }}">
+      <span class="site-brand__title">PG Facts</span>
+    </a>
+
+    <nav class="site-nav" aria-label="Topics">
+      {% for topic in site.data.topics | sort: "order" %}
+        <a class="site-nav__link" href="{{ topic.folder | relative_url }}">{{ topic.title }}</a>
+      {% endfor %}
+    </nav>
+  </div>
+</header>

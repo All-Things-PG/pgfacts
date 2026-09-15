@@ -3,6 +3,4 @@ layout: home
 title: PG Facts
 ---
 
-Public documentation for Phase 2 of All Things PG.
-
-## Documents
+Welcome to the public Phase 2 documentation site for All Things PG.

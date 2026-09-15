@@ -34,6 +34,7 @@ a:hover {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  border-bottom: 3px solid #e67300;
 }
 
 .site-brand {
@@ -46,13 +47,19 @@ a:hover {
 }
 
 .site-brand__logo {
-  width: 68px;
+  width: 56px;
   height: auto;
   display: block;
 }
 
 .site-brand__title {
   letter-spacing: 0.02em;
+  font-size: 1.25rem;
+}
+
+.site-brand__tagline {
+  color: #52616b;
+  font-size: 0.95rem;
 }
 
 .site-nav {
@@ -60,6 +67,8 @@ a:hover {
   flex-wrap: wrap;
   gap: 0.5rem;
   justify-content: flex-end;
+  padding: 0.75rem 1.25rem 1rem;
+  background: #e67300;
 }
 
 .site-nav__link,
@@ -72,6 +81,9 @@ a:hover {
 
 .site-nav__link {
   padding: 0.5rem 0.8rem;
+  border-color: rgba(255,255,255,0.2);
+  color: #fff;
+  background: transparent;
 }
 
 .site-nav__link--home {
@@ -80,15 +92,21 @@ a:hover {
   border-color: #e67300;
 }
 
+.site-nav__link:hover,
+.site-nav__link:focus {
+  background: rgba(255,255,255,0.14);
+  text-decoration: none;
+}
+
 .site-main {
   padding: 1rem 0 2rem;
 }
 
 .hero {
-  background: linear-gradient(180deg, #ffffff 0%, #eef4fb 100%);
-  border: 1px solid #d9e2ec;
+  background: linear-gradient(135deg, #e67300 0%, #ff8c1a 100%);
+  color: #fff;
   border-radius: 14px;
-  padding: 1.5rem;
+  padding: 1.8rem;
   margin-bottom: 1.5rem;
 }
 
@@ -109,6 +127,11 @@ a:hover {
   text-decoration: none;
   border-color: #9ec5e5;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.topic-card h3 {
+  margin-top: 0;
+  color: #e67300;
 }
 
 .topic-list {

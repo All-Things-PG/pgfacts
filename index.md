@@ -3,8 +3,6 @@ layout: home
 title: PG Facts
 ---
 
-# PG Facts
-
 Public documentation for Phase 2 of All Things PG.
 
 ## Documents
@@ -13,4 +11,3 @@ Public documentation for Phase 2 of All Things PG.
 - [Portal Experience](docs/portal-experience.md)
 - [Curating Content](docs/curating-content.md)
 - [Managing Tiles](docs/managing-tiles.md)
-

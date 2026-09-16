@@ -1,6 +1,5 @@
 title: PG Facts
 description: Public documentation for Phase 2 of All Things PG
-theme: minima
 markdown: kramdown
 plugins:
   - jekyll-feed

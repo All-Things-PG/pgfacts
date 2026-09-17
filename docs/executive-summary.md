@@ -1,9 +1,8 @@
 ---
-layout: page
+
 title: Executive Summary
 ---
 
 # Executive Summary
 
 Placeholder for the public Phase 2 executive summary.
-

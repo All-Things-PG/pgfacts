@@ -1,6 +1,4 @@
----
-layout: page
-title: Database Design
+-title: Database Design
 permalink: /docs/database-design/
 ---
 
@@ -8,5 +6,4 @@ permalink: /docs/database-design/
 
 This folder contains database schema, migration, and data-flow documents.
 
-{% assign docs = site.pages | where_exp: "item", "item.path contains 'docs/Database Design/' and item.name != 'index.md'" | sort: "title" %}
-{% include topic-list.html docs=docs %}
+- [Database Design documents](/docs/database-design/)

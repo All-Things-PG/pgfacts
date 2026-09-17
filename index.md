@@ -16,8 +16,8 @@ title: All Things PG - Phase 2
     background: #fff;
   }
   .site-banner {
-    border-bottom: 4px solid var(--pg-orange);
     background: #fff;
+    border-bottom: 4px solid var(--pg-orange);
   }
   .site-shell {
     max-width: 1240px;
@@ -61,6 +61,7 @@ title: All Things PG - Phase 2
     color: var(--pg-dark);
     text-decoration: none;
     padding: 0.35rem 0.25rem;
+    background: transparent;
   }
   .nav-group > summary::-webkit-details-marker {
     display: none;
@@ -84,6 +85,9 @@ title: All Things PG - Phase 2
     box-shadow: 0 10px 26px rgba(0,0,0,.12);
     padding: 0.75rem;
     z-index: 10;
+  }
+  .nav-group:not([open]) .nav-panel {
+    display: none;
   }
   .nav-panel a {
     display: block;
@@ -353,10 +357,19 @@ title: All Things PG - Phase 2
     var gate = document.getElementById("site-gate");
     var input = document.getElementById("gate-code");
     var submit = document.getElementById("gate-submit");
+    var groups = document.querySelectorAll(".nav-group");
 
     function unlock() {
       sessionStorage.setItem(gateKey, "true");
       gate.style.display = "none";
+    }
+
+    function closeOthers(current) {
+      for (var i = 0; i < groups.length; i += 1) {
+        if (groups[i] !== current) {
+          groups[i].removeAttribute("open");
+        }
+      }
     }
 
     if (sessionStorage.getItem(gateKey) === "true") {
@@ -379,5 +392,13 @@ title: All Things PG - Phase 2
         submit.click();
       }
     });
+
+    for (var i = 0; i < groups.length; i += 1) {
+      groups[i].addEventListener("toggle", function (event) {
+        if (event.target.open) {
+          closeOthers(event.target);
+        }
+      });
+    }
   })();
 </script>

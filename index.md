@@ -258,9 +258,7 @@ title: All Things PG - Phase 2
           <div class="nav-section">
             <a href="/about/all-things-pg/">All Things PG</a>
             <a href="/about/explore-documentation/">Explore Documentation</a>
-          </div>
-          <div class="nav-section">
-            <a href="/search/">Search</a>
+            <a href="/about/request-access/">Request Access</a>
           </div>
         </div>
       </details>
@@ -350,7 +348,8 @@ title: All Things PG - Phase 2
 <script>
   (function () {
     var gateKey = "pgfacts-admin-unlocked";
-    var gateCode = "pgfacts2026";
+    var gateCode = atob("QVRQRw==");
+    var requestEmail = "dave@allthingspg.org";
     var gate = document.getElementById("site-gate");
     var input = document.getElementById("gate-code");
     var submit = document.getElementById("gate-submit");

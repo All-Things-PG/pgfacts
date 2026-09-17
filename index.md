@@ -52,6 +52,9 @@ title: All Things PG - Phase 2
     position: relative;
     display: inline-block;
   }
+  .nav-group[open] .nav-panel {
+    display: block;
+  }
   .nav-group > summary,
   .site-nav > a,
   .site-nav > span {
@@ -86,9 +89,7 @@ title: All Things PG - Phase 2
     padding: 0.75rem;
     z-index: 10;
   }
-  .nav-group:not([open]) .nav-panel {
-    display: none;
-  }
+  .nav-group:not([open]) .nav-panel { display: none; }
   .nav-panel a {
     display: block;
     padding: 0.5rem 0.6rem;
@@ -257,21 +258,20 @@ title: All Things PG - Phase 2
     <div class="site-title">All Things PG - Phase 2</div>
     <nav class="site-nav" aria-label="Primary navigation">
       <details class="nav-group">
-        <summary>About</summary>
-        <div class="nav-panel">
-          <div class="nav-section">
-            <a href="/about/all-things-pg/">All Things PG</a>
-            <a href="/about/explore-documentation/">Explore Documentation</a>
-            <a href="/about/request-access/">Request Access</a>
-          </div>
-        </div>
-      </details>
-      <details class="nav-group">
         <summary>DCMS</summary>
         <div class="nav-panel">
           <a href="/dcms/what-is-dcms/">What is DCMS?</a>
           <a href="/dcms/dynamic-menus/">Dynamic Menus</a>
           <a href="/dcms/dynamic-content/">Dynamic Content</a>
+        </div>
+      </details>
+      <details class="nav-group">
+        <summary>Database</summary>
+        <div class="nav-panel">
+          <a href="/database/why-have-a-database/">Why have a database?</a>
+          <a href="/database/main-tables/">Main Tables</a>
+          <a href="/database/schema/">Schema</a>
+          <a href="/database/diagrams/">Diagrams</a>
         </div>
       </details>
       <details class="nav-group">
@@ -287,12 +287,12 @@ title: All Things PG - Phase 2
         </div>
       </details>
       <details class="nav-group">
-        <summary>Database</summary>
+        <summary>About</summary>
         <div class="nav-panel">
-          <a href="/database/why-have-a-database/">Why have a database?</a>
-          <a href="/database/main-tables/">Main Tables</a>
-          <a href="/database/schema/">Schema</a>
-          <a href="/database/diagrams/">Diagrams</a>
+          <div class="nav-section">
+            <a href="/about/all-things-pg/">All Things PG</a>
+            <a href="/about/explore-documentation/">Explore Documentation</a>
+          </div>
         </div>
       </details>
     </nav>
@@ -358,6 +358,7 @@ title: All Things PG - Phase 2
     var input = document.getElementById("gate-code");
     var submit = document.getElementById("gate-submit");
     var groups = document.querySelectorAll(".nav-group");
+    var page = document.body;
 
     function unlock() {
       sessionStorage.setItem(gateKey, "true");
@@ -400,5 +401,14 @@ title: All Things PG - Phase 2
         }
       });
     }
+
+    page.addEventListener("click", function (event) {
+      var clickedInMenu = event.target.closest && event.target.closest(".nav-group");
+      if (!clickedInMenu) {
+        for (var j = 0; j < groups.length; j += 1) {
+          groups[j].removeAttribute("open");
+        }
+      }
+    });
   })();
 </script>

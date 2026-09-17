@@ -186,6 +186,51 @@
   .tile--accent {
     background: linear-gradient(180deg, #fff7ef 0%, #ffffff 100%);
   }
+  .gate-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(255,255,255,.96);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+  }
+  .gate-card {
+    width: min(32rem, 100%);
+    border: 1px solid var(--pg-border);
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 12px 28px rgba(0,0,0,.12);
+    padding: 1.5rem;
+  }
+  .gate-card h2 {
+    margin-top: 0;
+    color: var(--pg-orange);
+  }
+  .gate-card input {
+    width: 100%;
+    padding: 0.8rem 0.9rem;
+    font-size: 1rem;
+    border: 1px solid #cfcfcf;
+    border-radius: 10px;
+    box-sizing: border-box;
+  }
+  .gate-card button {
+    margin-top: 0.9rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--pg-orange);
+    border-radius: 999px;
+    background: #fff;
+    color: var(--pg-dark);
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .gate-note {
+    margin-top: 0.75rem;
+    font-size: 0.92rem;
+    color: #666;
+  }
   @media (max-width: 960px) {
     .hero-grid {
       grid-template-columns: 1fr;
@@ -201,37 +246,49 @@
     <a href="/" aria-label="All Things PG home">
       <img src="/assets/images/pg-logo.png" alt="All Things PG" />
     </a>
-    <div class="site-title">All Things PG - Phase 2 Website</div>
+    <div class="site-title">All Things PG - Phase 2</div>
     <nav class="site-nav" aria-label="Primary navigation">
       <details class="nav-group">
-        <summary>Topics</summary>
+        <summary>About</summary>
         <div class="nav-panel">
           <div class="nav-section">
-            <h3>DCMS</h3>
-            <a href="/dcms/what-is-dcms/">What is DCMS?</a>
-            <a href="/dcms/dynamic-menus/">Dynamic Menus</a>
-            <a href="/dcms/dynamic-content/">Dynamic Content</a>
+            <a href="/about/all-things-pg/">All Things PG</a>
+            <a href="/about/explore-documentation/">Explore Documentation</a>
           </div>
           <div class="nav-section">
-            <h3>User Experience</h3>
-            <a href="/user-experience/what-is-a-portal/">What is a Portal?</a>
-            <a href="/user-experience/selecting-a-user-experience/">Selecting a User Experience</a>
-            <a href="/user-experience/patients/">Patients</a>
-            <a href="/user-experience/caregivers/">Caregivers</a>
-            <a href="/user-experience/providers/">Providers</a>
-            <a href="/user-experience/pharmaceutical/">Pharmaceutical</a>
-            <a href="/user-experience/guest/">Guest</a>
-          </div>
-          <div class="nav-section">
-            <h3>Database</h3>
-            <a href="/database/why-have-a-database/">Why have a database?</a>
-            <a href="/database/main-tables/">Main Tables</a>
-            <a href="/database/schema/">Schema</a>
-            <a href="/database/diagrams/">Diagrams</a>
+            <a href="/search/">Search</a>
           </div>
         </div>
       </details>
-      <a href="#explore-site">Explore the site</a>
+      <details class="nav-group">
+        <summary>DCMS</summary>
+        <div class="nav-panel">
+          <a href="/dcms/what-is-dcms/">What is DCMS?</a>
+          <a href="/dcms/dynamic-menus/">Dynamic Menus</a>
+          <a href="/dcms/dynamic-content/">Dynamic Content</a>
+        </div>
+      </details>
+      <details class="nav-group">
+        <summary>User Experience</summary>
+        <div class="nav-panel">
+          <a href="/user-experience/what-is-a-portal/">What is a Portal?</a>
+          <a href="/user-experience/selecting-a-user-experience/">Selecting a User Experience</a>
+          <a href="/user-experience/patients/">Patients</a>
+          <a href="/user-experience/caregivers/">Caregivers</a>
+          <a href="/user-experience/providers/">Providers</a>
+          <a href="/user-experience/pharmaceutical/">Pharmaceutical</a>
+          <a href="/user-experience/guest/">Guest</a>
+        </div>
+      </details>
+      <details class="nav-group">
+        <summary>Database</summary>
+        <div class="nav-panel">
+          <a href="/database/why-have-a-database/">Why have a database?</a>
+          <a href="/database/main-tables/">Main Tables</a>
+          <a href="/database/schema/">Schema</a>
+          <a href="/database/diagrams/">Diagrams</a>
+        </div>
+      </details>
     </nav>
   </div>
 </header>
@@ -248,19 +305,10 @@
         Think of this page as a short newsletter and launch point for the upcoming changes.
       </p>
     </section>
-
-    <aside class="hero-card">
-      <h2>Explore the site</h2>
-      <p>
-        Use the top menu to jump into the major Phase 2 topic folders.
-        The dropdown items will eventually expand into the document sets for each area.
-      </p>
-      <a href="#explore-site">Start here</a>
-    </aside>
   </div>
 </main>
 
-<section class="story-strip" id="explore-site">
+<section class="story-strip">
   <div class="site-shell">
     <div class="tile-grid">
       <div class="tile tile--accent">
@@ -284,3 +332,50 @@
     </div>
   </div>
 </section>
+
+<div class="gate-overlay" id="site-gate">
+  <div class="gate-card">
+    <h2>Administrator access</h2>
+    <p>Enter the site-wide access code to view pgfacts.org.</p>
+    <input id="gate-code" type="password" placeholder="Access code" autocomplete="off" />
+    <button type="button" id="gate-submit">Enter site</button>
+    <div class="gate-note">Simple gate for now; not a full login system.</div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var gateKey = "pgfacts-admin-unlocked";
+    var gateCode = "pgfacts2026";
+    var gate = document.getElementById("site-gate");
+    var input = document.getElementById("gate-code");
+    var submit = document.getElementById("gate-submit");
+
+    function unlock() {
+      sessionStorage.setItem(gateKey, "true");
+      gate.style.display = "none";
+    }
+
+    if (sessionStorage.getItem(gateKey) === "true") {
+      gate.style.display = "none";
+      return;
+    }
+
+    submit.addEventListener("click", function () {
+      if (input.value === gateCode) {
+        unlock();
+      } else {
+        input.value = "";
+        input.focus();
+        alert("Incorrect access code.");
+      }
+    });
+
+    input.addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        submit.click();
+      }
+    });
+  })();
+</script>
+

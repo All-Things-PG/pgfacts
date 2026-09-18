@@ -1,11 +1,11 @@
 <header class="oldsite-header">
-  <div class="oldsite-header-inner">
-    <a class="pg-logo-link" href="{{ '/' | relative_url }}">
+  <div class="oldsite-header-inner oldsite-container-inner">
+    <a class="pg-logo-link" href="{{ '/home/' | relative_url }}">
       <img class="pg-logo" src="{{ '/assets/images/pg-logo.png' | relative_url }}" alt="All Things PG">
     </a>
     <nav class="oldsite-navigation" aria-label="Main navigation">
       <ul class="pg-nav-links">
-        <li><a href="{{ '/' | relative_url }}">Home</a></li>
+        <li><a href="{{ '/home/' | relative_url }}">Home</a></li>
         {% for item in site.data.navigation %}
           <li>
             <a{% if item.children %} class="has-children"{% endif %} href="{{ item.url | relative_url }}">{{ item.label }}</a>

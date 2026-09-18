@@ -10,3 +10,50 @@ Start by learning about DCMS, and then proceed to the User Experience.
 - [Portal Experience]({{ '/docs/portal-experience.html' | relative_url }})
 - [Curating Content]({{ '/docs/curating-content.html' | relative_url }})
 - [Managing Tiles]({{ '/docs/managing-tiles.html' | relative_url }})
+
+<div class="gate-overlay" id="site-gate">
+  <div class="gate-card">
+    <h2>Administrator access</h2>
+    <p>Enter the site-wide access code to view pgfacts.org.</p>
+    <input id="gate-code" type="password" placeholder="Access code" autocomplete="off">
+    <button type="button" id="gate-submit">Enter site</button>
+    <div class="gate-note">Simple gate for now; not a full login system.</div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var gateKey = "pgfacts-admin-unlocked";
+    var gateCode = atob("QVRQRw==");
+    var allowBlankDevelopment = {{ site.gateway.allow_blank_development | default: false | jsonify }};
+    var gate = document.getElementById("site-gate");
+    var input = document.getElementById("gate-code");
+    var submit = document.getElementById("gate-submit");
+
+    function unlock() {
+      sessionStorage.setItem(gateKey, "true");
+      gate.style.display = "none";
+    }
+
+    if (sessionStorage.getItem(gateKey) === "true") {
+      gate.style.display = "none";
+      return;
+    }
+
+    submit.addEventListener("click", function () {
+      if ((allowBlankDevelopment && input.value === "") || input.value === gateCode) {
+        unlock();
+      } else {
+        input.value = "";
+        input.focus();
+        alert("Incorrect access code.");
+      }
+    });
+
+    input.addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        submit.click();
+      }
+    });
+  })();
+</script>

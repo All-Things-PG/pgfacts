@@ -111,6 +111,57 @@ h6,
   color: var(--oldsite-orange);
 }
 
+.gate-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.gate-card {
+  width: min(32rem, 100%);
+  padding: 1.5rem;
+  background: #ffffff;
+  border: 1px solid var(--oldsite-orange);
+  border-radius: 16px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+.gate-card h2 {
+  margin-top: 0;
+  color: var(--oldsite-orange);
+}
+
+.gate-card input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.8rem 0.9rem;
+  font-size: 1rem;
+  border: 1px solid #cfcfcf;
+  border-radius: 10px;
+}
+
+.gate-card button {
+  margin-top: 0.9rem;
+  padding: 0.75rem 1rem;
+  color: var(--oldsite-text);
+  background: #ffffff;
+  border: 1px solid var(--oldsite-orange);
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.gate-note {
+  margin-top: 0.75rem;
+  color: #666666;
+  font-size: 0.92rem;
+}
+
 .oldsite-header .pg-logo {
   display: block;
   width: 92px;

@@ -1,6 +1,8 @@
 ---
 layout: page
 title: Database Schema
+breadcrumb: Database > Schema
+description: Define the structure of the database.
 updated: 2026-09-18
 ---
 

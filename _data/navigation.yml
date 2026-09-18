@@ -2,22 +2,27 @@
   url: /dcms/
   children:
     - label: What is DCMS?
-      url: /dcms/what-is-dcms/
-    - label: Dynamic Menus
-      url: /dcms/dynamic-menus/
+      url: /dcms/
     - label: Dynamic Content
-      url: /dcms/dynamic-content/
+      url: /dcms/DCMS_Dynamic_Content.html
+    - label: Dynamic Menus
+      url: /dcms/DCMS_Dynamic_Menus.html
+- label: Documents
+  url: /docs/
+  children:
+    - label: Executive Summary
+      url: /docs/executive-summary.html
+    - label: Portal Experience
+      url: /docs/portal-experience.html
+    - label: Curating Content
+      url: /docs/curating-content.html
+    - label: Managing Tiles
+      url: /docs/managing-tiles.html
 - label: Database
   url: /database/
   children:
-    - label: Why have a database?
-      url: /database/why-have-a-database/
-    - label: Main Tables
-      url: /database/main-tables/
     - label: Schema
       url: /database/DCMS_Database_Schema.html
-    - label: Diagrams
-      url: /database/diagrams/
 - label: User Experience
   url: /user-experience/
   children:

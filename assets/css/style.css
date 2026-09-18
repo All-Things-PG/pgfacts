@@ -44,18 +44,29 @@ h6,
 }
 
 .oldsite-page-banner {
-  padding: 1.5rem 0;
+  padding: 1.25rem 0;
   background: linear-gradient(180deg, #fff7ef 0%, #ffffff 100%);
 }
 
-.oldsite-page-heading-title {
-  margin: 0 0 0.5rem;
+.oldsite-title-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.oldsite-breadcrumb {
+  font-size: 1.1rem;
+  font-weight: 700;
   color: var(--oldsite-orange);
 }
 
-.oldsite-page-heading-description {
-  margin: 0;
+.oldsite-page-description {
+  font-size: 0.95rem;
+  font-weight: 700;
   color: var(--oldsite-text);
+  margin-left: auto;
 }
 
 .pg-home-topic-grid {
@@ -107,8 +118,10 @@ h6,
   padding: 2rem 0;
 }
 
+.oldsite-page-content h1,
 .oldsite-page-content h2 {
   color: var(--oldsite-orange);
+  font-weight: 700;
 }
 
 .gate-overlay {

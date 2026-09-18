@@ -262,6 +262,7 @@ layout: home
       <p>
         Think of this page as a short newsletter and launch point for the upcoming changes.
       </p>
+      <p>Start by learning about DCMS, and then proceed to the User Experience.</p>
     </section>
   </div>
 </section>

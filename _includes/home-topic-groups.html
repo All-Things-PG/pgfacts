@@ -1,0 +1,14 @@
+{% for group in site.data.home-topic-groups %}
+  <section class="pg-home-topic-bar">
+    <div class="pg-home-topic-bar-inner">
+      <div class="pg-home-topic-grid">
+        {% for tile in group.tiles %}
+          <a class="pg-home-topic-tile" href="{{ tile.url | relative_url }}">
+            <strong>{{ tile.title }}</strong>
+            <span>{{ tile.description }}</span>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endfor %}

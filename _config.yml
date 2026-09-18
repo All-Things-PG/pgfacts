@@ -1,3 +1,8 @@
-title: PG Facts
+title: All Things PG
 description: Public documentation for Phase 2 of All Things PG
 markdown: kramdown
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: page

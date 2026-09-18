@@ -1,0 +1,44 @@
+- label: DCMS
+  url: /dcms/
+  children:
+    - label: What is DCMS?
+      url: /dcms/what-is-dcms/
+    - label: Dynamic Menus
+      url: /dcms/dynamic-menus/
+    - label: Dynamic Content
+      url: /dcms/dynamic-content/
+- label: Database
+  url: /database/
+  children:
+    - label: Why have a database?
+      url: /database/why-have-a-database/
+    - label: Main Tables
+      url: /database/main-tables/
+    - label: Schema
+      url: /database/schema/
+    - label: Diagrams
+      url: /database/diagrams/
+- label: User Experience
+  url: /user-experience/
+  children:
+    - label: What is a Portal?
+      url: /user-experience/what-is-a-portal/
+    - label: Selecting a User Experience
+      url: /user-experience/selecting-a-user-experience/
+    - label: Patients
+      url: /user-experience/patients/
+    - label: Caregivers
+      url: /user-experience/caregivers/
+    - label: Providers
+      url: /user-experience/providers/
+    - label: Pharmaceutical
+      url: /user-experience/pharmaceutical/
+    - label: Guest
+      url: /user-experience/guest/
+- label: About
+  url: /about/
+  children:
+    - label: All Things PG
+      url: /about/all-things-pg/
+    - label: Explore Documentation
+      url: /about/explore-documentation/

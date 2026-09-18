@@ -1,5 +1,6 @@
 ---
 title: All Things PG - Phase 2
+layout: home
 ---
 
 <style>
@@ -250,56 +251,7 @@ title: All Things PG - Phase 2
   }
 </style>
 
-<header class="site-banner">
-  <div class="site-shell site-brand">
-    <a href="/" aria-label="All Things PG home">
-      <img src="/assets/images/pg-logo.png" alt="All Things PG" />
-    </a>
-    <div class="site-title">All Things PG - Phase 2</div>
-    <nav class="site-nav" aria-label="Primary navigation">
-      <details class="nav-group">
-        <summary>DCMS</summary>
-        <div class="nav-panel">
-          <a href="/dcms/what-is-dcms/">What is DCMS?</a>
-          <a href="/dcms/dynamic-menus/">Dynamic Menus</a>
-          <a href="/dcms/dynamic-content/">Dynamic Content</a>
-        </div>
-      </details>
-      <details class="nav-group">
-        <summary>Database</summary>
-        <div class="nav-panel">
-          <a href="/database/why-have-a-database/">Why have a database?</a>
-          <a href="/database/main-tables/">Main Tables</a>
-          <a href="/database/schema/">Schema</a>
-          <a href="/database/diagrams/">Diagrams</a>
-        </div>
-      </details>
-      <details class="nav-group">
-        <summary>User Experience</summary>
-        <div class="nav-panel">
-          <a href="/user-experience/what-is-a-portal/">What is a Portal?</a>
-          <a href="/user-experience/selecting-a-user-experience/">Selecting a User Experience</a>
-          <a href="/user-experience/patients/">Patients</a>
-          <a href="/user-experience/caregivers/">Caregivers</a>
-          <a href="/user-experience/providers/">Providers</a>
-          <a href="/user-experience/pharmaceutical/">Pharmaceutical</a>
-          <a href="/user-experience/guest/">Guest</a>
-        </div>
-      </details>
-      <details class="nav-group">
-        <summary>About</summary>
-        <div class="nav-panel">
-          <div class="nav-section">
-            <a href="/about/all-things-pg/">All Things PG</a>
-            <a href="/about/explore-documentation/">Explore Documentation</a>
-          </div>
-        </div>
-      </details>
-    </nav>
-  </div>
-</header>
-
-<main class="hero">
+<section class="hero">
   <div class="site-shell hero-grid">
     <section>
       <h1>Phase 2 is coming together.</h1>
@@ -312,7 +264,7 @@ title: All Things PG - Phase 2
       </p>
     </section>
   </div>
-</main>
+</section>
 
 <section class="story-strip">
   <div class="site-shell">

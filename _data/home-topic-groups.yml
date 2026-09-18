@@ -1,4 +1,5 @@
-- tiles:
+home:
+  tiles:
     - title: DCMS
       url: /dcms/
       description: Document the content model, dynamic menus, and dynamic content flow.

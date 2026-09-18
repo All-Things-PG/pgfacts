@@ -6,3 +6,7 @@ plugins:
   - jekyll-feed
 header_pages:
   - docs/index.md
+exclude:
+  - home/home.md
+gateway:
+  allow_blank_development: false

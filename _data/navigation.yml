@@ -9,3 +9,8 @@
       url: /docs/curating-content.html
     - label: Managing Tiles
       url: /docs/managing-tiles.html
+- label: Database
+  url: /database/
+  children:
+    - label: Schema
+      url: /database/DCMS_Database_Schema.html

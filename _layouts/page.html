@@ -1,12 +1,9 @@
 ---
 layout: default
 ---
-<section class="oldsite-page-heading">
-  <div class="oldsite-page-heading-inner">
-    <h1 class="oldsite-page-heading-title">{{ page.title }}</h1>
-    {% if page.description %}
-      <p class="oldsite-page-heading-description">{{ page.description }}</p>
-    {% endif %}
+{% include page-banner.html %}
+<section class="oldsite-page-content">
+  <div class="oldsite-container-inner">
+    {{ content }}
   </div>
 </section>
-{{ content }}

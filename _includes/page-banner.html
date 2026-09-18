@@ -1,0 +1,19 @@
+{% assign topic_group = site.data.home_topic_groups[page.banner_tile_group] %}
+<section class="oldsite-page-banner">
+  <div class="oldsite-container-inner">
+    {% if topic_group %}
+      <div class="pg-home-topic-grid">
+        {% for tile in topic_group.tiles %}
+          <a class="pg-home-topic-tile" href="{{ tile.url | relative_url }}">
+            <strong>{{ tile.title }}</strong>
+            <span>{{ tile.description }}</span>
+          </a>
+        {% endfor %}
+      </div>
+    {% endif %}
+    <h1 class="oldsite-page-heading-title">{{ page.title }}</h1>
+    {% if page.description %}
+      <p class="oldsite-page-heading-description">{{ page.description }}</p>
+    {% endif %}
+  </div>
+</section>

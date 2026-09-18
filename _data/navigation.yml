@@ -1,0 +1,11 @@
+- label: Documents
+  url: /docs/
+  children:
+    - label: Executive Summary
+      url: /docs/executive-summary.html
+    - label: Portal Experience
+      url: /docs/portal-experience.html
+    - label: Curating Content
+      url: /docs/curating-content.html
+    - label: Managing Tiles
+      url: /docs/managing-tiles.html

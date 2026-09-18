@@ -1,0 +1,25 @@
+<header class="oldsite-header">
+  <div class="oldsite-header-inner">
+    <a class="pg-logo-link" href="{{ '/' | relative_url }}">
+      <img class="pg-logo" src="{{ '/assets/images/pg-logo.png' | relative_url }}" alt="All Things PG">
+    </a>
+    <nav class="oldsite-navigation" aria-label="Main navigation">
+      <ul class="pg-nav-links">
+        <li><a href="{{ '/' | relative_url }}">Home</a></li>
+        {% for item in site.data.navigation %}
+          <li>
+            <a{% if item.children %} class="has-children"{% endif %} href="{{ item.url | relative_url }}">{{ item.label }}</a>
+            {% if item.children %}
+              <ul class="pg-submenu">
+                {% for child in item.children %}
+                  <li><a href="{{ child.url | relative_url }}">{{ child.label }}</a></li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+    <a class="oldsite-donate-button" href="https://www.allthingspg.org/donate">Donate</a>
+  </div>
+</header>

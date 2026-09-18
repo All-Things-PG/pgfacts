@@ -40,6 +40,91 @@ h6,
   padding: 0.2rem 0;
 }
 
+.oldsite-page-heading-inner {
+  width: min(var(--oldsite-container-width), calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 1.5rem 0;
+}
+
+.oldsite-page-heading-title {
+  margin: 0;
+  color: var(--oldsite-orange);
+}
+
+.oldsite-page-heading-description {
+  margin: 0.5rem 0 0;
+  color: var(--oldsite-text);
+}
+
+.pg-home-topic-bar {
+  padding: 1.25rem 0;
+  background: linear-gradient(180deg, #fff7ef 0%, #ffffff 100%);
+}
+
+.pg-home-topic-bar-inner,
+.pg-home-introduction-inner {
+  width: min(var(--oldsite-container-width), calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+.pg-home-topic-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.pg-home-topic-tile {
+  display: block;
+  min-height: 6.2rem;
+  padding: 0.9rem 1rem;
+  color: var(--oldsite-text);
+  background: linear-gradient(180deg, #fff7ef 0%, #ffffff 100%);
+  border: 1px solid var(--oldsite-orange);
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.pg-home-topic-tile strong,
+.pg-home-topic-tile span {
+  display: block;
+}
+
+.pg-home-topic-tile strong {
+  margin-bottom: 0.2rem;
+  color: var(--oldsite-orange);
+  font-size: 1rem;
+}
+
+.pg-home-topic-tile span {
+  font-size: 0.85rem;
+  line-height: 1.25;
+}
+
+.pg-home-topic-tile:hover,
+.pg-home-topic-tile:focus-visible {
+  border-color: var(--oldsite-orange);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+  outline: none;
+  text-decoration: none;
+  transform: translateY(-3px);
+}
+
+.pg-home-introduction-inner {
+  padding: 3rem 0;
+}
+
+.pg-home-introduction h1 {
+  margin: 0 0 0.85rem;
+  font-size: clamp(2.1rem, 4vw, 3.6rem);
+  line-height: 1.02;
+}
+
+.pg-home-introduction h2 {
+  color: var(--oldsite-orange);
+}
+
 .oldsite-header .pg-logo {
   display: block;
   width: 92px;
@@ -167,6 +252,16 @@ h6,
   .pg-nav-links {
     justify-content: flex-start;
     flex-wrap: wrap;
+  }
+
+  .pg-home-topic-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 900px) {
+  .pg-home-introduction h1 {
+    white-space: nowrap;
   }
 }
 

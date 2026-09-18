@@ -11,9 +11,11 @@
         {% endfor %}
       </div>
     {% endif %}
-    <h1 class="oldsite-page-heading-title">{{ page.title }}</h1>
-    {% if page.description %}
-      <p class="oldsite-page-heading-description">{{ page.description }}</p>
-    {% endif %}
+    <div class="oldsite-title-bar">
+      <span class="oldsite-breadcrumb">{% if page.breadcrumb %}{{ page.breadcrumb }}{% else %}{{ page.title }}{% endif %}</span>
+      {% if page.description %}
+        <span class="oldsite-page-description">{{ page.description }}</span>
+      {% endif %}
+    </div>
   </div>
 </section>

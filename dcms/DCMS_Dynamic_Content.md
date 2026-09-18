@@ -1,6 +1,8 @@
 ---
 layout: page
 title: Dynamic Content
+breadcrumb: DCMS > Dynamic Content
+description: Design, architecture, and specifications for data-driven Dynamic Content.
 updated: 2026-09-18
 ---
 

@@ -1,3 +1,12 @@
+- label: DCMS
+  url: /dcms/
+  children:
+    - label: What is DCMS?
+      url: /dcms/
+    - label: Dynamic Content
+      url: /dcms/DCMS_Dynamic_Content.html
+    - label: Dynamic Menus
+      url: /dcms/DCMS_Dynamic_Menus.html
 - label: Documents
   url: /docs/
   children:
@@ -14,3 +23,4 @@
   children:
     - label: Schema
       url: /database/DCMS_Database_Schema.html
+

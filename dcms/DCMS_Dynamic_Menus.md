@@ -1,6 +1,8 @@
 ---
 layout: page
 title: Dynamic Menus
+breadcrumb: DCMS > Dynamic Menus
+description: Dynamic menu loading and hierarchy from database records.
 updated: 2026-09-18
 ---
 

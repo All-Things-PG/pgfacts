@@ -43,9 +43,11 @@ h6,
   padding: 0.2rem 0;
 }
 
-.oldsite-page-banner {
+.oldsite-title-bar-section {
   padding: 1.25rem 0;
-  background: linear-gradient(180deg, #fff7ef 0%, #ffffff 100%);
+  background: #ffffff;
+  border-top: 1px solid #000000;
+  border-bottom: 1px solid #000000;
 }
 
 .oldsite-title-bar {
@@ -59,13 +61,13 @@ h6,
 .oldsite-breadcrumb {
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--oldsite-orange);
+  color: #000000;
 }
 
 .oldsite-page-description {
   font-size: 0.95rem;
   font-weight: 700;
-  color: var(--oldsite-text);
+  color: #000000;
   margin-left: auto;
 }
 
@@ -115,7 +117,9 @@ h6,
 }
 
 .oldsite-page-content {
-  padding: 2rem 0;
+  padding: 2.5rem 0;
+  background: linear-gradient(180deg, #fff7ef 0%, #ffffff 100%);
+  min-height: 60vh;
 }
 
 .oldsite-page-content h1,

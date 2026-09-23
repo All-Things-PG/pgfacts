@@ -4,6 +4,17 @@ layout: default
 {% include page-banner.html %}
 <section class="oldsite-page-content">
   <div class="oldsite-container-inner">
+    {% assign topic_group = site.data.home_topic_groups[page.banner_tile_group] %}
+    {% if topic_group %}
+      <div class="pg-home-topic-grid">
+        {% for tile in topic_group.tiles %}
+          <a class="pg-home-topic-tile" href="{{ tile.url | relative_url }}">
+            <strong>{{ tile.title }}</strong>
+            <span>{{ tile.description }}</span>
+          </a>
+        {% endfor %}
+      </div>
+    {% endif %}
     {{ content }}
   </div>
 </section>

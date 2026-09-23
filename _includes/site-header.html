@@ -5,7 +5,6 @@
     </a>
     <nav class="oldsite-navigation" aria-label="Main navigation">
       <ul class="pg-nav-links">
-        <li><a href="{{ '/home/' | relative_url }}">Home</a></li>
         {% for item in site.data.navigation %}
           <li>
             <a{% if item.children %} class="has-children"{% endif %} href="{{ item.url | relative_url }}">{{ item.label }}</a>

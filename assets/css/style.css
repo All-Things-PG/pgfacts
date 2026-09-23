@@ -36,15 +36,15 @@ h6,
 }
 
 .oldsite-header-inner {
-  min-height: 72px;
+  min-height: 56px;
   display: flex;
   align-items: center;
   gap: 1.1rem;
-  padding: 0.2rem 0;
+  padding: 0.15rem 0;
 }
 
 .oldsite-title-bar-section {
-  padding: 1.25rem 0;
+  padding: 0.5rem 0;
   background: #ffffff;
   border-top: 1px solid #000000;
   border-bottom: 1px solid #000000;
@@ -56,17 +56,20 @@ h6,
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
+  font-family: "Work Sans", Arial, Helvetica, sans-serif;
 }
 
 .oldsite-breadcrumb {
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-family: "Work Sans", Arial, Helvetica, sans-serif;
+  font-size: 0.86rem;
+  font-weight: 500;
   color: #000000;
 }
 
 .oldsite-page-description {
-  font-size: 0.95rem;
-  font-weight: 700;
+  font-family: "Work Sans", Arial, Helvetica, sans-serif;
+  font-size: 0.86rem;
+  font-weight: 500;
   color: #000000;
   margin-left: auto;
 }
@@ -181,7 +184,7 @@ h6,
 
 .oldsite-header .pg-logo {
   display: block;
-  width: 92px;
+  width: 82px;
   height: auto;
   margin: 0;
 }

@@ -1,33 +1,17 @@
-- label: DCMS
-  url: /dcms/
+- label: Welcome
+  url: /home/
   children:
-    - label: What is DCMS?
-      url: /dcms/
-    - label: Dynamic Content
-      url: /dcms/DCMS_Dynamic_Content.html
-    - label: Dynamic Menus
-      url: /dcms/DCMS_Dynamic_Menus.html
-- label: Documents
-  url: /docs/
-  children:
+    - label: Home
+      url: /home/
     - label: Executive Summary
-      url: /docs/executive-summary.html
-    - label: Portal Experience
-      url: /docs/portal-experience.html
-    - label: Curating Content
-      url: /docs/curating-content.html
-    - label: Managing Tiles
-      url: /docs/managing-tiles.html
-- label: Database
-  url: /database/
-  children:
-    - label: Schema
-      url: /database/DCMS_Database_Schema.html
+      url: /dcms/DCMS_Executive_Summary.html
+    - label: Explore Documentation
+      url: /docs/
 - label: User Experience
   url: /user-experience/
   children:
     - label: What is a Portal?
-      url: /user-experience/what-is-a-portal/
+      url: /dcms/DCMS_Portal_Experience.html
     - label: Selecting a User Experience
       url: /user-experience/selecting-a-user-experience/
     - label: Patients
@@ -40,10 +24,36 @@
       url: /user-experience/pharmaceutical/
     - label: Guest
       url: /user-experience/guest/
+- label: DCMS
+  url: /dcms/
+  children:
+    - label: What is DCMS?
+      url: /dcms/
+    - label: Dynamic Content
+      url: /dcms/DCMS_Dynamic_Content.html
+    - label: Dynamic Menus
+      url: /dcms/DCMS_Dynamic_Menus.html
+    - label: Curating Content
+      url: /dcms/DCMS_Curating_Content.html
+    - label: Managing Tiles
+      url: /dcms/DCMS_Managing_Tiles.html
+- label: Database
+  url: /database/
+  children:
+    - label: System
+      url: /database/system/
+    - label: Staging
+      url: /database/staging/
+    - label: Content
+      url: /database/content/
+    - label: Menus
+      url: /database/menus/
+    - label: Registration
+      url: /database/registration/
+    - label: Schema
+      url: /database/DCMS_Database_Schema.html
 - label: About
   url: /about/
   children:
     - label: All Things PG
       url: /about/all-things-pg/
-    - label: Explore Documentation
-      url: /about/explore-documentation/

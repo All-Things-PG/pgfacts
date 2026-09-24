@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Managing Tiles | PG Facts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/main.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+  </head>
+  <body>
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-brand" href="/home/" aria-label="All Things PG home">
+      <img class="site-brand__logo" src="/assets/images/pg-logo.png" alt="All Things PG">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      
+        <details class="site-nav__group">
+          <summary class="site-nav__summary">Welcome</summary>
+          <div class="site-nav__panel">
+            
+              <a href="/home/">Home</a>
+            
+              <a href="/dcms/DCMS_Executive_Summary.html">Executive Summary</a>
+            
+              <a href="/docs/">Explore Documentation</a>
+            
+          </div>
+        </details>
+      
+        <details class="site-nav__group">
+          <summary class="site-nav__summary">User Experience</summary>
+          <div class="site-nav__panel">
+            
+              <a href="/user-experience/what-is-a-portal/">What is a Portal?</a>
+            
+              <a href="/user-experience/selecting-a-user-experience/">Selecting a User Experience</a>
+            
+              <a href="/user-experience/patients/">Patients</a>
+            
+              <a href="/user-experience/caregivers/">Caregivers</a>
+            
+              <a href="/user-experience/providers/">Providers</a>
+            
+              <a href="/user-experience/pharmaceutical/">Pharmaceutical</a>
+            
+              <a href="/user-experience/guest/">Guest</a>
+            
+          </div>
+        </details>
+      
+        <details class="site-nav__group">
+          <summary class="site-nav__summary">DCMS</summary>
+          <div class="site-nav__panel">
+            
+              <a href="/dcms/">What is DCMS?</a>
+            
+              <a href="/dcms/DCMS_Dynamic_Content.html">Dynamic Content</a>
+            
+              <a href="/dcms/DCMS_Dynamic_Menus.html">Dynamic Menus</a>
+            
+              <a href="/dcms/DCMS_Curating_Content.html">Curating Content</a>
+            
+              <a href="/dcms/DCMS_Managing_Tiles.html">Managing Tiles</a>
+            
+          </div>
+        </details>
+      
+        <details class="site-nav__group">
+          <summary class="site-nav__summary">Database</summary>
+          <div class="site-nav__panel">
+            
+              <a href="/database/system/">System</a>
+            
+              <a href="/database/staging/">Staging</a>
+            
+              <a href="/database/content/">Content</a>
+            
+              <a href="/database/menus/">Menus</a>
+            
+              <a href="/database/registration/">Registration</a>
+            
+              <a href="/database/DCMS_Database_Schema.html">Schema</a>
+            
+          </div>
+        </details>
+      
+        <details class="site-nav__group">
+          <summary class="site-nav__summary">About</summary>
+          <div class="site-nav__panel">
+            
+              <a href="/about/all-things-pg/">All Things PG</a>
+            
+          </div>
+        </details>
+      
+      <a class="site-nav__contact" href="mailto:dave@allthingspg.org?subject=PG%20Facts%20feedback&amp;body=Thank%20you%20for%20your%20feedback.%20Please%20tell%20us%20how%20we%20can%20improve%20this%20site%20or%20its%20documentation.%0D%0A%0D%0A">Contact Us</a>
+    </nav>
+  </div>
+</header>
+
+    <div class="page-title-bar">
+  <div class="page-title-bar__inner">
+    <div class="page-title-bar__left">Managing Tiles</div>
+    <div class="page-title-bar__right">Reusable visual shortcut layer for contextual navigation.</div>
+  </div>
+</div>
+
+    <main aria-label="Content">
+      <div class="page-title-bar">
+  <div class="page-title-bar__inner">
+    <div class="page-title-bar__left">Managing Tiles</div>
+    <div class="page-title-bar__right">Reusable visual shortcut layer for contextual navigation.</div>
+  </div>
+</div>
+
+<section class="oldsite-page-content">
+  <div class="oldsite-container-inner">
+    
+    
+    <h1 id="dcms---managing-tiles">DCMS - Managing Tiles</h1>
+
+<h2 id="managing-tiles">Managing Tiles</h2>
+
+<p>The tile system is a reusable way to present contextual navigation, shortcuts, and featured links anywhere in the site.</p>
+
+<p>The important idea is that tiles are not just for portals. A tile bar can appear on the home page, on persona pages, on content pages, or on any other Razor page that benefits from a compact set of linked choices.</p>
+
+<hr />
+
+<h2 id="1-why-tiles-matter">1. Why tiles matter</h2>
+
+<p>Tiles give the site a visual shortcut layer.</p>
+
+<p>They can be used to:</p>
+
+<ul>
+  <li>help a visitor choose a persona;</li>
+  <li>show portal-specific navigation;</li>
+  <li>expose related actions on a content page;</li>
+  <li>create a compact shortcut bar;</li>
+  <li>reinforce the current context without forcing the user back to the main menu.</li>
+</ul>
+
+<p>That makes tiles a powerful complement to the main menu rather than a replacement for it.</p>
+
+<hr />
+
+<h2 id="2-tilemenu-as-the-reusable-concept">2. TileMenu as the reusable concept</h2>
+
+<p>The cleanest model is to treat the tile system as a reusable container called <strong>TileMenu</strong>.</p>
+
+<p>That is more general than <strong>PortalMenu</strong> because the same tile bar concept can be used on:</p>
+
+<ul>
+  <li>the home page;</li>
+  <li>visitor/persona pages;</li>
+  <li>utility pages;</li>
+  <li>content pages;</li>
+  <li>any other page that needs contextual shortcuts.</li>
+</ul>
+
+<p>In other words:</p>
+
+<ul>
+  <li><strong>TileMenu</strong> = the data container;</li>
+  <li><strong>TileMenuItem</strong> = a row inside the container;</li>
+  <li><strong>_TileMenu</strong> = the partial that renders one tile bar.</li>
+</ul>
+
+<p>This keeps the system flexible and avoids creating separate concepts for portal tiles, page tiles, and home tiles when they are really the same idea.</p>
+
+<hr />
+
+<h2 id="3-how-the-page-uses-tiles">3. How the page uses tiles</h2>
+
+<p>The page or layout decides whether a tile bar should appear.</p>
+
+<p>The partial itself should not be the source of truth. The page knows:</p>
+
+<ul>
+  <li>what kind of page it is;</li>
+  <li>what context it is in;</li>
+  <li>whether a tile bar is needed;</li>
+  <li>whether one or more tile bars should appear.</li>
+</ul>
+
+<p>The partial simply renders the tile data it is given.</p>
+
+<p>That means a Razor page can include tiles like this:</p>
+
+<pre><code class="language-cshtml">@await Html.PartialAsync("_TileMenu", tileMenuViewModel)
+</code></pre>
+
+<p>The view model carries the tile list and the context needed to render it.</p>
+
+<hr />
+
+<h2 id="4-view-model-responsibility">4. View model responsibility</h2>
+
+<p>The tile partial should be fed by a tile-specific view model.</p>
+
+<p>That view model can contain:</p>
+
+<ul>
+  <li>the tile menu identity;</li>
+  <li>the list of tiles;</li>
+  <li>a display title or caption;</li>
+  <li>the current page key;</li>
+  <li>the rendering size or style;</li>
+  <li>any flags needed by the partial.</li>
+</ul>
+
+<p>This keeps the partial simple and keeps the data shape explicit.</p>
+
+<p>The page can load a model with a factory, helper, constructor, or service method. The key point is that the model is created before the partial is rendered.</p>
+
+<hr />
+
+<h2 id="5-the-tileid-idea">5. The TileID idea</h2>
+
+<p>The database should have a tile identity field, such as <strong>TileID</strong> or <strong>TileMenuID</strong>, so each tile menu can be loaded deterministically.</p>
+
+<p>That gives the application a way to say:</p>
+
+<ul>
+  <li>this page uses tile menu 10;</li>
+  <li>that region on the page uses tile menu 11;</li>
+  <li>these two pages share the same tile menu;</li>
+  <li>this page has no tile menu at all.</li>
+</ul>
+
+<p>The tile identity does not belong to the partial itself. It belongs to the model that the partial receives.</p>
+
+<p>That makes it possible to reuse the same <code class="language-plaintext highlighter-rouge">_TileMenu</code> partial multiple times on the same page with different data.</p>
+
+<hr />
+
+<h2 id="6-one-tile-menu-or-many">6. One tile menu or many</h2>
+
+<p>The system should allow multiple tile bars on the same page.</p>
+
+<p>Examples:</p>
+
+<ul>
+  <li>a top tile bar;</li>
+  <li>an inline tile bar;</li>
+  <li>a bottom tile bar;</li>
+  <li>a page-specific shortcut bar;</li>
+  <li>a persona tile bar and a content tile bar on the same page.</li>
+</ul>
+
+<p>That is why the page should not be limited to a single hidden tile menu concept. The page should be able to call <code class="language-plaintext highlighter-rouge">_TileMenu</code> more than once if needed, each time with a different tile menu identity.</p>
+
+<p>So the general rule is:</p>
+
+<ul>
+  <li><strong>page</strong> = the container/context;</li>
+  <li><strong>TileMenu</strong> = the named tile set;</li>
+  <li><strong>_TileMenu</strong> = the renderer;</li>
+  <li><strong>tile menu ID/key</strong> = how a specific instance is loaded.</li>
+</ul>
+
+<hr />
+
+<h2 id="7-tilemenu-and-page-identity">7. TileMenu and page identity</h2>
+
+<p>To decide whether a page has tiles, the system needs a stable page identity.</p>
+
+<p>That identity can be:</p>
+
+<ul>
+  <li>a page key;</li>
+  <li>a route target;</li>
+  <li>a route family plus page name;</li>
+  <li>another stable identifier that the page loader understands.</li>
+</ul>
+
+<p>For example, the system could ask:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Does this page key have a TileMenu?
+</code></pre></div></div>
+
+<p>If yes, the page loads the matching tile menu data and renders it.
+If not, it renders the standard layout without a tile bar.</p>
+
+<hr />
+
+<h2 id="8-route-families-and-tile-usage">8. Route families and tile usage</h2>
+
+<p>The site already has four route families:</p>
+
+<ul>
+  <li><strong>Content</strong> pages such as Article and Gallery;</li>
+  <li><strong>Page</strong> pages such as BoardMembers and other utility pages;</li>
+  <li><strong>Visitor</strong> pages for persona portals and Guest;</li>
+  <li><strong>Redirect</strong> pages that only forward to another target.</li>
+</ul>
+
+<p>That makes tile handling clearer:</p>
+
+<ul>
+  <li><strong>Redirect</strong> pages should not render a tile bar;</li>
+  <li>the destination page may render tiles if it has a TileMenu;</li>
+  <li><strong>Visitor</strong> pages may render portal-style tiles;</li>
+  <li><strong>Page</strong> and <strong>Content</strong> pages may also render tile bars when useful.</li>
+</ul>
+
+<p>This keeps the tile system attached to the actual destination experience, not the redirect wrapper.</p>
+
+<hr />
+
+<h2 id="9-home-page-tiles">9. Home page tiles</h2>
+
+<p>The home page tile bar is really a persona chooser.</p>
+
+<p>It reflects the same idea as:</p>
+
+<ul>
+  <li>the welcome menu;</li>
+  <li>the persona dropdown;</li>
+  <li>the persona portal links.</li>
+</ul>
+
+<p>The tiles are not a different kind of action. They are another presentation of the same persona-switching concept.</p>
+
+<p>That means the home tiles should use the same underlying persona logic as the welcome menu and dropdown, including the Guest option.</p>
+
+<hr />
+
+<h2 id="10-tile-style-and-size">10. Tile style and size</h2>
+
+<p>Tiles should support different visual sizes or styles.</p>
+
+<p>A practical first pass is:</p>
+
+<ul>
+  <li><strong>small</strong> for shortcut bars;</li>
+  <li><strong>medium</strong> for standard portal tiles;</li>
+  <li><strong>large</strong> for featured tiles.</li>
+</ul>
+
+<p>This lets the same tile system support very different page treatments without needing a separate concept for each one.</p>
+
+<hr />
+
+<h2 id="11-icons-images-and-gallery-boundaries">11. Icons, images, and gallery boundaries</h2>
+
+<p>Tiles can carry visual assets.</p>
+
+<p>They may have:</p>
+
+<ul>
+  <li>an icon;</li>
+  <li>a label;</li>
+  <li>a short caption;</li>
+  <li>optionally an image.</li>
+</ul>
+
+<p>But once the image becomes the main point, the design is drifting toward gallery or feature-card behavior rather than a simple tile.</p>
+
+<p>That suggests a good rule:</p>
+
+<ul>
+  <li>icon/text first = tile;</li>
+  <li>image-led and content-heavy = gallery or feature card.</li>
+</ul>
+
+<p>Large tiles can still be image-led if they remain navigational and short-form.</p>
+
+<hr />
+
+<h2 id="12-reuse-across-pages">12. Reuse across pages</h2>
+
+<p>One TileMenu can be reused on multiple pages.</p>
+
+<p>That is one of the strongest reasons to use a generic tile system:</p>
+
+<ul>
+  <li>page A can share the same tile menu as page B;</li>
+  <li>a tile menu can be reused in more than one region;</li>
+  <li>a future redesign can change the tile set in one place;</li>
+  <li>a shared tile bar can remain visually consistent across the site.</li>
+</ul>
+
+<p>This is especially useful for:</p>
+
+<ul>
+  <li>persona portals;</li>
+  <li>related links;</li>
+  <li>content hubs;</li>
+  <li>board or committee pages;</li>
+  <li>future shortcut bars.</li>
+</ul>
+
+<hr />
+
+<h2 id="13-suggested-implementation-shape">13. Suggested implementation shape</h2>
+
+<p>A clean implementation would be:</p>
+
+<ul>
+  <li><strong>TileMenu</strong> table for the tile container;</li>
+  <li><strong>TileMenuItem</strong> table for the items;</li>
+  <li><strong>TileID</strong> or <strong>TileMenuID</strong> as the identity field;</li>
+  <li>a tile-specific view model;</li>
+  <li>a helper or factory that loads the view model;</li>
+  <li>a shared <code class="language-plaintext highlighter-rouge">_TileMenu</code> partial that renders the tiles.</li>
+</ul>
+
+<p>Example usage:</p>
+
+<pre><code class="language-cshtml">@await Html.PartialAsync("_TileMenu", topTiles)
+</code></pre>
+
+<p>Where <code class="language-plaintext highlighter-rouge">topTiles</code> was created earlier by a helper or factory method that took a tile menu ID or page key.</p>
+
+<hr />
+
+<h2 id="14-factory-or-constructor-pattern">14. Factory or constructor pattern</h2>
+
+<p>The view model can be created in a few different ways.</p>
+
+<p>Examples:</p>
+
+<ul>
+  <li>a factory method that returns a ready-to-render tile model;</li>
+  <li>a constructor that accepts the tile menu ID;</li>
+  <li>a service method that loads tiles by page key;</li>
+  <li>a helper that builds the model from the current page context.</li>
+</ul>
+
+<p>The choice does not matter as much as the discipline:</p>
+
+<ul>
+  <li>the page asks for the tile data;</li>
+  <li>the data is loaded before rendering;</li>
+  <li>the partial receives a complete model.</li>
+</ul>
+
+<p>That keeps the view layer predictable.</p>
+
+<hr />
+
+<h2 id="15-why-this-is-better-than-hard-coding">15. Why this is better than hard-coding</h2>
+
+<p>The tile system becomes far more useful when it is data-driven.</p>
+
+<p>That means the site can:</p>
+
+<ul>
+  <li>add tile bars without rewriting page markup;</li>
+  <li>reuse tile bars across pages;</li>
+  <li>change tile content centrally;</li>
+  <li>support different tile sizes and styles;</li>
+  <li>keep the design clean as the site grows.</li>
+</ul>
+
+<p>That is a much stronger model than hard-coding tiles into each page by hand.</p>
+
+<hr />
+
+<h2 id="summary">Summary</h2>
+
+<p>Tiles should be treated as a reusable site feature, not a portal-only feature.</p>
+
+<p>The best model is:</p>
+
+<ul>
+  <li><strong>TileMenu</strong> = reusable tile container;</li>
+  <li><strong>TileMenuItem</strong> = one tile row;</li>
+  <li><strong>_TileMenu</strong> = shared renderer;</li>
+  <li><strong>page key or tile menu ID</strong> = how the correct tile set is loaded;</li>
+  <li><strong>view model or factory</strong> = how the page prepares the tiles before rendering.</li>
+</ul>
+
+<p>That gives the site a flexible shortcut bar system that can support home pages, portal pages, utility pages, and future content pages without inventing a new concept every time.</p>
+
+  </div>
+</section>
+
+    </main>
+  </body>
+</html>

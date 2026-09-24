@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Curating Content | PG Facts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/main.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+  </head>
+  <body>
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-brand" href="/home/" aria-label="All Things PG home">
+      <img class="site-brand__logo" src="/assets/images/pg-logo.png" alt="All Things PG">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      
+        <details class="site-nav__group">
+          <summary class="site-nav__summary">Welcome</summary>
+          <div class="site-nav__panel">
+            
+              <a href="/home/">Home</a>
+            
+              <a href="/dcms/DCMS_Executive_Summary.html">Executive Summary</a>
+            
+              <a href="/docs/">Explore Documentation</a>
+            
+          </div>
+        </details>
+      
+        <details class="site-nav__group">
+          <summary class="site-nav__summary">User Experience</summary>
+          <div class="site-nav__panel">
+            
+              <a href="/user-experience/what-is-a-portal/">What is a Portal?</a>
+            
+              <a href="/user-experience/selecting-a-user-experience/">Selecting a User Experience</a>
+            
+              <a href="/user-experience/patients/">Patients</a>
+            
+              <a href="/user-experience/caregivers/">Caregivers</a>
+            
+              <a href="/user-experience/providers/">Providers</a>
+            
+              <a href="/user-experience/pharmaceutical/">Pharmaceutical</a>
+            
+              <a href="/user-experience/guest/">Guest</a>
+            
+          </div>
+        </details>
+      
+        <details class="site-nav__group">
+          <summary class="site-nav__summary">DCMS</summary>
+          <div class="site-nav__panel">
+            
+              <a href="/dcms/">What is DCMS?</a>
+            
+              <a href="/dcms/DCMS_Dynamic_Content.html">Dynamic Content</a>
+            
+              <a href="/dcms/DCMS_Dynamic_Menus.html">Dynamic Menus</a>
+            
+              <a href="/dcms/DCMS_Curating_Content.html">Curating Content</a>
+            
+              <a href="/dcms/DCMS_Managing_Tiles.html">Managing Tiles</a>
+            
+          </div>
+        </details>
+      
+        <details class="site-nav__group">
+          <summary class="site-nav__summary">Database</summary>
+          <div class="site-nav__panel">
+            
+              <a href="/database/system/">System</a>
+            
+              <a href="/database/staging/">Staging</a>
+            
+              <a href="/database/content/">Content</a>
+            
+              <a href="/database/menus/">Menus</a>
+            
+              <a href="/database/registration/">Registration</a>
+            
+              <a href="/database/DCMS_Database_Schema.html">Schema</a>
+            
+          </div>
+        </details>
+      
+        <details class="site-nav__group">
+          <summary class="site-nav__summary">About</summary>
+          <div class="site-nav__panel">
+            
+              <a href="/about/all-things-pg/">All Things PG</a>
+            
+          </div>
+        </details>
+      
+      <a class="site-nav__contact" href="mailto:dave@allthingspg.org?subject=PG%20Facts%20feedback&amp;body=Thank%20you%20for%20your%20feedback.%20Please%20tell%20us%20how%20we%20can%20improve%20this%20site%20or%20its%20documentation.%0D%0A%0D%0A">Contact Us</a>
+    </nav>
+  </div>
+</header>
+
+    <div class="page-title-bar">
+  <div class="page-title-bar__inner">
+    <div class="page-title-bar__left">Curating Content</div>
+    <div class="page-title-bar__right">Workflow for collecting, reviewing, and publishing structured content.</div>
+  </div>
+</div>
+
+    <main aria-label="Content">
+      <div class="page-title-bar">
+  <div class="page-title-bar__inner">
+    <div class="page-title-bar__left">Curating Content</div>
+    <div class="page-title-bar__right">Workflow for collecting, reviewing, and publishing structured content.</div>
+  </div>
+</div>
+
+<section class="oldsite-page-content">
+  <div class="oldsite-container-inner">
+    
+    
+    <h1 id="dcms---curating-content">DCMS - Curating Content</h1>
+
+<h2 id="curating-content">Curating Content</h2>
+
+<p>The content model is designed to make All Things PG easier to grow, update, and maintain over time.</p>
+
+<p>The purpose is not just to store text. It is to create a sustainable workflow for collecting, shaping, reviewing, and publishing content in a way that supports the organization’s mission.</p>
+
+<hr />
+
+<h2 id="1-what-content-curation-means-in-dcms">1. What content curation means in DCMS</h2>
+
+<p>In DCMS, curated content is structured content that can be assembled into pages and reused across the site.</p>
+
+<p>That means the organization can:</p>
+
+<ul>
+  <li>store content in the database;</li>
+  <li>separate content from presentation;</li>
+  <li>support more than one content format;</li>
+  <li>reuse content across pages where appropriate;</li>
+  <li>update content without reworking the entire site.</li>
+</ul>
+
+<p>This is a much better fit for a growing information platform than hard-coding important content directly into page files.</p>
+
+<hr />
+
+<h2 id="2-the-current-migration-approach">2. The current migration approach</h2>
+
+<p>For the POC and migration work, content is being captured into:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">MigrationDocument</code></li>
+  <li><code class="language-plaintext highlighter-rouge">MigrationElement</code></li>
+</ul>
+
+<p>Those tables provide a practical staging area for first-pass content capture from the legacy site.</p>
+
+<p>The migration model is intentionally simple:</p>
+
+<ul>
+  <li>one document per page or major content unit;</li>
+  <li>one or more elements per document;</li>
+  <li>HTML can be stored directly when that is the fastest useful representation;</li>
+  <li>later passes can refine structure, images, metadata, and page relationships.</li>
+</ul>
+
+<p>This is enough to move quickly without making the system more complicated than it needs to be.</p>
+
+<hr />
+
+<h2 id="3-why-the-migration-layer-is-useful">3. Why the migration layer is useful</h2>
+
+<p>The migration layer gives the organization flexibility.</p>
+
+<p>It allows the team to:</p>
+
+<ul>
+  <li>capture content ahead of time;</li>
+  <li>review it before publishing;</li>
+  <li>rerun the migration later if the source changes;</li>
+  <li>refine titles, mappings, and layout decisions as the site evolves;</li>
+  <li>keep the final content tables clean.</li>
+</ul>
+
+<p>That makes the migration process safer and easier to manage.</p>
+
+<hr />
+
+<h2 id="4-how-content-is-expected-to-flow">4. How content is expected to flow</h2>
+
+<p>The general flow is:</p>
+
+<ol>
+  <li>capture legacy content into migration tables;</li>
+  <li>map the content to the intended <code class="language-plaintext highlighter-rouge">MenuItem</code>;</li>
+  <li>refine the HTML or block structure as needed;</li>
+  <li>move approved content into the final content model;</li>
+  <li>render the content through the page system.</li>
+</ol>
+
+<p>For the POC, the process can stay lightweight and practical. The goal is to get useful content into the site quickly and correctly.</p>
+
+<hr />
+
+<h2 id="5-why-the-site-needs-content-curation-not-just-content-storage">5. Why the site needs content curation, not just content storage</h2>
+
+<p>A page is not valuable because it exists in a database. It is valuable because it is understandable, useful, and easy to maintain.</p>
+
+<p>That is why curation matters.</p>
+
+<p>Good curation helps the organization:</p>
+
+<ul>
+  <li>present content in the right order;</li>
+  <li>keep content aligned with the audience;</li>
+  <li>avoid duplicates and dead ends;</li>
+  <li>separate core informational pages from supporting material;</li>
+  <li>make future updates much easier.</li>
+</ul>
+
+<p>This is especially important for a rare-disease organization, where the value of the site comes from clarity and trust.</p>
+
+<hr />
+
+<h2 id="6-what-can-be-improved-later">6. What can be improved later</h2>
+
+<p>The first pass does not need to be perfect.</p>
+
+<p>Later improvements can include:</p>
+
+<ul>
+  <li>richer metadata;</li>
+  <li>image handling;</li>
+  <li>content status and review notes;</li>
+  <li>content versioning;</li>
+  <li>page-level migration tracking;</li>
+  <li>better element-level structure;</li>
+  <li>better mapping between old and new titles;</li>
+  <li>more precise treatment of forms, lists, and special pages.</li>
+</ul>
+
+<p>That staged approach is deliberate. It lets the team get useful content in place first and refine it as needed.</p>
+
+<hr />
+
+<h2 id="7-why-this-is-a-strong-foundation">7. Why this is a strong foundation</h2>
+
+<p>The content curation model is strong because it supports both speed and control.</p>
+
+<p>It lets the organization:</p>
+
+<ul>
+  <li>work quickly when needed;</li>
+  <li>preserve important content;</li>
+  <li>improve the structure over time;</li>
+  <li>keep the site maintainable;</li>
+  <li>prepare for future growth without rethinking the entire system.</li>
+</ul>
+
+<p>For a sponsor, that means the platform is not just a one-time build. It is an asset that can continue to improve.</p>
+
+<hr />
+
+<h2 id="summary">Summary</h2>
+
+<p>Content curation in DCMS is about building a reliable path from legacy content to a maintainable platform.</p>
+
+<p>The migration tables give the organization a safe staging area, the content tables give it a durable destination, and the page system gives it a way to present the content clearly to the right audience.</p>
+
+  </div>
+</section>
+
+    </main>
+  </body>
+</html>

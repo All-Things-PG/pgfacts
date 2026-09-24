@@ -1,0 +1,975 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dynamic Menus | PG Facts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/main.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+  </head>
+  <body>
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-brand" href="/home/" aria-label="All Things PG home">
+      <img class="site-brand__logo" src="/assets/images/pg-logo.png" alt="All Things PG">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      
+        <details class="site-nav__group">
+          <summary class="site-nav__summary">Welcome</summary>
+          <div class="site-nav__panel">
+            
+              <a href="/home/">Home</a>
+            
+              <a href="/dcms/DCMS_Executive_Summary.html">Executive Summary</a>
+            
+              <a href="/docs/">Explore Documentation</a>
+            
+          </div>
+        </details>
+      
+        <details class="site-nav__group">
+          <summary class="site-nav__summary">User Experience</summary>
+          <div class="site-nav__panel">
+            
+              <a href="/user-experience/what-is-a-portal/">What is a Portal?</a>
+            
+              <a href="/user-experience/selecting-a-user-experience/">Selecting a User Experience</a>
+            
+              <a href="/user-experience/patients/">Patients</a>
+            
+              <a href="/user-experience/caregivers/">Caregivers</a>
+            
+              <a href="/user-experience/providers/">Providers</a>
+            
+              <a href="/user-experience/pharmaceutical/">Pharmaceutical</a>
+            
+              <a href="/user-experience/guest/">Guest</a>
+            
+          </div>
+        </details>
+      
+        <details class="site-nav__group">
+          <summary class="site-nav__summary">DCMS</summary>
+          <div class="site-nav__panel">
+            
+              <a href="/dcms/">What is DCMS?</a>
+            
+              <a href="/dcms/DCMS_Dynamic_Content.html">Dynamic Content</a>
+            
+              <a href="/dcms/DCMS_Dynamic_Menus.html">Dynamic Menus</a>
+            
+              <a href="/dcms/DCMS_Curating_Content.html">Curating Content</a>
+            
+              <a href="/dcms/DCMS_Managing_Tiles.html">Managing Tiles</a>
+            
+          </div>
+        </details>
+      
+        <details class="site-nav__group">
+          <summary class="site-nav__summary">Database</summary>
+          <div class="site-nav__panel">
+            
+              <a href="/database/system/">System</a>
+            
+              <a href="/database/staging/">Staging</a>
+            
+              <a href="/database/content/">Content</a>
+            
+              <a href="/database/menus/">Menus</a>
+            
+              <a href="/database/registration/">Registration</a>
+            
+              <a href="/database/DCMS_Database_Schema.html">Schema</a>
+            
+          </div>
+        </details>
+      
+        <details class="site-nav__group">
+          <summary class="site-nav__summary">About</summary>
+          <div class="site-nav__panel">
+            
+              <a href="/about/all-things-pg/">All Things PG</a>
+            
+          </div>
+        </details>
+      
+      <a class="site-nav__contact" href="mailto:dave@allthingspg.org?subject=PG%20Facts%20feedback&amp;body=Thank%20you%20for%20your%20feedback.%20Please%20tell%20us%20how%20we%20can%20improve%20this%20site%20or%20its%20documentation.%0D%0A%0D%0A">Contact Us</a>
+    </nav>
+  </div>
+</header>
+
+    <div class="page-title-bar">
+  <div class="page-title-bar__inner">
+    <div class="page-title-bar__left">Dynamic Menus</div>
+    <div class="page-title-bar__right">Dynamic menu loading and hierarchy from database records.</div>
+  </div>
+</div>
+
+    <main aria-label="Content">
+      <div class="page-title-bar">
+  <div class="page-title-bar__inner">
+    <div class="page-title-bar__left">Dynamic Menus</div>
+    <div class="page-title-bar__right">Dynamic menu loading and hierarchy from database records.</div>
+  </div>
+</div>
+
+<section class="oldsite-page-content">
+  <div class="oldsite-container-inner">
+    
+    
+    <p><a id="top"></a></p>
+
+<h1 id="dcms---dynamic-content-and-menuing-system">DCMS - Dynamic Content and Menuing System</h1>
+
+<h2 id="dynamic-menus">Dynamic Menus</h2>
+
+<p>This document explains how the proof-of-concept menu is loaded from the <code class="language-plaintext highlighter-rouge">AllThingsPG</code> database and displayed through the shared Razor partial view named <code class="language-plaintext highlighter-rouge">_Menu.cshtml</code>.</p>
+
+<p>The menu is called a <a href="#glossary">dynamic menu</a> because its labels, <a href="#glossary">hierarchy</a>, visibility, order, and links come from <a href="#glossary">database</a> records. The application does not need a separate hard-coded <code class="language-plaintext highlighter-rouge">&lt;li&gt;</code> element for every menu entry. When the database records change, the menu can change the next time the application loads the records.</p>
+
+<hr />
+
+<h2 id="overview-why-use-dynamic-menus">Overview: Why Use Dynamic Menus?</h2>
+
+<p>A static menu can provide reliable navigation, but a dynamic menu can provide a more personal and useful experience. AllThingsPG is intended to serve several audiences, including patients, caregivers, medical professionals, pharmaceutical representatives, and general visitors. Those audiences may need different information, different levels of detail, and different paths through the site.</p>
+
+<p>The first step is to identify who is visiting. Once a visitor selects, or is otherwise associated with, a <a href="#glossary">visitor type</a>, the site can tailor both the <strong>navigation</strong> and the <strong>content</strong> shown to that audience. A patient may need practical information about living with the condition, a caregiver may need guidance on supporting someone else, and a medical professional may need more detailed clinical or diagnostic information. Pharmaceutical representatives may need a different set of resources again.</p>
+
+<p>Each <a href="#glossary">menu item</a> can be associated with its own content. The same subject can therefore appear more than once in the database with the same visible <code class="language-plaintext highlighter-rouge">Title</code>, while each record points to a different audience, location in the menu, or content document. The <code class="language-plaintext highlighter-rouge">VisitorMask</code> determines which visitor types can see each item:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Current visitor: Medical professional
+    "Diagnosis" -&gt; detailed clinical diagnosis content
+
+Current visitor: Caregiver
+    "Diagnosis" -&gt; caregiver-oriented explanation
+
+Current visitor: Patient
+    "Diagnosis" -&gt; patient-oriented explanation
+</code></pre></div></div>
+
+<p>The title may be the same because it is familiar and meaningful to every audience. The underlying <code class="language-plaintext highlighter-rouge">MenuItemID</code>, <a href="#glossary">visitor mask</a>, <a href="#glossary">URL</a>, and associated content distinguish the records. This lets the application reuse clear navigation language without forcing every audience to receive the same material.</p>
+
+<p>Dynamic menus therefore support two related goals:</p>
+
+<ol>
+  <li><strong>Enhanced user experience:</strong> visitors see navigation that is relevant to their role instead of a large, one-size-fits-all menu.</li>
+  <li><strong>Audience-specific content:</strong> each visible menu item can lead to content selected for that audience, including more specialized or detailed information where appropriate.</li>
+</ol>
+
+<p>The menu is not the only part of this design, but it is the visible point where audience-aware navigation begins. The database stores the relationships, <code class="language-plaintext highlighter-rouge">VisitorMask</code> controls visibility, and the shared <a href="#glossary"><code class="language-plaintext highlighter-rouge">_Menu.cshtml</code></a> <a href="#glossary">partial view</a> renders the appropriate result.</p>
+
+<p>This approach also keeps the application flexible. Adding or changing audience-specific navigation and content can often be done by changing data and content records rather than rewriting the menu’s HTML structure.</p>
+
+<hr />
+
+<p>The menu system has four main parts:</p>
+
+<ol>
+  <li>The <a href="#glossary"><code class="language-plaintext highlighter-rouge">MenuItem</code></a> table stores the menu records.</li>
+  <li><a href="#glossary"><code class="language-plaintext highlighter-rouge">PageBase</code></a> loads active menu records for a request.</li>
+  <li><a href="#glossary"><code class="language-plaintext highlighter-rouge">_Layout.cshtml</code></a> prepares a <a href="#glossary"><code class="language-plaintext highlighter-rouge">MenuViewModel</code></a> and calls <code class="language-plaintext highlighter-rouge">_Menu.cshtml</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">_Menu.cshtml</code> filters, orders, and recursively renders the menu hierarchy.</li>
+</ol>
+
+<hr />
+
+<h2 id="1-what-dynamic-menu-means">1. What “Dynamic Menu” Means</h2>
+
+<p>A traditional static menu might contain the complete menu directly in a Razor file:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ul&gt;</span>
+    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"/Visitor?V=Patient"</span><span class="nt">&gt;</span>Patient<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"/Visitor?V=Caregiver"</span><span class="nt">&gt;</span>Caregiver<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+</code></pre></div></div>
+
+<p>That approach requires a developer to edit the page whenever a menu item is added, removed, renamed, reordered, or redirected.</p>
+
+<p>The proof-of-concept menu instead obtains the same information from <code class="language-plaintext highlighter-rouge">MenuItem</code> rows:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">MenuItem value</th>
+      <th style="text-align: left">What it controls</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Title</code></td>
+      <td style="text-align: left">Text displayed to the visitor</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">ParentMenuItemID</code></td>
+      <td style="text-align: left">Where the item appears in the hierarchy</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Url</code></td>
+      <td style="text-align: left">Address followed when the item is selected</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="#glossary"><code class="language-plaintext highlighter-rouge">RouteType</code></a></td>
+      <td style="text-align: left">Application classification for the destination</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">VisitorMask</code></td>
+      <td style="text-align: left">Visitor types allowed to see the item</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><a href="#glossary"><code class="language-plaintext highlighter-rouge">SortOrder</code></a></td>
+      <td style="text-align: left">Position among items with the same parent</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">IsActive</code></td>
+      <td style="text-align: left">Whether the item is available to the menu</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The database supplies the menu data. Razor supplies the HTML structure.</p>
+
+<hr />
+
+<h2 id="2-the-menuitem-table">2. The <code class="language-plaintext highlighter-rouge">MenuItem</code> Table</h2>
+
+<p>The runtime menu is stored in <code class="language-plaintext highlighter-rouge">dbo.MenuItem</code>.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Column</th>
+      <th style="text-align: left">Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">MenuItemID</code></td>
+      <td style="text-align: left">Unique identifier for the menu record</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">ParentMenuItemID</code></td>
+      <td style="text-align: left">The identifier of this item’s parent; <code class="language-plaintext highlighter-rouge">NULL</code> means top-level</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Title</code></td>
+      <td style="text-align: left">Label shown to the visitor</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Url</code></td>
+      <td style="text-align: left">Complete destination address</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">RouteType</code></td>
+      <td style="text-align: left">One-character classification such as Visitor, Content, Page, or Redirect</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">VisitorMask</code></td>
+      <td style="text-align: left">Concatenated visitor codes allowed to see the item</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">SortOrder</code></td>
+      <td style="text-align: left">Relative order among items with the same parent</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">IsActive</code></td>
+      <td style="text-align: left">Soft on/off switch for the menu item</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">CreatedDate</code></td>
+      <td style="text-align: left">Creation timestamp</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">ModifiedDate</code></td>
+      <td style="text-align: left">Last modification timestamp</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The self-reference through <code class="language-plaintext highlighter-rouge">ParentMenuItemID</code> creates the tree. A record with no parent is a top-level menu item. A record whose parent is item <code class="language-plaintext highlighter-rouge">8</code> is displayed underneath item <code class="language-plaintext highlighter-rouge">8</code>.</p>
+
+<h3 id="example-hierarchy">Example hierarchy</h3>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Welcome
+    Patient
+    Caregiver
+    Provider
+
+About PG
+    What is PG
+    Clinical Topics
+        Symptoms
+        Diagnosis
+        Treatment
+</code></pre></div></div>
+
+<p>The hierarchy is stored as IDs, not as indentation or hard-coded HTML.</p>
+
+<hr />
+
+<h2 id="3-loading-the-menu-from-the-database">3. Loading the Menu from the Database</h2>
+
+<p>Pages that use the shared <a href="#glossary">layout</a> inherit from <code class="language-plaintext highlighter-rouge">PageBase</code>. <code class="language-plaintext highlighter-rouge">PageBase</code> receives an <code class="language-plaintext highlighter-rouge">AllThingsPgContext</code>, which is the <a href="#glossary">Entity Framework Core</a> connection to the database.</p>
+
+<p>Before a page handler runs, <code class="language-plaintext highlighter-rouge">PageBase.OnPageHandlerExecuting</code> prepares shared information:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnPageHandlerExecuting</span><span class="p">(</span><span class="n">PageHandlerExecutingContext</span> <span class="n">context</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">_</span> <span class="p">=</span> <span class="n">VisitorTypes</span><span class="p">;</span>
+    <span class="n">_</span> <span class="p">=</span> <span class="n">RouteTypes</span><span class="p">;</span>
+    <span class="n">MenuTree</span> <span class="p">=</span> <span class="nf">BuildMenuTree</span><span class="p">();</span>
+    <span class="k">base</span><span class="p">.</span><span class="nf">OnPageHandlerExecuting</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The menu query is:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">protected</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">MenuItem</span><span class="p">&gt;</span> <span class="nf">BuildMenuTree</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">_db</span><span class="p">.</span><span class="n">MenuItems</span>
+        <span class="p">.</span><span class="nf">AsNoTracking</span><span class="p">()</span>
+        <span class="p">.</span><span class="nf">Where</span><span class="p">(</span><span class="n">m</span> <span class="p">=&gt;</span> <span class="n">m</span><span class="p">.</span><span class="n">IsActive</span><span class="p">)</span>
+        <span class="p">.</span><span class="nf">OrderBy</span><span class="p">(</span><span class="n">m</span> <span class="p">=&gt;</span> <span class="n">m</span><span class="p">.</span><span class="n">SortOrder</span><span class="p">)</span>
+        <span class="p">.</span><span class="nf">ToList</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In plain language, the query:</p>
+
+<ol>
+  <li>Reads from <code class="language-plaintext highlighter-rouge">MenuItem</code>.</li>
+  <li>Uses <code class="language-plaintext highlighter-rouge">AsNoTracking()</code> because the menu is being displayed, not edited in this request.</li>
+  <li>Keeps only records where <code class="language-plaintext highlighter-rouge">IsActive</code> is true.</li>
+  <li>Loads the records into <code class="language-plaintext highlighter-rouge">MenuTree</code>.</li>
+  <li>Sorts the initial list by <code class="language-plaintext highlighter-rouge">SortOrder</code>.</li>
+</ol>
+
+<p>The parent-child relationships are not flattened into separate HTML rows by the database. The complete active set is loaded into memory, and <code class="language-plaintext highlighter-rouge">_Menu.cshtml</code> uses <code class="language-plaintext highlighter-rouge">ParentMenuItemID</code> to build the visible <a href="#glossary">hierarchy</a>.</p>
+
+<hr />
+
+<h2 id="4-passing-menu-data-to-the-layout">4. Passing Menu Data to the Layout</h2>
+
+<p>The shared layout is:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Pages/Shared/_Layout.cshtml
+</code></pre></div></div>
+
+<p>The layout expects the current page model to be a <code class="language-plaintext highlighter-rouge">PageBase</code>, because it needs access to the shared menu and visitor information:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">var</span> <span class="n">model</span> <span class="p">=</span> <span class="p">(</span><span class="n">PageBase</span><span class="p">)</span><span class="n">ViewContext</span><span class="p">.</span><span class="n">ViewData</span><span class="p">.</span><span class="n">Model</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>It then creates a <code class="language-plaintext highlighter-rouge">MenuViewModel</code>:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">var</span> <span class="n">menuViewModel</span> <span class="p">=</span> <span class="k">new</span> <span class="n">MenuViewModel</span>
+<span class="p">{</span>
+    <span class="n">MenuTree</span> <span class="p">=</span> <span class="n">model</span><span class="p">.</span><span class="n">MenuTree</span><span class="p">,</span>
+    <span class="n">CurrentVisitor</span> <span class="p">=</span> <span class="n">model</span><span class="p">.</span><span class="n">CurrentVisitor</span><span class="p">,</span>
+    <span class="n">RouteTypes</span> <span class="p">=</span> <span class="n">model</span><span class="p">.</span><span class="n">RouteTypes</span><span class="p">,</span>
+    <span class="n">VisitorTypes</span> <span class="p">=</span> <span class="n">model</span><span class="p">.</span><span class="n">VisitorTypes</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">MenuViewModel</code> is a small object that carries the information the partial needs:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Property</th>
+      <th style="text-align: left">Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">MenuTree</code></td>
+      <td style="text-align: left">Active menu records loaded from the database</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">CurrentVisitor</code></td>
+      <td style="text-align: left">The visitor persona currently selected</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">RouteTypes</code></td>
+      <td style="text-align: left">Route-type lookup values available to the page</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">VisitorTypes</code></td>
+      <td style="text-align: left">Visitor-persona lookup values used by the layout</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The layout displays the visitor-persona tabs and then calls the menu partial:</p>
+
+<pre><code class="language-cshtml">@await Html.PartialAsync("_Menu", menuViewModel)
+</code></pre>
+
+<p>This means the menu is part of the common page frame. Pages do not each need to repeat the menu markup.</p>
+
+<hr />
+
+<h2 id="5-the-_menucshtml-partial">5. The <code class="language-plaintext highlighter-rouge">_Menu.cshtml</code> Partial</h2>
+
+<p>The partial is located at:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Pages/Shared/_Menu.cshtml
+</code></pre></div></div>
+
+<p>It receives a <code class="language-plaintext highlighter-rouge">MenuViewModel</code>:</p>
+
+<pre><code class="language-cshtml">@model Proof_of_Concept.Models.MenuViewModel
+</code></pre>
+
+<p>The partial performs four jobs:</p>
+
+<ol>
+  <li>Obtains the menu records.</li>
+  <li>Finds the top-level records.</li>
+  <li>Filters records for the current visitor.</li>
+  <li>Recursively renders children and grandchildren.</li>
+</ol>
+
+<p>The resulting HTML is an unordered list:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"pg-nav-links"</span><span class="nt">&gt;</span>
+    ...
+<span class="nt">&lt;/ul&gt;</span>
+</code></pre></div></div>
+
+<p>The CSS classes control appearance. The partial controls which items exist and how they are nested.</p>
+
+<hr />
+
+<h2 id="6-visitor-filtering">6. Visitor Filtering</h2>
+
+<p>The current visitor is obtained by <code class="language-plaintext highlighter-rouge">PageBase.CurrentVisitor</code>. The selected visitor code is stored in <a href="#glossary">session</a> under <code class="language-plaintext highlighter-rouge">PersonaCode</code>. If there is no valid session value, <code class="language-plaintext highlighter-rouge">PageBase</code> falls back to the lookup row whose <code class="language-plaintext highlighter-rouge">IsDefault</code> value is true.</p>
+
+<p>The menu extension method checks a visitor mask:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="kt">bool</span> <span class="nf">IsVisibleTo</span><span class="p">(</span><span class="kt">string</span> <span class="n">visitorCode</span><span class="p">)</span> <span class="p">=&gt;</span>
+    <span class="p">!</span><span class="kt">string</span><span class="p">.</span><span class="nf">IsNullOrEmpty</span><span class="p">(</span><span class="n">VisitorMask</span><span class="p">)</span> <span class="p">&amp;&amp;</span>
+    <span class="p">!</span><span class="kt">string</span><span class="p">.</span><span class="nf">IsNullOrEmpty</span><span class="p">(</span><span class="n">visitorCode</span><span class="p">)</span> <span class="p">&amp;&amp;</span>
+    <span class="n">VisitorMask</span><span class="p">.</span><span class="nf">Contains</span><span class="p">(</span><span class="n">visitorCode</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>The mask is a compact list of allowed visitor codes:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">VisitorMask</th>
+      <th style="text-align: left">Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">PCMDVR</code></td>
+      <td style="text-align: left">Visible to all current visitor types</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">P</code></td>
+      <td style="text-align: left">Visible to Patients</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">PC</code></td>
+      <td style="text-align: left">Visible to Patients and Caregivers</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">MD</code></td>
+      <td style="text-align: left">Visible to Providers and Pharmaceutical visitors</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>For example, if the current visitor code is <code class="language-plaintext highlighter-rouge">P</code>, an item with mask <code class="language-plaintext highlighter-rouge">PCMDVR</code> is visible and an item with mask <code class="language-plaintext highlighter-rouge">C</code> is not.</p>
+
+<p>The current implementation uses <code class="language-plaintext highlighter-rouge">string.Contains</code>. Because visitor codes are single characters, each code is treated as one character in the mask.</p>
+
+<hr />
+
+<h2 id="7-finding-top-level-items">7. Finding Top-Level Items</h2>
+
+<p>Top-level items have no parent:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">GetTree</span><span class="p">()</span>
+    <span class="p">.</span><span class="nf">Where</span><span class="p">(</span><span class="n">m</span> <span class="p">=&gt;</span> <span class="n">m</span><span class="p">.</span><span class="n">ParentMenuItemId</span> <span class="p">==</span> <span class="k">null</span> <span class="p">&amp;&amp;</span>
+                <span class="n">m</span><span class="p">.</span><span class="nf">IsVisibleTo</span><span class="p">(</span><span class="n">visitor</span><span class="p">!.</span><span class="n">Code</span><span class="p">))</span>
+    <span class="p">.</span><span class="nf">OrderBy</span><span class="p">(</span><span class="n">m</span> <span class="p">=&gt;</span> <span class="n">m</span><span class="p">.</span><span class="n">SortOrder</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Each qualifying record becomes an item in the main navigation bar.</p>
+
+<p>The partial then checks whether the item has visible children:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">var</span> <span class="n">hasChildren</span> <span class="p">=</span> <span class="nf">GetTree</span><span class="p">().</span><span class="nf">Any</span><span class="p">(</span>
+    <span class="n">m</span> <span class="p">=&gt;</span> <span class="n">m</span><span class="p">.</span><span class="n">ParentMenuItemId</span> <span class="p">==</span> <span class="n">item</span><span class="p">.</span><span class="n">MenuItemId</span> <span class="p">&amp;&amp;</span>
+         <span class="n">m</span><span class="p">.</span><span class="nf">IsVisibleTo</span><span class="p">(</span><span class="n">visitor</span><span class="p">!.</span><span class="n">Code</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p>If children exist, the top-level item is displayed as a parent label:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"pg-nav-parent"</span><span class="nt">&gt;</span>About PG<span class="nt">&lt;/span&gt;</span>
+</code></pre></div></div>
+
+<p>If there are no children, it is displayed as a link:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/somewhere"</span><span class="nt">&gt;</span>Somewhere<span class="nt">&lt;/a&gt;</span>
+</code></pre></div></div>
+
+<p>This allows a parent menu item to act as a category heading while child records provide the selectable destinations.</p>
+
+<hr />
+
+<h2 id="8-rendering-child-menus-recursively">8. Rendering Child Menus Recursively</h2>
+
+<p>Child records are found by matching their <a href="#glossary"><code class="language-plaintext highlighter-rouge">ParentMenuItemID</code></a> to the current parent’s <code class="language-plaintext highlighter-rouge">MenuItemId</code>:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">var</span> <span class="n">children</span> <span class="p">=</span> <span class="n">items</span>
+    <span class="p">.</span><span class="nf">Where</span><span class="p">(</span><span class="n">m</span> <span class="p">=&gt;</span> <span class="n">m</span><span class="p">.</span><span class="n">ParentMenuItemId</span> <span class="p">==</span> <span class="n">parentId</span> <span class="p">&amp;&amp;</span>
+                <span class="n">m</span><span class="p">.</span><span class="nf">IsVisibleTo</span><span class="p">(</span><span class="n">visitor</span><span class="p">!.</span><span class="n">Code</span><span class="p">))</span>
+    <span class="p">.</span><span class="nf">OrderBy</span><span class="p">(</span><span class="n">m</span> <span class="p">=&gt;</span> <span class="n">m</span><span class="p">.</span><span class="n">SortOrder</span><span class="p">)</span>
+    <span class="p">.</span><span class="nf">ToList</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>The partial renders each child as a link:</p>
+
+<pre><code class="language-cshtml">&lt;ul class="pg-submenu"&gt;
+    @foreach (var child in children)
+    {
+        &lt;li&gt;
+            &lt;a href="@child.GetUrl()"&gt;@child.Title&lt;/a&gt;
+            @{ RenderChildren(items, child.MenuItemId); }
+        &lt;/li&gt;
+    }
+&lt;/ul&gt;
+</code></pre>
+
+<p>The call to <code class="language-plaintext highlighter-rouge">RenderChildren</code> inside itself is <a href="#glossary">recursive rendering</a>. It means:</p>
+
+<ol>
+  <li>Render this item’s children.</li>
+  <li>For each child, look for grandchildren.</li>
+  <li>Continue until an item has no children.</li>
+</ol>
+
+<p>This is what allows the same code to display a menu with one level or several levels.</p>
+
+<hr />
+
+<h2 id="9-building-the-link">9. Building the Link</h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">MenuItem.Extensions.cs</code> file contains the <a href="#glossary"><code class="language-plaintext highlighter-rouge">GetUrl()</code></a> URL helper:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="kt">string</span> <span class="nf">GetUrl</span><span class="p">()</span> <span class="p">=&gt;</span>
+    <span class="p">!</span><span class="kt">string</span><span class="p">.</span><span class="nf">IsNullOrEmpty</span><span class="p">(</span><span class="n">Url</span><span class="p">)</span>
+        <span class="p">?</span> <span class="n">Url</span>
+        <span class="p">:</span> <span class="k">throw</span> <span class="k">new</span> <span class="nf">InvalidOperationException</span><span class="p">(</span>
+            <span class="s">$"MenuItem '</span><span class="p">{</span><span class="n">Title</span><span class="p">}</span><span class="s">' (ID: </span><span class="p">{</span><span class="n">MenuItemId</span><span class="p">}</span><span class="s">) has no Url defined."</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>The current proof of concept stores the complete URL in <code class="language-plaintext highlighter-rouge">MenuItem.Url</code>. <code class="language-plaintext highlighter-rouge">GetUrl()</code> returns that URL without rebuilding it from <code class="language-plaintext highlighter-rouge">RouteType</code>.</p>
+
+<p>Examples from the current data include:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">RouteType</th>
+      <th style="text-align: left">Example URL</th>
+      <th style="text-align: left">Behavior represented</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">V</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">/visitor?v=Patient</code></td>
+      <td style="text-align: left">Selects a visitor type</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">C</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">/content?c=about%20pg</code></td>
+      <td style="text-align: left">Requests content</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">P</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">/page?p=clinicfinder.html</code></td>
+      <td style="text-align: left">Requests a page</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">R</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">/redirect?r=https://globalskin.org/</code></td>
+      <td style="text-align: left">Requests a redirect</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">RouteType</code> is available as metadata for the destination behavior, but URL construction is not currently performed by <code class="language-plaintext highlighter-rouge">GetUrl()</code>.</p>
+
+<p>If <code class="language-plaintext highlighter-rouge">Url</code> is empty, the helper throws an exception instead of silently creating a broken link. This makes missing menu data visible during development.</p>
+
+<hr />
+
+<h2 id="10-caching-the-menu">10. Caching the Menu</h2>
+
+<p>The partial uses <a href="#glossary"><code class="language-plaintext highlighter-rouge">IMemoryCache</code></a> and a <a href="#glossary">cache</a>:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">List</span><span class="p">&lt;</span><span class="n">MenuItem</span><span class="p">&gt;</span> <span class="nf">GetTree</span><span class="p">()</span> <span class="p">=&gt;</span>
+    <span class="n">MemoryCache</span><span class="p">.</span><span class="nf">GetOrCreate</span><span class="p">(</span><span class="s">"MenuTree_"</span> <span class="p">+</span> <span class="n">visitor</span><span class="p">?.</span><span class="n">Code</span><span class="p">,</span> <span class="n">entry</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+        <span class="n">entry</span><span class="p">.</span><span class="n">AbsoluteExpirationRelativeToNow</span> <span class="p">=</span> <span class="n">TimeSpan</span><span class="p">.</span><span class="nf">FromMinutes</span><span class="p">(</span><span class="m">30</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">Model</span><span class="p">.</span><span class="n">MenuTree</span><span class="p">?.</span><span class="nf">ToList</span><span class="p">()</span> <span class="p">??</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">MenuItem</span><span class="p">&gt;();</span>
+    <span class="p">})!;</span>
+</code></pre></div></div>
+
+<p>The cache key includes the visitor code:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MenuTree_P
+MenuTree_C
+MenuTree_V
+</code></pre></div></div>
+
+<p>The intended result is a separate cached menu set for each visitor persona, with a thirty-minute expiration. Caching reduces repeated preparation of the same menu data during that period.</p>
+
+<p>The cache stores the <code class="language-plaintext highlighter-rouge">MenuTree</code> supplied by the current page model. The actual database query occurs in <code class="language-plaintext highlighter-rouge">PageBase</code>; the partial’s cache does not query the database by itself.</p>
+
+<p>When menu records are changed, an already-cached menu can remain visible until its cache entry expires or is explicitly removed. A production implementation should decide how menu updates invalidate or refresh cached entries.</p>
+
+<hr />
+
+<h2 id="11-end-to-end-processing-flow">11. End-to-End Processing Flow</h2>
+
+<p>The complete current flow is:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Browser requests a Razor Page
+        |
+        v
+PageModel is created
+        |
+        v
+PageBase loads visitor and route lookup data
+        |
+        v
+PageBase queries active MenuItem records
+        |
+        v
+PageBase stores records in MenuTree
+        |
+        v
+_Layout.cshtml receives the PageBase model
+        |
+        v
+_Layout.cshtml creates MenuViewModel
+        |
+        v
+_Layout.cshtml invokes _Menu.cshtml
+        |
+        v
+_Menu.cshtml caches the supplied tree
+        |
+        v
+_Menu.cshtml filters by VisitorMask
+        |
+        v
+_Menu.cshtml orders by SortOrder
+        |
+        v
+_Menu.cshtml recursively renders parent and child &lt;ul&gt;/&lt;li&gt; elements
+        |
+        v
+Browser receives the completed page
+</code></pre></div></div>
+
+<h3 id="example-patient-visitor">Example: Patient visitor</h3>
+
+<ol>
+  <li>The visitor selects Patient.</li>
+  <li>The visitor page resolves the Patient record.</li>
+  <li>The selected code is stored in session.</li>
+  <li><code class="language-plaintext highlighter-rouge">PageBase</code> loads active <code class="language-plaintext highlighter-rouge">MenuItem</code> records.</li>
+  <li><code class="language-plaintext highlighter-rouge">_Menu.cshtml</code> uses visitor code <code class="language-plaintext highlighter-rouge">P</code>.</li>
+  <li>Items whose <code class="language-plaintext highlighter-rouge">VisitorMask</code> contains <code class="language-plaintext highlighter-rouge">P</code> remain visible.</li>
+  <li>The remaining records are grouped by <code class="language-plaintext highlighter-rouge">ParentMenuItemID</code>.</li>
+  <li>Each group is ordered by <code class="language-plaintext highlighter-rouge">SortOrder</code>.</li>
+  <li>The partial writes the menu HTML.</li>
+  <li>The visitor sees the Patient-appropriate navigation.</li>
+</ol>
+
+<hr />
+
+<h2 id="12-responsibilities-by-file">12. Responsibilities by File</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">File</th>
+      <th style="text-align: left">Responsibility</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Models/MenuItem.cs</code></td>
+      <td style="text-align: left">Entity Framework model representing a database menu row</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Models/MenuItem.Extensions.cs</code></td>
+      <td style="text-align: left">Returns the stored URL and evaluates visitor visibility</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Models/MenuViewModel.cs</code></td>
+      <td style="text-align: left">Carries menu, visitor, route, and persona data into the partial</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Models/AllThingsPGContext.cs</code></td>
+      <td style="text-align: left">Maps the application to the database and exposes <code class="language-plaintext highlighter-rouge">MenuItems</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Pages/Page/PageBase.cs</code></td>
+      <td style="text-align: left">Loads lookup data, resolves the current visitor, and queries active menu rows</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Pages/Shared/_Layout.cshtml</code></td>
+      <td style="text-align: left">Builds the view model and invokes the shared menu partial</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Pages/Shared/_Menu.cshtml</code></td>
+      <td style="text-align: left">Filters, orders, nests, caches, and renders menu records</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">wwwroot/css/site.css</code></td>
+      <td style="text-align: left">Site styling used by the rendered menu</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">wwwroot/css/pg-components.css</code></td>
+      <td style="text-align: left">Component styling used by the rendered menu and page layout</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="13-current-design-boundaries">13. Current Design Boundaries</h2>
+
+<p>The current proof of concept intentionally keeps responsibilities separate:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Responsibility</th>
+      <th style="text-align: left">Current implementation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Store menu definitions</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">dbo.MenuItem</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Load active menu records</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">PageBase.BuildMenuTree()</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Remember selected visitor</td>
+      <td style="text-align: left">ASP.NET Core session</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Decide visitor visibility</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">MenuItem.IsVisibleTo()</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Build the hierarchy</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">_Menu.cshtml</code> and <code class="language-plaintext highlighter-rouge">ParentMenuItemID</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Order siblings</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">_Menu.cshtml</code> and <code class="language-plaintext highlighter-rouge">SortOrder</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Produce the destination link</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">MenuItem.GetUrl()</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Render common navigation on pages</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">_Layout.cshtml</code> and <code class="language-plaintext highlighter-rouge">_Menu.cshtml</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The partial does not create content, query content documents, or decide how a destination page processes its URL. It only displays the menu and emits the stored link.</p>
+
+<hr />
+
+<h2 id="14-future-considerations">14. Future Considerations</h2>
+
+<p>These are design considerations rather than claims about the current implementation:</p>
+
+<ul>
+  <li>A centralized route service could build URLs from <code class="language-plaintext highlighter-rouge">RouteType</code> and a separate route target.</li>
+  <li>Menu cache invalidation could refresh cached trees immediately after an administrative change.</li>
+  <li>A dedicated menu service could move database loading out of <code class="language-plaintext highlighter-rouge">PageBase</code>.</li>
+  <li>A view model could contain an already-built tree if the application needs more complex rendering rules.</li>
+  <li>URL generation could use framework link helpers when route parameters need encoding or validation.</li>
+  <li>Additional safeguards could detect cycles in parent-child data before recursive rendering.</li>
+</ul>
+
+<p>These changes would extend the current approach; they are not required to understand how the current proof-of-concept menu works.</p>
+
+<hr />
+
+<h2 id="summary">Summary</h2>
+
+<p>The dynamic menu is a database-backed navigation component. <code class="language-plaintext highlighter-rouge">PageBase</code> loads active <code class="language-plaintext highlighter-rouge">MenuItem</code> rows into <code class="language-plaintext highlighter-rouge">MenuTree</code>, <code class="language-plaintext highlighter-rouge">_Layout.cshtml</code> packages that data into a <code class="language-plaintext highlighter-rouge">MenuViewModel</code>, and <code class="language-plaintext highlighter-rouge">_Menu.cshtml</code> renders the visible hierarchy.</p>
+
+<p>The partial uses the current visitor code to apply <code class="language-plaintext highlighter-rouge">VisitorMask</code>, uses <code class="language-plaintext highlighter-rouge">ParentMenuItemID</code> to find children, uses <code class="language-plaintext highlighter-rouge">SortOrder</code> to arrange siblings, and uses <code class="language-plaintext highlighter-rouge">GetUrl()</code> to create links. The result is a menu that can be changed through data rather than by rewriting the page’s HTML.</p>
+
+<hr />
+
+<h2 id="glossary">Glossary</h2>
+
+<p><a href="#top">Return to top</a></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Term</th>
+      <th style="text-align: left">Non-programmer explanation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Active menu item</td>
+      <td style="text-align: left">A menu record whose <code class="language-plaintext highlighter-rouge">IsActive</code> value is true, meaning it is currently eligible to appear in the menu.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Application</td>
+      <td style="text-align: left">The running website and the code that receives requests, loads information, and produces responses.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Cache</td>
+      <td style="text-align: left">Temporary stored information used so the application does not have to prepare or retrieve the same information repeatedly.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Child menu item</td>
+      <td style="text-align: left">A menu record displayed underneath another menu item. Its <code class="language-plaintext highlighter-rouge">ParentMenuItemID</code> points to the parent record.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Content</td>
+      <td style="text-align: left">Information shown to a visitor, such as an article, diagnosis explanation, image, or other material associated with a menu item.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Database</td>
+      <td style="text-align: left">An organized storage system containing the records used by the application, including menu, visitor, route, and content information.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Dynamic menu</td>
+      <td style="text-align: left">A menu whose labels, hierarchy, visibility, order, and links are supplied by data rather than being written as fixed HTML.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Entity Framework Core</td>
+      <td style="text-align: left">A .NET library that lets C# code read database records through objects and queries.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Hierarchy</td>
+      <td style="text-align: left">The parent-and-child arrangement that determines which menu items appear beneath other items.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">IMemoryCache</code></td>
+      <td style="text-align: left">The .NET service used by the partial to temporarily retain a menu tree in the web application’s memory.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Layout</td>
+      <td style="text-align: left">A shared page template that provides common elements such as the header, visitor tabs, menu, and page body.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">MenuItem</code></td>
+      <td style="text-align: left">One database record representing a possible navigation entry. It contains the title, parent, URL, visibility mask, order, and active status.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">MenuItemID</code></td>
+      <td style="text-align: left">The unique number identifying one menu record.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">MenuTree</code></td>
+      <td style="text-align: left">The in-memory collection of active <code class="language-plaintext highlighter-rouge">MenuItem</code> records passed from the page model to the layout and menu partial.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">MenuViewModel</code></td>
+      <td style="text-align: left">A small C# object that carries menu and visitor information into <code class="language-plaintext highlighter-rouge">_Menu.cshtml</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Parent menu item</td>
+      <td style="text-align: left">A menu record that can contain child records beneath it. A top-level parent has no <code class="language-plaintext highlighter-rouge">ParentMenuItemID</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Partial view</td>
+      <td style="text-align: left">A reusable Razor template, such as <code class="language-plaintext highlighter-rouge">_Menu.cshtml</code>, that can be inserted into a layout or page.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Persona</td>
+      <td style="text-align: left">The visitor’s selected audience or role, such as Patient, Caregiver, Provider, Pharmaceutical, or Visitor.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">PageBase</code></td>
+      <td style="text-align: left">The shared page-model class that loads common lookup data, resolves the current visitor, and loads active menu records.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">ParentMenuItemID</code></td>
+      <td style="text-align: left">The database value connecting a child menu item to its parent. A blank value means the item is at the top level.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Recursive rendering</td>
+      <td style="text-align: left">A technique where the menu renderer calls the same child-rendering logic again for each child, allowing multiple levels of nested menus.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">RouteType</code></td>
+      <td style="text-align: left">A database classification describing the general kind of destination, such as Visitor, Content, Page, or Redirect.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">SortOrder</code></td>
+      <td style="text-align: left">The number used to arrange menu items among other items with the same parent.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Session</td>
+      <td style="text-align: left">Short-lived server-side information associated with one visitor’s browser. This proof of concept uses it to remember the selected visitor code.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Url</code></td>
+      <td style="text-align: left">The web address stored on a menu item and followed when that link is selected.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Visitor code</td>
+      <td style="text-align: left">The short code representing a visitor type, such as <code class="language-plaintext highlighter-rouge">P</code> for Patient or <code class="language-plaintext highlighter-rouge">C</code> for Caregiver.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Visitor mask</td>
+      <td style="text-align: left">A compact string listing the visitor codes allowed to see a menu item, such as <code class="language-plaintext highlighter-rouge">PC</code> or <code class="language-plaintext highlighter-rouge">PCMDVR</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Visitor type</td>
+      <td style="text-align: left">A database lookup record describing an audience category and its display order.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">_Layout.cshtml</code></td>
+      <td style="text-align: left">The shared Razor layout that prepares the menu view model and invokes <code class="language-plaintext highlighter-rouge">_Menu.cshtml</code>.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">_Menu.cshtml</code></td>
+      <td style="text-align: left">The shared Razor partial that filters, orders, nests, caches, and renders the menu records as HTML.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">GetUrl()</code></td>
+      <td style="text-align: left">The helper that returns the stored URL for a menu item and reports an error when the URL is missing.</td>
+    </tr>
+  </tbody>
+</table>
+
+  </div>
+</section>
+
+    </main>
+  </body>
+</html>

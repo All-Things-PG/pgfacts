@@ -1,0 +1,640 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dynamic Content | PG Facts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/main.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+  </head>
+  <body>
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-brand" href="/home/" aria-label="All Things PG home">
+      <img class="site-brand__logo" src="/assets/images/pg-logo.png" alt="All Things PG">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      
+        <details class="site-nav__group">
+          <summary class="site-nav__summary">Welcome</summary>
+          <div class="site-nav__panel">
+            
+              <a href="/home/">Home</a>
+            
+              <a href="/dcms/DCMS_Executive_Summary.html">Executive Summary</a>
+            
+              <a href="/docs/">Explore Documentation</a>
+            
+          </div>
+        </details>
+      
+        <details class="site-nav__group">
+          <summary class="site-nav__summary">User Experience</summary>
+          <div class="site-nav__panel">
+            
+              <a href="/user-experience/what-is-a-portal/">What is a Portal?</a>
+            
+              <a href="/user-experience/selecting-a-user-experience/">Selecting a User Experience</a>
+            
+              <a href="/user-experience/patients/">Patients</a>
+            
+              <a href="/user-experience/caregivers/">Caregivers</a>
+            
+              <a href="/user-experience/providers/">Providers</a>
+            
+              <a href="/user-experience/pharmaceutical/">Pharmaceutical</a>
+            
+              <a href="/user-experience/guest/">Guest</a>
+            
+          </div>
+        </details>
+      
+        <details class="site-nav__group">
+          <summary class="site-nav__summary">DCMS</summary>
+          <div class="site-nav__panel">
+            
+              <a href="/dcms/">What is DCMS?</a>
+            
+              <a href="/dcms/DCMS_Dynamic_Content.html">Dynamic Content</a>
+            
+              <a href="/dcms/DCMS_Dynamic_Menus.html">Dynamic Menus</a>
+            
+              <a href="/dcms/DCMS_Curating_Content.html">Curating Content</a>
+            
+              <a href="/dcms/DCMS_Managing_Tiles.html">Managing Tiles</a>
+            
+          </div>
+        </details>
+      
+        <details class="site-nav__group">
+          <summary class="site-nav__summary">Database</summary>
+          <div class="site-nav__panel">
+            
+              <a href="/database/system/">System</a>
+            
+              <a href="/database/staging/">Staging</a>
+            
+              <a href="/database/content/">Content</a>
+            
+              <a href="/database/menus/">Menus</a>
+            
+              <a href="/database/registration/">Registration</a>
+            
+              <a href="/database/DCMS_Database_Schema.html">Schema</a>
+            
+          </div>
+        </details>
+      
+        <details class="site-nav__group">
+          <summary class="site-nav__summary">About</summary>
+          <div class="site-nav__panel">
+            
+              <a href="/about/all-things-pg/">All Things PG</a>
+            
+          </div>
+        </details>
+      
+      <a class="site-nav__contact" href="mailto:dave@allthingspg.org?subject=PG%20Facts%20feedback&amp;body=Thank%20you%20for%20your%20feedback.%20Please%20tell%20us%20how%20we%20can%20improve%20this%20site%20or%20its%20documentation.%0D%0A%0D%0A">Contact Us</a>
+    </nav>
+  </div>
+</header>
+
+    <div class="page-title-bar">
+  <div class="page-title-bar__inner">
+    <div class="page-title-bar__left">Dynamic Content</div>
+    <div class="page-title-bar__right">Design, architecture, and specifications for data-driven Dynamic Content.</div>
+  </div>
+</div>
+
+    <main aria-label="Content">
+      <div class="page-title-bar">
+  <div class="page-title-bar__inner">
+    <div class="page-title-bar__left">Dynamic Content</div>
+    <div class="page-title-bar__right">Design, architecture, and specifications for data-driven Dynamic Content.</div>
+  </div>
+</div>
+
+<section class="oldsite-page-content">
+  <div class="oldsite-container-inner">
+    
+    
+    <h1 id="dcms---dynamic-content-and-menuing-system">DCMS - Dynamic Content and Menuing System</h1>
+
+<h2 id="dynamic-content">Dynamic Content</h2>
+
+<p>This document defines the design, architecture, and specifications for data-driven <strong>Dynamic Content</strong> in ATPG Phase 2.</p>
+
+<hr />
+
+<h3 id="dynamic-content-overview">Dynamic Content Overview</h3>
+
+<p>Dynamic Content allows curated content to be stored in a database and rendered at run-time as opposed to written static HTML created at design-time.  Instead of hardcoded pages created by a programmer, dynamic content can be curated outside of the system by anyone, and published to the database using tools and utlities.
+This allows content to be securely stored in the database and preserved through routine backups.  The system stores content along with meta data that describes how the content is to be displayed.  The website uses <strong>Conent Cards</strong> on predefined web pages to retrieve and display the content with help from the meta data.  Content Cards act as placeholders, and will retrive the content from the database and display to the screen using a <strong>Card Reader Architecture</strong>.</p>
+
+<p>The system displays content stored in the database using content descriptors, or meta data, to help render the content.  , so that you have separate entities of <em>what</em> is displayed vs <em>how</em> to display it.  A content card on an HTML page is used to display content that is stored in the database.  Different types of content cards can display different types of content.  Each instance of a content element in the database is referred to as a BLOCK.  A Block has both content (stored as text or binary), and rendering instructions (stored as JSON in BlockInfo).<br />
+and rendering instructionshas hboth the content to display and the instructions on how to display it using a content card reader.  The Card Reader simply follows instructions on how to display the content element.  There are many different types of content, referred to as MIME types, and each Card Reader type will support one MIME Type.  sorting weights—such as articles integrated with inline images, embedded clinical pamphlets, or gallery widgets.</p>
+
+<hr />
+
+<h2 id="1-domain-concepts-and-definitions">1. Domain Concepts and Definitions</h2>
+
+<ol>
+  <li><strong>Curated Content Workflows</strong> - Tracks content maturity (Drafts, Refined, Approved, Live, or Archived statuses) through formal status fields.</li>
+  <li><strong>Content Staging</strong> -</li>
+  <li><strong>CONTENT Types</strong> - Standardizes layout templates to render nested content sections using partial components based on MIME type specifications.</li>
+  <li><strong>FORMAT Types</strong> - Standardizes layout templates to render nested content sections using partial components based on MIME type specifications.</li>
+  <li>**MIME Types ** - Isolates high-level details (titles, permissions, status records) into descriptors while delegating raw contents (HTML, markdown, files, filepaths) to child rows.</li>
+  <li>**BLOCK Info ** - Integrates layout parameters, captions, width specifications, and float positioning variables directly into localized JSON metadata bags.</li>
+  <li><strong>Content Cards</strong> - Standardizes layout templates to render nested content sections using partial components based on MIME type specifications.</li>
+  <li><strong>Dynamic Menu Items</strong> - Couples navigation directly to the content engine using the unique menu primary key (<code class="language-plaintext highlighter-rouge">MenuItemID</code>), shielding pages from broken URLs when titles are updated.</li>
+  <li><strong>Web Pages and Styles</strong> - Couples navigation directly to the content engine using the unique menu primary key (<code class="language-plaintext highlighter-rouge">MenuItemID</code>), shielding pages from broken URLs when titles are updated.</li>
+</ol>
+
+<hr />
+
+<h2 id="2-dynamic-content-relational-schemas">2. Dynamic Content Relational Schemas</h2>
+
+<h3 id="table-content-descriptor">Table: <code class="language-plaintext highlighter-rouge">Content</code> (Descriptor)</h3>
+<p>Houses metadata descriptors, page-level instructions, and core workflow statuses.</p>
+
+<p><strong>Schema:</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Column Name</th>
+      <th style="text-align: left">Data Type</th>
+      <th style="text-align: left">Nullability</th>
+      <th style="text-align: left">Constraints</th>
+      <th style="text-align: left">Purpose / Remarks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">ContentID</code></td>
+      <td style="text-align: left">int</td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">IDENTITY(1,1) PK</td>
+      <td style="text-align: left">Unique ID of the content card.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">MenuItemID</code></td>
+      <td style="text-align: left">int</td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">FK -&gt; <code class="language-plaintext highlighter-rouge">MenuItem.MenuItemID</code></td>
+      <td style="text-align: left">Direct reference to the menu item managing this view.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">ContentType</code></td>
+      <td style="text-align: left">char(3)</td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">FK -&gt; <code class="language-plaintext highlighter-rouge">ContentType.Code</code></td>
+      <td style="text-align: left">Mapped category layout style index (e.g. <code class="language-plaintext highlighter-rouge">ART</code>).</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Description</code></td>
+      <td style="text-align: left">nvarchar(255)</td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">-</td>
+      <td style="text-align: left">Headline title rendered dynamically in layout headers.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Metadata</code></td>
+      <td style="text-align: left">nvarchar(max)</td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">-</td>
+      <td style="text-align: left">Page-wide JSON bag storing custom attributes (e.g., tags, summary).</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">WorkflowStatus</code></td>
+      <td style="text-align: left">char(1)</td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">FK -&gt; <code class="language-plaintext highlighter-rouge">WorkflowStatus.Code</code></td>
+      <td style="text-align: left">Lifecycle maturity tracking variable (e.g., Draft, Published).</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">IsPublished</code></td>
+      <td style="text-align: left">bit</td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">DEFAULT 0</td>
+      <td style="text-align: left">Toggle showing if the content card is active and servable to clients.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">PublishedDate</code></td>
+      <td style="text-align: left">datetime2(7)</td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">-</td>
+      <td style="text-align: left">Timestamp reflecting when the content item was published.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">CreatedDate</code></td>
+      <td style="text-align: left">datetime2(7)</td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">DEFAULT sysdatetime()</td>
+      <td style="text-align: left">Audit creation timestamp registry.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">ModifiedDate</code></td>
+      <td style="text-align: left">datetime2(7)</td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">DEFAULT sysdatetime()</td>
+      <td style="text-align: left">Audit updating timestamp registry.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="table-contentbody-payload">Table: <code class="language-plaintext highlighter-rouge">ContentBody</code> (Payload)</h3>
+<p>Contains fragment payloads, file locations, formats, and rendering sequence weights.</p>
+
+<p><strong>Schema:</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Column Name</th>
+      <th style="text-align: left">Data Type</th>
+      <th style="text-align: left">Nullability</th>
+      <th style="text-align: left">Constraints</th>
+      <th style="text-align: left">Purpose / Remarks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">ContentBodyID</code></td>
+      <td style="text-align: left">int</td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">IDENTITY(1,1) PK</td>
+      <td style="text-align: left">Unique reference of this body fragment segment.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">ContentID</code></td>
+      <td style="text-align: left">int</td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">FK -&gt; <code class="language-plaintext highlighter-rouge">Content.ContentID</code></td>
+      <td style="text-align: left">Parent content descriptor container.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">FormatType</code></td>
+      <td style="text-align: left">char(3)</td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">FK -&gt; <code class="language-plaintext highlighter-rouge">FormatType.Code</code></td>
+      <td style="text-align: left">Format of text segment (e.g. <code class="language-plaintext highlighter-rouge">RAW</code>, <code class="language-plaintext highlighter-rouge">RND</code>).</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">MimeType</code></td>
+      <td style="text-align: left">varchar(100)</td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">FK -&gt; <code class="language-plaintext highlighter-rouge">MimeType.Code</code></td>
+      <td style="text-align: left">MIME type indicator dispatching partial renderers.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">SortOrder</code></td>
+      <td style="text-align: left">int</td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">DEFAULT 0</td>
+      <td style="text-align: left">Display priority sequence order within the parent card.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Metadata</code></td>
+      <td style="text-align: left">nvarchar(max)</td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">-</td>
+      <td style="text-align: left">Body-specific JSON parameters (e.g., caption, floating, align).</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">TextContent</code></td>
+      <td style="text-align: left">nvarchar(max)</td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">-</td>
+      <td style="text-align: left">Text fragment (Plain Text, HTML, or raw Markdown syntax block).</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">BinaryContent</code></td>
+      <td style="text-align: left">varbinary(max)</td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">-</td>
+      <td style="text-align: left">Binary image or stream storage (when hosting assets directly).</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">LocalFilePath</code></td>
+      <td style="text-align: left">nvarchar(500)</td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">-</td>
+      <td style="text-align: left">Relative path directory mapping to assets hosted on the web server.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">ExternalFilePath</code></td>
+      <td style="text-align: left">nvarchar(2000)</td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">-</td>
+      <td style="text-align: left">Full absolute path pointing to remote, external web assets.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">CreatedDate</code></td>
+      <td style="text-align: left">datetime2(7)</td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">DEFAULT sysdatetime()</td>
+      <td style="text-align: left">Audit creation timestamp registry.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">ModifiedDate</code></td>
+      <td style="text-align: left">datetime2(7)</td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">DEFAULT sysdatetime()</td>
+      <td style="text-align: left">Audit updating timestamp registry.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="3-core-system-lookups">3. Core System Lookups</h2>
+
+<h3 id="lookup-table-contenttype">Lookup Table: <code class="language-plaintext highlighter-rouge">ContentType</code></h3>
+<p>Standardizes logical content categorization.</p>
+
+<p><strong>Sample Records:</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Code</th>
+      <th style="text-align: left">Name</th>
+      <th style="text-align: left">Folder / Layout Style</th>
+      <th style="text-align: left">Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">ART</code></td>
+      <td style="text-align: left">Article</td>
+      <td style="text-align: left">Content</td>
+      <td style="text-align: left">Renders text-heavy column sheets and images.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">GAL</code></td>
+      <td style="text-align: left">Gallery</td>
+      <td style="text-align: left">Portals</td>
+      <td style="text-align: left">Displays photo collections and thumbnail grids.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">DOC</code></td>
+      <td style="text-align: left">Document</td>
+      <td style="text-align: left">Downloads</td>
+      <td style="text-align: left">Direct linkages to clinical pamphlets.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">FAQ</code></td>
+      <td style="text-align: left">FAQ Sheet</td>
+      <td style="text-align: left">Accords</td>
+      <td style="text-align: left">Stacked expanding accordions.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="lookup-table-formattype">Lookup Table: <code class="language-plaintext highlighter-rouge">FormatType</code></h3>
+<p>Specifies preprocessing filters for text-based fragments.</p>
+
+<p><strong>Sample Records:</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Code</th>
+      <th style="text-align: left">Name</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">RAW</code></td>
+      <td style="text-align: left">Raw Code</td>
+      <td style="text-align: left">Delivered raw without layout processing.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">RND</code></td>
+      <td style="text-align: left">Pre-Rendered</td>
+      <td style="text-align: left">Pre-generated HTML fragments rendered directly inside Razor.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">ENC</code></td>
+      <td style="text-align: left">Encoded Source</td>
+      <td style="text-align: left">Compressed string formats requiring programmatic decoding.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="lookup-table-mimetype">Lookup Table: <code class="language-plaintext highlighter-rouge">MimeType</code></h3>
+<p>Configures MIME indicators and dispatch variables.</p>
+
+<p><strong>Sample Records:</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Code (MimeType)</th>
+      <th style="text-align: left">Description</th>
+      <th style="text-align: left">IsText</th>
+      <th style="text-align: left">IsBinary</th>
+      <th style="text-align: left">IsRenderable</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">text/html</code></td>
+      <td style="text-align: left">HTML Segment</td>
+      <td style="text-align: left">1</td>
+      <td style="text-align: left">0</td>
+      <td style="text-align: left">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">text/markdown</code></td>
+      <td style="text-align: left">Markdown Segment</td>
+      <td style="text-align: left">1</td>
+      <td style="text-align: left">0</td>
+      <td style="text-align: left">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">image/jpeg</code></td>
+      <td style="text-align: left">JPEG File</td>
+      <td style="text-align: left">0</td>
+      <td style="text-align: left">1</td>
+      <td style="text-align: left">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">application/pdf</code></td>
+      <td style="text-align: left">PDF Document</td>
+      <td style="text-align: left">0</td>
+      <td style="text-align: left">1</td>
+      <td style="text-align: left">0</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="4-content-routing-lifecycle">4. Content Routing Lifecycle</h2>
+
+<p>Dynamic Routing maps visitor clicks directly to Page controllers via standard ID parameters:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[User Clicks Menu Link with RouteType = C]
+                     |
+                     v (URL: /Content?m=24)
+         [Content/Index.cshtml.cs] OnGet(int m)
+                     |
+                     +-- Queries database for Content where MenuItemID = 24 AND IsPublished = 1
+                     |   (Eager loads ContentBodies ordered by SortOrder)
+                     |
+                     v (If found, maps to layout variables)
+             [Content/Index.cshtml]
+                     |
+                     +-- Maps ViewData["Title"] = Content.Description
+                     |
+                     v (Renders outer chrome wrapper)
+           [Partials/_ContentCard.cshtml]
+                     |
+                     v (Loops through child ContentBody fragments)
+           [Partials/_ContentBody.cshtml]
+                     |
+                     +---&gt; Evaluates body.MimeType (Dispatches custom partial renderers)
+                               |
+                               +-- text/html       --&gt; _Body_TextHtml.cshtml
+                               +-- text/markdown   --&gt; _Body_TextMarkdown.cshtml
+                               +-- image/jpeg      --&gt; _Body_Image.cshtml
+                               +-- application/pdf --&gt; _Body_AppPdf.cshtml
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="5-card-reader-partial-dispatcher-architecture">5. Card Reader Partial Dispatcher Architecture</h2>
+
+<p>This hierarchical nesting ensures and isolates display responsibilities cleanly:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>_ContentCard.cshtml              &lt;-- Container Card: Renders card margins, title header, sharing tags, footer metadata
+    |_ _ContentBody.cshtml       &lt;-- Engine Loop: Iterates children sequentially by SortOrder and routes layout dispatches
+         |_ _Body_TextHtml.cshtml       &lt;-- Output: Injects raw HTML fragments securely via Html.Raw()
+         |_ _Body_TextMarkdown.cshtml   &lt;-- Output: Processes Markdown text into HTML at runtime
+         |_ _Body_Image.cshtml          &lt;-- Output: Evaluates files (Local, Binary, or Remote) and places layout boundaries
+         |_ _Body_AppPdf.cshtml         &lt;-- Output: Embedding PDF components directly inside layouts
+         |_ _Body_Default.cshtml        &lt;-- Output: Fallback safe rendering for unknown formats
+</code></pre></div></div>
+
+<h3 id="dispatch-engine-implementation-_contentbodycshtml">Dispatch Engine Implementation (<code class="language-plaintext highlighter-rouge">_ContentBody.cshtml</code>)</h3>
+
+<p>Evaluates MIME records sequentially to invoke dedicated rendering engines:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">@model</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">ContentBody</span><span class="p">&gt;</span>
+
+<span class="nf">@foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">body</span> <span class="k">in</span> <span class="n">Model</span><span class="p">.</span><span class="nf">OrderBy</span><span class="p">(</span><span class="n">b</span> <span class="p">=&gt;</span> <span class="n">b</span><span class="p">.</span><span class="n">SortOrder</span><span class="p">))</span>
+<span class="p">{</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="n">body</span><span class="p">.</span><span class="n">MimeType</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">case</span> <span class="s">"text/html"</span><span class="p">:</span>
+            <span class="n">@await</span> <span class="n">Html</span><span class="p">.</span><span class="nf">PartialAsync</span><span class="p">(</span><span class="s">"_Body_TextHtml"</span><span class="p">,</span> <span class="n">body</span><span class="p">)</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="s">"text/markdown"</span><span class="p">:</span>
+            <span class="n">@await</span> <span class="n">Html</span><span class="p">.</span><span class="nf">PartialAsync</span><span class="p">(</span><span class="s">"_Body_TextMarkdown"</span><span class="p">,</span> <span class="n">body</span><span class="p">)</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="s">"image/jpeg"</span><span class="p">:</span>
+        <span class="k">case</span> <span class="s">"image/png"</span><span class="p">:</span>
+        <span class="k">case</span> <span class="s">"image/gif"</span><span class="p">:</span>
+        <span class="k">case</span> <span class="s">"image/webp"</span><span class="p">:</span>
+            <span class="n">@await</span> <span class="n">Html</span><span class="p">.</span><span class="nf">PartialAsync</span><span class="p">(</span><span class="s">"_Body_Image"</span><span class="p">,</span> <span class="n">body</span><span class="p">)</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="s">"application/pdf"</span><span class="p">:</span>
+            <span class="n">@await</span> <span class="n">Html</span><span class="p">.</span><span class="nf">PartialAsync</span><span class="p">(</span><span class="s">"_Body_AppPdf"</span><span class="p">,</span> <span class="n">body</span><span class="p">)</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">default</span><span class="p">:</span>
+            <span class="n">@await</span> <span class="n">Html</span><span class="p">.</span><span class="nf">PartialAsync</span><span class="p">(</span><span class="s">"_Body_Default"</span><span class="p">,</span> <span class="n">body</span><span class="p">)</span>
+            <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="structured-formatting-via-metadata-json">Structured Formatting via Metadata JSON</h3>
+
+<p>Each page and body table record contains unstructured JSON metadata to offer fine-grain layout constraints (such as float parameters, caption descriptions, and structural width overrides) dynamically:</p>
+
+<p><strong>Example Metadata Document representing an Image Fragment:</strong></p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"placement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"right"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"width"</span><span class="p">:</span><span class="w"> </span><span class="s2">"40%"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"caption"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Figure 1: Common clinical representation of a PG lesion."</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"styleClass"</span><span class="p">:</span><span class="w"> </span><span class="s2">"img-thumbnail shadows"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>The dedicated wrapper template (<code class="language-plaintext highlighter-rouge">_Body_Image.cshtml</code>) extracts these fields dynamically on execution to inject layout-specific CSS boundaries safely:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">@model</span> <span class="n">ContentBody</span>
+<span class="n">@using</span> <span class="n">System</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="n">Json</span>
+
+<span class="err">@</span><span class="p">{</span>
+    <span class="kt">var</span> <span class="n">meta</span> <span class="p">=</span> <span class="n">JsonSerializer</span><span class="p">.</span><span class="n">Deserialize</span><span class="p">&lt;</span><span class="n">ImageMetadata</span><span class="p">&gt;(</span><span class="n">Model</span><span class="p">.</span><span class="n">Metadata</span> <span class="p">??</span> <span class="s">"{}"</span><span class="p">);</span>
+    <span class="kt">var</span> <span class="n">alignClass</span> <span class="p">=</span> <span class="n">meta</span><span class="p">.</span><span class="n">Placement</span> <span class="p">==</span> <span class="s">"right"</span> <span class="p">?</span> <span class="s">"float-end ms-3"</span> <span class="p">:</span> <span class="n">meta</span><span class="p">.</span><span class="n">Placement</span> <span class="p">==</span> <span class="s">"left"</span> <span class="p">?</span> <span class="s">"float-start me-3"</span> <span class="p">:</span> <span class="s">"mx-auto d-block"</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">&lt;</span><span class="n">div</span> <span class="k">class</span><span class="err">="</span><span class="nc">image</span><span class="p">-</span><span class="n">body</span><span class="p">-</span><span class="n">card</span> <span class="n">@alignClass</span><span class="s">" style="</span><span class="n">width</span><span class="p">:</span> <span class="err">@</span><span class="p">(</span><span class="n">meta</span><span class="p">.</span><span class="n">Width</span> <span class="p">??</span> <span class="s">"100%"</span><span class="p">)</span><span class="s">"&gt;
+</span>    <span class="p">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="p">=</span><span class="s">"@(Model.ExternalFilePath ?? Model.LocalFilePath)"</span> <span class="k">class</span><span class="err">="</span><span class="nc">img</span><span class="p">-</span><span class="n">fluid</span> <span class="n">@meta</span><span class="p">.</span><span class="n">StyleClass</span><span class="s">" alt="</span><span class="n">@meta</span><span class="p">.</span><span class="n">Caption</span><span class="s">" /&gt;
+</span>    <span class="nf">@if</span> <span class="p">(!</span><span class="kt">string</span><span class="p">.</span><span class="nf">IsNullOrEmpty</span><span class="p">(</span><span class="n">meta</span><span class="p">.</span><span class="n">Caption</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="p">&lt;</span><span class="n">p</span> <span class="k">class</span><span class="err">="</span><span class="nc">caption</span> <span class="n">text</span><span class="p">-</span><span class="n">muted</span> <span class="n">small</span> <span class="n">text</span><span class="p">-</span><span class="n">center</span> <span class="n">mt</span><span class="p">-</span><span class="m">1</span><span class="s">"&gt;@meta.Caption&lt;/p&gt;
+</span>    <span class="p">}</span>
+<span class="p">&lt;/</span><span class="n">div</span><span class="p">&gt;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="6-curations-and-workflow-status-lifecycle">6. Curations and Workflow Status Lifecycle</h2>
+
+<p>Content transitions are governed strictly through structured lookup fields:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Code (Status)</th>
+      <th style="text-align: left">Name</th>
+      <th style="text-align: left">Interpretation / Access Rules</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong><code class="language-plaintext highlighter-rouge">D</code></strong></td>
+      <td style="text-align: left">Draft</td>
+      <td style="text-align: left">Initial creation phase. Restrained to authors and curators.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong><code class="language-plaintext highlighter-rouge">R</code></strong></td>
+      <td style="text-align: left">Review</td>
+      <td style="text-align: left">Complete and locked. Pending review evaluations.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong><code class="language-plaintext highlighter-rouge">A</code></strong></td>
+      <td style="text-align: left">Approved</td>
+      <td style="text-align: left">Fully signed off. Available for scheduling releases.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong><code class="language-plaintext highlighter-rouge">P</code></strong></td>
+      <td style="text-align: left">Published</td>
+      <td style="text-align: left">Live and active. Servable to public users (<code class="language-plaintext highlighter-rouge">IsPublished = 1</code>).</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong><code class="language-plaintext highlighter-rouge">X</code></strong></td>
+      <td style="text-align: left">Archived</td>
+      <td style="text-align: left">Retired. Safe database retention, permanently hidden from layouts.</td>
+    </tr>
+  </tbody>
+</table>
+
+  </div>
+</section>
+
+    </main>
+  </body>
+</html>

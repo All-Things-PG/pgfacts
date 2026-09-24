@@ -1,0 +1,2659 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Database Schema | PG Facts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/main.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+  </head>
+  <body>
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-brand" href="/home/" aria-label="All Things PG home">
+      <img class="site-brand__logo" src="/assets/images/pg-logo.png" alt="All Things PG">
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      
+        <details class="site-nav__group">
+          <summary class="site-nav__summary">Welcome</summary>
+          <div class="site-nav__panel">
+            
+              <a href="/home/">Home</a>
+            
+              <a href="/dcms/DCMS_Executive_Summary.html">Executive Summary</a>
+            
+              <a href="/docs/">Explore Documentation</a>
+            
+          </div>
+        </details>
+      
+        <details class="site-nav__group">
+          <summary class="site-nav__summary">User Experience</summary>
+          <div class="site-nav__panel">
+            
+              <a href="/user-experience/what-is-a-portal/">What is a Portal?</a>
+            
+              <a href="/user-experience/selecting-a-user-experience/">Selecting a User Experience</a>
+            
+              <a href="/user-experience/patients/">Patients</a>
+            
+              <a href="/user-experience/caregivers/">Caregivers</a>
+            
+              <a href="/user-experience/providers/">Providers</a>
+            
+              <a href="/user-experience/pharmaceutical/">Pharmaceutical</a>
+            
+              <a href="/user-experience/guest/">Guest</a>
+            
+          </div>
+        </details>
+      
+        <details class="site-nav__group">
+          <summary class="site-nav__summary">DCMS</summary>
+          <div class="site-nav__panel">
+            
+              <a href="/dcms/">What is DCMS?</a>
+            
+              <a href="/dcms/DCMS_Dynamic_Content.html">Dynamic Content</a>
+            
+              <a href="/dcms/DCMS_Dynamic_Menus.html">Dynamic Menus</a>
+            
+              <a href="/dcms/DCMS_Curating_Content.html">Curating Content</a>
+            
+              <a href="/dcms/DCMS_Managing_Tiles.html">Managing Tiles</a>
+            
+          </div>
+        </details>
+      
+        <details class="site-nav__group">
+          <summary class="site-nav__summary">Database</summary>
+          <div class="site-nav__panel">
+            
+              <a href="/database/system/">System</a>
+            
+              <a href="/database/staging/">Staging</a>
+            
+              <a href="/database/content/">Content</a>
+            
+              <a href="/database/menus/">Menus</a>
+            
+              <a href="/database/registration/">Registration</a>
+            
+              <a href="/database/DCMS_Database_Schema.html">Schema</a>
+            
+          </div>
+        </details>
+      
+        <details class="site-nav__group">
+          <summary class="site-nav__summary">About</summary>
+          <div class="site-nav__panel">
+            
+              <a href="/about/all-things-pg/">All Things PG</a>
+            
+          </div>
+        </details>
+      
+      <a class="site-nav__contact" href="mailto:dave@allthingspg.org?subject=PG%20Facts%20feedback&amp;body=Thank%20you%20for%20your%20feedback.%20Please%20tell%20us%20how%20we%20can%20improve%20this%20site%20or%20its%20documentation.%0D%0A%0D%0A">Contact Us</a>
+    </nav>
+  </div>
+</header>
+
+    <div class="page-title-bar">
+  <div class="page-title-bar__inner">
+    <div class="page-title-bar__left">Database Schema</div>
+    <div class="page-title-bar__right">Define the structure of the database.</div>
+  </div>
+</div>
+
+    <main aria-label="Content">
+      <div class="page-title-bar">
+  <div class="page-title-bar__inner">
+    <div class="page-title-bar__left">Database Schema</div>
+    <div class="page-title-bar__right">Define the structure of the database.</div>
+  </div>
+</div>
+
+<section class="oldsite-page-content">
+  <div class="oldsite-container-inner">
+    
+    
+    <h1 id="dcms---dynamic-content-and-menuing-system">DCMS - Dynamic Content and Menuing System</h1>
+
+<h2 id="database-schema">Database Schema</h2>
+
+<p>This document describes the implemented schema for the <strong>AllThingsPG</strong> SQL Server database project. The SQL project under <code class="language-plaintext highlighter-rouge">Database\AllThingsPG.Database</code> is the implementation baseline for table names, column definitions, constraints, relationships, views, functions, procedures, and deployment behavior.</p>
+
+<p>The schema separates:</p>
+
+<ul>
+  <li>lookup data that defines valid domain values;</li>
+  <li>menu and route definitions used to build navigation;</li>
+  <li>content documents and ordered content elements;</li>
+  <li>staging records used before content is published;</li>
+  <li>registration, communication, system, and test-support data.</li>
+</ul>
+
+<hr />
+
+<h2 id="database-project">Database Project</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Property</th>
+      <th style="text-align: left">Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Project</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">AllThingsPG.Database</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Project file</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">AllThingsPG.Database.sqlproj</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Schema provider</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Microsoft.Data.Tools.Schema.Sql.Sql160DatabaseSchemaProvider</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Target</td>
+      <td style="text-align: left">SQL Server database</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Default schema</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">dbo</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Deployment</td>
+      <td style="text-align: left">SSDT build, pre-deployment, and post-deployment scripts</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="implemented-object-inventory">Implemented object inventory</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Object type</th>
+      <th style="text-align: left">Location</th>
+      <th style="text-align: left">Objects</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Tables</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Tables</code></td>
+      <td style="text-align: left">29 tables, including operational, lookup, staging, and test tables</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Views</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Views</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">ContentDocumentList</code>, <code class="language-plaintext highlighter-rouge">ContentElementList</code>, <code class="language-plaintext highlighter-rouge">MenuItemList</code>, <code class="language-plaintext highlighter-rouge">MissingTableList</code>, <code class="language-plaintext highlighter-rouge">TableList</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Functions</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Functions</code></td>
+      <td style="text-align: left">15 scalar/table-valued utility and validation functions</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Stored procedures</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Stored Procedures</code></td>
+      <td style="text-align: left">61 initialization, CRUD, validation, population, logging, and reporting procedures</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Deployment scripts</td>
+      <td style="text-align: left">Project root and <code class="language-plaintext highlighter-rouge">Scripts</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Pre-Deployment.sql</code>, <code class="language-plaintext highlighter-rouge">Post-Deployment.sql</code>, backup and initial-data scripts</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Test scripts</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Testing</code></td>
+      <td style="text-align: left">Non-build scripts for setup, normalization, population, validation, and test execution</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="1-lookup-tables">1. Lookup Tables</h2>
+
+<p>Lookup tables provide validated domain values referenced by transactional tables. Their codes are deliberately compact because they are used as foreign-key values in menu, content, registration, staging, and rendering records.</p>
+
+<h3 id="table-visitortype">Table: <code class="language-plaintext highlighter-rouge">VisitorType</code></h3>
+
+<p>Defines visitor personas used by registration and menu visibility rules.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Column</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Nullability</th>
+      <th style="text-align: left">Constraints / purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Code</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">char(1)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Primary key</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Description</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">nvarchar(200)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Persona description</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">SortOrder</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">int</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Display order</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">IsDefault</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">bit</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Identifies the default persona</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Current sample data:</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Code</th>
+      <th style="text-align: left">Description</th>
+      <th style="text-align: right">SortOrder</th>
+      <th style="text-align: center">IsDefault</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">P</code></td>
+      <td style="text-align: left">Patient</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: center">0</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">C</code></td>
+      <td style="text-align: left">Caregiver</td>
+      <td style="text-align: right">2</td>
+      <td style="text-align: center">0</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">M</code></td>
+      <td style="text-align: left">Provider</td>
+      <td style="text-align: right">3</td>
+      <td style="text-align: center">0</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">D</code></td>
+      <td style="text-align: left">Pharmaceutical</td>
+      <td style="text-align: right">4</td>
+      <td style="text-align: center">0</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">V</code></td>
+      <td style="text-align: left">Visitor</td>
+      <td style="text-align: right">5</td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">R</code></td>
+      <td style="text-align: left">Register</td>
+      <td style="text-align: right">6</td>
+      <td style="text-align: center">0</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="table-routetype">Table: <code class="language-plaintext highlighter-rouge">RouteType</code></h3>
+
+<p>Defines how a menu item route is interpreted by the application.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Column</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Nullability</th>
+      <th style="text-align: left">Constraints / purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Code</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">char(1)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Primary key</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Description</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">nvarchar(200)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Route behavior description</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Folder</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">nvarchar(200)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Application folder or handler context</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">SortOrder</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">int</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Display or evaluation order</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Current sample data:</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Code</th>
+      <th style="text-align: left">Description</th>
+      <th style="text-align: left">Folder</th>
+      <th style="text-align: right">SortOrder</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">V</code></td>
+      <td style="text-align: left">Visitor</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Visitor</code></td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">C</code></td>
+      <td style="text-align: left">Content</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Content</code></td>
+      <td style="text-align: right">2</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">P</code></td>
+      <td style="text-align: left">Page</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Page</code></td>
+      <td style="text-align: right">3</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">R</code></td>
+      <td style="text-align: left">Redirect</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Redirect</code></td>
+      <td style="text-align: right">4</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="table-contenttype">Table: <code class="language-plaintext highlighter-rouge">ContentType</code></h3>
+
+<p>Defines the document-level content classification or rendering template.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Column</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Nullability</th>
+      <th style="text-align: left">Constraints / purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Code</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">char(1)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Primary key</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Name</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">nvarchar(50)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Short type name</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Description</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">nvarchar(200)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Type description</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">SortOrder</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">int</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Display order</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Current sample data:</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Code</th>
+      <th style="text-align: left">Name</th>
+      <th style="text-align: left">Description</th>
+      <th style="text-align: right">SortOrder</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">A</code></td>
+      <td style="text-align: left">Article</td>
+      <td style="text-align: left">Long-form educational content</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">N</code></td>
+      <td style="text-align: left">NewsItem</td>
+      <td style="text-align: left">News updates and announcements</td>
+      <td style="text-align: right">2</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">F</code></td>
+      <td style="text-align: left">FAQ</td>
+      <td style="text-align: left">Question and answer pairs</td>
+      <td style="text-align: right">3</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">T</code></td>
+      <td style="text-align: left">Testimonial</td>
+      <td style="text-align: left">Patient and caregiver stories</td>
+      <td style="text-align: right">4</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">P</code></td>
+      <td style="text-align: left">Profile</td>
+      <td style="text-align: left">Board members, staff, medical experts</td>
+      <td style="text-align: right">5</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">E</code></td>
+      <td style="text-align: left">Event</td>
+      <td style="text-align: left">Events, webinars, fundraisers</td>
+      <td style="text-align: right">6</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">L</code></td>
+      <td style="text-align: left">Link</td>
+      <td style="text-align: left">External resource or reference</td>
+      <td style="text-align: right">8</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">R</code></td>
+      <td style="text-align: left">Research</td>
+      <td style="text-align: left">Clinical trial or research study</td>
+      <td style="text-align: right">9</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">X</code></td>
+      <td style="text-align: left">External</td>
+      <td style="text-align: left">External file</td>
+      <td style="text-align: right">10</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">G</code></td>
+      <td style="text-align: left">Gallery</td>
+      <td style="text-align: left">Image gallery metadata</td>
+      <td style="text-align: right">11</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">D</code></td>
+      <td style="text-align: left">Document</td>
+      <td style="text-align: left">PDF or downloadable file reference</td>
+      <td style="text-align: right">12</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">U</code></td>
+      <td style="text-align: left">Unknown</td>
+      <td style="text-align: left">Content has not been populated</td>
+      <td style="text-align: right">99</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="table-formattype">Table: <code class="language-plaintext highlighter-rouge">FormatType</code></h3>
+
+<p>Defines the source or encoding format of a content element.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Column</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Nullability</th>
+      <th style="text-align: left">Constraints / purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Code</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">char(1)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Primary key</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Name</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">nvarchar(50)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Format name</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Description</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">nvarchar(200)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Format description</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">FileTypes</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">nvarchar(200)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Associated file extensions or types</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">SortOrder</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">int</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Display or processing order</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Current sample data:</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Code</th>
+      <th style="text-align: left">Name</th>
+      <th style="text-align: left">Description</th>
+      <th style="text-align: right">SortOrder</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">T</code></td>
+      <td style="text-align: left">Text</td>
+      <td style="text-align: left">Plain Text</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">R</code></td>
+      <td style="text-align: left">RTF</td>
+      <td style="text-align: left">Rich Text</td>
+      <td style="text-align: right">2</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">H</code></td>
+      <td style="text-align: left">HTML</td>
+      <td style="text-align: left">Web Page Markup</td>
+      <td style="text-align: right">3</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">E</code></td>
+      <td style="text-align: left">EPUB</td>
+      <td style="text-align: left">Electronic Pub</td>
+      <td style="text-align: right">4</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">P</code></td>
+      <td style="text-align: left">PDF</td>
+      <td style="text-align: left">Portable Doc</td>
+      <td style="text-align: right">5</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">M</code></td>
+      <td style="text-align: left">MD</td>
+      <td style="text-align: left">Markdown</td>
+      <td style="text-align: right">6</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">J</code></td>
+      <td style="text-align: left">JSON</td>
+      <td style="text-align: left">JSON</td>
+      <td style="text-align: right">7</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">I</code></td>
+      <td style="text-align: left">IMAGE</td>
+      <td style="text-align: left">Binary Image</td>
+      <td style="text-align: right">8</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">A</code></td>
+      <td style="text-align: left">AUDIO</td>
+      <td style="text-align: left">Binary Audio</td>
+      <td style="text-align: right">9</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">W</code></td>
+      <td style="text-align: left">WORD</td>
+      <td style="text-align: left">MS Word Document</td>
+      <td style="text-align: right">10</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">S</code></td>
+      <td style="text-align: left">EXCEL</td>
+      <td style="text-align: left">MS Spreadsheet</td>
+      <td style="text-align: right">11</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">N</code></td>
+      <td style="text-align: left">PPT</td>
+      <td style="text-align: left">Powerpoint</td>
+      <td style="text-align: right">12</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">G</code></td>
+      <td style="text-align: left">GDOC</td>
+      <td style="text-align: left">Google Document</td>
+      <td style="text-align: right">13</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">D</code></td>
+      <td style="text-align: left">OPEN</td>
+      <td style="text-align: left">Open Document</td>
+      <td style="text-align: right">14</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">?</code></td>
+      <td style="text-align: left">UNKNOWN</td>
+      <td style="text-align: left">Unknown</td>
+      <td style="text-align: right">99</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="table-mimetype">Table: <code class="language-plaintext highlighter-rouge">MimeType</code></h3>
+
+<p>Defines the media type and rendering characteristics of a content element.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Column</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Nullability</th>
+      <th style="text-align: left">Constraints / purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Code</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">char(1)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Primary key</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">FormatType</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">char(1)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">FK to <code class="language-plaintext highlighter-rouge">FormatType.Code</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Name</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">nvarchar(50)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">MIME type name</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Description</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">nvarchar(200)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Rendering description</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">IsText</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">bit</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Indicates text payload</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">IsBinary</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">bit</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Indicates binary payload</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">IsRenderable</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">bit</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Indicates whether the application can render it</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">SortOrder</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">int</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Processing or display order</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Constraint: <code class="language-plaintext highlighter-rouge">FK_MimeType_FormatType</code> references <code class="language-plaintext highlighter-rouge">FormatType(Code)</code>.</p>
+
+<p><strong>Current sample data:</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Code</th>
+      <th style="text-align: left">FormatType</th>
+      <th style="text-align: left">Name</th>
+      <th style="text-align: left">Description</th>
+      <th style="text-align: right">IsText</th>
+      <th style="text-align: right">IsBinary</th>
+      <th style="text-align: right">IsRenderable</th>
+      <th style="text-align: right">SortOrder</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">T</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">T</code></td>
+      <td style="text-align: left">TXT</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">text/plain</code></td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">M</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">M</code></td>
+      <td style="text-align: left">MD</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">text/markdown</code></td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">2</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">H</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">H</code></td>
+      <td style="text-align: left">HTML</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">text/html</code></td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">3</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">C</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">H</code></td>
+      <td style="text-align: left">HTM</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">text/htm</code></td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">4</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">R</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">R</code></td>
+      <td style="text-align: left">RTF</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">application/rtf</code></td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">5</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">J</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">J</code></td>
+      <td style="text-align: left">JSON</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">application/json</code></td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">6</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">E</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">E</code></td>
+      <td style="text-align: left">EPUB</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">application/epub+zip</code></td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">7</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">P</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">P</code></td>
+      <td style="text-align: left">PDF</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">application/pdf</code></td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">8</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">I</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">I</code></td>
+      <td style="text-align: left">JPG</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">image/jpeg</code></td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">9</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">N</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">I</code></td>
+      <td style="text-align: left">PNG</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">image/png</code></td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">10</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">F</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">I</code></td>
+      <td style="text-align: left">GIF</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">image/gif</code></td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">11</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">S</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">I</code></td>
+      <td style="text-align: left">SVG</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">image/svg+xml</code></td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">12</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">W</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">I</code></td>
+      <td style="text-align: left">WEBP</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">image/webp</code></td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">13</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">A</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">A</code></td>
+      <td style="text-align: left">MP3</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">audio/mpeg</code></td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">14</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">U</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">A</code></td>
+      <td style="text-align: left">WAV</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">audio/wav</code></td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">15</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Q</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">A</code></td>
+      <td style="text-align: left">OGG</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">audio/ogg</code></td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">16</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">D</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">W</code></td>
+      <td style="text-align: left">DOCX</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">application/vnd.openxmlformats-officedocument.wordprocessingml.document</code></td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">17</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">X</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">W</code></td>
+      <td style="text-align: left">DOCM</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">application/vnd.ms-word.document.macroEnabled.12</code></td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">18</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Y</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">W</code></td>
+      <td style="text-align: left">DOTX</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">application/vnd.openxmlformats-officedocument.wordprocessingml.template</code></td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">19</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Z</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">W</code></td>
+      <td style="text-align: left">DOTM</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">application/vnd.ms-word.template.macroEnabled.12</code></td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">20</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">L</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">S</code></td>
+      <td style="text-align: left">XLS</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">application/vnd.ms-excel</code></td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">21</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">K</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">S</code></td>
+      <td style="text-align: left">XLSX</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</code></td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">22</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">!</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">N</code></td>
+      <td style="text-align: left">PPT</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">application/vnd.ms-powerpoint</code></td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">23</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">@</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">N</code></td>
+      <td style="text-align: left">PPTX</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">application/vnd.openxmlformats-officedocument.presentationml.presentation</code></td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">24</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">#</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">N</code></td>
+      <td style="text-align: left">PPS</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">application/vnd.ms-powerpoint</code></td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">25</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">$</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">N</code></td>
+      <td style="text-align: left">PPSX</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">application/vnd.openxmlformats-officedocument.presentationml.slideshow</code></td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">26</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">%</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">N</code></td>
+      <td style="text-align: left">POT</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">application/vnd.ms-powerpoint</code></td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">27</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">^</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">N</code></td>
+      <td style="text-align: left">POTX</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">application/vnd.openxmlformats-officedocument.presentationml.template</code></td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">28</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">&amp;</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">N</code></td>
+      <td style="text-align: left">PPTM</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">application/vnd.ms-powerpoint.presentation.macroEnabled.12</code></td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">29</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">*</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">N</code></td>
+      <td style="text-align: left">PPSM</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">application/vnd.ms-powerpoint.slideshow.macroEnabled.12</code></td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">30</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">+</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">N</code></td>
+      <td style="text-align: left">POTM</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">application/vnd.ms-powerpoint.template.macroEnabled.12</code></td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">31</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">G</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">G</code></td>
+      <td style="text-align: left">GDOC</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">application/vnd.google-apps.document</code></td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">32</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">O</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">D</code></td>
+      <td style="text-align: left">ODT</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">application/vnd.oasis.opendocument.text</code></td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">33</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">B</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">?</code></td>
+      <td style="text-align: left">BIN</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">application/octet-stream</code></td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">99</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="table-workflowstatus">Table: <code class="language-plaintext highlighter-rouge">WorkflowStatus</code></h3>
+
+<p>Defines the editorial state of content and staged content.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Column</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Nullability</th>
+      <th style="text-align: left">Constraints / purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Code</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">char(1)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Primary key</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Title</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">nvarchar(50)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Short status title</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Description</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">nvarchar(200)</code></td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">Status explanation</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">SortOrder</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">int</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Workflow order</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Current sample data:</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Code</th>
+      <th style="text-align: left">Title</th>
+      <th style="text-align: left">Description</th>
+      <th style="text-align: right">SortOrder</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">D</code></td>
+      <td style="text-align: left">Draft</td>
+      <td style="text-align: left">Content is newly curated or created</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">R</code></td>
+      <td style="text-align: left">Review</td>
+      <td style="text-align: left">Content needs review</td>
+      <td style="text-align: right">2</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">A</code></td>
+      <td style="text-align: left">Approved</td>
+      <td style="text-align: left">Content has been approved but not published</td>
+      <td style="text-align: right">3</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">X</code></td>
+      <td style="text-align: left">Rejected</td>
+      <td style="text-align: left">Content has been rejected</td>
+      <td style="text-align: right">4</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">P</code></td>
+      <td style="text-align: left">Published</td>
+      <td style="text-align: left">Content has been published</td>
+      <td style="text-align: right">5</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="2-menu-and-routing-tables">2. Menu and Routing Tables</h2>
+
+<h3 id="table-menuitem">Table: <code class="language-plaintext highlighter-rouge">MenuItem</code></h3>
+
+<p><code class="language-plaintext highlighter-rouge">MenuItem</code> is the runtime menu model. A row represents one menu node. Parent-child relationships are represented by the self-referencing <code class="language-plaintext highlighter-rouge">ParentMenuItemID</code>; a <code class="language-plaintext highlighter-rouge">NULL</code> parent identifies a top-level item.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Column</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Nullability</th>
+      <th style="text-align: left">Constraints / purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">MenuItemID</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">int identity(1,1)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Clustered primary key</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">ParentMenuItemID</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">int</code></td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">Self-FK to <code class="language-plaintext highlighter-rouge">MenuItem.MenuItemID</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Title</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">nvarchar(200)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Menu label</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">RouteType</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">char(1)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">FK to <code class="language-plaintext highlighter-rouge">RouteType.Code</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">RouteTarget</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">nvarchar(200)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Route-specific target value</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">VisitorMask</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">varchar(10)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Allowed visitor-type codes</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">SortOrder</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">int</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Defaults to <code class="language-plaintext highlighter-rouge">0</code>; must be non-negative</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">IsActive</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">bit</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Defaults to <code class="language-plaintext highlighter-rouge">1</code>; controls visibility</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">CreatedDate</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">datetime2(0)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Defaults to <code class="language-plaintext highlighter-rouge">sysdatetime()</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">ModifiedDate</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">datetime2(0)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Defaults to <code class="language-plaintext highlighter-rouge">sysdatetime()</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Constraints:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">FK_MenuItem_Parent</code> references the same table through <code class="language-plaintext highlighter-rouge">ParentMenuItemID</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">FK_MenuItem_RouteType</code> references <code class="language-plaintext highlighter-rouge">RouteType(Code)</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">CK_MenuItem_SortOrder</code> requires <code class="language-plaintext highlighter-rouge">SortOrder &gt;= 0</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">CK_MenuItem_Title_Normalized</code> rejects reserved URL, markup, and query characters.</li>
+  <li><code class="language-plaintext highlighter-rouge">CK_MenuItem_VisitorMask</code> permits only <code class="language-plaintext highlighter-rouge">P</code>, <code class="language-plaintext highlighter-rouge">C</code>, <code class="language-plaintext highlighter-rouge">M</code>, <code class="language-plaintext highlighter-rouge">D</code>, <code class="language-plaintext highlighter-rouge">V</code>, and <code class="language-plaintext highlighter-rouge">R</code>, and requires a non-empty mask.</li>
+</ul>
+
+<h3 id="visitor-types-routetype--v">Visitor Types (<code class="language-plaintext highlighter-rouge">RouteType = V</code>)</h3>
+
+<p>The visitor route selects or changes the visitor persona. The current Welcome branch contains seven active records: one parent and six visitor choices.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: right">MenuItemID</th>
+      <th style="text-align: right">ParentMenuItemID</th>
+      <th style="text-align: left">Title</th>
+      <th style="text-align: left">RouteTarget</th>
+      <th style="text-align: left">VisitorMask</th>
+      <th style="text-align: right">SortOrder</th>
+      <th style="text-align: right">IsActive</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">NULL</td>
+      <td style="text-align: left">Welcome</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">/visitor?v=Register</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">PCMDVR</code></td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">2</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: left">  Patient</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">/visitor?v=Patient</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">PCMDVR</code></td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">3</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: left">  Caregiver</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">/visitor?v=Caregiver</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">PCMDVR</code></td>
+      <td style="text-align: right">2</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">4</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: left">  Provider</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">/visitor?v=Provider</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">PCMDVR</code></td>
+      <td style="text-align: right">3</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">5</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: left">  Pharmaceutical</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">/visitor?v=Pharmaceutical</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">PCMDVR</code></td>
+      <td style="text-align: right">4</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">6</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: left">  Visitor</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">/visitor?v=Visitor</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">PCMDVR</code></td>
+      <td style="text-align: right">5</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">7</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: left">  Register</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">/visitor?v=Register</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">PCMDVR</code></td>
+      <td style="text-align: right">6</td>
+      <td style="text-align: right">1</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>All seven rows have <code class="language-plaintext highlighter-rouge">RouteType = 'V'</code>.</p>
+
+<h3 id="content-example-routetype--c">Content Example (<code class="language-plaintext highlighter-rouge">RouteType = C</code>)</h3>
+
+<p><code class="language-plaintext highlighter-rouge">About PG</code> demonstrates a content route with a root menu item, child menu items, and third-level submenu items. The hierarchy below is the complete active descendant tree for <code class="language-plaintext highlighter-rouge">MenuItemID = 8</code>.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: right">MenuItemID</th>
+      <th style="text-align: right">ParentMenuItemID</th>
+      <th style="text-align: right">Level</th>
+      <th style="text-align: left">Title</th>
+      <th style="text-align: left">RouteTarget</th>
+      <th style="text-align: left">VisitorMask</th>
+      <th style="text-align: right">SortOrder</th>
+      <th style="text-align: right">IsActive</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: right">8</td>
+      <td style="text-align: right">NULL</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: left">About PG</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">/content?c=about%20pg</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">PCMDVR</code></td>
+      <td style="text-align: right">2</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">9</td>
+      <td style="text-align: right">8</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: left">  What is PG</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">/content?c=what%20is%20pg</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">PCMDVR</code></td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">10</td>
+      <td style="text-align: right">8</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: left">  Clinical Topics</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">/content?c=clinical%20topics</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">PCMDVR</code></td>
+      <td style="text-align: right">2</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">17</td>
+      <td style="text-align: right">8</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: left">  Living With PG</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">/content?c=living%20with%20pg</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">PCMDVR</code></td>
+      <td style="text-align: right">3</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">11</td>
+      <td style="text-align: right">10</td>
+      <td style="text-align: right">2</td>
+      <td style="text-align: left">    Symptoms</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">/content?c=symptoms</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">PCMDVR</code></td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">12</td>
+      <td style="text-align: right">10</td>
+      <td style="text-align: right">2</td>
+      <td style="text-align: left">    Diagnosis</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">/content?c=diagnosis</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">PCMDVR</code></td>
+      <td style="text-align: right">2</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">13</td>
+      <td style="text-align: right">10</td>
+      <td style="text-align: right">2</td>
+      <td style="text-align: left">    Treatment</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">/content?c=treatment</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">PCMDVR</code></td>
+      <td style="text-align: right">3</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">14</td>
+      <td style="text-align: right">10</td>
+      <td style="text-align: right">2</td>
+      <td style="text-align: left">    Wound Care</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">/content?c=wound%20care</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">PCMDVR</code></td>
+      <td style="text-align: right">4</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">15</td>
+      <td style="text-align: right">10</td>
+      <td style="text-align: right">2</td>
+      <td style="text-align: left">    Pain Management</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">/content?c=pain%20management</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">PCMDVR</code></td>
+      <td style="text-align: right">5</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">16</td>
+      <td style="text-align: right">10</td>
+      <td style="text-align: right">2</td>
+      <td style="text-align: left">    Outcomes</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">/content?c=outcomes</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">PCMDVR</code></td>
+      <td style="text-align: right">6</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">18</td>
+      <td style="text-align: right">17</td>
+      <td style="text-align: right">2</td>
+      <td style="text-align: left">    Emotional Journey</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">/content?c=emotional%20journey</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">PCMDVR</code></td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">19</td>
+      <td style="text-align: right">17</td>
+      <td style="text-align: right">2</td>
+      <td style="text-align: left">    Loss of Mobility</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">/content?c=loss%20of%20mobility</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">PCMDVR</code></td>
+      <td style="text-align: right">2</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">20</td>
+      <td style="text-align: right">17</td>
+      <td style="text-align: right">2</td>
+      <td style="text-align: left">    Loss of Identity</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">/content?c=loss%20of%20identity</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">PCMDVR</code></td>
+      <td style="text-align: right">3</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">21</td>
+      <td style="text-align: right">17</td>
+      <td style="text-align: right">2</td>
+      <td style="text-align: left">    Avoiding Mistakes</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">/content?c=avoiding%20mistakes</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">PCMDVR</code></td>
+      <td style="text-align: right">4</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">22</td>
+      <td style="text-align: right">17</td>
+      <td style="text-align: right">2</td>
+      <td style="text-align: left">    Managing Disability</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">/content?c=managing%20disability</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">PCMDVR</code></td>
+      <td style="text-align: right">5</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">23</td>
+      <td style="text-align: right">17</td>
+      <td style="text-align: right">2</td>
+      <td style="text-align: left">    Comorbidities</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">/content?c=comorbidities</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">PCMDVR</code></td>
+      <td style="text-align: right">6</td>
+      <td style="text-align: right">1</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>All rows in this example have <code class="language-plaintext highlighter-rouge">RouteType = 'C'</code>.</p>
+
+<h3 id="other-routetypes-p-and-r">Other RouteTypes (<code class="language-plaintext highlighter-rouge">P</code> and <code class="language-plaintext highlighter-rouge">R</code>)</h3>
+
+<p>The remaining route types currently represented in <code class="language-plaintext highlighter-rouge">MenuItem</code> are page routes (<code class="language-plaintext highlighter-rouge">P</code>) and redirects (<code class="language-plaintext highlighter-rouge">R</code>).</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: right">MenuItemID</th>
+      <th style="text-align: right">ParentMenuItemID</th>
+      <th style="text-align: left">Title</th>
+      <th style="text-align: center">RouteType</th>
+      <th style="text-align: left">RouteTarget</th>
+      <th style="text-align: left">VisitorMask</th>
+      <th style="text-align: right">SortOrder</th>
+      <th style="text-align: right">IsActive</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: right">64</td>
+      <td style="text-align: right">59</td>
+      <td style="text-align: left">Clinic Finder</td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">P</code> (Page)</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">/page?p=clinicfinder.html</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">PCMD</code></td>
+      <td style="text-align: right">5</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">66</td>
+      <td style="text-align: right">65</td>
+      <td style="text-align: left">All Things Pyoderma 4.2k members</td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">R</code> (Redirect)</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">/redirect?r=https://www.facebook.com/groups/368163159232</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">PCMD</code></td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">67</td>
+      <td style="text-align: right">65</td>
+      <td style="text-align: left">PG Support Group 2.6k member</td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">R</code> (Redirect)</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">/redirect?r=https://www.facebook.com/groups/56007379235</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">PCMD</code></td>
+      <td style="text-align: right">2</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">68</td>
+      <td style="text-align: right">65</td>
+      <td style="text-align: left">PG Support and Advocacy 1.4k members</td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">R</code> (Redirect)</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">/redirect?r=https://www.facebook.com/groups/345212721641027</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">PCMD</code></td>
+      <td style="text-align: right">3</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">84</td>
+      <td style="text-align: right">80</td>
+      <td style="text-align: left">Global Skin Alliance</td>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">R</code> (Redirect)</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">/redirect?r=https://globalskin.org/</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">PCMDVR</code></td>
+      <td style="text-align: right">4</td>
+      <td style="text-align: right">1</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>These rows demonstrate that page and redirect targets can appear beneath other menu items while retaining their own route-specific behavior.</p>
+
+<h3 id="table-mastermenu">Table: <code class="language-plaintext highlighter-rouge">MasterMenu</code></h3>
+
+<p><code class="language-plaintext highlighter-rouge">MasterMenu</code> stores the descriptive master-menu representation used by import, population, or legacy menu workflows. It is separate from the normalized runtime <code class="language-plaintext highlighter-rouge">MenuItem</code> hierarchy.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Column</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Nullability</th>
+      <th style="text-align: left">Constraints / purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">MenuID</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">int identity(1,1)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Identity identifier</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">ParentMenuID</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">int</code></td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">Parent reference value</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Parent</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">nvarchar(100)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Parent menu label</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Child</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">nvarchar(100)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Child menu label</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">SubMenu</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">nvarchar(100)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Submenu label</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">MenuType</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">nvarchar(10)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Menu classification</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">VisitorMask</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">nvarchar(20)</code></td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">Visitor visibility mask</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">RouteType</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">nvarchar(10)</code></td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">Route classification</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">RouteTarget</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">nvarchar(200)</code></td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">Route target</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Description</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">nvarchar(200)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Menu description</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Notes</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">nvarchar(200)</code></td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">Additional notes</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="tables-mastermenustage-and-mastermenu_stage">Tables: <code class="language-plaintext highlighter-rouge">MasterMenuStage</code> and <code class="language-plaintext highlighter-rouge">MasterMenu_Stage</code></h3>
+
+<p>These tables support staged or imported master-menu data. They retain the parent, child, submenu, menu type, visitor, routing, description, and notes fields before or during menu population.</p>
+
+<p><code class="language-plaintext highlighter-rouge">MasterMenuStage</code> has an identity <code class="language-plaintext highlighter-rouge">MenuID</code> and uses <code class="language-plaintext highlighter-rouge">MenuType</code>. <code class="language-plaintext highlighter-rouge">MasterMenu_Stage</code> has an identity <code class="language-plaintext highlighter-rouge">LoadOrder</code> and uses <code class="language-plaintext highlighter-rouge">Type</code>; it does not define a primary key or foreign keys.</p>
+
+<hr />
+
+<h2 id="3-content-tables">3. Content Tables</h2>
+
+<h3 id="table-contentdocument">Table: <code class="language-plaintext highlighter-rouge">ContentDocument</code></h3>
+
+<p>Stores the document-level descriptor associated with a menu item. A content document is the parent of one or more ordered <code class="language-plaintext highlighter-rouge">ContentElement</code> rows.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Column</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Nullability</th>
+      <th style="text-align: left">Constraints / purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">ContentDocumentID</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">int identity(1,1)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Clustered primary key</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">MenuItemID</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">int</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">FK to <code class="language-plaintext highlighter-rouge">MenuItem.MenuItemID</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">ContentType</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">char(1)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">FK to <code class="language-plaintext highlighter-rouge">ContentType.Code</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Description</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">nvarchar(500)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Document description</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">MetaData</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">nvarchar(max)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">JSON document metadata</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">WorkflowStatus</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">char(1)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Defaults to <code class="language-plaintext highlighter-rouge">D</code>; FK to <code class="language-plaintext highlighter-rouge">WorkflowStatus.Code</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">IsPublished</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">bit</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Public visibility flag</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">PublishedDate</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">datetime2(0)</code></td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">Publication timestamp</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">CreatedDate</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">datetime2(0)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Defaults to <code class="language-plaintext highlighter-rouge">sysdatetime()</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">ModifiedDate</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">datetime2(0)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Defaults to <code class="language-plaintext highlighter-rouge">sysdatetime()</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Constraints:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">CK_ContentDocument_MetaData_IsJSON</code> requires valid JSON in <code class="language-plaintext highlighter-rouge">MetaData</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">FK_ContentDocument_MenuItem</code> cascades deletion from a menu item.</li>
+  <li><code class="language-plaintext highlighter-rouge">FK_ContentDocument_ContentType</code> and <code class="language-plaintext highlighter-rouge">FK_ContentDocument_WorkflowStatus</code> enforce valid classifications.</li>
+</ul>
+
+<h3 id="table-contentelement">Table: <code class="language-plaintext highlighter-rouge">ContentElement</code></h3>
+
+<p>Stores an ordered or independently addressable content block belonging to a document.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Column</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Nullability</th>
+      <th style="text-align: left">Constraints / purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">ContentElementID</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">int identity(1,1)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Clustered primary key</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">ContentDocumentID</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">int</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">FK to <code class="language-plaintext highlighter-rouge">ContentDocument.ContentDocumentID</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">FormatType</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">char(1)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">FK to <code class="language-plaintext highlighter-rouge">FormatType.Code</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">MimeType</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">char(1)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">FK to <code class="language-plaintext highlighter-rouge">MimeType.Code</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">BlockInfo</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">nvarchar(max)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">JSON block metadata</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">TextContent</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">nvarchar(max)</code></td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">Text, HTML, or other textual payload</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">BinaryContent</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">varbinary(max)</code></td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">Binary payload</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">LocalFilePath</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">nvarchar(255)</code></td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">Local server file reference</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">ExternalFilePath</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">nvarchar(255)</code></td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">External file reference</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">CreatedDate</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">datetime2(0)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Defaults to <code class="language-plaintext highlighter-rouge">sysdatetime()</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">ModifiedDate</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">datetime2(0)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Defaults to <code class="language-plaintext highlighter-rouge">sysdatetime()</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Constraint: <code class="language-plaintext highlighter-rouge">CK_ContentElement_BlockInfo_IsJSON</code> requires valid JSON in <code class="language-plaintext highlighter-rouge">BlockInfo</code>. Deleting a document cascades to its elements.</p>
+
+<hr />
+
+<h2 id="4-staging-tables">4. Staging Tables</h2>
+
+<p>Staging tables represent content before it is promoted to the operational content tables.</p>
+
+<h3 id="table-stagingdocument">Table: <code class="language-plaintext highlighter-rouge">StagingDocument</code></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Column</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Nullability</th>
+      <th style="text-align: left">Constraints / purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">StagingDocumentID</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">int identity(1,1)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Clustered primary key</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">MenuItemID</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">int</code></td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">Optional FK to <code class="language-plaintext highlighter-rouge">MenuItem.MenuItemID</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Title</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">nvarchar(255)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Staged document title</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Description</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">nvarchar(500)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Staged document description</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">ContentType</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">char(1)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">FK to <code class="language-plaintext highlighter-rouge">ContentType.Code</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Metadata</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">nvarchar(max)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">JSON staging metadata</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">WorkflowStatus</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">char(1)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Staging workflow state</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">CreatedDate</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">datetime2(0)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Defaults to <code class="language-plaintext highlighter-rouge">sysdatetime()</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">ModifiedDate</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">datetime2(0)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Defaults to <code class="language-plaintext highlighter-rouge">sysdatetime()</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">CK_StagingDocument_Metadata_IsJSON</code> validates <code class="language-plaintext highlighter-rouge">Metadata</code>. The menu-item relationship is optional so a staged document can exist before it is assigned to navigation.</p>
+
+<h3 id="table-stagingelement">Table: <code class="language-plaintext highlighter-rouge">StagingElement</code></h3>
+
+<p>Stores staged content blocks associated with a staged document.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Column</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Nullability</th>
+      <th style="text-align: left">Constraints / purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">StagingElementID</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">int identity(1,1)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Clustered primary key</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">StagingDocumentID</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">int</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">FK to <code class="language-plaintext highlighter-rouge">StagingDocument.StagingDocumentID</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">WorkflowStatus</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">char(1)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Element workflow state; FK to <code class="language-plaintext highlighter-rouge">WorkflowStatus.Code</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">FormatType</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">char(1)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">FK to <code class="language-plaintext highlighter-rouge">FormatType.Code</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">MimeType</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">char(1)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">FK to <code class="language-plaintext highlighter-rouge">MimeType.Code</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Metadata</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">nvarchar(max)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">JSON rendering metadata</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">TextContent</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">nvarchar(max)</code></td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">Staged text payload</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">BinaryContent</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">varbinary(max)</code></td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">Staged binary payload</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">LocalFilePath</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">nvarchar(255)</code></td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">Local file reference</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">ExternalFilePath</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">nvarchar(255)</code></td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">External file reference</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">CreatedDate</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">datetime2(0)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Defaults to <code class="language-plaintext highlighter-rouge">sysdatetime()</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">ModifiedDate</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">datetime2(0)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Defaults to <code class="language-plaintext highlighter-rouge">sysdatetime()</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">CK_StagingElement_Metadata_IsJSON</code> validates <code class="language-plaintext highlighter-rouge">Metadata</code>. The staging document relationship is not configured with cascade delete.</p>
+
+<hr />
+
+<h2 id="5-registration-and-communication-tables">5. Registration and Communication Tables</h2>
+
+<h3 id="table-registration">Table: <code class="language-plaintext highlighter-rouge">Registration</code></h3>
+
+<p>Stores registered users and visitor-persona preferences.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Column</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Nullability</th>
+      <th style="text-align: left">Constraints / purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">RegistrationID</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">int identity(1,1)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Clustered primary key</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Email</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">nvarchar(500)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Unique login/contact address</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">PasswordHash</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">varbinary(256)</code></td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">Password hash</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">PasswordSalt</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">varbinary(256)</code></td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">Password salt</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">VisitorType</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">char(1)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">FK to <code class="language-plaintext highlighter-rouge">VisitorType.Code</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">IsMember</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">bit</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Membership flag</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">IsVolunteer</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">bit</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Volunteer flag</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">IsNewsLetter</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">bit</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Newsletter subscription flag</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">IsFundraising</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">bit</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Fundraising communication flag</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">IsActive</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">bit</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Account-active flag</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">CreatedDate</code>, <code class="language-plaintext highlighter-rouge">ModifiedDate</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">datetime2(0)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Audit timestamps</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">UQ_Registration_Email</code> enforces unique email addresses.</p>
+
+<h3 id="table-contact">Table: <code class="language-plaintext highlighter-rouge">Contact</code></h3>
+
+<p>Stores contact and address details for a registration.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Column</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Nullability</th>
+      <th style="text-align: left">Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">ContactID</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">int identity(1,1)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Primary key</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">RegistrationID</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">int</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">FK to <code class="language-plaintext highlighter-rouge">Registration.RegistrationID</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">FirstName</code>, <code class="language-plaintext highlighter-rouge">LastName</code>, <code class="language-plaintext highlighter-rouge">MiddleName</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">varchar(100)</code></td>
+      <td style="text-align: left">First/last NOT NULL; middle NULL</td>
+      <td style="text-align: left">Name fields</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">MobilePhone</code>, <code class="language-plaintext highlighter-rouge">HomePhone</code>, <code class="language-plaintext highlighter-rouge">WorkPhone</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">varchar(20)</code></td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">Phone fields</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">WorkEmail</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">varchar(500)</code></td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">Work email</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">AddressLine1</code>, <code class="language-plaintext highlighter-rouge">AddressLine2</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">varchar(200)</code></td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">Address fields</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">ForeignAddress</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">varchar(500)</code></td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">Non-domestic address</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">City</code>, <code class="language-plaintext highlighter-rouge">StateProvince</code>, <code class="language-plaintext highlighter-rouge">Country</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">varchar(100)</code></td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">Location fields</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">PostalCode</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">varchar(20)</code></td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">Postal code</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">DateOfBirth</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">date</code></td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">Birth date</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">CreatedDate</code>, <code class="language-plaintext highlighter-rouge">ModifiedDate</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">datetime2(0)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Audit timestamps</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="table-email">Table: <code class="language-plaintext highlighter-rouge">Email</code></h3>
+
+<p>Stores outbound email messages.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Column</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Nullability</th>
+      <th style="text-align: left">Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">EmailID</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">int identity(1,1)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Primary key</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Subject</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">varchar(200)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Subject</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">BodyText</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">nvarchar(max)</code></td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">Message body</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">SentDate</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">datetime2(7)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Defaults to <code class="language-plaintext highlighter-rouge">sysutcdatetime()</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">CreatedDate</code>, <code class="language-plaintext highlighter-rouge">ModifiedDate</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">datetime2(0)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Audit timestamps</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="table-emailrecipient">Table: <code class="language-plaintext highlighter-rouge">EmailRecipient</code></h3>
+
+<p>Associates an email with a registered recipient.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Column</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Nullability</th>
+      <th style="text-align: left">Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">EmailRecipientID</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">int identity(1,1)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Primary key</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">EmailID</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">int</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">FK to <code class="language-plaintext highlighter-rouge">Email.EmailID</code>; cascade delete</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">RegistrationID</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">int</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">FK to <code class="language-plaintext highlighter-rouge">Registration.RegistrationID</code>; cascade delete</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">DateSent</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">datetime2(7)</code></td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">Delivery timestamp</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">CreatedDate</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">datetime2(0)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Creation timestamp</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="table-emailattachment">Table: <code class="language-plaintext highlighter-rouge">EmailAttachment</code></h3>
+
+<p>Stores binary files attached to an email.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Column</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Nullability</th>
+      <th style="text-align: left">Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">EmailAttachmentID</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">int identity(1,1)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Primary key</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">EmailID</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">int</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">FK to <code class="language-plaintext highlighter-rouge">Email.EmailID</code>; cascade delete</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">FileName</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">varchar(255)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">File name</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">FileType</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">varchar(50)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">File type</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">FileData</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">varbinary(max)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">File contents</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">CreatedDate</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">datetime2(0)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Creation timestamp</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="tables-newsletter-and-publishednewsletter">Tables: <code class="language-plaintext highlighter-rouge">Newsletter</code> and <code class="language-plaintext highlighter-rouge">PublishedNewsletter</code></h3>
+
+<p><code class="language-plaintext highlighter-rouge">Newsletter</code> associates a <code class="language-plaintext highlighter-rouge">ContentDocument</code> with distribution and publication dates. <code class="language-plaintext highlighter-rouge">PublishedNewsletter</code> stores published delivery representations, including optional email recipient and URL references, with flags for email, HTML, and flyer forms.</p>
+
+<hr />
+
+<h2 id="6-system-and-utility-tables">6. System and Utility Tables</h2>
+
+<h3 id="table-systemsettings">Table: <code class="language-plaintext highlighter-rouge">SystemSettings</code></h3>
+
+<p>Stores typed application and database configuration values.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Column</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Nullability</th>
+      <th style="text-align: left">Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">SettingID</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">int identity(1,1)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Primary key</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">SettingKey</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">varchar(50)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Unique uppercase setting key</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">SettingType</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">varchar(50)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Uppercase type such as <code class="language-plaintext highlighter-rouge">STRING</code>, <code class="language-plaintext highlighter-rouge">JSON</code>, <code class="language-plaintext highlighter-rouge">GUID</code>, <code class="language-plaintext highlighter-rouge">INTEGER</code>, or <code class="language-plaintext highlighter-rouge">BOOLEAN</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">SettingGroup</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">varchar(50)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Uppercase group: <code class="language-plaintext highlighter-rouge">GLOBALVAR</code>, <code class="language-plaintext highlighter-rouge">APPLICATION</code>, <code class="language-plaintext highlighter-rouge">DATABASE</code>, or <code class="language-plaintext highlighter-rouge">SYSTEM</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">SettingValue</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">sql_variant</code></td>
+      <td style="text-align: left">NULL</td>
+      <td style="text-align: left">Typed setting value</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">LastUpdated</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">datetime2(7)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Defaults to <code class="language-plaintext highlighter-rouge">sysdatetime()</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The table enforces uppercase keys, types, and groups; valid setting types and groups; JSON and GUID validity where applicable; required values for non-string/list types; and a unique setting key.</p>
+
+<h3 id="table-systemsettings_audit">Table: <code class="language-plaintext highlighter-rouge">SystemSettings_Audit</code></h3>
+
+<p>Stores historical setting values and update timestamps. It contains <code class="language-plaintext highlighter-rouge">AuditID</code>, the original setting identity and key/type/group/value fields, <code class="language-plaintext highlighter-rouge">LastUpdated</code>, and <code class="language-plaintext highlighter-rouge">AuditDate</code>.</p>
+
+<h3 id="table-systemtables">Table: <code class="language-plaintext highlighter-rouge">SystemTables</code></h3>
+
+<p>Registers database tables for system discovery and diagnostics.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Column</th>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Nullability</th>
+      <th style="text-align: left">Constraints / purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">TableID</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">int identity(1,1)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Primary key</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">TableName</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">varchar(50)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Unique table name</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">TableType</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">varchar(15)</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Registration</code>, <code class="language-plaintext highlighter-rouge">Menu</code>, <code class="language-plaintext highlighter-rouge">Staging</code>, <code class="language-plaintext highlighter-rouge">Content</code>, <code class="language-plaintext highlighter-rouge">Lookup</code>, or <code class="language-plaintext highlighter-rouge">System</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">SortOrder</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">int</code></td>
+      <td style="text-align: left">NOT NULL</td>
+      <td style="text-align: left">Display order</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="table-numbers">Table: <code class="language-plaintext highlighter-rouge">Numbers</code></h3>
+
+<p>Stores integer values used by database loops and set-based utility procedures. <code class="language-plaintext highlighter-rouge">Number</code> is the clustered primary key.</p>
+
+<h3 id="table-errorlog">Table: <code class="language-plaintext highlighter-rouge">ErrorLog</code></h3>
+
+<p>Stores database diagnostics. It includes <code class="language-plaintext highlighter-rouge">ProcedureName</code>, error details, serialized <code class="language-plaintext highlighter-rouge">Parameters</code>, executing <code class="language-plaintext highlighter-rouge">UserName</code> and <code class="language-plaintext highlighter-rouge">HostName</code>, a constrained <code class="language-plaintext highlighter-rouge">LogLevel</code> (<code class="language-plaintext highlighter-rouge">DEBUG</code>, <code class="language-plaintext highlighter-rouge">INFO</code>, <code class="language-plaintext highlighter-rouge">WARNING</code>, or <code class="language-plaintext highlighter-rouge">ERROR</code>), and <code class="language-plaintext highlighter-rouge">LogDate</code>.</p>
+
+<hr />
+
+<h2 id="7-test-support-tables">7. Test-Support Tables</h2>
+
+<p>These tables support database validation and test harness execution. They are included in the database project but are not part of the public runtime content model.</p>
+
+<h3 id="table-testharness">Table: <code class="language-plaintext highlighter-rouge">TestHarness</code></h3>
+
+<p>Stores test cases and execution results, including test hierarchy, category, expected and actual values, menu/content identifiers, processing state, and error details.</p>
+
+<h3 id="table-menuitemtestharness">Table: <code class="language-plaintext highlighter-rouge">MenuItemTestHarness</code></h3>
+
+<p>Stores menu-specific test definitions and outcomes, including parent test relationships, expected results, menu title, route values, visitor mask, sort order, active state, processing state, and notes.</p>
+
+<hr />
+
+<h2 id="8-views">8. Views</h2>
+
+<h3 id="menuitemlist"><code class="language-plaintext highlighter-rouge">MenuItemList</code></h3>
+
+<p>Provides a flattened menu reporting and validation view. It includes the current menu item, parent menu attributes, route metadata, associated content-document metadata, parent content metadata, parent/child indicators, and a <code class="language-plaintext highlighter-rouge">MissingPlaceholder</code> flag when a content route lacks a document.</p>
+
+<h3 id="contentdocumentlist"><code class="language-plaintext highlighter-rouge">ContentDocumentList</code></h3>
+
+<p>Joins <code class="language-plaintext highlighter-rouge">ContentDocument</code> to its menu item, route type, content type, and workflow status. It is intended for content validation, administration, and reporting.</p>
+
+<h3 id="contentelementlist"><code class="language-plaintext highlighter-rouge">ContentElementList</code></h3>
+
+<p>Joins each <code class="language-plaintext highlighter-rouge">ContentElement</code> to its document, menu item, route type, content type, format type, MIME type, and workflow status. It exposes both element data and inherited document/menu metadata.</p>
+
+<h3 id="tablelist"><code class="language-plaintext highlighter-rouge">TableList</code></h3>
+
+<p>Provides database table inventory information for system discovery.</p>
+
+<h3 id="missingtablelist"><code class="language-plaintext highlighter-rouge">MissingTableList</code></h3>
+
+<p>Reports expected or registered tables that are missing from the database.</p>
+
+<hr />
+
+<h2 id="9-functions">9. Functions</h2>
+
+<p>The project defines the following reusable functions:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Create_MetaData</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Get_SystemSetting</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Get_TableList</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Normalize_ErrorMessage</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Normalize_RouteTarget</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Normalize_RouteType</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Normalize_SettingKey</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Normalize_Slug</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Normalize_Title</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Normalize_Token</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Normalize_VisitorMask</code></li>
+  <li><code class="language-plaintext highlighter-rouge">SplitCSVRow</code></li>
+  <li><code class="language-plaintext highlighter-rouge">TableExists</code></li>
+  <li><code class="language-plaintext highlighter-rouge">TablesExists</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Validate_Url</code></li>
+</ul>
+
+<p>Normalization functions enforce consistent values before validation or persistence. Discovery functions expose settings and table metadata. Existence and validation functions support deployment and database-health checks.</p>
+
+<hr />
+
+<h2 id="10-stored-procedures">10. Stored Procedures</h2>
+
+<p>Stored procedures are organized by responsibility:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Responsibility</th>
+      <th style="text-align: left">Procedures</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Initialization and deployment</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Initialize_Database</code>, <code class="language-plaintext highlighter-rouge">Create_Tables</code>, <code class="language-plaintext highlighter-rouge">Create_Lookup_Tables</code>, <code class="language-plaintext highlighter-rouge">Create_Content_Tables</code>, <code class="language-plaintext highlighter-rouge">Create_Staging_Tables</code>, <code class="language-plaintext highlighter-rouge">Create_System_Tables</code>, <code class="language-plaintext highlighter-rouge">Create_Registration_Tables</code>, <code class="language-plaintext highlighter-rouge">Create_Numbers_Table</code>, <code class="language-plaintext highlighter-rouge">Create_MenuItem_Table</code>, <code class="language-plaintext highlighter-rouge">Create_MasterMenu_Table</code>, <code class="language-plaintext highlighter-rouge">Create_ErrorLog_Table</code>, <code class="language-plaintext highlighter-rouge">Create_SystemSettings_Table</code>, <code class="language-plaintext highlighter-rouge">Create_SystemTables_Table</code>, <code class="language-plaintext highlighter-rouge">Create_TableList_Table</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Content</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Insert_ContentDocument</code>, <code class="language-plaintext highlighter-rouge">Insert_ContentElement</code>, <code class="language-plaintext highlighter-rouge">Insert_Content_Placeholder</code>, <code class="language-plaintext highlighter-rouge">Delete_Content</code>, <code class="language-plaintext highlighter-rouge">Populate_ContentDocument</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Menu</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Insert_MenuItem</code>, <code class="language-plaintext highlighter-rouge">Insert_MenuItem_Parent</code>, <code class="language-plaintext highlighter-rouge">Insert_MenuItem_Child</code>, <code class="language-plaintext highlighter-rouge">Delete_MenuItem</code>, <code class="language-plaintext highlighter-rouge">Populate_MenuItems</code>, <code class="language-plaintext highlighter-rouge">Populate_MasterMenu</code>, <code class="language-plaintext highlighter-rouge">Perform_MenuItem_Validation</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Staging</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Populate_Staging</code>, <code class="language-plaintext highlighter-rouge">Delete_Staging</code>, <code class="language-plaintext highlighter-rouge">Validate_Staging</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Lookup population</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Populate_ContentType</code>, <code class="language-plaintext highlighter-rouge">Populate_FormatType</code>, <code class="language-plaintext highlighter-rouge">Populate_MimeType</code>, <code class="language-plaintext highlighter-rouge">Populate_RouteType</code>, <code class="language-plaintext highlighter-rouge">Populate_VisitorType</code>, <code class="language-plaintext highlighter-rouge">Populate_WorkflowStatus</code>, <code class="language-plaintext highlighter-rouge">Populate_Lookup_Tables</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">System data</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Populate_SystemSettings</code>, <code class="language-plaintext highlighter-rouge">Populate_SystemTables</code>, <code class="language-plaintext highlighter-rouge">Populate_Numbers_Table</code>, <code class="language-plaintext highlighter-rouge">Set_SystemSetting</code>, <code class="language-plaintext highlighter-rouge">Get_SystemInfo</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Validation and inspection</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Validate_Database</code>, <code class="language-plaintext highlighter-rouge">Validate_Content</code>, <code class="language-plaintext highlighter-rouge">Validate_MenuItem</code>, <code class="language-plaintext highlighter-rouge">Perform_Table_Check</code>, <code class="language-plaintext highlighter-rouge">Show_Tables</code>, <code class="language-plaintext highlighter-rouge">Show_Schema</code>, <code class="language-plaintext highlighter-rouge">Show_Foreign_Keys</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Logging and messaging</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Log_Error</code>, <code class="language-plaintext highlighter-rouge">Log_Debug</code>, <code class="language-plaintext highlighter-rouge">Clear_ErrorLog</code>, <code class="language-plaintext highlighter-rouge">Print_Messages</code>, <code class="language-plaintext highlighter-rouge">Opening_Message</code>, <code class="language-plaintext highlighter-rouge">Success_Message</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Test support</td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">Create_TestHarness</code>, <code class="language-plaintext highlighter-rouge">Populate_TestHarness</code>, <code class="language-plaintext highlighter-rouge">Execute_TestHarness</code>, <code class="language-plaintext highlighter-rouge">Create_TempTable_FromCSV</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The <code class="language-plaintext highlighter-rouge">Testing</code> folder contains non-build versions and focused scripts for setup, population, normalization, URL validation, menu validation, schema display, and test execution.</p>
+
+<hr />
+
+<h2 id="11-deployment-and-data-flow">11. Deployment and Data Flow</h2>
+
+<ol>
+  <li>SSDT builds the schema objects listed in the project file.</li>
+  <li><code class="language-plaintext highlighter-rouge">Pre-Deployment.sql</code> and <code class="language-plaintext highlighter-rouge">Scripts\PreDeploy\01_Backup.sql</code> provide pre-deployment preparation and backup behavior.</li>
+  <li>Lookup, system, menu, and initial content data are populated through post-deployment scripts and population procedures.</li>
+  <li>Imported or authored content enters <code class="language-plaintext highlighter-rouge">StagingDocument</code> and <code class="language-plaintext highlighter-rouge">StagingElement</code>.</li>
+  <li>Validation procedures check staged menu, content, workflow, route, format, and metadata values.</li>
+  <li>Approved content is represented by <code class="language-plaintext highlighter-rouge">ContentDocument</code> and its <code class="language-plaintext highlighter-rouge">ContentElement</code> children.</li>
+  <li>Runtime menu queries use active <code class="language-plaintext highlighter-rouge">MenuItem</code> rows, visitor masks, route metadata, and sort order.</li>
+  <li>Runtime content queries use published <code class="language-plaintext highlighter-rouge">ContentDocument</code> rows and their associated elements.</li>
+  <li>Views provide flattened data for administration, diagnostics, and validation.</li>
+</ol>
+
+<h3 id="runtime-relationship-summary">Runtime relationship summary</h3>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>VisitorType
+    |
+Registration ---- Contact
+    |
+Email ---- EmailRecipient ---- Registration
+  |
+  +---- EmailAttachment
+
+RouteType ---- MenuItem ---- ContentDocument ---- ContentElement
+                  |                 |
+                  |                 +---- ContentType
+                  +---- parent MenuItem
+                  +---- VisitorMask
+                  +---- WorkflowStatus
+
+ContentType ---- StagingDocument ---- StagingElement
+FormatType ---- ContentElement / StagingElement
+MimeType   ---- ContentElement / StagingElement
+WorkflowStatus ---- ContentDocument / StagingElement
+</code></pre></div></div>
+
+<h2 id="12-source-of-truth">12. Source of Truth</h2>
+
+<p>This document describes the current SQL project, but the <code class="language-plaintext highlighter-rouge">.sql</code> object definitions remain authoritative when a description and implementation differ. Any future schema change should update the corresponding SQL object and this document in the same change.</p>
+
+  </div>
+</section>
+
+    </main>
+  </body>
+</html>

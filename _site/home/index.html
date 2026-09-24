@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>All Things PG - Phase 2 | PG Facts</title>
+    <title>Home | PG Facts</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -105,7 +105,7 @@
 
     <div class="page-title-bar">
   <div class="page-title-bar__inner">
-    <div class="page-title-bar__left">All Things PG - Phase 2</div>
+    <div class="page-title-bar__left">Home</div>
     <div class="page-title-bar__right">Explore the Phase 2 documentation.</div>
   </div>
 </div>
@@ -134,43 +134,84 @@
         
       </div>
     
-    <section class="home-hero">
-  <div class="page-shell">
-    <h1>Phase 2 is coming together.</h1>
-    <p>
-      The development of Phase 2 of www.allthingspg.org is under way. This site documents the changes
-      before code is finalized so stakeholders can review the plan and content model first.
-    </p>
-    <ul>
-      <li>Clarify the mission of All Things PG and the goals of the website</li>
-      <li>Identify the audience and the different needs of each visitor type</li>
-      <li>Define features that support the mission and purpose of the site</li>
-      <li>Build the database structure behind the new features</li>
-      <li>Improve the user experience and navigation</li>
-      <li>Provide help and contact support for users of the website</li>
-      <li>Build a prototype to prove new design concepts</li>
-    </ul>
-  </div>
-</section>
+    
+<h2 id="phase-2-is-coming-together">Phase 2 is coming together.</h2>
 
-<section class="home-cards">
-  <div class="page-shell">
-    <div class="home-topic-grid">
-      <a class="home-topic-tile" href="/dcms/">
-        <strong>DCMS</strong>
-        <span>Document the content model, dynamic menus, and dynamic content flow.</span>
-      </a>
-      <a class="home-topic-tile" href="/user-experience/">
-        <strong>User Experience</strong>
-        <span>Show how visitors choose a persona and move through the site.</span>
-      </a>
-      <a class="home-topic-tile" href="/database/">
-        <strong>Database</strong>
-        <span>Capture the tables, schema diagrams, and supporting structure.</span>
-      </a>
-    </div>
+<p>The development of Phase 2 of www.allthingspg.org is under way.  As a software engineering project, the first task is to document the changes before developing to code.  This allows for stateholders to understand the planned changes and have input as to how the updated website will function.  Key to phase 2 is</p>
+
+<ul>
+  <li>Clarify the mission of All Things PG and the goals of the website</li>
+  <li>Identify the audience, who will be using the website and why</li>
+  <li>identify new Phase 2 features that will support the mission and purpose of ATPG website</li>
+  <li>build a well designed and powerful database that implements the new features</li>
+  <li>enhance the user experience to make it easier to learn about PG and find what you’re looking for</li>
+  <li>collect data to support fundraising, sending emails, newsletters</li>
+  <li>provide help and contact support to users of the website</li>
+  <li>build a prototype to prove some of the new design concepts (Proof of Concept - POC)</li>
+</ul>
+
+<p>Where to begin?</p>
+
+<p>1) Start by learning about DCMS - a design concept for curating dynamic content and associating content towith dynamic menu items.</p>
+
+<p>2) Learn about the User Experience, how each type of visitor (Patients, Caregivers, Providers, Pharmaceutical Reps) can have a different user experience through the concept of a Portal.  For example:: A doctor wanting to know about treatment may want more detailed information than a patient or a caregiver.  A caregiver wants to know their role, not the doctors role.</p>
+
+<h3 id="documents">Documents</h3>
+
+<ul>
+  <li><a href="/docs/executive-summary.html">Executive Summary</a></li>
+  <li><a href="/docs/portal-experience.html">Portal Experience</a></li>
+  <li><a href="/docs/curating-content.html">Curating Content</a></li>
+  <li><a href="/docs/managing-tiles.html">Managing Tiles</a></li>
+</ul>
+
+<div class="gate-overlay" id="site-gate">
+  <div class="gate-card">
+    <h2>Administrator access</h2>
+    <p>Enter the site-wide access code to view pgfacts.org.</p>
+    <input id="gate-code" type="password" placeholder="Access code" autocomplete="off" />
+    <button type="button" id="gate-submit">Enter site</button>
+    <div class="gate-note">Simple gate for now; not a full login system.</div>
   </div>
-</section>
+</div>
+
+<script>
+  (function () {
+    var gateKey = "pgfacts-admin-unlocked";
+    var gateCode = atob("QVRQRw==");
+    var allowBlankDevelopment = false;
+    var gate = document.getElementById("site-gate");
+    var input = document.getElementById("gate-code");
+    var submit = document.getElementById("gate-submit");
+
+    function unlock() {
+      sessionStorage.setItem(gateKey, "true");
+      gate.style.display = "none";
+    }
+
+    if (sessionStorage.getItem(gateKey) === "true") {
+      gate.style.display = "none";
+      return;
+    }
+
+    submit.addEventListener("click", function () {
+      if ((allowBlankDevelopment && input.value === "") || input.value === gateCode) {
+        unlock();
+      } else {
+        input.value = "";
+        input.focus();
+        alert("Incorrect access code.");
+      }
+    });
+
+    input.addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        submit.click();
+      }
+    });
+  })();
+</script>
+
 
   </div>
 </section>

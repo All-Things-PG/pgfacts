@@ -1,8 +1,10 @@
 ---
+layout: page
 title: Schema
+nav_label: Database
+description: Relationship and table structure overview.
 permalink: /database/schema/
 ---
 
-# Schema
-
-Placeholder for the schema document.
+<h1 class="page-title">Schema</h1>
+<p>The schema describes how tables relate to each other and how the database is organized to support the site.</p>

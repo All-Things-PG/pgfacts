@@ -1,10 +1,6 @@
-<div class="oldsite-title-bar-section">
-  <div class="oldsite-container-inner">
-    <div class="oldsite-title-bar">
-      <span class="oldsite-breadcrumb">{% if page.breadcrumb %}{{ page.breadcrumb }}{% else %}{{ page.title }}{% endif %}</span>
-      {% if page.description %}
-        <span class="oldsite-page-description">{{ page.description }}</span>
-      {% endif %}
-    </div>
+<div class="page-title-bar">
+  <div class="page-title-bar__inner">
+    <div class="page-title-bar__left">{% if page.nav_label %}{{ page.nav_label }}{% else %}{{ page.title }}{% endif %}</div>
+    <div class="page-title-bar__right">{% if page.description %}{{ page.description }}{% endif %}</div>
   </div>
 </div>

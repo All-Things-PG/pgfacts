@@ -1,21 +1,32 @@
 ---
-layout: page
-title: What is DCMS?
-breadcrumb: DCMS > What is DCMS?
-description: Overview of the Dynamic Content and Menuing System.
-updated: 2026-09-18
+layout: home
+title: DCMS
+nav_label: DCMS
+description: Dynamic Content and Menuing System
+permalink: /dcms/
+topic_key: dcms
 ---
 
-# DCMS - Dynamic Content and Menuing System
+{% assign topic = site.data.topic_pages.dcms %}
+<section class="home-hero">
+  <h1>Welcome to DCMS - Dynamic Content and Menuing System</h1>
+  <p>{{ topic.summary }}</p>
+  <p>Explore the individual topics below to see how content, menus, and page structure work together.</p>
+</section>
 
-## Executive Summary
-
-All Things PG needs a website that does more than present information. It needs a platform that can grow with the organization, serve different audiences well, and keep content maintainable over time.
-
-The **Dynamic Content and Menuing System (DCMS)** is the proposed Phase 2 platform. It is designed to turn the website into a durable community resource for patients, caregivers, healthcare professionals, researchers, industry partners, and supporters.
-
-The goal is simple:
-
-* **Right Audience** &rarr; Right Navigation &rarr; Right Content &rarr; Right Tools &rarr; Right Next Step
-
-This is a focused content platform built around the real needs of the PG community.
+<table class="topic-table" aria-label="DCMS documents">
+  <thead>
+    <tr>
+      <th>Page Description</th>
+      <th>Document</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in topic.pages %}
+    <tr>
+      <td>{{ item.description }}</td>
+      <td><a href="{{ item.url | relative_url }}">{{ item.title }}</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>

@@ -31,7 +31,6 @@ a {
 .site-brand {
   display: inline-flex;
   align-items: center;
-  flex: 0 0 auto;
   text-decoration: none;
 }
 
@@ -60,7 +59,6 @@ a {
   font-weight: 700;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  padding: 0;
 }
 
 .site-nav__summary::-webkit-details-marker {
@@ -133,9 +131,21 @@ a {
   font-weight: 700;
 }
 
-.home-hero {
+.home-page,
+.page-content {
   background: #fff7ef;
-  padding: 42px 0 22px;
+}
+
+.home-page {
+  padding: 42px 0 48px;
+}
+
+.page-content {
+  padding: 26px 0 48px;
+}
+
+.home-hero {
+  padding: 0 0 22px;
 }
 
 .home-hero h1 {
@@ -145,20 +155,18 @@ a {
 }
 
 .home-hero p,
-.home-hero li {
+.home-hero li,
+.page-content p,
+.page-content li {
   font-size: 18px;
   line-height: 1.35;
-}
-
-.home-cards {
-  background: #fff7ef;
-  padding: 18px 0 42px;
 }
 
 .home-topic-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
+  margin-bottom: 26px;
 }
 
 .home-topic-tile {
@@ -182,6 +190,43 @@ a {
   display: block;
   font-size: 16px;
   line-height: 1.35;
+}
+
+.topic-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+.topic-table th,
+.topic-table td {
+  border-bottom: 1px solid #ddd;
+  padding: 12px 14px;
+  vertical-align: top;
+}
+
+.topic-table th {
+  text-align: left;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #444;
+}
+
+.page-title {
+  font-size: 28px;
+  margin: 0 0 18px;
+}
+
+.page-summary {
+  margin: 0 0 20px;
+  max-width: 1100px;
+}
+
+.content-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px 22px;
 }
 
 @media (max-width: 1100px) {

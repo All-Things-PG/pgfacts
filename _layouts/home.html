@@ -1,14 +1,13 @@
 ---
 layout: default
 ---
-{% include page-banner.html %}
-<section class="oldsite-page-content">
-  <div class="oldsite-container-inner">
-    {% assign topic_group = site.data.home_topic_groups[page.banner_tile_group] %}
+{% assign topic_group = site.data.topic_pages[page.topic_key] %}
+<section class="home-page">
+  <div class="page-shell">
     {% if topic_group %}
-      <div class="pg-home-topic-grid">
+      <div class="home-topic-grid">
         {% for tile in topic_group.tiles %}
-          <a class="pg-home-topic-tile" href="{{ tile.url | relative_url }}">
+          <a class="home-topic-tile" href="{{ tile.url | relative_url }}">
             <strong>{{ tile.title }}</strong>
             <span>{{ tile.description }}</span>
           </a>

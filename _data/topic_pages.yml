@@ -1,0 +1,122 @@
+dcms:
+  title: DCMS
+  description: Dynamic Content and Menuing System
+  summary: >-
+    Welcome to DCMS - Dynamic Content and Menuing System. DCMS is central to the design of
+    Phase 2 of the All Things PG website and provides the structure for curating content and
+    menu-driven navigation.
+  pages:
+    - title: What is DCMS?
+      description: Overview of the Dynamic Content and Menuing System.
+      url: /dcms/what-is-dcms/
+    - title: Dynamic Content
+      description: How content is organized and rendered dynamically.
+      url: /dcms/dynamic-content/
+    - title: Dynamic Menus
+      description: Menu behavior and topic navigation.
+      url: /dcms/dynamic-menus/
+    - title: Curating Content
+      description: How content is grouped and presented.
+      url: /dcms/curating-content/
+    - title: Managing Tiles
+      description: How portal tiles are selected and displayed.
+      url: /dcms/managing-tiles/
+  tiles:
+    - title: Dynamic Content
+      description: Content driven by the topic model and page registry.
+      url: /dcms/dynamic-content/
+    - title: Dynamic Menus
+      description: The menu experience that routes to each topic page.
+      url: /dcms/dynamic-menus/
+    - title: Curating Content
+      description: The structure for organizing content by topic.
+      url: /dcms/curating-content/
+database:
+  title: Database
+  description: Data model for Phase 2
+  summary: >-
+    Welcome to the DCMS Database that has been added to All Things PG. A database allows new
+    features such as a Patient Registry, newsletters, and storing information about your portal
+    experience.
+  pages:
+    - title: Why have a database?
+      description: Why Phase 2 needs persistent data.
+      url: /database/why-have-a-database/
+    - title: Main Tables
+      description: Core data tables for the site.
+      url: /database/main-tables/
+    - title: Schema
+      description: Relationship and table structure overview.
+      url: /database/schema/
+    - title: Diagrams
+      description: Visual support for the database design.
+      url: /database/diagrams/
+  tiles:
+    - title: Why have a database?
+      description: The case for structured data in Phase 2.
+      url: /database/why-have-a-database/
+    - title: Main Tables
+      description: The tables that hold people, content, and interactions.
+      url: /database/main-tables/
+    - title: Schema
+      description: The structural model for the database.
+      url: /database/schema/
+user-experience:
+  title: User Experience
+  description: Visitor experiences by persona
+  summary: >-
+    Under User Experience we describe what a portal is and how the experience can differ for
+    patients, caregivers, providers, pharmaceutical visitors, and guests.
+  pages:
+    - title: What is a Portal?
+      description: Define the portal concept for Phase 2.
+      url: /user-experience/what-is-a-portal/
+    - title: Selecting a User Experience
+      description: Choosing the right visitor experience.
+      url: /user-experience/selecting-a-user-experience/
+    - title: Patients
+      description: Patient-focused portal experience.
+      url: /user-experience/patients/
+    - title: Caregivers
+      description: Caregiver-focused portal experience.
+      url: /user-experience/caregivers/
+    - title: Providers
+      description: Provider-focused portal experience.
+      url: /user-experience/providers/
+    - title: Pharmaceutical
+      description: Pharmaceutical visitor experience.
+      url: /user-experience/pharmaceutical/
+    - title: Guest
+      description: A lighter guest experience.
+      url: /user-experience/guest/
+  tiles:
+    - title: Patients
+      description: Patient portal entry point.
+      url: /user-experience/patients/
+    - title: Caregivers
+      description: Caregiver portal entry point.
+      url: /user-experience/caregivers/
+    - title: Providers
+      description: Provider portal entry point.
+      url: /user-experience/providers/
+    - title: Pharmaceutical
+      description: Pharmaceutical portal entry point.
+      url: /user-experience/pharmaceutical/
+    - title: Guest
+      description: Guest portal entry point.
+      url: /user-experience/guest/
+about:
+  title: About
+  description: Background and contact
+  summary: >-
+    About All Things PG, the Phase 2 effort, and the designer behind the work.
+  pages:
+    - title: All Things PG
+      description: A short description of the project and vision.
+      url: /about/all-things-pg/
+    - title: Phase 2 Development
+      description: Where Phase 2 is headed and why.
+      url: /about/phase-2-development/
+    - title: The Designer
+      description: Background and contact information.
+      url: /about/the-designer/

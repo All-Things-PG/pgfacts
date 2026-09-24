@@ -1,59 +1,15 @@
 - label: Welcome
   url: /home/
-  children:
-    - label: Home
-      url: /home/
-    - label: Executive Summary
-      url: /dcms/DCMS_Executive_Summary.html
-    - label: Explore Documentation
-      url: /docs/
+  description: Explore the Phase 2 documentation.
 - label: User Experience
   url: /user-experience/
-  children:
-    - label: What is a Portal?
-      url: /dcms/DCMS_Portal_Experience.html
-    - label: Selecting a User Experience
-      url: /user-experience/selecting-a-user-experience/
-    - label: Patients
-      url: /user-experience/patients/
-    - label: Caregivers
-      url: /user-experience/caregivers/
-    - label: Providers
-      url: /user-experience/providers/
-    - label: Pharmaceutical
-      url: /user-experience/pharmaceutical/
-    - label: Guest
-      url: /user-experience/guest/
+  description: Portal experiences for each visitor type.
 - label: DCMS
   url: /dcms/
-  children:
-    - label: What is DCMS?
-      url: /dcms/
-    - label: Dynamic Content
-      url: /dcms/DCMS_Dynamic_Content.html
-    - label: Dynamic Menus
-      url: /dcms/DCMS_Dynamic_Menus.html
-    - label: Curating Content
-      url: /dcms/DCMS_Curating_Content.html
-    - label: Managing Tiles
-      url: /dcms/DCMS_Managing_Tiles.html
+  description: Dynamic Content and Menuing System.
 - label: Database
   url: /database/
-  children:
-    - label: System
-      url: /database/system/
-    - label: Staging
-      url: /database/staging/
-    - label: Content
-      url: /database/content/
-    - label: Menus
-      url: /database/menus/
-    - label: Registration
-      url: /database/registration/
-    - label: Schema
-      url: /database/DCMS_Database_Schema.html
+  description: Data model for Phase 2 features.
 - label: About
   url: /about/
-  children:
-    - label: All Things PG
-      url: /about/all-things-pg/
+  description: Background and contact information.

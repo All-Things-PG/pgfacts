@@ -16,16 +16,21 @@
     var gate = document.getElementById("site-gate");
     var input = document.getElementById("gate-code");
     var submit = document.getElementById("gate-submit");
+    var body = document.body;
 
     function unlock() {
       sessionStorage.setItem(gateKey, "true");
       gate.style.display = "none";
+      body.classList.remove("gate-locked");
     }
 
     if (sessionStorage.getItem(gateKey) === "true") {
       gate.style.display = "none";
+      body.classList.remove("gate-locked");
       return;
     }
+
+    body.classList.add("gate-locked");
 
     submit.addEventListener("click", function () {
       if ((allowBlankDevelopment && input.value === "") || input.value === gateCode) {

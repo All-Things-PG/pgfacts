@@ -1,6 +1,5 @@
 title: All Things PG
 description: Public documentation for Phase 2 of All Things PG
-theme: minima
 markdown: kramdown
 plugins:
   - jekyll-feed
@@ -10,3 +9,8 @@ exclude:
   - home/home.md
 gateway:
   allow_blank_development: false
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: page

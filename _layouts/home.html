@@ -1,10 +1,9 @@
 ---
 layout: default
 ---
-{% include page-banner.html %}
 <section class="oldsite-page-content">
   <div class="oldsite-container-inner">
-    {% assign topic_group = site.data.home_topic_groups[page.banner_tile_group] %}
+    {% assign topic_group = site.data.home_topic_groups[page.banner_tile_group] | default: site.data.topic_pages[page.topic_key] %}
     {% if topic_group %}
       <div class="pg-home-topic-grid">
         {% for tile in topic_group.tiles %}

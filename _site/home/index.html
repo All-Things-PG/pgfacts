@@ -180,6 +180,37 @@
   </div>
 </header>
 
+<script>
+  (function () {
+    var groups = document.querySelectorAll('.site-nav__group');
+
+    function closeOthers(current) {
+      for (var i = 0; i < groups.length; i += 1) {
+        if (groups[i] !== current) {
+          groups[i].removeAttribute('open');
+        }
+      }
+    }
+
+    for (var i = 0; i < groups.length; i += 1) {
+      groups[i].addEventListener('toggle', function (event) {
+        if (event.target.open) {
+          closeOthers(event.target);
+        }
+      });
+    }
+
+    document.addEventListener('click', function (event) {
+      var clickedMenu = event.target.closest && event.target.closest('.site-nav__group');
+      if (!clickedMenu) {
+        for (var j = 0; j < groups.length; j += 1) {
+          groups[j].removeAttribute('open');
+        }
+      }
+    });
+  })();
+</script>
+
     <div class="page-title-bar">
   <div class="page-title-bar__inner">
     <div class="page-title-bar__left">Home</div>

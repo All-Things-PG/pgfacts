@@ -89,11 +89,13 @@ a {
   position: absolute;
   top: calc(100% + 10px);
   left: 0;
-  min-width: 260px;
+  min-width: 220px;
+  max-width: 280px;
   background: #fff;
   border-top: 4px solid #f58220;
   box-shadow: 0 16px 28px rgba(0,0,0,.12);
   z-index: 20;
+  white-space: normal;
 }
 
 .site-nav__panel-label {
@@ -111,6 +113,7 @@ a {
   text-transform: uppercase;
   font-size: 14px;
   color: #2b2b2b;
+  line-height: 1.2;
 }
 
 .site-nav__panel a:hover {

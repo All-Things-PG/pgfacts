@@ -218,84 +218,360 @@
   <div class="page-shell content-card">
     <h1 id="pg-facts-site-guide">PG Facts Site Guide</h1>
 
-<p>This page is the working guide for the PG Facts site structure, navigation, and content model.</p>
+<p>This is the working guide for maintaining the PG Facts site. It explains where the navigation comes from, which files control page content, how topic tiles are built, and what to edit when you want to add or change descriptions.</p>
 
-<h2 id="purpose">Purpose</h2>
+<h2 id="what-the-front-matter-means">What the front matter means</h2>
 
-<p>PG Facts is a Phase 2 documentation site for All Things PG. It is organized around a small set of topics:</p>
+<p>At the top of many Markdown files you will see a block like this:</p>
 
-<ul>
+<table>
+  <thead>
+    <tr>
+      <th>field</th>
+      <th>purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">layout</code></td>
+      <td>Which layout the page uses.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">title</code></td>
+      <td>The page title shown in the browser and on the page.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">nav_label</code></td>
+      <td>The top-level menu/topic label used in the breadcrumb/title bar.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">description</code></td>
+      <td>The short description shown in the title bar.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">permalink</code></td>
+      <td>The URL for the page.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>These fields are Jekyll metadata. They are not part of the visible content, but they control how the site is rendered. Even if this guide is mostly for you behind the scenes, these fields still matter because the guide itself is a page in the site build.</p>
+
+<h2 id="the-main-idea">The main idea</h2>
+
+<p>The site is organized around a small set of topics:</p>
+
+<ol>
   <li>Welcome</li>
   <li>User Experience</li>
   <li>DCMS</li>
   <li>Database</li>
   <li>About</li>
-</ul>
+</ol>
 
-<p>Each topic has a landing page and a shared set of topic tiles or linked documents.</p>
-
-<h2 id="how-the-site-is-organized">How the site is organized</h2>
+<p>Each topic has:</p>
 
 <ul>
-  <li><strong><code class="language-plaintext highlighter-rouge">_data/navigation.yml</code></strong> stores the top-level menu labels and descriptions.</li>
-  <li><strong><code class="language-plaintext highlighter-rouge">_data/topic_pages.yml</code></strong> stores the page lists, tile lists, and topic summary text.</li>
-  <li><strong><code class="language-plaintext highlighter-rouge">_includes/site-header.html</code></strong> renders the shared header and dropdown menus.</li>
-  <li><strong><code class="language-plaintext highlighter-rouge">_includes/page-banner.html</code></strong> renders the title bar with menu label and page description.</li>
-  <li><strong><code class="language-plaintext highlighter-rouge">_includes/site-gate.html</code></strong> renders the site-wide admin gate.</li>
-  <li><strong><code class="language-plaintext highlighter-rouge">_layouts/home.html</code></strong> renders topic landing pages with their shared tile grid.</li>
-  <li><strong><code class="language-plaintext highlighter-rouge">_layouts/page.html</code></strong> renders the individual content pages.</li>
+  <li>a top-level menu item</li>
+  <li>a topic landing page</li>
+  <li>a shared set of tiles or related links</li>
+  <li>page descriptions for the linked documents</li>
 </ul>
+
+<p>The topic name in the menu is meant to be the source for the breadcrumb/title bar label. The topic landing page contains the topic content. The linked pages contain the detailed documents.</p>
+
+<h2 id="what-to-edit-for-what-purpose">What to edit for what purpose</h2>
+
+<h3 id="change-a-menu-label-menu-order-or-top-level-menu-description">Change a menu label, menu order, or top-level menu description</h3>
+
+<p>Edit:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">_data/navigation.yml</code></li>
+</ul>
+
+<p>This file controls the top-level menu labels and the basic descriptions associated with them.</p>
+
+<h3 id="change-the-topic-landing-text-tile-list-or-document-list">Change the topic landing text, tile list, or document list</h3>
+
+<p>Edit:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">_data/topic_pages.yml</code></li>
+</ul>
+
+<p>This file is the main source of truth for:</p>
+
+<ul>
+  <li>topic summaries</li>
+  <li>topic landing page document lists</li>
+  <li>topic tile text</li>
+  <li>page descriptions used in the topic tables</li>
+</ul>
+
+<h3 id="change-the-headermenu-behavior">Change the header/menu behavior</h3>
+
+<p>Edit:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">_includes/site-header.html</code></li>
+</ul>
+
+<p>This file controls:</p>
+
+<ul>
+  <li>the logo</li>
+  <li>the top navigation</li>
+  <li>dropdown behavior</li>
+  <li>the contact button</li>
+</ul>
+
+<h3 id="change-the-page-title-bar-or-breadcrumb-like-label">Change the page title bar or breadcrumb-like label</h3>
+
+<p>Edit:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">_includes/page-banner.html</code></li>
+</ul>
+
+<p>This is where the menu/topic label and short description appear under the header.</p>
+
+<h3 id="change-the-site-wide-gate">Change the site-wide gate</h3>
+
+<p>Edit:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">_includes/site-gate.html</code></li>
+  <li><code class="language-plaintext highlighter-rouge">assets/css/style.css</code></li>
+</ul>
+
+<p>The gate is the overlay shown before access. The code is case-insensitive for <code class="language-plaintext highlighter-rouge">ATPG</code>.</p>
+
+<h3 id="change-the-layout-for-topic-pages-or-standard-pages">Change the layout for topic pages or standard pages</h3>
+
+<p>Edit:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">_layouts/home.html</code></li>
+  <li><code class="language-plaintext highlighter-rouge">_layouts/page.html</code></li>
+  <li><code class="language-plaintext highlighter-rouge">_layouts/default.html</code></li>
+</ul>
+
+<p>These control the page wrappers and how topic landing pages differ from normal content pages.</p>
+
+<h3 id="change-the-site-look-and-spacing">Change the site look and spacing</h3>
+
+<p>Edit:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">assets/css/style.css</code></li>
+</ul>
+
+<p>This file controls:</p>
+
+<ul>
+  <li>logo size</li>
+  <li>menu spacing</li>
+  <li>dropdown width</li>
+  <li>page title bar spacing</li>
+  <li>tile widths</li>
+  <li>table styling</li>
+  <li>gate styling</li>
+</ul>
+
+<h2 id="folder-structure">Folder structure</h2>
+
+<h3 id="home"><code class="language-plaintext highlighter-rouge">home/</code></h3>
+
+<p>The home section contains the landing page for the site.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">home/index.md</code> is the home page entry point</li>
+  <li><code class="language-plaintext highlighter-rouge">home/home.md</code> is the page content that appears on the home page</li>
+</ul>
+
+<h3 id="dcms"><code class="language-plaintext highlighter-rouge">dcms/</code></h3>
+
+<p>This folder contains the DCMS topic pages.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">dcms/index.md</code> is the DCMS landing page</li>
+  <li><code class="language-plaintext highlighter-rouge">dcms/what-is-dcms.md</code></li>
+  <li><code class="language-plaintext highlighter-rouge">dcms/dynamic-content.md</code></li>
+  <li><code class="language-plaintext highlighter-rouge">dcms/dynamic-menus.md</code></li>
+  <li>and the other DCMS-related documents</li>
+</ul>
+
+<h3 id="database"><code class="language-plaintext highlighter-rouge">database/</code></h3>
+
+<p>This folder contains the database topic pages.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">database/index.md</code> is the Database landing page</li>
+  <li><code class="language-plaintext highlighter-rouge">database/why-have-a-database.md</code></li>
+  <li><code class="language-plaintext highlighter-rouge">database/main-tables.md</code></li>
+  <li><code class="language-plaintext highlighter-rouge">database/schema.md</code></li>
+  <li><code class="language-plaintext highlighter-rouge">database/diagrams.md</code></li>
+</ul>
+
+<h3 id="user-experience"><code class="language-plaintext highlighter-rouge">user-experience/</code></h3>
+
+<p>This folder contains the persona / portal pages.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">user-experience/index.md</code> is the User Experience landing page</li>
+  <li><code class="language-plaintext highlighter-rouge">user-experience/what-is-a-portal.md</code></li>
+  <li><code class="language-plaintext highlighter-rouge">user-experience/selecting-a-user-experience.md</code></li>
+  <li><code class="language-plaintext highlighter-rouge">user-experience/patients.md</code></li>
+  <li><code class="language-plaintext highlighter-rouge">user-experience/caregivers.md</code></li>
+  <li><code class="language-plaintext highlighter-rouge">user-experience/providers.md</code></li>
+  <li><code class="language-plaintext highlighter-rouge">user-experience/pharmaceutical.md</code></li>
+  <li><code class="language-plaintext highlighter-rouge">user-experience/guest.md</code></li>
+</ul>
+
+<h3 id="about"><code class="language-plaintext highlighter-rouge">about/</code></h3>
+
+<p>This folder contains the About pages.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">about/index.md</code> is the About landing page</li>
+  <li><code class="language-plaintext highlighter-rouge">about/all-things-pg.md</code></li>
+  <li><code class="language-plaintext highlighter-rouge">about/phase-2-development.md</code></li>
+  <li><code class="language-plaintext highlighter-rouge">about/the-designer.md</code></li>
+</ul>
+
+<h3 id="docs"><code class="language-plaintext highlighter-rouge">docs/</code></h3>
+
+<p>This folder contains the guides and supporting public documentation.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">docs/pgfacts-site-guide.md</code> is this guide</li>
+  <li><code class="language-plaintext highlighter-rouge">docs/executive-summary.md</code></li>
+  <li><code class="language-plaintext highlighter-rouge">docs/curating-content.md</code></li>
+  <li><code class="language-plaintext highlighter-rouge">docs/managing-tiles.md</code></li>
+  <li><code class="language-plaintext highlighter-rouge">docs/portal-experience.md</code></li>
+</ul>
+
+<h3 id="_data"><code class="language-plaintext highlighter-rouge">_data/</code></h3>
+
+<p>This folder stores the site’s structured data.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">_data/navigation.yml</code> controls the top menu</li>
+  <li><code class="language-plaintext highlighter-rouge">_data/topic_pages.yml</code> controls topic summaries, tiles, and page lists</li>
+</ul>
+
+<h3 id="_includes"><code class="language-plaintext highlighter-rouge">_includes/</code></h3>
+
+<p>Reusable pieces of the layout live here.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">_includes/site-header.html</code></li>
+  <li><code class="language-plaintext highlighter-rouge">_includes/page-banner.html</code></li>
+  <li><code class="language-plaintext highlighter-rouge">_includes/site-gate.html</code></li>
+</ul>
+
+<h3 id="_layouts"><code class="language-plaintext highlighter-rouge">_layouts/</code></h3>
+
+<p>Page templates live here.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">_layouts/default.html</code></li>
+  <li><code class="language-plaintext highlighter-rouge">_layouts/home.html</code></li>
+  <li><code class="language-plaintext highlighter-rouge">_layouts/page.html</code></li>
+  <li><code class="language-plaintext highlighter-rouge">_layouts/redirect.html</code></li>
+</ul>
+
+<h3 id="assets"><code class="language-plaintext highlighter-rouge">assets/</code></h3>
+
+<p>Shared styling and images live here.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">assets/css/style.css</code></li>
+  <li><code class="language-plaintext highlighter-rouge">assets/images/pg-logo.png</code></li>
+</ul>
+
+<h2 id="navigation-behavior">Navigation behavior</h2>
+
+<p>The top-level menu item should do two things:</p>
+
+<ol>
+  <li>act as a clickable link to the topic landing page</li>
+  <li>open a dropdown with the related pages for that topic</li>
+</ol>
+
+<p>That means the topic label is the navigation entry, and the dropdown is the menu list. The dropdown should not be the only way to reach the topic page.</p>
 
 <h2 id="topic-landing-pages">Topic landing pages</h2>
 
-<p>Each topic folder has an <code class="language-plaintext highlighter-rouge">index.md</code> file that acts as the landing page for that topic.
-Those pages should:</p>
+<p>When you click a topic such as DCMS, Database, or User Experience, the landing page should show:</p>
+
+<ul>
+  <li>a short topic introduction</li>
+  <li>the list of pages in that topic</li>
+  <li>optional tiles for the topic</li>
+</ul>
+
+<p>The page title comes from the page itself. The menu label comes from the navigation data.</p>
+
+<h2 id="page-descriptions">Page descriptions</h2>
+
+<p>Page descriptions are what you see in the title bar next to the label. They should come from the page front matter when possible, or from the topic registry when the landing page is being generated.</p>
+
+<p>Use the descriptions in <code class="language-plaintext highlighter-rouge">_data/topic_pages.yml</code> when you want to maintain the page list and the page descriptions in one place.</p>
+
+<h2 id="tile-descriptions">Tile descriptions</h2>
+
+<p>Tile text should live in <code class="language-plaintext highlighter-rouge">_data/topic_pages.yml</code>, not inside every page file. That keeps topic tiles consistent and easier to edit.</p>
+
+<h2 id="images-diagrams-and-bitmaps">Images, diagrams, and bitmaps</h2>
+
+<p>Images should be stored in a tracked asset folder such as <code class="language-plaintext highlighter-rouge">assets/images/</code>.</p>
+
+<p>Use them from Markdown with normal image links or HTML:</p>
+
+<div class="language-md highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">![</span><span class="nv">Database diagram</span><span class="p">](</span><span class="sx">/assets/images/database-diagram.png</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>For screenshots or SSMS diagrams, keep the image file separate and reference it from the page that needs it.</p>
+
+<h2 id="what-to-keep-consistent">What to keep consistent</h2>
+
+<ul>
+  <li>Keep menu labels short and stable.</li>
+  <li>Keep page descriptions brief.</li>
+  <li>Keep topic landing pages and the registry data in sync.</li>
+  <li>Keep dropdowns limited to the pages in that topic.</li>
+  <li>Keep the desktop layout readable, then simplify for mobile later.</li>
+</ul>
+
+<h2 id="editing-workflow">Editing workflow</h2>
+
+<p>When adding a new page:</p>
 
 <ol>
-  <li>Introduce the topic with a short summary.</li>
-  <li>Show a list of related pages or tiles.</li>
-  <li>Keep the page title in the Markdown file.</li>
-  <li>Keep the breadcrumb/title-bar label in the menu data.</li>
+  <li>Create the Markdown file in the right folder.</li>
+  <li>Add a <code class="language-plaintext highlighter-rouge">title</code>, <code class="language-plaintext highlighter-rouge">nav_label</code>, and <code class="language-plaintext highlighter-rouge">description</code> in front matter.</li>
+  <li>Add the page to <code class="language-plaintext highlighter-rouge">_data/topic_pages.yml</code>.</li>
+  <li>Add or update the dropdown entry in <code class="language-plaintext highlighter-rouge">_data/navigation.yml</code> if needed.</li>
+  <li>Build and check the page from the topic landing page and the menu.</li>
 </ol>
 
-<h2 id="editing-rules">Editing rules</h2>
+<p>When changing a topic:</p>
 
-<ul>
-  <li>Add or edit menu labels in <code class="language-plaintext highlighter-rouge">_data/navigation.yml</code>.</li>
-  <li>Add or edit page descriptions, landing summaries, and tile text in <code class="language-plaintext highlighter-rouge">_data/topic_pages.yml</code>.</li>
-  <li>Keep the short page title in each document’s front matter.</li>
-  <li>Use <code class="language-plaintext highlighter-rouge">nav_label</code> in page front matter when the breadcrumb should match the top-level menu item.</li>
-  <li>Use <code class="language-plaintext highlighter-rouge">description</code> in page front matter for the title bar description.</li>
-</ul>
-
-<h2 id="menu-behavior">Menu behavior</h2>
-
-<ul>
-  <li>Top-level items open dropdown menus.</li>
-  <li>The dropdown content comes from the topic registry when available.</li>
-  <li>The contact button stays in the header.</li>
-</ul>
-
-<h2 id="images-and-diagrams">Images and diagrams</h2>
-
-<p>Images should live in <code class="language-plaintext highlighter-rouge">assets/images/</code> or another tracked asset folder and be referenced from Markdown with normal image links or HTML.
-Database diagrams, SSMS exports, screenshots, and similar bitmap files can be embedded in pages when needed.</p>
-
-<h2 id="current-content-model">Current content model</h2>
-
-<ul>
-  <li><strong>DCMS</strong> explains the content model, dynamic menus, and content flow.</li>
-  <li><strong>Database</strong> explains the data model and future persistent features.</li>
-  <li><strong>User Experience</strong> explains portal experiences by visitor type.</li>
-  <li><strong>About</strong> holds project and contact information.</li>
-</ul>
+<ol>
+  <li>Update the topic summary in <code class="language-plaintext highlighter-rouge">_data/topic_pages.yml</code>.</li>
+  <li>Update the topic landing page content.</li>
+  <li>Add or remove page links in the topic page list.</li>
+  <li>Adjust tile text if the topic has tiles.</li>
+</ol>
 
 <h2 id="notes">Notes</h2>
 
 <ul>
-  <li>The site uses a static build, so all navigation and content relationships need to be defined in the repo.</li>
-  <li>Keep the landing pages and topic registry in sync to avoid dead links.</li>
-  <li>Keep the header and title bar layout stable to avoid visual shifts between pages.</li>
+  <li>The guide can stay in <code class="language-plaintext highlighter-rouge">docs/</code> as a helper page, but it is really a working reference.</li>
+  <li>If you want a private-only note later, it can move to a non-published location, but this version is usable as a site guide.</li>
+  <li>The goal is to keep the navigation, topic pages, and descriptions driven from the repo data instead of scattered through individual pages.</li>
 </ul>
 
   </div>

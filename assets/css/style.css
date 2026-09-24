@@ -71,6 +71,11 @@ a {
   text-transform: uppercase;
 }
 
+.site-nav__summary-link {
+  text-decoration: none;
+  color: inherit;
+}
+
 .site-nav__summary::-webkit-details-marker {
   display: none;
 }

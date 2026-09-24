@@ -33,7 +33,8 @@
     body.classList.add("gate-locked");
 
     submit.addEventListener("click", function () {
-      if ((allowBlankDevelopment && input.value === "") || input.value === gateCode) {
+      var entered = input.value.trim().toUpperCase();
+      if ((allowBlankDevelopment && input.value === "") || entered === gateCode) {
         unlock();
       } else {
         input.value = "";

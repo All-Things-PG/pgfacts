@@ -5,6 +5,16 @@ body {
   background: #fff;
 }
 
+body.gate-locked {
+  overflow: hidden;
+}
+
+body.gate-locked > :not(.gate-overlay) {
+  filter: blur(1px);
+  pointer-events: none;
+  user-select: none;
+}
+
 a {
   color: inherit;
 }

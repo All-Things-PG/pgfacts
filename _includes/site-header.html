@@ -10,9 +10,6 @@
             <a class="site-nav__summary-link" href="{{ item.url | relative_url }}">{{ item.label }}</a>
           </summary>
           <div class="site-nav__panel">
-            {% if item.description %}
-              <div class="site-nav__panel-label">{{ item.description }}</div>
-            {% endif %}
             {% if site.data.topic_pages[item.key].pages %}
               {% for child in site.data.topic_pages[item.key].pages %}
                 <a href="{{ child.url | relative_url }}">{{ child.title }}</a>

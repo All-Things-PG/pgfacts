@@ -90,7 +90,14 @@ a {
   content: "▴";
 }
 
+.site-nav__group:hover .site-nav__panel,
+.site-nav__group:focus-within .site-nav__panel,
+.site-nav__group[open] .site-nav__panel {
+  display: block;
+}
+
 .site-nav__panel {
+  display: none;
   position: absolute;
   top: calc(100% + 10px);
   left: 0;
@@ -101,14 +108,6 @@ a {
   box-shadow: 0 16px 28px rgba(0,0,0,.12);
   z-index: 20;
   white-space: normal;
-}
-
-.site-nav__panel-label {
-  padding: 12px 18px 8px;
-  font-size: 12px;
-  color: #666;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
 }
 
 .site-nav__panel a {

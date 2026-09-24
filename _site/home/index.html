@@ -11,6 +11,53 @@
     <link rel="stylesheet" href="/assets/css/style.css">
   </head>
   <body>
+    <div class="gate-overlay" id="site-gate">
+  <div class="gate-card">
+    <h2>Administrator access</h2>
+    <p>Enter the site-wide access code to view pgfacts.org.</p>
+    <input id="gate-code" type="password" placeholder="Access code" autocomplete="off">
+    <button type="button" id="gate-submit">Enter site</button>
+    <div class="gate-note">Simple gate for now; not a full login system.</div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var gateKey = "pgfacts-admin-unlocked";
+    var gateCode = atob("QVRQRw==");
+    var allowBlankDevelopment = false;
+    var gate = document.getElementById("site-gate");
+    var input = document.getElementById("gate-code");
+    var submit = document.getElementById("gate-submit");
+
+    function unlock() {
+      sessionStorage.setItem(gateKey, "true");
+      gate.style.display = "none";
+    }
+
+    if (sessionStorage.getItem(gateKey) === "true") {
+      gate.style.display = "none";
+      return;
+    }
+
+    submit.addEventListener("click", function () {
+      if ((allowBlankDevelopment && input.value === "") || input.value === gateCode) {
+        unlock();
+      } else {
+        input.value = "";
+        input.focus();
+        alert("Incorrect access code.");
+      }
+    });
+
+    input.addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        submit.click();
+      }
+    });
+  })();
+</script>
+
     <header class="site-header">
   <div class="site-header__inner">
     <a class="site-brand" href="/home/" aria-label="All Things PG home">
@@ -18,15 +65,109 @@
     </a>
     <nav class="site-nav" aria-label="Primary navigation">
       
-        <a class="site-nav__link" href="/home/">Welcome</a>
+        <details class="site-nav__group">
+          <summary class="site-nav__summary">Welcome</summary>
+          <div class="site-nav__panel">
+            
+              <div class="site-nav__panel-label">Explore the Phase 2 documentation.</div>
+            
+            
+              
+                <a href="/home/">Home</a>
+              
+                <a href="/docs/executive-summary.html">Executive Summary</a>
+              
+                <a href="/docs/">Explore Documentation</a>
+              
+            
+          </div>
+        </details>
       
-        <a class="site-nav__link" href="/user-experience/">User Experience</a>
+        <details class="site-nav__group">
+          <summary class="site-nav__summary">User Experience</summary>
+          <div class="site-nav__panel">
+            
+              <div class="site-nav__panel-label">Portal experiences for each visitor type.</div>
+            
+            
+              
+                <a href="/user-experience/what-is-a-portal/">What is a Portal?</a>
+              
+                <a href="/user-experience/selecting-a-user-experience/">Selecting a User Experience</a>
+              
+                <a href="/user-experience/patients/">Patients</a>
+              
+                <a href="/user-experience/caregivers/">Caregivers</a>
+              
+                <a href="/user-experience/providers/">Providers</a>
+              
+                <a href="/user-experience/pharmaceutical/">Pharmaceutical</a>
+              
+                <a href="/user-experience/guest/">Guest</a>
+              
+            
+          </div>
+        </details>
       
-        <a class="site-nav__link" href="/dcms/">DCMS</a>
+        <details class="site-nav__group">
+          <summary class="site-nav__summary">DCMS</summary>
+          <div class="site-nav__panel">
+            
+              <div class="site-nav__panel-label">Dynamic Content and Menuing System.</div>
+            
+            
+              
+                <a href="/dcms/what-is-dcms/">What is DCMS?</a>
+              
+                <a href="/dcms/dynamic-content/">Dynamic Content</a>
+              
+                <a href="/dcms/dynamic-menus/">Dynamic Menus</a>
+              
+                <a href="/dcms/curating-content/">Curating Content</a>
+              
+                <a href="/dcms/managing-tiles/">Managing Tiles</a>
+              
+            
+          </div>
+        </details>
       
-        <a class="site-nav__link" href="/database/">Database</a>
+        <details class="site-nav__group">
+          <summary class="site-nav__summary">Database</summary>
+          <div class="site-nav__panel">
+            
+              <div class="site-nav__panel-label">Data model for Phase 2 features.</div>
+            
+            
+              
+                <a href="/database/why-have-a-database/">Why have a database?</a>
+              
+                <a href="/database/main-tables/">Main Tables</a>
+              
+                <a href="/database/schema/">Schema</a>
+              
+                <a href="/database/diagrams/">Diagrams</a>
+              
+            
+          </div>
+        </details>
       
-        <a class="site-nav__link" href="/about/">About</a>
+        <details class="site-nav__group">
+          <summary class="site-nav__summary">About</summary>
+          <div class="site-nav__panel">
+            
+              <div class="site-nav__panel-label">Background and contact information.</div>
+            
+            
+              
+                <a href="/about/all-things-pg/">All Things PG</a>
+              
+                <a href="/about/phase-2-development/">Phase 2 Development</a>
+              
+                <a href="/about/the-designer/">The Designer</a>
+              
+            
+          </div>
+        </details>
       
       <a class="site-nav__contact" href="mailto:dave@allthingspg.org?subject=PG%20Facts%20feedback&amp;body=Thank%20you%20for%20your%20feedback.%20Please%20tell%20us%20how%20we%20can%20improve%20this%20site%20or%20its%20documentation.%0D%0A%0D%0A">Contact Us</a>
     </nav>
@@ -75,53 +216,6 @@
   <li><a href="/docs/curating-content.html">Curating Content</a></li>
   <li><a href="/docs/managing-tiles.html">Managing Tiles</a></li>
 </ul>
-
-<div class="gate-overlay" id="site-gate">
-  <div class="gate-card">
-    <h2>Administrator access</h2>
-    <p>Enter the site-wide access code to view pgfacts.org.</p>
-    <input id="gate-code" type="password" placeholder="Access code" autocomplete="off" />
-    <button type="button" id="gate-submit">Enter site</button>
-    <div class="gate-note">Simple gate for now; not a full login system.</div>
-  </div>
-</div>
-
-<script>
-  (function () {
-    var gateKey = "pgfacts-admin-unlocked";
-    var gateCode = atob("QVRQRw==");
-    var allowBlankDevelopment = false;
-    var gate = document.getElementById("site-gate");
-    var input = document.getElementById("gate-code");
-    var submit = document.getElementById("gate-submit");
-
-    function unlock() {
-      sessionStorage.setItem(gateKey, "true");
-      gate.style.display = "none";
-    }
-
-    if (sessionStorage.getItem(gateKey) === "true") {
-      gate.style.display = "none";
-      return;
-    }
-
-    submit.addEventListener("click", function () {
-      if ((allowBlankDevelopment && input.value === "") || input.value === gateCode) {
-        unlock();
-      } else {
-        input.value = "";
-        input.focus();
-        alert("Incorrect access code.");
-      }
-    });
-
-    input.addEventListener("keydown", function (event) {
-      if (event.key === "Enter") {
-        submit.click();
-      }
-    });
-  })();
-</script>
 
 
   </div>

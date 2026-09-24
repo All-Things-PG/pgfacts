@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Guest | All Things PG</title>
+    <title>PG Facts Site Guide | All Things PG</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -176,16 +176,95 @@
 
     <div class="page-title-bar">
   <div class="page-title-bar__inner">
-    <div class="page-title-bar__left">User Experience</div>
-    <div class="page-title-bar__right">A lighter guest experience.</div>
+    <div class="page-title-bar__left">Welcome</div>
+    <div class="page-title-bar__right">How the site is structured and maintained.</div>
   </div>
 </div>
 
     <main aria-label="Content">
       <section class="page-content">
   <div class="page-shell content-card">
-    <h1 class="page-title">Guest</h1>
-<p>The guest experience is a light entry path for visitors who are browsing without choosing a specific persona.</p>
+    <h1 id="pg-facts-site-guide">PG Facts Site Guide</h1>
+
+<p>This page is the working guide for the PG Facts site structure, navigation, and content model.</p>
+
+<h2 id="purpose">Purpose</h2>
+
+<p>PG Facts is a Phase 2 documentation site for All Things PG. It is organized around a small set of topics:</p>
+
+<ul>
+  <li>Welcome</li>
+  <li>User Experience</li>
+  <li>DCMS</li>
+  <li>Database</li>
+  <li>About</li>
+</ul>
+
+<p>Each topic has a landing page and a shared set of topic tiles or linked documents.</p>
+
+<h2 id="how-the-site-is-organized">How the site is organized</h2>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">_data/navigation.yml</code></strong> stores the top-level menu labels and descriptions.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">_data/topic_pages.yml</code></strong> stores the page lists, tile lists, and topic summary text.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">_includes/site-header.html</code></strong> renders the shared header and dropdown menus.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">_includes/page-banner.html</code></strong> renders the title bar with menu label and page description.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">_includes/site-gate.html</code></strong> renders the site-wide admin gate.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">_layouts/home.html</code></strong> renders topic landing pages with their shared tile grid.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">_layouts/page.html</code></strong> renders the individual content pages.</li>
+</ul>
+
+<h2 id="topic-landing-pages">Topic landing pages</h2>
+
+<p>Each topic folder has an <code class="language-plaintext highlighter-rouge">index.md</code> file that acts as the landing page for that topic.
+Those pages should:</p>
+
+<ol>
+  <li>Introduce the topic with a short summary.</li>
+  <li>Show a list of related pages or tiles.</li>
+  <li>Keep the page title in the Markdown file.</li>
+  <li>Keep the breadcrumb/title-bar label in the menu data.</li>
+</ol>
+
+<h2 id="editing-rules">Editing rules</h2>
+
+<ul>
+  <li>Add or edit menu labels in <code class="language-plaintext highlighter-rouge">_data/navigation.yml</code>.</li>
+  <li>Add or edit page descriptions, landing summaries, and tile text in <code class="language-plaintext highlighter-rouge">_data/topic_pages.yml</code>.</li>
+  <li>Keep the short page title in each document’s front matter.</li>
+  <li>Use <code class="language-plaintext highlighter-rouge">nav_label</code> in page front matter when the breadcrumb should match the top-level menu item.</li>
+  <li>Use <code class="language-plaintext highlighter-rouge">description</code> in page front matter for the title bar description.</li>
+</ul>
+
+<h2 id="menu-behavior">Menu behavior</h2>
+
+<ul>
+  <li>Top-level items open dropdown menus.</li>
+  <li>The dropdown content comes from the topic registry when available.</li>
+  <li>The contact button stays in the header.</li>
+</ul>
+
+<h2 id="images-and-diagrams">Images and diagrams</h2>
+
+<p>Images should live in <code class="language-plaintext highlighter-rouge">assets/images/</code> or another tracked asset folder and be referenced from Markdown with normal image links or HTML.
+Database diagrams, SSMS exports, screenshots, and similar bitmap files can be embedded in pages when needed.</p>
+
+<h2 id="current-content-model">Current content model</h2>
+
+<ul>
+  <li><strong>DCMS</strong> explains the content model, dynamic menus, and content flow.</li>
+  <li><strong>Database</strong> explains the data model and future persistent features.</li>
+  <li><strong>User Experience</strong> explains portal experiences by visitor type.</li>
+  <li><strong>About</strong> holds project and contact information.</li>
+</ul>
+
+<h2 id="notes">Notes</h2>
+
+<ul>
+  <li>The site uses a static build, so all navigation and content relationships need to be defined in the repo.</li>
+  <li>Keep the landing pages and topic registry in sync to avoid dead links.</li>
+  <li>Keep the header and title bar layout stable to avoid visual shifts between pages.</li>
+</ul>
 
   </div>
 </section>

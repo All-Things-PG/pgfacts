@@ -5,7 +5,23 @@
     </a>
     <nav class="site-nav" aria-label="Primary navigation">
       {% for item in site.data.navigation %}
-        <a class="site-nav__link" href="{{ item.url | relative_url }}">{{ item.label }}</a>
+        <details class="site-nav__group">
+          <summary class="site-nav__summary">{{ item.label }}</summary>
+          <div class="site-nav__panel">
+            {% if item.description %}
+              <div class="site-nav__panel-label">{{ item.description }}</div>
+            {% endif %}
+            {% if site.data.topic_pages[item.key].pages %}
+              {% for child in site.data.topic_pages[item.key].pages %}
+                <a href="{{ child.url | relative_url }}">{{ child.title }}</a>
+              {% endfor %}
+            {% elsif item.children %}
+              {% for child in item.children %}
+                <a href="{{ child.url | relative_url }}">{{ child.label }}</a>
+              {% endfor %}
+            {% endif %}
+          </div>
+        </details>
       {% endfor %}
       <a class="site-nav__contact" href="mailto:dave@allthingspg.org?subject=PG%20Facts%20feedback&amp;body=Thank%20you%20for%20your%20feedback.%20Please%20tell%20us%20how%20we%20can%20improve%20this%20site%20or%20its%20documentation.%0D%0A%0D%0A">Contact Us</a>
     </nav>

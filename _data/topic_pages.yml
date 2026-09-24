@@ -1,3 +1,29 @@
+home:
+  title: Welcome
+  description: Explore the Phase 2 documentation
+  summary: >-
+    Welcome to the Phase 2 documentation for All Things PG. Use the topic menus to explore
+    the design, the data model, and the visitor experiences that support the site.
+  pages:
+    - title: Home
+      description: Landing page for the Phase 2 documentation.
+      url: /home/
+    - title: Executive Summary
+      description: Overview of the site direction and goals.
+      url: /docs/executive-summary.html
+    - title: Explore Documentation
+      description: Curated documentation index for the project.
+      url: /docs/
+  tiles:
+    - title: DCMS
+      description: Document the content model and menus.
+      url: /dcms/
+    - title: User Experience
+      description: Describe the portal experiences by visitor type.
+      url: /user-experience/
+    - title: Database
+      description: Capture the data model and diagrams.
+      url: /database/
 dcms:
   title: DCMS
   description: Dynamic Content and Menuing System

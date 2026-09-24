@@ -1,15 +1,20 @@
-- label: Welcome
+- key: home
+  label: Welcome
   url: /home/
   description: Explore the Phase 2 documentation.
-- label: User Experience
+- key: user-experience
+  label: User Experience
   url: /user-experience/
   description: Portal experiences for each visitor type.
-- label: DCMS
+- key: dcms
+  label: DCMS
   url: /dcms/
   description: Dynamic Content and Menuing System.
-- label: Database
+- key: database
+  label: Database
   url: /database/
   description: Data model for Phase 2 features.
-- label: About
+- key: about
+  label: About
   url: /about/
   description: Background and contact information.

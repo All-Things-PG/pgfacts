@@ -177,9 +177,13 @@ The key vision and objectives for Phase 2 will be:
 
 5. Identify mistakes. Very much appreciated.
 
-## What are some of the key documents?
+## Use of Titles
+
+At the top of every page you may see titles, or bubbles.  These may be the most interesting documents within a particular topic.  They act like buttons so just click on them.  
+
+## What are some of the key documents to get me started?
 
 - [Executive Summary]({{ '/dcms/DCMS_Executive_Summary.html' | relative_url }})
-- [Portal Experience]({{ '/dcms/DCMS_Portal_Experience.html' | relative_url }})
-- [Curating Content]({{ '/dcms/DCMS_Curating_Content.html' | relative_url }})
-- [Managing Tiles]({{ '/dcms/DCMS_Managing_Tiles.html' | relative_url }})
+- [What is a DCMS Database]({{ '/dcms/DCMS_Portal_Experience.html' | relative_url }})
+- [Creating a Portal Experience]({{ '/dcms/DCMS_Portal_Experience.html' | relative_url }})
+- [Curating and Publishing Content]({{ '/dcms/DCMS_Curating_Content.html' | relative_url }})

@@ -5,7 +5,6 @@ breadcrumb: DCMS > Curating Content
 description: Workflow for collecting, reviewing, and publishing structured content.
 updated: 2026-09-18
 ---
-
 # DCMS - Curating Content
 
 ## Curating Content

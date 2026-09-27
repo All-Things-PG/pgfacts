@@ -2,33 +2,30 @@
 layout: page
 title: Executive Summary
 breadcrumb: Welcome > Executive Summary
-description: Overview of Phase 2 goals and community platform vision.
+description: Overview of Phase 2 goals and objectives.
 updated: 2026-09-18
+banner_tile_group: home
 ---
-
 <a id="top"></a>
+# Executive Summary
 
-# DCMS - Dynamic Content and Menuing System
+### 1.Overview
 
-## Executive Summary
+Phase 1 of our All Things PG website launched in Sept 2025 and introduced our nonprofit organization to the world.  It was an excellent first start and provided basic information about the organization and of course, Pyoderma Gangrenosum (PG).  I have done a complete analysis of the website using two different AI tools, and the results are presented in other documents on this site.  
 
-### 1. What this project is
+www.allthingspg.org is an attractive, well developed website built using a custom cms administration tool development by Krobe Interactive.  The website is hidden from view in the sense that it's hosted within AWS on a platform within Rusty's organizaton.  We do not have access directly to the web site or  the html pages.  We do have access to the content that is displayed.  Changes are done upon request or by myself using his tools.  We could likely request more access if we need it, but Rusy needs to protect the environment from harm, and I don't blame him.  It is also unclear in terms of licensing, whether we own the site or are licensed to use it.  That's not much of an issue anyway.
 
-All Things PG needs a website that does more than present information. It needs a platform that can grow with the organization, serve different audiences well, and keep content maintainable over time.
+My general impression - www.allthingspg.org serves its initial purpose well.
 
-The Dynamic Content and Menuing System (DCMS) is the proposed Phase 2 platform. It is designed to turn the website into a durable community resource for patients, caregivers, healthcare professionals, researchers, industry partners, and supporters.
+### So why do we need Phase 2?
 
-The goal is simple:
+With any business, and All Things PG is a business, you have to respond to growth and change.  There is not particular need to stay the way you are.  In the world of PG, things change.  There are new studies, new trials, new new features, new everything.  There are new ideas, new content, new things we can do to help the communiting.  There will always be something new.
 
-```text
-right audience
-    -> right navigation
-    -> right content
-    -> right tools
-    -> right next step
-```
+Yes, we can likely add most of the new features we want to the existing website, but not all.  Some features request a database.  Phase 1 of allthingspg.org HAS NO DATABASE.  Even without a database we can still register users, send newsletters, email contact information.  We use third party tools like Constant Contact.  We don't own the data and have little and cumbersome access.  With a database you remove all restrictions on future development.  
 
-This is not a generic site builder. It is a focused content platform built around the real needs of the PG community.
+The other main aspect of Phase 2 will be the ability to make changes to content.  The amount of information that can be displayed about rare diseases, PG, treatments, diagnosis, research etc is vast.   Right now will display small tidbits.  Any AI tool and answer those questions rather quickly, without the need of our website.  Mayo clinic and other sites have much more information to offer. We need to do  more than that if we truly want to be ALL things pg.  The Phase 2 design will allow curating additional content at will, and hooking to new or updated menu items on the fly.  With a database, which 99% of applications own, you have a data-driven architecture for capturing and displaying content.
+
+Phase 2 will be built on something new, called DCMS. That stands for Dynamic Content and Menuing System and is the central proposal for the Phase 2 platform. It is designed to turn the website into a durable community resource for patients, caregivers, healthcare professionals, pharmaceuticals and guests in a new concept called a Portal.  Each visitor type to the website operates within their own portal, or view of the website.  We can add additional portals for researchers, industry partners, fundraising and other supporters.  Portals are data-driven as well.
 
 ---
 

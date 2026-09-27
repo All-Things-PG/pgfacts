@@ -7,6 +7,37 @@
       url: /dcms/DCMS_Executive_Summary.html
     - label: Explore Documentation
       url: /docs/
+- label: DCMS
+  url: /dcms/
+  children:
+    - label: What is DCMS?
+      url: /dcms/
+    - label: Dynamic Content
+      url: /dcms/DCMS_Dynamic_Content.html
+    - label: Dynamic Menus
+      url: /dcms/DCMS_Dynamic_Menus.html
+    - label: Curating Content
+      url: /dcms/DCMS_Curating_Content.html
+- label: Database
+  url: /database/
+  children:
+    - label: Why Have a Database?
+      url: /database/why-have-a-database/
+    - label: Main Tables
+      url: /database/main-tables/
+    - label: Schema
+      url: /database/schema/
+    - label: Diagrams
+      url: /database/diagrams/
+- label: Technical
+  url: /technical/
+  children:
+    - label: Site Overview
+      url: /technical/site-overview.html
+    - label: Managing Tiles
+      url: /technical/managing-tiles.html
+    - label: Managing Pages
+      url: /technical/managing-pages.html
 - label: User Experience
   url: /user-experience/
   children:
@@ -24,36 +55,12 @@
       url: /user-experience/pharmaceutical/
     - label: Guest
       url: /user-experience/guest/
-- label: DCMS
-  url: /dcms/
-  children:
-    - label: What is DCMS?
-      url: /dcms/
-    - label: Dynamic Content
-      url: /dcms/DCMS_Dynamic_Content.html
-    - label: Dynamic Menus
-      url: /dcms/DCMS_Dynamic_Menus.html
-    - label: Curating Content
-      url: /dcms/DCMS_Curating_Content.html
-    - label: Managing Tiles
-      url: /dcms/DCMS_Managing_Tiles.html
-- label: Database
-  url: /database/
-  children:
-    - label: System
-      url: /database/system/
-    - label: Staging
-      url: /database/staging/
-    - label: Content
-      url: /database/content/
-    - label: Menus
-      url: /database/menus/
-    - label: Registration
-      url: /database/registration/
-    - label: Schema
-      url: /database/DCMS_Database_Schema.html
 - label: About
   url: /about/
   children:
     - label: All Things PG
       url: /about/all-things-pg/
+    - label: Phase 2 Development
+      url: /about/phase-2-development/
+    - label: The Designer
+      url: /about/the-designer/

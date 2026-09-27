@@ -1,18 +1,19 @@
 ---
 layout: page
 title: PG Facts Site Guide
-nav_label: Welcome
+breadcrumb: Technical > Site Overview
 description: How the site is structured and maintained.
 permalink: /docs/pgfacts-site-guide/
+topic_key: technical
 ---
 
 # PG Facts Site Guide
 
-This is the working guide for maintaining the PG Facts site. It explains where the navigation comes from, which files control page content, how topic tiles are built, and what to edit when you want to add or change descriptions.
+This is the working guide for maintaining the PG Facts Documentation site. This explains where the navigation comes from, which files control page content, how topic tiles are built, and what to edit when you want to add or change descriptions.
 
-## What the front matter means
+## What is front matter?
 
-At the top of many Markdown files you will see a block like this:
+Front matter are fields used by Jekyll as metadata to control the visible content of the document on the page.  Each Markdown file (MD) starts with front matter, which looks like this:
 
 | field | purpose |
 | --- | --- |
@@ -22,26 +23,26 @@ At the top of many Markdown files you will see a block like this:
 | `description` | The short description shown in the title bar. |
 | `permalink` | The URL for the page. |
 
-These fields are Jekyll metadata. They are not part of the visible content, but they control how the site is rendered. Even if this guide is mostly for you behind the scenes, these fields still matter because the guide itself is a page in the site build.
 
-## The main idea
+### The main idea
 
-The site is organized around a small set of topics:
+The site is organized around these topics, in menu order:
 
 1. Welcome
-2. User Experience
-3. DCMS
-4. Database
-5. About
+2. DCMS
+3. Database
+4. Technical
+5. User Experience
+6. About
 
 Each topic has:
 
 - a top-level menu item
 - a topic landing page
-- a shared set of tiles or related links
+- a shared tile bar
 - page descriptions for the linked documents
 
-The topic name in the menu is meant to be the source for the breadcrumb/title bar label. The topic landing page contains the topic content. The linked pages contain the detailed documents.
+The top-level menu item links to its topic landing page and also opens its submenu. Every page in a topic uses the same header, breadcrumb and description bar, tile bar, and content layout.
 
 ## What to edit for what purpose
 
@@ -63,7 +64,7 @@ This file is the main source of truth for:
 
 - topic summaries
 - topic landing page document lists
-- topic tile text
+- topic tile text and destinations
 - page descriptions used in the topic tables
 
 ### Change the header/menu behavior
@@ -104,7 +105,7 @@ Edit:
 - `_layouts/page.html`
 - `_layouts/default.html`
 
-These control the page wrappers and how topic landing pages differ from normal content pages.
+These control the page wrappers. Both layouts use `_includes/topic-tiles.html` to render the correct tile bar before page content.
 
 ### Change the site look and spacing
 
@@ -177,7 +178,11 @@ This folder contains the About pages.
 
 This folder contains the guides and supporting public documentation.
 
-- `docs/pgfacts-site-guide.md` is this guide
+- `technical/index.md` is the Technical topic landing page
+- `technical/site-overview.md`
+- `technical/managing-tiles.md`
+- `technical/managing-pages.md`
+- `docs/pgfacts-site-guide.md` is the full maintenance guide linked from Site Overview
 - `docs/executive-summary.md`
 - `docs/curating-content.md`
 - `docs/managing-tiles.md`
@@ -225,13 +230,13 @@ That means the topic label is the navigation entry, and the dropdown is the menu
 
 ## Topic landing pages
 
-When you click a topic such as DCMS, Database, or User Experience, the landing page should show:
+When you click a topic such as DCMS, Database, Technical, or User Experience, the landing page should show:
 
 - a short topic introduction
 - the list of pages in that topic
-- optional tiles for the topic
+- the topic tile bar, followed by the page content
 
-The page title comes from the page itself. The menu label comes from the navigation data.
+The page title is a Markdown heading in the page content. The menu label comes from the navigation data.
 
 ## Page descriptions
 
@@ -241,7 +246,9 @@ Use the descriptions in `_data/topic_pages.yml` when you want to maintain the pa
 
 ## Tile descriptions
 
-Tile text should live in `_data/topic_pages.yml`, not inside every page file. That keeps topic tiles consistent and easier to edit.
+Tile text should live in `_data/topic_pages.yml`, not inside every page file. Welcome tiles live in `_data/home_topic_groups.yml`. The shared tile include resolves the topic using the page's `topic_key`, breadcrumb, or `nav_label`, so pages within a topic share a tile list.
+
+Each tile row displays at least three and at most five tiles. Missing entries are shown as non-linked “Default Tile” placeholders. Tiles have equal height, share the row width, and remain on one line; narrow screens can scroll the row horizontally.
 
 ## Images, diagrams, and bitmaps
 
@@ -267,10 +274,10 @@ For screenshots or SSMS diagrams, keep the image file separate and reference it 
 
 When adding a new page:
 
-1. Create the Markdown file in the right folder.
-2. Add a `title`, `nav_label`, and `description` in front matter.
-3. Add the page to `_data/topic_pages.yml`.
-4. Add or update the dropdown entry in `_data/navigation.yml` if needed.
+1. Create the Markdown file in the topic folder.
+2. Add `title`, `description`, a topic breadcrumb, and a permalink in front matter.
+3. Add a Markdown `#` heading for the visible page title.
+4. Add the page to `_data/topic_pages.yml` and `_data/navigation.yml`.
 5. Build and check the page from the topic landing page and the menu.
 
 When changing a topic:

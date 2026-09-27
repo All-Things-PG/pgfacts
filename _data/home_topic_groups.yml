@@ -1,11 +1,17 @@
+# List of tiles per topic
 home:
   tiles:
+    # DCMS tile
     - title: DCMS
       url: /dcms/
       description: Document the content model, dynamic menus, and dynamic content flow.
+
+    # User Experience tile
     - title: User Experience
       url: /user-experience/
       description: Show how visitors choose a persona and move through the site.
+
+    # Database tile
     - title: Database
       url: /database/
       description: Capture the tables, schema diagrams, and supporting structure.

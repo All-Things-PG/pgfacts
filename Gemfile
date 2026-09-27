@@ -6,3 +6,5 @@ gem "csv"
 gem "bigdecimal"
 gem "base64"
 gem "webrick"
+gem 'wdm', '>= 0.1.0'
+

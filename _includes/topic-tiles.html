@@ -1,0 +1,47 @@
+{% assign topic_group = site.data.home_topic_groups[page.banner_tile_group] %}
+{% if topic_group == nil and page.topic_key %}
+  {% assign topic_group = site.data.topic_pages[page.topic_key] %}
+{% endif %}
+{% assign topic_label = nil %}
+{% if topic_group == nil and page.breadcrumb %}
+  {% assign breadcrumb_parts = page.breadcrumb | split: '>' %}
+  {% assign topic_label = breadcrumb_parts.first | strip %}
+{% elsif topic_group == nil %}
+  {% assign topic_label = page.nav_label %}
+{% endif %}
+{% if topic_group == nil and topic_label %}
+  {% for topic_entry in site.data.topic_pages %}
+    {% assign candidate_topic = topic_entry[1] %}
+    {% if candidate_topic.title == topic_label %}
+      {% assign topic_group = candidate_topic %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+{% if topic_group == nil %}
+  {% assign page_directory = page.dir | remove_first: '/' | split: '/' | first %}
+  {% assign topic_group = site.data.topic_pages[page_directory] %}
+{% endif %}
+{% assign topic_tiles = '' | split: ',' %}
+{% if topic_group and topic_group.tiles %}
+  {% assign topic_tiles = topic_group.tiles | slice: 0, 5 %}
+{% endif %}
+{% assign tile_count = topic_tiles | size %}
+{% assign placeholder_count = 3 | minus: tile_count %}
+{% if placeholder_count < 0 %}
+  {% assign placeholder_count = 0 %}
+{% endif %}
+{% assign display_tile_count = tile_count | plus: placeholder_count %}
+<div class="pg-home-topic-grid" style="--topic-tile-count: {{ display_tile_count }};">
+  {% for tile in topic_tiles %}
+    <a class="pg-home-topic-tile" href="{{ tile.url | relative_url }}">
+      <strong>{{ tile.title }}</strong>
+      {% if tile.description %}<span>{{ tile.description }}</span>{% endif %}
+    </a>
+  {% endfor %}
+  {% if placeholder_count > 0 %}
+    {% for placeholder in (1..placeholder_count) %}
+      <div class="pg-home-topic-tile pg-home-topic-tile--placeholder"><strong>Default Tile</strong></div>
+    {% endfor %}
+  {% endif %}
+</div>

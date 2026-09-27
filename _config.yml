@@ -1,12 +1,10 @@
-title: All Things PG
+title: All Things PG Documentation
 description: Public documentation for Phase 2 of All Things PG
 markdown: kramdown
 plugins:
   - jekyll-feed
 header_pages:
   - docs/index.md
-exclude:
-  - home/home.md
 gateway:
   allow_blank_development: false
 defaults:

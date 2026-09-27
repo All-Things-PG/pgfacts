@@ -2,51 +2,48 @@ home:
   title: Welcome
   description: Explore the Phase 2 documentation
   summary: >-
-    Welcome to the Phase 2 documentation for All Things PG. Use the topic menus to explore
-    the design, the data model, and the visitor experiences that support the site.
+    Welcome to the Phase 2 documentation for All Things PG. Use the topic menus to explore the design, the data model, and the user experiences for this documentation site that will carry over to Phase 2 of the website.
   pages:
     - title: Home
       description: Landing page for the Phase 2 documentation.
       url: /home/
     - title: Executive Summary
-      description: Overview of the site direction and goals.
+      description: Overview of the updated Phase 2 website outlining the direction and goals.
       url: /docs/executive-summary.html
     - title: Explore Documentation
-      description: Curated documentation index for the project.
+      description: Documentation index for the documentation site.
       url: /docs/
   tiles:
     - title: DCMS
-      description: Document the content model and menus.
+      description: Description of DCMS (Dynamic Content and Menuing System).
       url: /dcms/
     - title: User Experience
-      description: Describe the portal experiences by visitor type.
+      description: Describes the portal experiences.  A 'Portal' is a view of the website customized for a particular type of user.
       url: /user-experience/
     - title: Database
-      description: Capture the data model and diagrams.
+      description: Describe the data model and diagrams of the database supporting the ATPG website.
       url: /database/
 dcms:
   title: DCMS
   description: Dynamic Content and Menuing System
   summary: >-
-    Welcome to DCMS - Dynamic Content and Menuing System. DCMS is central to the design of
-    Phase 2 of the All Things PG website and provides the structure for curating content and
-    menu-driven navigation.
+    Welcome to DCMS - Dynamic Content and Menuing System. DCMS is a CMS design that supports data-driven menus and content, which is central to the ATPG website.  
   pages:
     - title: What is DCMS?
       description: Overview of the Dynamic Content and Menuing System.
       url: /dcms/what-is-dcms/
     - title: Dynamic Content
-      description: How content is organized and rendered dynamically.
+      description: How content is curated, organized and rendered dynamically.
       url: /dcms/dynamic-content/
     - title: Dynamic Menus
-      description: Menu behavior and topic navigation.
+      description: How menus are dynamically defined and linked to curated content.
       url: /dcms/dynamic-menus/
     - title: Curating Content
-      description: How content is grouped and presented.
+      description: Describes the workflow for authors to edit or create new content for the website.
       url: /dcms/curating-content/
     - title: Managing Tiles
-      description: How portal tiles are selected and displayed.
-      url: /dcms/managing-tiles/
+      description: Reusable topic tile bars provide a compact set of related page links.
+      url: /technical/managing-tiles.html
   tiles:
     - title: Dynamic Content
       description: Content driven by the topic model and page registry.
@@ -59,10 +56,9 @@ dcms:
       url: /dcms/curating-content/
 database:
   title: Database
-  description: Data model for Phase 2
+  description: Data model for Phase 2 of ATPG Website.
   summary: >-
-    Welcome to the DCMS Database that has been added to All Things PG. A database allows new
-    features such as a Patient Registry, newsletters, and storing information about your portal
+    Welcome to the DCMS Database that has been added to All Things PG. A database allows new features such as a Patient Registry, newsletters, and storing information about your portal
     experience.
   pages:
     - title: Why have a database?
@@ -131,6 +127,31 @@ user-experience:
     - title: Guest
       description: Guest portal entry point.
       url: /user-experience/guest/
+technical:
+  title: Technical
+  description: Site structure and authoring guidance
+  summary: >-
+    Technical documentation for understanding the site layout and maintaining its pages, navigation, and topic tiles.
+  pages:
+    - title: Site Overview
+      description: How the layouts, includes, data, and styles work together.
+      url: /technical/site-overview.html
+    - title: Managing Tiles
+      description: How topic tile bars are selected, configured, and displayed.
+      url: /technical/managing-tiles.html
+    - title: Managing Pages
+      description: How to add and update pages while preserving the shared layout.
+      url: /technical/managing-pages.html
+  tiles:
+    - title: Site Overview
+      description: The shared layout and files that shape each page.
+      url: /technical/site-overview.html
+    - title: Managing Tiles
+      description: Configure consistent topic tile bars.
+      url: /technical/managing-tiles.html
+    - title: Managing Pages
+      description: Create and maintain pages in each topic.
+      url: /technical/managing-pages.html
 about:
   title: About
   description: Background and contact

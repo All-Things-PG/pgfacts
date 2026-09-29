@@ -1,23 +1,45 @@
-- label: Phase 1
-  url: /phase-1/
+- label: Welcome
+  url: /home/
   children:
-    - label: ChatGPT Analysis
-      url: /phase-1/chatgpt-analysis/
-    - label: Copilot Analysis
-      url: /phase-1/copilot-analysis/
-    - label: Technology Platform
-      url: /phase-1/technology-platform/
-    - label: How it is Maintained
-      url: /phase-1/how-it-is-maintained/
-- label: Phase 2
-  url: /phase-2/
+    - label: Home
+      url: /home/
+- label: User Experience
+  url: /user-experience/
   children:
-    - label: Technology Platform
-      url: /phase-2/technology-platform/
-    - label: How is it Developed?
-      url: /phase-2/how-is-it-developed/
-    - label: How it is Maintained?
-      url: /phase-2/how-it-is-maintained/
+    - label: What is a Portal?
+      url: /user-experience/what-is-a-portal/
+    - label: Selecting a User Experience
+      url: /user-experience/selecting-a-user-experience/
+    - label: Patients
+      url: /user-experience/patients/
+    - label: Caregivers
+      url: /user-experience/caregivers/
+    - label: Providers
+      url: /user-experience/providers/
+    - label: Pharmaceutical
+      url: /user-experience/pharmaceutical/
+    - label: Guest
+      url: /user-experience/guest/
+- label: DCMS
+  url: /dcms/
+  children:
+    - label: What is DCMS?
+      url: /dcms/what-is-dcms/
+    - label: Dynamic Content
+      url: /dcms/dynamic-content/
+    - label: Dynamic Menus
+      url: /dcms/dynamic-menus/
+- label: Database
+  url: /database/
+  children:
+    - label: Why Have a Database?
+      url: /database/why-have-a-database/
+    - label: Main Tables
+      url: /database/main-tables/
+    - label: Schema
+      url: /database/schema/
+    - label: Diagrams
+      url: /database/diagrams/
 - label: About
   url: /about/
   children:

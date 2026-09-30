@@ -2,6 +2,7 @@
 layout: home
 title: Technical
 nav_label: Technical
+breadcrumb: Technical
 description: Site structure and authoring guidance.
 permalink: /technical/
 topic_key: technical

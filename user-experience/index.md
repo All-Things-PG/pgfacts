@@ -2,6 +2,7 @@
 layout: home
 title: User Experience
 nav_label: User Experience
+breadcrumb: User Experience
 description: Portal experiences for each visitor type.
 permalink: /user-experience/
 topic_key: user-experience

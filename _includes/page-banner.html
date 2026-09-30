@@ -6,20 +6,22 @@
           {% assign breadcrumbs = page.breadcrumb | split: '>' %}
           {% for breadcrumb in breadcrumbs %}
             {% assign crumb_label = breadcrumb | strip %}
-            {% assign crumb_url = nil %}
-            {% for nav_entry in site.data.navigation %}
-              {% if nav_entry.label == crumb_label %}
-                {% assign nav = nav_entry %}
-                {% assign crumb_url = nav.url %}
-                {% break %}
-              {% endif %}
-            {% endfor %}
-
             {% if forloop.last %}
               <span class="oldsite-breadcrumb-current">{{ crumb_label }}</span>
             {% else %}
-              {% if crumb_url %}
-                <a href="{{ crumb_url }}">{{ crumb_label }}</a>
+              {% if forloop.first %}
+                {% assign crumb_url = nil %}
+                {% for nav_entry in site.data.navigation %}
+                  {% if nav_entry.label == crumb_label %}
+                    {% assign crumb_url = nav_entry.url %}
+                    {% break %}
+                  {% endif %}
+                {% endfor %}
+                {% if crumb_url %}
+                  <a class="oldsite-breadcrumb-link" href="{{ crumb_url }}">{{ crumb_label }}</a>
+                {% else %}
+                  <span>{{ crumb_label }}</span>
+                {% endif %}
               {% else %}
                 <span>{{ crumb_label }}</span>
               {% endif %}
@@ -27,25 +29,9 @@
             {% endif %}
           {% endfor %}
         {% elsif page.nav_label %}
-          {% assign nav_url = nil %}
-          {% for nav_entry in site.data.navigation %}
-            {% if nav_entry.label == page.nav_label %}
-              {% assign nav_url = nav_entry.url %}
-              {% break %}
-            {% endif %}
-          {% endfor %}
-
-          {% if nav_url %}
-            <a href="{{ nav_url }}">{{ page.nav_label }}</a>
-          {% else %}
-            <span>{{ page.nav_label }}</span>
-          {% endif %}
-          {% if page.title and page.title != page.nav_label %}
-            <span class="oldsite-breadcrumb-separator"> &gt; </span>
-            <span class="oldsite-breadcrumb-current">{{ page.title }}</span>
-          {% endif %}
+          <span class="oldsite-breadcrumb-current">{{ page.nav_label }}</span>
         {% else %}
-          <span>{{ page.title }}</span>
+          <span class="oldsite-breadcrumb-current">{{ page.title }}</span>
         {% endif %}
       </nav>
       {% assign banner_description = page.description | default: page.title %}

@@ -1,9 +1,59 @@
-- label: Welcome
-  url: /home/
+- key: welcome
+  label: Welcome
+  url: /welcome/
   children:
-    - label: Home
-      url: /home/
-- label: User Experience
+    - label: Proof of Concept
+      url: /welcome/proof-of-concept/
+    - label: Executive Summary
+      url: /dcms/DCMS_Executive_Summary.html
+    - label: Explore Documentation
+      url: /docs/
+- key: phase-1
+  label: Phase 1
+  url: /phase-1/
+  children:
+    - label: ChatGPT Analysis
+      url: /phase-1/chatgpt-analysis/
+    - label: Copilot Analysis
+      url: /phase-1/copilot-analysis/
+    - label: Technology Platform
+      url: /phase-1/technology-platform/
+    - label: How it is Maintained
+      url: /phase-1/how-it-is-maintained/
+- key: phase-2
+  label: Phase 2
+  url: /phase-2/
+  children:
+    - label: Technology Platform
+      url: /phase-2/technology-platform/
+    - label: How is it Developed?
+      url: /phase-2/how-is-it-developed/
+    - label: How it is Maintained?
+      url: /phase-2/how-it-is-maintained/
+- key: dcms
+  label: DCMS
+  url: /dcms/
+  children:
+    - label: What is DCMS?
+      url: /dcms/what-is-dcms/
+    - label: Dynamic Content
+      url: /dcms/dynamic-content/
+    - label: Dynamic Menus
+      url: /dcms/dynamic-menus/
+- key: database
+  label: Database
+  url: /database/
+  children:
+    - label: Why Have a Database?
+      url: /database/why-have-a-database/
+    - label: Main Tables
+      url: /database/main-tables/
+    - label: Schema
+      url: /database/schema/
+    - label: Diagrams
+      url: /database/diagrams/
+- key: user-experience
+  label: User Experience
   url: /user-experience/
   children:
     - label: What is a Portal?
@@ -20,27 +70,8 @@
       url: /user-experience/pharmaceutical/
     - label: Guest
       url: /user-experience/guest/
-- label: DCMS
-  url: /dcms/
-  children:
-    - label: What is DCMS?
-      url: /dcms/what-is-dcms/
-    - label: Dynamic Content
-      url: /dcms/dynamic-content/
-    - label: Dynamic Menus
-      url: /dcms/dynamic-menus/
-- label: Database
-  url: /database/
-  children:
-    - label: Why Have a Database?
-      url: /database/why-have-a-database/
-    - label: Main Tables
-      url: /database/main-tables/
-    - label: Schema
-      url: /database/schema/
-    - label: Diagrams
-      url: /database/diagrams/
-- label: About
+- key: about
+  label: About
   url: /about/
   children:
     - label: All Things PG

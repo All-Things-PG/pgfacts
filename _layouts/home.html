@@ -1,4 +1,9 @@
 ---
-layout: page
+layout: default
 ---
-{{ content }}
+<section class="oldsite-page-content">
+  <div class="oldsite-container-inner">
+    {% include topic-tiles.html %}
+    {{ content }}
+  </div>
+</section>

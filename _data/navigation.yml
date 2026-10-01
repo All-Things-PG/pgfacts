@@ -3,46 +3,11 @@
   children:
     - label: Home
       url: /home/
-    - label: Executive Summary
-      url: /dcms/DCMS_Executive_Summary.html
-    - label: Explore Documentation
-      url: /docs/
-- label: DCMS
-  url: /dcms/
-  children:
-    - label: What is DCMS?
-      url: /dcms/
-    - label: Dynamic Content
-      url: /dcms/DCMS_Dynamic_Content.html
-    - label: Dynamic Menus
-      url: /dcms/DCMS_Dynamic_Menus.html
-    - label: Curating Content
-      url: /dcms/DCMS_Curating_Content.html
-- label: Database
-  url: /database/
-  children:
-    - label: Why Have a Database?
-      url: /database/why-have-a-database/
-    - label: Main Tables
-      url: /database/main-tables/
-    - label: Schema
-      url: /database/schema/
-    - label: Diagrams
-      url: /database/diagrams/
-- label: Technical
-  url: /technical/
-  children:
-    - label: Site Overview
-      url: /technical/site-overview.html
-    - label: Managing Tiles
-      url: /technical/managing-tiles.html
-    - label: Managing Pages
-      url: /technical/managing-pages.html
 - label: User Experience
   url: /user-experience/
   children:
     - label: What is a Portal?
-      url: /dcms/DCMS_Portal_Experience.html
+      url: /user-experience/what-is-a-portal/
     - label: Selecting a User Experience
       url: /user-experience/selecting-a-user-experience/
     - label: Patients
@@ -55,6 +20,26 @@
       url: /user-experience/pharmaceutical/
     - label: Guest
       url: /user-experience/guest/
+- label: DCMS
+  url: /dcms/
+  children:
+    - label: What is DCMS?
+      url: /dcms/what-is-dcms/
+    - label: Dynamic Content
+      url: /dcms/dynamic-content/
+    - label: Dynamic Menus
+      url: /dcms/dynamic-menus/
+- label: Database
+  url: /database/
+  children:
+    - label: Why Have a Database?
+      url: /database/why-have-a-database/
+    - label: Main Tables
+      url: /database/main-tables/
+    - label: Schema
+      url: /database/schema/
+    - label: Diagrams
+      url: /database/diagrams/
 - label: About
   url: /about/
   children:

@@ -28,12 +28,9 @@ Front matter are fields used by Jekyll as metadata to control the visible conten
 
 The site is organized around these topics, in menu order:
 
-1. Welcome
-2. DCMS
-3. Database
-4. Technical
-5. User Experience
-6. About
+1. Phase 1
+2. Phase 2
+3. About
 
 Each topic has:
 
@@ -182,7 +179,7 @@ This folder contains the guides and supporting public documentation.
 - `technical/site-overview.md`
 - `technical/managing-tiles.md`
 - `technical/managing-pages.md`
-- `docs/pgfacts-site-guide.md` is the full maintenance guide linked from Site Overview
+- `docs/pgfacts-site-guide.md` is the full maintenance guide
 - `docs/executive-summary.md`
 - `docs/curating-content.md`
 - `docs/managing-tiles.md`
@@ -230,7 +227,7 @@ That means the topic label is the navigation entry, and the dropdown is the menu
 
 ## Topic landing pages
 
-When you click a topic such as DCMS, Database, Technical, or User Experience, the landing page should show:
+When you click a topic such as Phase 1 or Phase 2, the landing page should show:
 
 - a short topic introduction
 - the list of pages in that topic

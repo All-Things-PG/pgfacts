@@ -1,9 +1,8 @@
 ---
 layout: home
-title: Home
+title: Welcome
+nav_label: Welcome
 description: Explore the Phase 2 documentation.
 permalink: /home/
-banner_tile_group: home
+topic_key: home
 ---
-{% capture home_content %}{% include_relative home.md %}{% endcapture %}
-{{ home_content | markdownify }}

@@ -2,6 +2,8 @@
   label: Welcome
   url: /welcome/
   children:
+    - label: Home
+      url: /home/home/
     - label: Proof of Concept
       url: /welcome/proof-of-concept/
     - label: Executive Summary

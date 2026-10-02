@@ -2,6 +2,7 @@
 layout: page
 title: Patients
 nav_label: User Experience
+breadcrumb: User Experience > Patients
 description: Patient-focused portal experience.
 permalink: /user-experience/patients/
 ---

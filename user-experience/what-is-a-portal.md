@@ -2,6 +2,7 @@
 layout: page
 title: What is a Portal?
 nav_label: User Experience
+breadcrumb: User Experience > What is a Portal?
 description: Define the portal concept for Phase 2.
 permalink: /user-experience/what-is-a-portal/
 ---

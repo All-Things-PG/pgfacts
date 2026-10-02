@@ -2,6 +2,7 @@
 layout: home
 title: About
 nav_label: About
+breadcrumb: About
 description: Background and contact information.
 permalink: /about/
 topic_key: about

@@ -1,0 +1,25 @@
+title: Phase 2
+description: Build and maintenance
+summary: >-
+  Phase 2 focuses on how the site is built, the platform it runs on, and how it is maintained
+  as the documentation grows.
+pages:
+  - title: Technology Platform
+    description: Technology choices for the Phase 2 implementation.
+    url: /phase-2/technology-platform/
+  - title: How is it Developed?
+    description: The development workflow and page structure.
+    url: /phase-2/how-is-it-developed/
+  - title: How it is Maintained?
+    description: Keeping the site current and consistent.
+    url: /phase-2/how-it-is-maintained/
+tiles:
+  - title: Technology Platform
+    description: The platform that supports Phase 2.
+    url: /phase-2/technology-platform/
+  - title: How is it Developed?
+    description: The build and content workflow.
+    url: /phase-2/how-is-it-developed/
+  - title: How it is Maintained?
+    description: The upkeep model for the site.
+    url: /phase-2/how-it-is-maintained/

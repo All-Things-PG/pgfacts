@@ -1,6 +1,6 @@
 - key: welcome
   label: Welcome
-  url: /welcome/
+  url: /home/home/
   children:
     - label: Home
       url: /home/home/
@@ -36,18 +36,18 @@
       url: /phase-2/technology-platform/
 - key: new-features
   label: New Features
-  url: /new-features-in-phase-2/
+  url: /new-features/
   children:
     - label: Knowledge Base
-      url: /new-features-in-phase-2/knowledge-base/
+      url: /new-features/knowledge-base/
     - label: Dynamic Menus and Content
-      url: /new-features-in-phase-2/dynamic-menus-and-content/
+      url: /new-features/dynamic-menus-and-content/
     - label: Enhanced User Experience
-      url: /new-features-in-phase-2/enhanced-user-experience/
+      url: /new-features/enhanced-user-experience/
     - label: Database Support
-      url: /new-features-in-phase-2/database-support/
+      url: /new-features/database-support/
     - label: Leo Enhancements
-      url: /new-features-in-phase-2/leo-enhancements/
+      url: /new-features/leo-enhancements/
 - key: technical
   label: Technical
   url: /technical/

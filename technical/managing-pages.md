@@ -9,7 +9,7 @@ topic_key: technical
 
 # Managing Pages
 
-Each topic has a folder and an `index.md` landing page. Store a topic's supporting Markdown pages in that same folder. Every content page uses the same structure: site header, breadcrumb and description, topic tile bar, then Markdown content. `_config.yml` applies the regular page layout by default; the home layout delegates to it, so topic landing pages have the same structure.
+Each topic has a folder and an `index.md` landing page. Store a topic's supporting Markdown pages in that same folder. Every content page uses the same structure: site header, breadcrumb and description, then Markdown content. `_config.yml` applies the regular page layout by default; the home layout delegates to it, so topic landing pages have the same structure.
 
 ### Add a page
 

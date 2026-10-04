@@ -3,7 +3,8 @@ layout: page
 title: Managing Tiles
 breadcrumb: Technical > Managing Tiles
 description: Step-by-step instructions for adding and editing topic tiles.
-permalink: /technical/managing-tiles.html
+permalink: /technical/managing-tiles/
+topic_key: technical
 ---
 
 # Managing Tiles

@@ -1,0 +1,37 @@
+title: New Features in Phase 2
+description: Planned capabilities for the next release.
+summary: >-
+  Explore the planned Phase 2 features, including the knowledge base, dynamic menus and
+  content, database support, and improved user experiences.
+pages:
+  - title: Knowledge Base
+    description: A structured, searchable collection of trusted PG information.
+    url: /new-features/knowledge-base/
+  - title: Dynamic Menus and Content
+    description: Menus and content that can be updated as the site evolves.
+    url: /new-features/dynamic-menus-and-content/
+  - title: Enhanced User Experience
+    description: A clearer, more useful experience for each visitor.
+    url: /new-features/enhanced-user-experience/
+  - title: Database Support
+    description: Database capabilities supporting the Phase 2 feature set.
+    url: /new-features/database-support/
+  - title: Leo Enhancements
+    description: Improvements and additions for the Leo experience.
+    url: /new-features/leo-enhancements/
+tiles:
+  - title: Knowledge Base
+    description: A structured, searchable collection of trusted PG information.
+    url: /new-features/knowledge-base/
+  - title: Dynamic Menus and Content
+    description: Menus and content that can be updated as the site evolves.
+    url: /new-features/dynamic-menus-and-content/
+  - title: Enhanced User Experience
+    description: A clearer, more useful experience for each visitor.
+    url: /new-features/enhanced-user-experience/
+  - title: Database Support
+    description: Database capabilities supporting the Phase 2 feature set.
+    url: /new-features/database-support/
+  - title: Leo Enhancements
+    description: Improvements and additions for the Leo experience.
+    url: /new-features/leo-enhancements/

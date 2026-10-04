@@ -340,12 +340,6 @@ Page descriptions are what you see in the title bar next to the label. They shou
 
 Use the descriptions in [_data/topic_pages.yml](../_data/topic_pages.yml) when you want to maintain the page list and the page descriptions in one place.
 
-## Tile descriptions
-
-Tile text should live in [_data/topic_pages.yml](../_data/topic_pages.yml), not inside every page file. Welcome tiles live in [_data/home_topic_groups.yml](../_data/home_topic_groups.yml). The shared tile include resolves the topic using the page's `topic_key`, breadcrumb, or `nav_label`, so pages within a topic share a tile list.
-
-Each tile row displays at least three and at most five tiles. Missing entries are shown as non-linked “Default Tile” placeholders. Tiles have equal height, share the row width, and remain on one line; narrow screens can scroll the row horizontally.
-
 ## Images, diagrams, and bitmaps
 
 Images should be stored in a tracked asset folder such as `assets/images/`.

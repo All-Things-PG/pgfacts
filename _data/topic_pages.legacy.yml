@@ -142,47 +142,6 @@ new-features-in-phase-2:
     - title: Leo Enhancements
       description: Improvements and additions for the Leo experience.
       url: /new-features-in-phase-2/leo-enhancements/
-technical:
-  title: Technical
-  description: Site structure and authoring guidance.
-  summary: >-
-    Learn how the site is organized, how front matter works, and how to manage pages, tiles,
-    and the documentation workflow.
-  pages:
-    - title: Managing Pages
-      description: Add and maintain pages with the shared topic layout.
-      url: /technical/managing-pages.html
-    - title: Managing Tiles
-      description: Step-by-step instructions for adding and editing topic tiles.
-      url: /technical/managing-tiles.html
-    - title: PG Facts Site Guide
-      description: Working guide for maintaining the documentation site.
-      url: /technical/pgfacts-site-guide.html
-  tiles:
-    - title: Managing Pages
-      description: Add and maintain pages with the shared topic layout.
-      url: /technical/managing-pages.html
-    - title: Managing Tiles
-      description: Step-by-step instructions for adding and editing topic tiles.
-      url: /technical/managing-tiles.html
-    - title: PG Facts Site Guide
-      description: Working guide for maintaining the documentation site.
-      url: /technical/pgfacts-site-guide.html
-      description: How content is organized and presented.
-      url: /dcms/dynamic-content/
-    - title: Dynamic Menus
-      description: How topic navigation is organized.
-      url: /dcms/dynamic-menus/
-  tiles:
-    - title: What is DCMS?
-      description: An overview of the content and menuing system.
-      url: /dcms/what-is-dcms/
-    - title: Dynamic Content
-      description: How content is organized and presented.
-      url: /dcms/dynamic-content/
-    - title: Dynamic Menus
-      description: How topic navigation is organized.
-      url: /dcms/dynamic-menus/
 database:
   title: Database
   description: Data model for Phase 2 features.

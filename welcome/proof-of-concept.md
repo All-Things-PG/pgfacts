@@ -60,6 +60,8 @@ As the project continues to evolve, the Proof of Concept will remain an importan
 
 The long-term goal is to transform the POC into a comprehensive information and engagement platform capable of serving the diverse needs of the entire Pyoderma Gangrenosum community while supporting research, education, advocacy, awareness, and future organizational growth.  **The key capability is a searchable knowledge base, which is a powerful tool to display vetted information and resources.**
 
+<p><a class="oldsite-donate-button" href="mailto:suggestions@allthingspg.org?cc=dave@allthingspg.org&amp;subject=Schedule%20a%20demo%20for%20PG%20Facts%20Phase%202&amp;body=Please%20contact%20me%20to%20schedule%20a%20demo%20of%20the%20Phase%202%20proof%20of%20concept.%0D%0A%0D%0A">Schedule a Demo</a></p>
+
 ### Suggested Screenshots
 
 The following screenshots should be included throughout this document to demonstrate that the Proof of Concept is a functioning application rather than a conceptual design:

@@ -1,0 +1,36 @@
+title: User Experience
+description: Portal experiences for each visitor type.
+summary: >-
+  Explore how visitors choose a persona and find information suited to their needs.
+pages:
+  - title: What is a Portal?
+    description: An introduction to portal-style experiences.
+    url: /user-experience/what-is-a-portal/
+  - title: Selecting a User Experience
+    description: How visitors choose the experience that fits them.
+    url: /user-experience/selecting-a-user-experience/
+  - title: Patients
+    description: Portal needs and content for patients.
+    url: /user-experience/patients/
+  - title: Caregivers
+    description: Portal needs and content for caregivers.
+    url: /user-experience/caregivers/
+  - title: Providers
+    description: Portal needs and content for healthcare providers.
+    url: /user-experience/providers/
+  - title: Pharmaceutical
+    description: Portal needs and content for pharmaceutical visitors.
+    url: /user-experience/pharmaceutical/
+  - title: Guest
+    description: The experience available to guest visitors.
+    url: /user-experience/guest/
+tiles:
+  - title: What is a Portal?
+    description: An introduction to portal-style experiences.
+    url: /user-experience/what-is-a-portal/
+  - title: Selecting a User Experience
+    description: Choose an experience based on visitor needs.
+    url: /user-experience/selecting-a-user-experience/
+  - title: Patients
+    description: Explore the patient experience.
+    url: /user-experience/patients/

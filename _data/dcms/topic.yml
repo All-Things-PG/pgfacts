@@ -1,0 +1,24 @@
+title: DCMS
+description: Dynamic content and menuing system documentation.
+summary: >-
+  Explore the content model, dynamic content, and menu structure that make up DCMS.
+pages:
+  - title: What is DCMS?
+    description: Overview of the Dynamic Content and Menuing System.
+    url: /dcms/what-is-dcms/
+  - title: Dynamic Content
+    description: How content is organized and presented.
+    url: /dcms/dynamic-content/
+  - title: Dynamic Menus
+    description: How topic navigation is organized.
+    url: /dcms/dynamic-menus/
+tiles:
+  - title: What is DCMS?
+    description: An overview of the content and menuing system.
+    url: /dcms/what-is-dcms/
+  - title: Dynamic Content
+    description: How content is organized and presented.
+    url: /dcms/dynamic-content/
+  - title: Dynamic Menus
+    description: How topic navigation is organized.
+    url: /dcms/dynamic-menus/

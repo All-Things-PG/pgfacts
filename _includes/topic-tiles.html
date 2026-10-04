@@ -1,6 +1,12 @@
 {% assign topic_group = site.data.home_topic_groups[page.banner_tile_group] %}
+{% if topic_group == nil %}
+  {% assign page_directory = page.dir | remove_first: '/' | split: '/' | first %}
+  {% if page_directory and site.data[page_directory].topic %}
+    {% assign topic_group = site.data[page_directory].topic %}
+  {% endif %}
+{% endif %}
 {% if topic_group == nil and page.topic_key %}
-  {% assign topic_group = site.data.topic_pages[page.topic_key] %}
+  {% assign topic_group = site.data.topic_pages.legacy[page.topic_key] %}
 {% endif %}
 {% assign topic_label = nil %}
 {% if topic_group == nil and page.breadcrumb %}
@@ -10,17 +16,13 @@
   {% assign topic_label = page.nav_label %}
 {% endif %}
 {% if topic_group == nil and topic_label %}
-  {% for topic_entry in site.data.topic_pages %}
+  {% for topic_entry in site.data.topic_pages.legacy %}
     {% assign candidate_topic = topic_entry[1] %}
     {% if candidate_topic.title == topic_label %}
       {% assign topic_group = candidate_topic %}
       {% break %}
     {% endif %}
   {% endfor %}
-{% endif %}
-{% if topic_group == nil %}
-  {% assign page_directory = page.dir | remove_first: '/' | split: '/' | first %}
-  {% assign topic_group = site.data.topic_pages[page_directory] %}
 {% endif %}
 {% assign topic_tiles = '' | split: ',' %}
 {% if topic_group and topic_group.tiles %}

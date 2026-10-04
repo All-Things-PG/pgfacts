@@ -14,6 +14,8 @@ topic_key: technical
   <p>{{ topic.summary }}</p>
 </section>
 
+<p>Start with the <a href="{{ '/technical/pgfacts-site-guide/' | relative_url }}">PG Facts Site Guide</a>, then read the <a href="{{ '/technical/managing-pages/' | relative_url }}">Managing Pages</a> and <a href="{{ '/technical/managing-tiles/' | relative_url }}">Managing Tiles</a> guides.</p>
+
 <table class="topic-table" aria-label="Technical documents">
   <thead><tr><th>Page Description</th><th>Document</th></tr></thead>
   <tbody>

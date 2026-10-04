@@ -4,34 +4,60 @@
   children:
     - label: Home
       url: /home/home/
+    - label: Phase 2 Overview 
+      url: /welcome/phase-2-overview/
+    - label: Executive Summary
+      url: /welcome/executive-summary/
     - label: Proof of Concept
       url: /welcome/proof-of-concept/
-    - label: Executive Summary
-      url: /dcms/DCMS_Executive_Summary.html
-    - label: Explore Documentation
-      url: /docs/
 - key: phase-1
   label: Phase 1
   url: /phase-1/
   children:
-    - label: ChatGPT Analysis
+    - label: ChatGPT Analysis Phase 1
       url: /phase-1/chatgpt-analysis/
-    - label: Copilot Analysis
+    - label: Copilot Analysis Phase 1
       url: /phase-1/copilot-analysis/
+    - label: How was it Developed?
+      url: /phase-1/how-was-it-developed/
+    - label: How is it Maintained?
+      url: /phase-1/how-it-is-maintained/
     - label: Technology Platform
       url: /phase-1/technology-platform/
-    - label: How it is Maintained
-      url: /phase-1/how-it-is-maintained/
 - key: phase-2
   label: Phase 2
   url: /phase-2/
   children:
-    - label: Technology Platform
-      url: /phase-2/technology-platform/
     - label: How is it Developed?
       url: /phase-2/how-is-it-developed/
     - label: How it is Maintained?
       url: /phase-2/how-it-is-maintained/
+    - label: Technology Platform
+      url: /phase-2/technology-platform/
+- key: new-features
+  label: New Features
+  url: /new-features-in-phase-2/
+  children:
+    - label: Knowledge Base
+      url: /new-features-in-phase-2/knowledge-base/
+    - label: Dynamic Menus and Content
+      url: /new-features-in-phase-2/dynamic-menus-and-content/
+    - label: Enhanced User Experience
+      url: /new-features-in-phase-2/enhanced-user-experience/
+    - label: Database Support
+      url: /new-features-in-phase-2/database-support/
+    - label: Leo Enhancements
+      url: /new-features-in-phase-2/leo-enhancements/
+- key: technical
+  label: Technical
+  url: /technical/
+  children:
+    - label: Managing Pages
+      url: /technical/managing-pages/
+    - label: Managing Tiles
+      url: /technical/managing-tiles/
+    - label: PG Facts Site Guide
+      url: /technical/pgfacts-site-guide/
 - key: dcms
   label: DCMS
   url: /dcms/
@@ -50,18 +76,18 @@
       url: /database/why-have-a-database/
     - label: Main Tables
       url: /database/main-tables/
-    - label: Schema
+    - label: Database Schema
       url: /database/schema/
-    - label: Diagrams
+    - label: Database Diagrams
       url: /database/diagrams/
 - key: user-experience
   label: User Experience
   url: /user-experience/
   children:
-    - label: What is a Portal?
-      url: /user-experience/what-is-a-portal/
     - label: Selecting a User Experience
       url: /user-experience/selecting-a-user-experience/
+    - label: What is a Portal?
+      url: /user-experience/what-is-a-portal/
     - label: Patients
       url: /user-experience/patients/
     - label: Caregivers
@@ -70,15 +96,16 @@
       url: /user-experience/providers/
     - label: Pharmaceutical
       url: /user-experience/pharmaceutical/
-    - label: Guest
+    - label: Guests
       url: /user-experience/guest/
 - key: about
   label: About
   url: /about/
   children:
+    - label: Pyoderma Gangrenosum
+      url: /about/pyoderma-gangrenosum/
     - label: All Things PG
       url: /about/all-things-pg/
-    - label: Phase 2 Development
-      url: /about/phase-2-development/
-    - label: The Designer
-      url: /about/the-designer/
+    - label: The Developer
+      url: /about/the-developer/
+    

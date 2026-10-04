@@ -8,7 +8,7 @@ updated: 2026-09-18
 
 # DCMS - Portal Experience
 
-## Portal Experience Overview
+### Portal Experience Overview
 
 The portal experience is how All Things PG gives each audience a distinct and meaningful starting point.
 
@@ -18,7 +18,7 @@ The portal layer is how the system delivers that feeling.
 
 ---
 
-## 1. What a portal is for
+### 1. What a portal is for
 
 A portal should:
 
@@ -33,7 +33,7 @@ In practice, the portal is the first meaningful step inside the audience-specifi
 
 ---
 
-## 2. Why portals matter
+### 2. Why portals matter
 
 The portal is valuable because it lets the site speak differently to different people without breaking the overall brand.
 
@@ -48,7 +48,7 @@ The portal is the place where those differences start to show.
 
 ---
 
-## 3. Current implementation shape
+### 3. Current implementation shape
 
 The current POC uses a layered design:
 
@@ -66,7 +66,7 @@ That structure keeps the application understandable:
 
 ---
 
-## 4. What is shared
+### 4. What is shared
 
 Each portal shares:
 
@@ -80,7 +80,7 @@ That shared structure is important. It makes the portal feel like part of one si
 
 ---
 
-## 5. What can vary
+### 5. What can vary
 
 Each portal can still vary in meaningful ways:
 
@@ -96,7 +96,7 @@ The goal is controlled variation, not chaos.
 
 ---
 
-## 6. Portal styling strategy
+### 6. Portal styling strategy
 
 The portal architecture should support different visual treatments for each audience without rewriting the whole page.
 
@@ -111,7 +111,7 @@ That gives the site a consistent foundation while still letting each audience fe
 
 ---
 
-## 7. Portal content strategy
+### 7. Portal content strategy
 
 Portal pages should be data-driven where it matters most.
 
@@ -127,7 +127,7 @@ That keeps the design practical.
 
 ---
 
-## 8. Why this is a strong design choice
+### 8. Why this is a strong design choice
 
 The portal model is valuable because it balances consistency and individuality.
 
@@ -143,7 +143,7 @@ That is a good tradeoff for a small organization building a serious public resou
 
 ---
 
-## 9. Future evolution
+### 9. Future evolution
 
 The portal framework can later support:
 
@@ -159,7 +159,7 @@ The important thing is that the foundation is already pointing in that direction
 
 ---
 
-## Summary
+### Summary
 
 The portal experience is not just decoration. It is a way to make the site feel relevant and intentional to each visitor.
 

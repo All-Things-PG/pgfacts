@@ -9,7 +9,7 @@ permalink: /welcome/welcome/
 # Phase 2 is coming together.
 
 The design and documentation of Phase 2 of www.allthingspg.org is well under way.  As a software engineering project, the tasks are to:
-<table class="topic-table">
+<table class="topic-table topic-table--numbered">
 	<thead>
 		<tr>
 			<th>Item</th>
@@ -56,11 +56,11 @@ This plan allows stakeholders an opportunity to provide input and review of all 
 
 As such, I prefer a Documentation Site (pgfacts.org) because it is much easier to maintain vs a document folder or even written documentation stored on paper or emails.  With the website there is only one source of truth, and distribution is simply visiting pgfacts.org.  Why is it called pgfacts?  All Things PG purchased a number of domains early on, anythihng that sounded interesting.  This one was of them not being used and seemed closest as a domain name for the purpose intended.  It didn't cost anything extra to use it and we were paying for it anyway.
 
-## What will be the key features of Phase?
+### What will be the key features of Phase?
 
 The key vision and objectives for Phase 2 will be:
 
-<table class="topic-table">
+<table class="topic-table topic-table--numbered">
 	<thead>
 		<tr>
 			<th>Item</th>
@@ -107,9 +107,9 @@ The key vision and objectives for Phase 2 will be:
 	</tbody>
 </table>
 
-## What is the implementation plan?
+### What is the implementation plan?
 
-<table class="topic-table">
+<table class="topic-table topic-table--numbered">
 	<thead>
 		<tr>
 			<th>Item</th>
@@ -166,7 +166,7 @@ The key vision and objectives for Phase 2 will be:
 	</tbody>
 </table>
 
-## How best to review the documentation?
+### How best to review the documentation?
 
 1. Read and ask questions by submitting comments (Contact Us).  There is a lot to learn and understand about Phase 2 but can be worth the effort if you are a stakeholder.  Be involved in the discovery process.  If there is a concern, or if there are new feature you might be interested in, now is the time to make that known.  Once the system is designed or even developed it becomes difficult to stop mid-stream to add anything significant without a redesign and reintegration.  This happens all the time in the real world because things do change, but also because of the initial lack of attention to detail.
 
@@ -178,11 +178,11 @@ The key vision and objectives for Phase 2 will be:
 
 5. Identify mistakes. Very much appreciated.
 
-## Use of Titles
+### Use of Titles
 
 At the top of every page you may see titles, or bubbles.  These may be the most interesting documents within a particular topic.  They act like buttons so just click on them.  
 
-## What are some of the key documents to get me started?
+### What are some of the key documents to get me started?
 
 - [Executive Summary]({{ '/dcms/DCMS_Executive_Summary.html' | relative_url }})
 - [What is a DCMS Database]({{ '/dcms/DCMS_Portal_Experience.html' | relative_url }})

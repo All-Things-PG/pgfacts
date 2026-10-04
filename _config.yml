@@ -1,5 +1,6 @@
 title: All Things PG Documentation
 description: Public documentation for Phase 2 of All Things PG
+debug: true
 markdown: kramdown
 plugins:
   - jekyll-feed

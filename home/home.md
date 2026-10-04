@@ -2,190 +2,21 @@
 layout: page
 title: Welcome to Phase 2
 nav_label: Home
-description: Welcome to Phase 2 Documentation Site
+description: Welcome to the Phase 2 Documentation Site
+permalink: /home/home/
 ---
-# Phase 2 is coming together!
+# Welcome to the All Things PG Documentation Site for Phase 2!
 
-The design and documentation of Phase 2 of www.allthingspg.org is well under way.  Progress to date has been to create a database, proof of concept and this documentation site.  As a software engineering project, the overal tasks to implement for Phase 2 are:
-<table class="topic-table">
-	<thead>
-		<tr>
-			<th>Item</th>
-			<th>Description</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>1</td>
-			<td>Get people involved</td>
-		</tr>
-		<tr>
-			<td>2</td>
-			<td>Decide what goes in Phase 2</td>
-		</tr>
-		<tr>
-			<td>3</td>
-			<td>Document planned changes</td>
-		</tr>
-		<tr>
-			<td>4</td>
-			<td>Demostration, proposal, approval to proceed</td>
-		</tr>
-		<tr>
-			<td>6</td>
-			<td>Develop the database and website</td>
-		</tr>
-		<tr>
-			<td>7</td>
-			<td>Involved others in testing and feedback</td>
-		</tr>
-		<tr>
-			<td>8</td>
-			<td>Release in 6 months or less</td>
-		</tr>
-	</tbody>
-</table>
+Here you will find the **master source** of all documents for phase 2.  Some of it is at the **executive level**, others for **users**, and some as **technical specifications** for design and development.  These documents existed prior to the Documentation Site, as part of the normal Software Engineering process, which is to design, document, involve stakeholders, seek approval and then develop according to spcs.  The idea of a website to expose the documents as a master source, and to simplify distribution simply by visiting the website.  Involving  stakeholders should invoke discussions and feedback.  
 
-This plan allows stakeholders an opportunity to provide input and review of all changes before accepting any proposal, and then have something to gauge later to see if we met the requirements.  It also allows the developer to fully understand all the work ahead of time so that individual pieces fit together as a single unit.  Writing documentation first, and having agreement with stakeholders, ensures we build the right thing.   No design document is a contract, and not all code will adhere to the design.  Things change.  Documentation becomes a guide to make sure all the features requested are implemented in the final release.  It avoids issues down the road, like a dispute of what was SUPPOSED to chang and didn't.  The problem with documentation is that it often becomes out of date quickly.  
+Information in the website is protected by a gateway password.  Please do NOT share the password.  I will change the password from time to time, so if I haven't sent you the new password (how are you here) then just reach out for the new password with the contact us button.  This information is entirely confidential to All Things PG and anyone I've given the password to.
 
-As such, I prefer a Documentation Site (pgfacts.org) because it is much easier to maintain vs a document folder containing many separate documents, or even printed versions or emails.  A website becomes the only source of truth, and distribution is dirt simple just by visiting pgfacts.org.  
+Feel free to explore the entire site.  And by all means, ***PLEASE*** click the  <a href="mailto:suggestions@allthingspg.org?cc=dave@allthingspg.org&amp;subject=PG%20Facts%20feedback&amp;body=Thank%20you%20for%20your%20feedback.%20Please%20tell%20us%20how%20we%20can%20improve%20this%20site%20or%20its%20documentation.%0D%0A%0D%0A"><strong>Contact Us</strong></a> button at the **top right** of every screen.  That will open your email client so that you can send questions, comments and/or suggestion to suggestions@allthingspg.org (cc dave@allthingspg.org).
 
-Why is it called pgfacts?  All Things PG purchased a number of domains early on, anythihng that sounded interesting.  This one was of them not being used and seemed closest as a domain name for the purpose intended.  It didn't cost anything extra to use it and we were paying for it anyway.
+Feeback is critical to the success of the project.  By reviewing the design specifications and list of new features, everyone has a say in the final version of Phase 2.  
 
-### What are the main steps to build Phase 2?
+Thank you!
 
-The key vision and objectives for Phase 2 will be:
-
-<table class="topic-table">
-	<thead>
-		<tr>
-			<th>Item</th>
-			<th>Description</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>1</td>
-			<td>Clarify the mission of All Things PG and the goals of the website (always the central goal)</td>
-		</tr>
-		<tr>
-			<td>2</td>
-			<td>Identify the audience, who will be using the website and why (also referred to as Use Cases)</td>
-		</tr>
-		<tr>
-			<td>3</td>
-			<td>Identify Phase 2 features that will support the mission and purpose of the ATPG website</td>
-		</tr>
-		<tr>
-			<td>4</td>
-			<td>Create a well designed and powerful database that supports all the new features and beyond</td>
-		</tr>
-		<tr>
-			<td>5</td>
-			<td>Enhance the user experience and make it easier to find what you're looking for (a more guided experience)</td>
-		</tr>
-		<tr>
-			<td>6</td>
-			<td>Eollect data to support development of future releases (usuage data, logs, error logs, profile information etc)</td>
-		</tr>
-		<tr>
-			<td>7</td>
-			<td>Store data to support lists of patients, caregivers, providers, pharma, trials, research etc for the purpose of fundraising, newsletters, sending emails and more</td>
-		</tr>
-		<tr>
-			<td>8</td>
-			<td>Store data to have a data-drive website with menus and content</td>
-		</tr>
-		<tr>
-			<td>9</td>
-			<td>Provide better help and support to users of the website (maybe even an AI agent)</td>
-		</tr>
-	</tbody>
-</table>
-
-### What is the implementation plan?
-
-<table class="topic-table">
-	<thead>
-		<tr>
-			<th>Item</th>
-			<th>Description</th>
-			<th>Status</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>1</td>
-			<td>Design and create a FULL database that supports mission objectives</td>
-			<td>Mostly done</td>
-		</tr>
-		<tr>
-			<td>2</td>
-			<td>Plan some of the new features as opportunities</td>
-			<td>Mostly done, not all need to be listed</td>
-		</tr>
-		<tr>
-			<td>3</td>
-			<td>Apply for and build a nonprofit technology platform for Office and Development</td>
-			<td>Approved - MS Nonprofit Tenant, M365 Business Basic (300 users), $2000 Azure grant per year, Copilot Premium</td>
-		</tr>
-		<tr>
-			<td>4</td>
-			<td>Figure out the technology, given the current environment and circumstances</td>
-			<td>MS SQL, ASP.NET Core, GitHub Pages, Azure, AI</td>
-		</tr>
-		<tr>
-			<td>5</td>
-			<td>Estimate costs for developing and hosting Phase 2</td>
-			<td>By the numbers</td>
-		</tr>
-		<tr>
-			<td>6</td>
-			<td>Document planned changes in writing, host on pgfacts.org</td>
-			<td>On-going</td>
-		</tr>
-		<tr>
-			<td>7</td>
-			<td>Build a proof of concept (POC) that proves the new design concepts</td>
-			<td>Virtually done</td>
-		</tr>
-		<tr>
-			<td>8</td>
-			<td>Create a project proposal with costs and timeline</td>
-			<td>Not started</td>
-		</tr>
-		<tr>
-			<td>9</td>
-			<td>Develop, test, deploy, approve</td>
-			<td>Pending</td>
-		</tr>
-	</tbody>
-</table>
-
-
-### How best to review the documentation?
-
-1. Browse pages and ask questions by submitting comments (Contact Us).  There is a lot to learn and understand about Phase 2 but can be worth the effort if you are a stakeholder.  Be involved in the discovery process.  If there is a concern, or if there are new feature you might be interested in, now is the time to make that known.  Once the system is designed or even developed it becomes difficult to stop mid-stream to add anything significant without a redesign and reintegration.  This happens all the time in the real world because things do change, but also because of the initial lack of attention to detail.
-
-2. Try to understand the key reasons for building Phase 2 from the Executive Summary and other documents.  The main 'feature' is that Phase 2 will becomes a searchable and easily expandable full knowledge base of published information about PG, on any topic, for any user.  A search will quickly list all the menu items and articles that target the information you're looking for.
-
-3. Start by learning about DCMS as a design.  DCMS was invented for curating dynamic content and associating with dynamic menu items, which is essential to building a knowledge base.  
-
-4. Learn about the enhanced User Experience with Portals.  Each user has a visitor type, either Patient, Caregiver, Provider, Pharmaceutical or Guest.  Each visitor type has a unique portal which provides a customized user experience.  Different 'portals' can look identical, and you may not even know you're acting as a Patient vs Doctor.  However, if desired, the content displayed might be different.  A doctor wants to see doctor stuff.  A caregiver may want more information about wound care.
-
-5. See how you never have to 'log in' or register to use the website, you can always view as a Guest.  You can select your type of user if you wish to customize your experience.  You can also register, which will save your selection and allow you other features like newsletters and such.
-
-6. Identify the new features that interest you.  Ask questions, submit feedback early and often. Make sure Phase 2 offers the solutions you need.
-
-7. Report any errors in documentation.  Very much appreciated.
-
-### Use of Titles
-
-At the top of every page you may see titles, or bubbles.  These may be the most interesting documents within a particular topic.  They act like buttons so just click on them.  
-
-### What are some of the key documents to get me started?
-
-- [Executive Summary]({{ '/dcms/DCMS_Executive_Summary.html' | relative_url }})
-- [What is a DCMS Database]({{ '/dcms/DCMS_Portal_Experience.html' | relative_url }})
-- [Creating a Portal Experience]({{ '/dcms/DCMS_Portal_Experience.html' | relative_url }})
-- [Curating and Publishing Content]({{ '/dcms/DCMS_Curating_Content.html' | relative_url }})
+Dave Depottie<br>
+Chairman and IT Director<br>
+All Things PG<br>

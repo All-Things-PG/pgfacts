@@ -24,14 +24,10 @@
 {% endif %}
 {% assign topic_tiles = '' | split: ',' %}
 {% if topic_group and topic_group.tiles %}
-  {% assign topic_tiles = topic_group.tiles | slice: 0, 5 %}
+  {% assign topic_tiles = topic_group.tiles | slice: 0, 3 %}
 {% endif %}
 {% assign tile_count = topic_tiles | size %}
-{% assign placeholder_count = 3 | minus: tile_count %}
-{% if placeholder_count < 0 %}
-  {% assign placeholder_count = 0 %}
-{% endif %}
-{% assign display_tile_count = tile_count | plus: placeholder_count %}
+{% assign display_tile_count = tile_count %}
 <div class="pg-home-topic-grid" style="--topic-tile-count: {{ display_tile_count }};">
   {% for tile in topic_tiles %}
     <a class="pg-home-topic-tile" href="{{ tile.url | relative_url }}">
@@ -39,9 +35,4 @@
       {% if tile.description %}<span>{{ tile.description }}</span>{% endif %}
     </a>
   {% endfor %}
-  {% if placeholder_count > 0 %}
-    {% for placeholder in (1..placeholder_count) %}
-      <div class="pg-home-topic-tile pg-home-topic-tile--placeholder"><strong>Default Tile</strong></div>
-    {% endfor %}
-  {% endif %}
 </div>

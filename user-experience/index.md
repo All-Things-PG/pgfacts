@@ -16,7 +16,7 @@ topic_key: user-experience
 </section>
 
 <table class="topic-table" aria-label="User Experience documents">
-  <thead><tr><th>Page Description</th><th>Document</th></tr></thead>
+  <thead><tr><th scope="col">Page Description</th><th scope="col">Document</th></tr></thead>
   <tbody>
     {% for item in topic.pages %}
     <tr><td>{{ item.description }}</td><td><a href="{{ item.url | relative_url }}">{{ item.title }}</a></td></tr>

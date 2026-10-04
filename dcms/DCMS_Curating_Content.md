@@ -7,7 +7,7 @@ updated: 2026-09-18
 ---
 # DCMS - Curating Content
 
-## Curating Content
+### Curating Content
 
 The content model is designed to make All Things PG easier to grow, update, and maintain over time.
 
@@ -15,7 +15,7 @@ The purpose is not just to store text. It is to create a sustainable workflow fo
 
 ---
 
-## 1. What content curation means in DCMS
+### 1. What content curation means in DCMS
 
 In DCMS, curated content is structured content that can be assembled into pages and reused across the site.
 
@@ -31,7 +31,7 @@ This is a much better fit for a growing information platform than hard-coding im
 
 ---
 
-## 2. The current migration approach
+### 2. The current migration approach
 
 For the POC and migration work, content is being captured into:
 
@@ -51,7 +51,7 @@ This is enough to move quickly without making the system more complicated than i
 
 ---
 
-## 3. Why the migration layer is useful
+### 3. Why the migration layer is useful
 
 The migration layer gives the organization flexibility.
 
@@ -67,7 +67,7 @@ That makes the migration process safer and easier to manage.
 
 ---
 
-## 4. How content is expected to flow
+### 4. How content is expected to flow
 
 The general flow is:
 
@@ -81,7 +81,7 @@ For the POC, the process can stay lightweight and practical. The goal is to get 
 
 ---
 
-## 5. Why the site needs content curation, not just content storage
+### 5. Why the site needs content curation, not just content storage
 
 A page is not valuable because it exists in a database. It is valuable because it is understandable, useful, and easy to maintain.
 
@@ -99,7 +99,7 @@ This is especially important for a rare-disease organization, where the value of
 
 ---
 
-## 6. What can be improved later
+### 6. What can be improved later
 
 The first pass does not need to be perfect.
 
@@ -118,7 +118,7 @@ That staged approach is deliberate. It lets the team get useful content in place
 
 ---
 
-## 7. Why this is a strong foundation
+### 7. Why this is a strong foundation
 
 The content curation model is strong because it supports both speed and control.
 
@@ -134,7 +134,7 @@ For a sponsor, that means the platform is not just a one-time build. It is an as
 
 ---
 
-## Summary
+### Summary
 
 Content curation in DCMS is about building a reliable path from legacy content to a maintainable platform.
 

@@ -11,7 +11,7 @@ topic_key: technical
 
 Each topic has a folder and an `index.md` landing page. Store a topic's supporting Markdown pages in that same folder. Every content page uses the same structure: site header, breadcrumb and description, topic tile bar, then Markdown content. `_config.yml` applies the regular page layout by default; the home layout delegates to it, so topic landing pages have the same structure.
 
-## Add a page
+### Add a page
 
 1. Create a Markdown file in the topic folder.
 2. Add front matter for `title`, `description`, and the topic breadcrumb. For example:

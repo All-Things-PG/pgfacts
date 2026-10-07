@@ -1,0 +1,24 @@
+title: About
+description: Background and contact information.
+summary: >-
+  Learn about Pyoderma Gangrenosum, the All Things PG organization, and the people behind the work.
+pages:
+  - title: Pyoderma Gangrenosum
+    description: Background on the condition the organization serves.
+    url: /about/pyoderma-gangrenosum/
+  - title: All Things PG
+    description: Background on the All Things PG organization.
+    url: /about/all-things-pg/
+  - title: The Developer
+    description: Information about the site developer.
+    url: /about/the-developer/
+tiles:
+  - title: Pyoderma Gangrenosum
+    description: About the condition behind the mission.
+    url: /about/pyoderma-gangrenosum/
+  - title: All Things PG
+    description: About the organization behind this site.
+    url: /about/all-things-pg/
+  - title: The Developer
+    description: About the person who developed the site.
+    url: /about/the-developer/

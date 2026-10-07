@@ -34,6 +34,9 @@
           <span class="oldsite-breadcrumb-current">{{ page.title }}</span>
         {% endif %}
       </nav>
+      {% if site.debug %}
+        <span class="oldsite-page-source">Debug: {{ page.path }}</span>
+      {% endif %}
       {% assign banner_description = page.description | default: page.title %}
       {% if banner_description %}
         <span class="oldsite-page-description">{{ banner_description }}</span>

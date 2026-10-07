@@ -13,6 +13,14 @@ body {
   background: #ffffff;
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
+body {
+  overflow-y: scroll;
+}
+
 h1,
 h2,
 h3,
@@ -60,11 +68,18 @@ h6,
 }
 
 .oldsite-breadcrumb,
-.oldsite-page-description {
+.oldsite-page-description,
+.oldsite-page-source {
   font-family: "Work Sans", Arial, Helvetica, sans-serif;
   font-size: 0.86rem;
   font-weight: 500;
   color: #000000;
+}
+
+.oldsite-page-source {
+  font-family: monospace;
+  font-size: 0.75rem;
+  color: #555555;
 }
 
 .oldsite-breadcrumb-link {
@@ -86,7 +101,11 @@ h6,
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.5rem;
-  margin-bottom: 0.7rem;
+  margin-bottom: 0.35rem;
+}
+
+.home-hero {
+  margin-top: 0;
 }
 
 .pg-home-topic-tile {
@@ -135,6 +154,11 @@ h6,
 .oldsite-page-content h2 {
   color: var(--oldsite-orange);
   font-weight: 700;
+}
+
+.oldsite-page-content h2,
+.gate-card h2 {
+  font-size: 1.35rem;
 }
 
 .gate-overlay {
@@ -336,7 +360,7 @@ h6,
 
 .topic-table {
   width: 100%;
-  table-layout: fixed;
+  table-layout: auto;
   border-collapse: collapse;
   background: #fff;
 }
@@ -348,6 +372,9 @@ h6,
   font-size: 13px;
   line-height: 1.15;
   vertical-align: top;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .topic-table th {
@@ -359,11 +386,38 @@ h6,
   background: #f7f0e2;
 }
 
-.topic-table th:first-child,
-.topic-table td:first-child {
-  width: 4.5rem;
+/* Modifier for tables whose first column is a short numbered/label value
+   (e.g. "Item" step lists). Only this variant gets a fixed narrow column;
+   the default .topic-table sizes columns to their content so description
+   text never overlaps the next column. */
+.topic-table--numbered th:first-child,
+.topic-table--numbered td:first-child {
+  width: 3.5rem;
   white-space: nowrap;
-  text-align: center;
+  text-align: left;
+}
+
+/* Allow a page to widen/narrow specific columns without re-introducing
+   the overlap bug, since wrapping is always on by default above. */
+.topic-table--wide-first th:first-child,
+.topic-table--wide-first td:first-child {
+  width: 40%;
+}
+
+@media (max-width: 480px) {
+  .topic-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .topic-table thead,
+  .topic-table tbody,
+  .topic-table tr {
+    display: table;
+    width: 100%;
+    table-layout: auto;
+  }
 }
 
 .page-title {

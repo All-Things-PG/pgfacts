@@ -1,5 +1,9 @@
 ---
+layout: page
 title: Request Access
+nav_label: About
+breadcrumb: About > Request Access
+description: Request access to the pgfacts.org site.
 permalink: /about/request-access/
 ---
 

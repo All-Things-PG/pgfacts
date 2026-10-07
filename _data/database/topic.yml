@@ -1,0 +1,30 @@
+title: Database
+description: Data model for Phase 2 features.
+summary: >-
+  Explore the database concepts, tables, and schema supporting the Phase 2 site.
+pages:
+  - title: Why Have a Database?
+    description: The role of the database in the Phase 2 design.
+    url: /database/why-have-a-database/
+  - title: Main Tables
+    description: Overview of the database's main tables.
+    url: /database/main-tables/
+  - title: Schema
+    description: Database schema and relationships.
+    url: /database/schema/
+  - title: Diagrams
+    description: Visual diagrams of the database structure.
+    url: /database/diagrams/
+tiles:
+  - title: Why Have a Database?
+    description: Why the Phase 2 site needs a database.
+    url: /database/why-have-a-database/
+  - title: Main Tables
+    description: The principal tables in the data model.
+    url: /database/main-tables/
+  - title: Schema
+    description: How the database tables relate.
+    url: /database/schema/
+  - title: Diagrams
+    description: Visual views of the database structure.
+    url: /database/diagrams/

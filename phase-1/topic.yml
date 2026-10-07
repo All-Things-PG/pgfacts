@@ -1,0 +1,28 @@
+title: Phase 1
+description: Analysis and platform planning
+summary: >-
+  Phase 1 captures the analysis work, platform options, and maintenance approach that led
+  into the broader documentation effort.
+pages:
+  - title: ChatGPT Analysis
+    description: What ChatGPT was used for in the planning process.
+    url: /phase-1/chatgpt-analysis/
+  - title: Copilot Analysis
+    description: How Copilot was used to support the work.
+    url: /phase-1/copilot-analysis/
+  - title: Technology Platform
+    description: Platform choices and design direction.
+    url: /phase-1/technology-platform/
+  - title: How it is Maintained
+    description: How the Phase 1 work is kept current.
+    url: /phase-1/how-it-is-maintained/
+tiles:
+  - title: ChatGPT Analysis
+    description: AI-assisted planning and analysis.
+    url: /phase-1/chatgpt-analysis/
+  - title: Copilot Analysis
+    description: Copilot-assisted planning and editing.
+    url: /phase-1/copilot-analysis/
+  - title: Technology Platform
+    description: The tools and platform used for the work.
+    url: /phase-1/technology-platform/

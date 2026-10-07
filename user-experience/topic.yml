@@ -1,0 +1,74 @@
+title: User Experience
+description: Portal experiences for each visitor type.
+summary: >-
+  Explore how visitors choose a persona and find information suited to their needs.
+pages:
+  - title: What is a Portal?
+    description: An introduction to portal-style experiences.
+    url: /user-experience/what-is-a-portal/
+  - title: Selecting a User Experience
+    description: How visitors choose the experience that fits them.
+    url: /user-experience/selecting-a-user-experience/
+  - title: Patients
+    description: Portal needs and content for patients.
+    url: /user-experience/patients/
+  - title: Caregivers
+    description: Portal needs and content for caregivers.
+    url: /user-experience/caregivers/
+  - title: Providers
+    description: Portal needs and content for healthcare providers.
+    url: /user-experience/providers/
+  - title: Pharmaceutical
+    description: Portal needs and content for pharmaceutical visitors.
+    url: /user-experience/pharmaceutical/
+  - title: Guest
+    description: The experience available to guest visitors.
+    url: /user-experience/guest/
+tiles:
+  - title: What is a Portal?
+    description: An introduction to portal-style experiences.
+    url: /user-experience/what-is-a-portal/
+  - title: Selecting a User Experience
+    description: Choose an experience based on visitor needs.
+    url: /user-experience/selecting-a-user-experience/
+  - title: Patients
+    description: Explore the patient experience.
+    url: /user-experience/patients/
+*** Add File: c:\Users\daved\source\repos\Business\pgfacts\new-features\topic.yml
+title: New Features in Phase 2
+description: Planned capabilities for the next release.
+summary: >-
+  Explore the planned Phase 2 features, including the knowledge base, dynamic menus and
+  content, database support, and improved user experiences.
+pages:
+  - title: Knowledge Base
+    description: A structured, searchable collection of trusted PG information.
+    url: /new-features-in-phase-2/knowledge-base/
+  - title: Dynamic Menus and Content
+    description: Menus and content that can be updated as the site evolves.
+    url: /new-features-in-phase-2/dynamic-menus-and-content/
+  - title: Enhanced User Experience
+    description: A clearer, more useful experience for each visitor.
+    url: /new-features-in-phase-2/enhanced-user-experience/
+  - title: Database Support
+    description: Database capabilities supporting the Phase 2 feature set.
+    url: /new-features-in-phase-2/database-support/
+  - title: Leo Enhancements
+    description: Improvements and additions for the Leo experience.
+    url: /new-features-in-phase-2/leo-enhancements/
+tiles:
+  - title: Knowledge Base
+    description: A structured, searchable collection of trusted PG information.
+    url: /new-features-in-phase-2/knowledge-base/
+  - title: Dynamic Menus and Content
+    description: Menus and content that can be updated as the site evolves.
+    url: /new-features-in-phase-2/dynamic-menus-and-content/
+  - title: Enhanced User Experience
+    description: A clearer, more useful experience for each visitor.
+    url: /new-features-in-phase-2/enhanced-user-experience/
+  - title: Database Support
+    description: Database capabilities supporting the Phase 2 feature set.
+    url: /new-features-in-phase-2/database-support/
+  - title: Leo Enhancements
+    description: Improvements and additions for the Leo experience.
+    url: /new-features-in-phase-2/leo-enhancements/

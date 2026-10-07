@@ -1,5 +1,7 @@
 ---
+layout: page
 title: Search
+description: Search the documentation set.
 permalink: /search/
 ---
 

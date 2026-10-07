@@ -1,0 +1,25 @@
+title: Technical
+description: Site structure and authoring guidance.
+summary: >-
+  Use the Technical section to find the site guide, page-writing instructions, and tile
+  management notes for the documentation site.
+pages:
+  - title: PG Facts Site Guide
+    description: How the site is structured and maintained.
+    url: /technical/pgfacts-site-guide/
+  - title: Managing Pages
+    description: Add and maintain pages with the shared topic layout.
+    url: /technical/managing-pages.html
+  - title: Managing Tiles
+    description: Step-by-step instructions for adding and editing topic tiles.
+    url: /technical/managing-tiles/
+tiles:
+  - title: PG Facts Site Guide
+    description: Learn how the site is structured.
+    url: /technical/pgfacts-site-guide/
+  - title: Managing Pages
+    description: Add and maintain topic pages.
+    url: /technical/managing-pages.html
+  - title: Managing Tiles
+    description: Add or edit the topic tile rows.
+    url: /technical/managing-tiles/

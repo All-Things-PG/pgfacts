@@ -1,0 +1,13 @@
+{
+  "github.copilotChat.model": "gpt-5-mini",
+  "github.copilotChat.effort": "low",
+  "github.copilotChat.maxTokens": 256,
+  "github.copilotChat.temperature": 0.2,
+  "github.copilotChat.defaultInteraction": "ask"
+  ,
+  "github.copilot.suggest.enable": true,
+  "github.copilot.confirmation.showKeepUndo": false,
+  "github.copilot.disableEditorPrompts": true,
+  "github.copilotChat.suppressPermissionPrompts": true,
+  "github.copilot.showWelcome": false
+}

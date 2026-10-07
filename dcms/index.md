@@ -8,7 +8,7 @@ updated: 2026-09-18
 
 # DCMS - Dynamic Content and Menuing System
 
-## Executive Summary
+### Executive Summary
 
 All Things PG needs a website that does more than present information. It needs a platform that can grow with the organization, serve different audiences well, and keep content maintainable over time.
 

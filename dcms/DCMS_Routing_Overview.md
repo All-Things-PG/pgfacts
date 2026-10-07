@@ -4,7 +4,7 @@ This document describes the current POC routing model and the broader DCMS ideas
 
 ---
 
-## 1. Current POC routing model
+### 1. Current POC routing model
 
 Every `MenuItem` record still carries a `RouteType` and `RouteTarget`, but the POC resolves them through page-specific handlers:
 
@@ -20,7 +20,7 @@ The menu system generates links from `MenuItem.GetUrl()` and `GetUrlWithMenu()`.
 
 ---
 
-## 2. Visitor routing
+### 2. Visitor routing
 
 Visitor routing is persona selection, not a content lookup.
 
@@ -35,7 +35,7 @@ The current behavior is:
 
 ---
 
-## 3. Page routing
+### 3. Page routing
 
 `RouteType = 'P'` is used for semantic page targets.
 
@@ -48,7 +48,7 @@ This keeps the stored route target semantic while still allowing the page dispat
 
 ---
 
-## 4. Content routing
+### 4. Content routing
 
 Content routing remains the database-driven path for content pages when used.
 
@@ -62,7 +62,7 @@ The POC is currently using direct page content for some areas, while the migrati
 
 ---
 
-## 5. Shared page infrastructure
+### 5. Shared page infrastructure
 
 The current shared page layers are:
 
@@ -75,7 +75,7 @@ The portal title and tile strip are now portal-specific shared chrome, not home-
 
 ---
 
-## 6. Summary
+### 6. Summary
 
 The current POC keeps the routing model simple and explicit:
 

@@ -10,39 +10,101 @@ updated: 2026-09-18
 
 ## Database Schema
 
-This document describes the implemented schema for the **AllThingsPG** SQL Server database project. The SQL project under `Database\AllThingsPG.Database` is the implementation baseline for table names, column definitions, constraints, relationships, views, functions, procedures, and deployment behavior.
+This document describes the database schema for  **AllThingsPG** SQL Server database.  Schema is the structure of the database, for tables, stored procedures, functions, constraints and much more.  Schema is the definition of the database. All databases have schema, which is a description of things like table columns, type etc.  A table in a database is much like an Excel spreadsheet, where each column has a name and type (integer, text, currency etc).  The definition of a table defines what type of data can be put in that table, and where to put it. This document, and other database documents, are part of the developer specs, and not attempt (other than this paragraph) will be made to explain terminology.
 
-The schema separates:
+The SQL project under `Database\AllThingsPG.Database` is the implementation baseline for table names, column definitions, constraints, relationships, views, functions, procedures, and deployment behavior.  It is the master source of truth.  Even the database itself is not, it is the schema defined in the database project that is.  Like the POC and eventualy Phase2 website, the db project is in a Github repository and securely stored with our nonprofit All Things PG organization (or will be soon).
 
-* lookup data that defines valid domain values;
-* menu and route definitions used to build navigation;
-* content documents and ordered content elements;
-* staging records used before content is published;
-* registration, communication, system, and test-support data.
+The schema defines various categories of tables:
 
----
+- lookup data tha defines valid domain values
+- menu and route definitions used to build navigation
+- content documents and ordered content elements
+- staging records used before content is published
+- master menu, menu items, portal menu
+- registration, communication, emails, contacts
+- system settings, error log
+- test harness and staging
 
 ## Database Project
 
-| Property | Value |
-| :--- | :--- |
-| Project | `AllThingsPG.Database` |
-| Project file | `AllThingsPG.Database.sqlproj` |
-| Schema provider | `Microsoft.Data.Tools.Schema.Sql.Sql160DatabaseSchemaProvider` |
-| Target | SQL Server database |
-| Default schema | `dbo` |
-| Deployment | SSDT build, pre-deployment, and post-deployment scripts |
+<table class="topic-table">
+  <thead>
+    <tr>
+      <th scope="col">Property</th>
+      <th scope="col">Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Project</td>
+      <td>`AllThingsPG.Database`</td>
+    </tr>
+    <tr>
+      <td>Project file</td>
+      <td>`AllThingsPG.Database.sqlproj`</td>
+    </tr>
+    <tr>
+      <td>Schema provider</td>
+      <td>`Microsoft.Data.Tools.Schema.Sql.Sql160DatabaseSchemaProvider`</td>
+    </tr>
+    <tr>
+      <td>Target</td>
+      <td>SQL Server database</td>
+    </tr>
+    <tr>
+      <td>Default schema</td>
+      <td>`dbo`</td>
+    </tr>
+    <tr>
+      <td>Deployment</td>
+      <td>SSDT build, pre-deployment, and post-deployment scripts</td>
+    </tr>
+  </tbody>
+</table>
 
 ### Implemented object inventory
 
-| Object type | Location | Objects |
-| :--- | :--- | :--- |
-| Tables | `Tables` | 29 tables, including operational, lookup, staging, and test tables |
-| Views | `Views` | `ContentDocumentList`, `ContentElementList`, `MenuItemList`, `MissingTableList`, `TableList` |
-| Functions | `Functions` | 15 scalar/table-valued utility and validation functions |
-| Stored procedures | `Stored Procedures` | 61 initialization, CRUD, validation, population, logging, and reporting procedures |
-| Deployment scripts | Project root and `Scripts` | `Pre-Deployment.sql`, `Post-Deployment.sql`, backup and initial-data scripts |
-| Test scripts | `Testing` | Non-build scripts for setup, normalization, population, validation, and test execution |
+<table class="topic-table">
+  <thead>
+    <tr>
+      <th scope="col">Object type</th>
+      <th scope="col">Location</th>
+      <th scope="col">Objects</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Tables</td>
+      <td>`Tables`</td>
+      <td>29 tables, including operational, lookup, staging, and test tables</td>
+    </tr>
+    <tr>
+      <td>Views</td>
+      <td>`Views`</td>
+      <td>`ContentDocumentList`, `ContentElementList`, `MenuItemList`, `MissingTableList`, `TableList`</td>
+    </tr>
+    <tr>
+      <td>Functions</td>
+      <td>`Functions`</td>
+      <td>15 scalar/table-valued utility and validation functions</td>
+    </tr>
+    <tr>
+      <td>Stored procedures</td>
+      <td>`Stored Procedures`</td>
+      <td>61 initialization, CRUD, validation, population, logging, and reporting procedures</td>
+    </tr>
+    <tr>
+      <td>Deployment scripts</td>s
+      <td>Project root and `Scripts`</td>
+      <td>`Pre-Deployment.sql`, `Post-Deployment.sql`, backup and initial-data scripts</td>
+    </tr>
+    <tr>
+      <td>Test scripts</td>
+      <td>`Testing`</td>
+      <td>Non-build scripts for setup, normalization, population, validation, and test execution</td>
+    </tr>
+  </tbody>
+</table>
 
 ---
 
@@ -54,180 +116,965 @@ Lookup tables provide validated domain values referenced by transactional tables
 
 Defines visitor personas used by registration and menu visibility rules.
 
-| Column | Type | Nullability | Constraints / purpose |
-| :--- | :--- | :--- | :--- |
-| `Code` | `char(1)` | NOT NULL | Primary key |
-| `Description` | `nvarchar(200)` | NOT NULL | Persona description |
-| `SortOrder` | `int` | NOT NULL | Display order |
-| `IsDefault` | `bit` | NOT NULL | Identifies the default persona |
+<table class="topic-table">
+  <thead>
+    <tr>
+      <th scope="col">Column</th>
+      <th scope="col">Type</th>
+      <th scope="col">Nullability</th>
+      <th scope="col">Constraints / purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`Code`</td>
+      <td>`char(1)`</td>
+      <td>NOT NULL</td>
+      <td>Primary key</td>
+    </tr>
+    <tr>
+      <td>`Description`</td>
+      <td>`nvarchar(200)`</td>
+      <td>NOT NULL</td>
+      <td>Persona description</td>
+    </tr>
+    <tr>
+      <td>`SortOrder`</td>
+      <td>`int`</td>
+      <td>NOT NULL</td>
+      <td>Display order</td>
+    </tr>
+    <tr>
+      <td>`IsDefault`</td>
+      <td>`bit`</td>
+      <td>NOT NULL</td>
+      <td>Identifies the default persona</td>
+    </tr>
+  </tbody>
+</table>
 
 **Current sample data:**
 
-| Code | Description | SortOrder | IsDefault |
-| :--- | :--- | ---: | :---: |
-| `P` | Patient | 1 | 0 |
-| `C` | Caregiver | 2 | 0 |
-| `M` | Provider | 3 | 0 |
-| `D` | Pharmaceutical | 4 | 0 |
-| `V` | Visitor | 5 | 1 |
-| `R` | Register | 6 | 0 |
+<table class="topic-table">
+  <thead>
+    <tr>
+      <th scope="col">Code</th>
+      <th scope="col">Description</th>
+      <th scope="col">SortOrder</th>
+      <th scope="col">IsDefault</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`P`</td>
+      <td>Patient</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>`C`</td>
+      <td>Caregiver</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>`M`</td>
+      <td>Provider</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>`D`</td>
+      <td>Pharmaceutical</td>
+      <td>4</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>`V`</td>
+      <td>Visitor</td>
+      <td>5</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>`R`</td>
+      <td>Register</td>
+      <td>6</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
 
 ### Table: `RouteType`
 
 Defines how a menu item route is interpreted by the application.
 
-| Column | Type | Nullability | Constraints / purpose |
-| :--- | :--- | :--- | :--- |
-| `Code` | `char(1)` | NOT NULL | Primary key |
-| `Description` | `nvarchar(200)` | NOT NULL | Route behavior description |
-| `Folder` | `nvarchar(200)` | NOT NULL | Application folder or handler context |
-| `SortOrder` | `int` | NOT NULL | Display or evaluation order |
+<table class="topic-table">
+  <thead>
+    <tr>
+      <th scope="col">Column</th>
+      <th scope="col">Type</th>
+      <th scope="col">Nullability</th>
+      <th scope="col">Constraints / purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`Code`</td>
+      <td>`char(1)`</td>
+      <td>NOT NULL</td>
+      <td>Primary key</td>
+    </tr>
+    <tr>
+      <td>`Description`</td>
+      <td>`nvarchar(200)`</td>
+      <td>NOT NULL</td>
+      <td>Route behavior description</td>
+    </tr>
+    <tr>
+      <td>`Folder`</td>
+      <td>`nvarchar(200)`</td>
+      <td>NOT NULL</td>
+      <td>Application folder or handler context</td>
+    </tr>
+    <tr>
+      <td>`SortOrder`</td>
+      <td>`int`</td>
+      <td>NOT NULL</td>
+      <td>Display or evaluation order</td>
+    </tr>
+  </tbody>
+</table>
 
 **Current sample data:**
 
-| Code | Description | Folder | SortOrder |
-| :--- | :--- | :--- | ---: |
-| `V` | Visitor | `Visitor` | 1 |
-| `C` | Content | `Content` | 2 |
-| `P` | Page | `Page` | 3 |
-| `R` | Redirect | `Redirect` | 4 |
+<table class="topic-table">
+  <thead>
+    <tr>
+      <th scope="col">Code</th>
+      <th scope="col">Description</th>
+      <th scope="col">Folder</th>
+      <th scope="col">SortOrder</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`V`</td>
+      <td>Visitor</td>
+      <td>`Visitor`</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>`C`</td>
+      <td>Content</td>
+      <td>`Content`</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>`P`</td>
+      <td>Page</td>
+      <td>`Page`</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>`R`</td>
+      <td>Redirect</td>
+      <td>`Redirect`</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
 
 ### Table: `ContentType`
 
 Defines the document-level content classification or rendering template.
 
-| Column | Type | Nullability | Constraints / purpose |
-| :--- | :--- | :--- | :--- |
-| `Code` | `char(1)` | NOT NULL | Primary key |
-| `Name` | `nvarchar(50)` | NOT NULL | Short type name |
-| `Description` | `nvarchar(200)` | NOT NULL | Type description |
-| `SortOrder` | `int` | NOT NULL | Display order |
+<table class="topic-table">
+  <thead>
+    <tr>
+      <th scope="col">Column</th>
+      <th scope="col">Type</th>
+      <th scope="col">Nullability</th>
+      <th scope="col">Constraints / purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`Code`</td>
+      <td>`char(1)`</td>
+      <td>NOT NULL</td>
+      <td>Primary key</td>
+    </tr>
+    <tr>
+      <td>`Name`</td>
+      <td>`nvarchar(50)`</td>
+      <td>NOT NULL</td>
+      <td>Short type name</td>
+    </tr>
+    <tr>
+      <td>`Description`</td>
+      <td>`nvarchar(200)`</td>
+      <td>NOT NULL</td>
+      <td>Type description</td>
+    </tr>
+    <tr>
+      <td>`SortOrder`</td>
+      <td>`int`</td>
+      <td>NOT NULL</td>
+      <td>Display order</td>
+    </tr>
+  </tbody>
+</table>
 
 **Current sample data:**
 
-| Code | Name | Description | SortOrder |
-| :--- | :--- | :--- | ---: |
-| `A` | Article | Long-form educational content | 1 |
-| `N` | NewsItem | News updates and announcements | 2 |
-| `F` | FAQ | Question and answer pairs | 3 |
-| `T` | Testimonial | Patient and caregiver stories | 4 |
-| `P` | Profile | Board members, staff, medical experts | 5 |
-| `E` | Event | Events, webinars, fundraisers | 6 |
-| `L` | Link | External resource or reference | 8 |
-| `R` | Research | Clinical trial or research study | 9 |
-| `X` | External | External file | 10 |
-| `G` | Gallery | Image gallery metadata | 11 |
-| `D` | Document | PDF or downloadable file reference | 12 |
-| `U` | Unknown | Content has not been populated | 99 |
+<table class="topic-table">
+  <thead>
+    <tr>
+      <th scope="col">Code</th>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">SortOrder</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`A`</td>
+      <td>Article</td>
+      <td>Long-form educational content</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>`N`</td>
+      <td>NewsItem</td>
+      <td>News updates and announcements</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>`F`</td>
+      <td>FAQ</td>
+      <td>Question and answer pairs</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>`T`</td>
+      <td>Testimonial</td>
+      <td>Patient and caregiver stories</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>`P`</td>
+      <td>Profile</td>
+      <td>Board members, staff, medical experts</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>`E`</td>
+      <td>Event</td>
+      <td>Events, webinars, fundraisers</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>`L`</td>
+      <td>Link</td>
+      <td>External resource or reference</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>`R`</td>
+      <td>Research</td>
+      <td>Clinical trial or research study</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>`X`</td>
+      <td>External</td>
+      <td>External file</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>`G`</td>
+      <td>Gallery</td>
+      <td>Image gallery metadata</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>`D`</td>
+      <td>Document</td>
+      <td>PDF or downloadable file reference</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>`U`</td>
+      <td>Unknown</td>
+      <td>Content has not been populated</td>
+      <td>99</td>
+    </tr>
+  </tbody>
+</table>
 
 ### Table: `FormatType`
 
 Defines the source or encoding format of a content element.
 
-| Column | Type | Nullability | Constraints / purpose |
-| :--- | :--- | :--- | :--- |
-| `Code` | `char(1)` | NOT NULL | Primary key |
-| `Name` | `nvarchar(50)` | NOT NULL | Format name |
-| `Description` | `nvarchar(200)` | NOT NULL | Format description |
-| `FileTypes` | `nvarchar(200)` | NOT NULL | Associated file extensions or types |
-| `SortOrder` | `int` | NOT NULL | Display or processing order |
+<table class="topic-table">
+  <thead>
+    <tr>
+      <th scope="col">Column</th>
+      <th scope="col">Type</th>
+      <th scope="col">Nullability</th>
+      <th scope="col">Constraints / purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`Code`</td>
+      <td>`char(1)`</td>
+      <td>NOT NULL</td>
+      <td>Primary key</td>
+    </tr>
+    <tr>
+      <td>`Name`</td>
+      <td>`nvarchar(50)`</td>
+      <td>NOT NULL</td>
+      <td>Format name</td>
+    </tr>
+    <tr>
+      <td>`Description`</td>
+      <td>`nvarchar(200)`</td>
+      <td>NOT NULL</td>
+      <td>Format description</td>
+    </tr>
+    <tr>
+      <td>`FileTypes`</td>
+      <td>`nvarchar(200)`</td>
+      <td>NOT NULL</td>
+      <td>Associated file extensions or types</td>
+    </tr>
+    <tr>
+      <td>`SortOrder`</td>
+      <td>`int`</td>
+      <td>NOT NULL</td>
+      <td>Display or processing order</td>
+    </tr>
+  </tbody>
+</table>
 
 **Current sample data:**
 
-| Code | Name | Description | SortOrder |
-| :--- | :--- | :--- | ---: |
-| `T` | Text | Plain Text | 1 |
-| `R` | RTF | Rich Text | 2 |
-| `H` | HTML | Web Page Markup | 3 |
-| `E` | EPUB | Electronic Pub | 4 |
-| `P` | PDF | Portable Doc | 5 |
-| `M` | MD | Markdown | 6 |
-| `J` | JSON | JSON | 7 |
-| `I` | IMAGE | Binary Image | 8 |
-| `A` | AUDIO | Binary Audio | 9 |
-| `W` | WORD | MS Word Document | 10 |
-| `S` | EXCEL | MS Spreadsheet | 11 |
-| `N` | PPT | Powerpoint | 12 |
-| `G` | GDOC | Google Document | 13 |
-| `D` | OPEN | Open Document | 14 |
-| `?` | UNKNOWN | Unknown | 99 |
+<table class="topic-table">
+  <thead>
+    <tr>
+      <th scope="col">Code</th>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">SortOrder</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`T`</td>
+      <td>Text</td>
+      <td>Plain Text</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>`R`</td>
+      <td>RTF</td>
+      <td>Rich Text</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>`H`</td>
+      <td>HTML</td>
+      <td>Web Page Markup</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>`E`</td>
+      <td>EPUB</td>
+      <td>Electronic Pub</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>`P`</td>
+      <td>PDF</td>
+      <td>Portable Doc</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>`M`</td>
+      <td>MD</td>
+      <td>Markdown</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>`J`</td>
+      <td>JSON</td>
+      <td>JSON</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>`I`</td>
+      <td>IMAGE</td>
+      <td>Binary Image</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>`A`</td>
+      <td>AUDIO</td>
+      <td>Binary Audio</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>`W`</td>
+      <td>WORD</td>
+      <td>MS Word Document</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>`S`</td>
+      <td>EXCEL</td>
+      <td>MS Spreadsheet</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>`N`</td>
+      <td>PPT</td>
+      <td>Powerpoint</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>`G`</td>
+      <td>GDOC</td>
+      <td>Google Document</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <td>`D`</td>
+      <td>OPEN</td>
+      <td>Open Document</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <td>`?`</td>
+      <td>UNKNOWN</td>
+      <td>Unknown</td>
+      <td>99</td>
+    </tr>
+  </tbody>
+</table>
 
 ### Table: `MimeType`
 
 Defines the media type and rendering characteristics of a content element.
 
-| Column | Type | Nullability | Constraints / purpose |
-| :--- | :--- | :--- | :--- |
-| `Code` | `char(1)` | NOT NULL | Primary key |
-| `FormatType` | `char(1)` | NOT NULL | FK to `FormatType.Code` |
-| `Name` | `nvarchar(50)` | NOT NULL | MIME type name |
-| `Description` | `nvarchar(200)` | NOT NULL | Rendering description |
-| `IsText` | `bit` | NOT NULL | Indicates text payload |
-| `IsBinary` | `bit` | NOT NULL | Indicates binary payload |
-| `IsRenderable` | `bit` | NOT NULL | Indicates whether the application can render it |
-| `SortOrder` | `int` | NOT NULL | Processing or display order |
+<table class="topic-table">
+  <thead>
+    <tr>
+      <th scope="col">Column</th>
+      <th scope="col">Type</th>
+      <th scope="col">Nullability</th>
+      <th scope="col">Constraints / purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`Code`</td>
+      <td>`char(1)`</td>
+      <td>NOT NULL</td>
+      <td>Primary key</td>
+    </tr>
+    <tr>
+      <td>`FormatType`</td>
+      <td>`char(1)`</td>
+      <td>NOT NULL</td>
+      <td>FK to `FormatType.Code`</td>
+    </tr>
+    <tr>
+      <td>`Name`</td>
+      <td>`nvarchar(50)`</td>
+      <td>NOT NULL</td>
+      <td>MIME type name</td>
+    </tr>
+    <tr>
+      <td>`Description`</td>
+      <td>`nvarchar(200)`</td>
+      <td>NOT NULL</td>
+      <td>Rendering description</td>
+    </tr>
+    <tr>
+      <td>`IsText`</td>
+      <td>`bit`</td>
+      <td>NOT NULL</td>
+      <td>Indicates text payload</td>
+    </tr>
+    <tr>
+      <td>`IsBinary`</td>
+      <td>`bit`</td>
+      <td>NOT NULL</td>
+      <td>Indicates binary payload</td>
+    </tr>
+    <tr>
+      <td>`IsRenderable`</td>
+      <td>`bit`</td>
+      <td>NOT NULL</td>
+      <td>Indicates whether the application can render it</td>
+    </tr>
+    <tr>
+      <td>`SortOrder`</td>
+      <td>`int`</td>
+      <td>NOT NULL</td>
+      <td>Processing or display order</td>
+    </tr>
+  </tbody>
+</table>
 
 Constraint: `FK_MimeType_FormatType` references `FormatType(Code)`.
 
 **Current sample data:**
 
-| Code | FormatType | Name | Description | IsText | IsBinary | IsRenderable | SortOrder |
-| :--- | :--- | :--- | :--- | ---: | ---: | ---: | ---: |
-| `T` | `T` | TXT | `text/plain` | 1 | 0 | 1 | 1 |
-| `M` | `M` | MD | `text/markdown` | 1 | 0 | 1 | 2 |
-| `H` | `H` | HTML | `text/html` | 1 | 0 | 1 | 3 |
-| `C` | `H` | HTM | `text/htm` | 1 | 0 | 1 | 4 |
-| `R` | `R` | RTF | `application/rtf` | 1 | 0 | 1 | 5 |
-| `J` | `J` | JSON | `application/json` | 1 | 0 | 1 | 6 |
-| `E` | `E` | EPUB | `application/epub+zip` | 0 | 1 | 1 | 7 |
-| `P` | `P` | PDF | `application/pdf` | 0 | 1 | 1 | 8 |
-| `I` | `I` | JPG | `image/jpeg` | 0 | 1 | 1 | 9 |
-| `N` | `I` | PNG | `image/png` | 0 | 1 | 1 | 10 |
-| `F` | `I` | GIF | `image/gif` | 0 | 1 | 1 | 11 |
-| `S` | `I` | SVG | `image/svg+xml` | 0 | 1 | 1 | 12 |
-| `W` | `I` | WEBP | `image/webp` | 0 | 1 | 1 | 13 |
-| `A` | `A` | MP3 | `audio/mpeg` | 0 | 1 | 1 | 14 |
-| `U` | `A` | WAV | `audio/wav` | 0 | 1 | 1 | 15 |
-| `Q` | `A` | OGG | `audio/ogg` | 0 | 1 | 1 | 16 |
-| `D` | `W` | DOCX | `application/vnd.openxmlformats-officedocument.wordprocessingml.document` | 0 | 1 | 1 | 17 |
-| `X` | `W` | DOCM | `application/vnd.ms-word.document.macroEnabled.12` | 0 | 1 | 1 | 18 |
-| `Y` | `W` | DOTX | `application/vnd.openxmlformats-officedocument.wordprocessingml.template` | 0 | 1 | 1 | 19 |
-| `Z` | `W` | DOTM | `application/vnd.ms-word.template.macroEnabled.12` | 0 | 1 | 1 | 20 |
-| `L` | `S` | XLS | `application/vnd.ms-excel` | 0 | 1 | 1 | 21 |
-| `K` | `S` | XLSX | `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet` | 0 | 1 | 1 | 22 |
-| `!` | `N` | PPT | `application/vnd.ms-powerpoint` | 0 | 1 | 1 | 23 |
-| `@` | `N` | PPTX | `application/vnd.openxmlformats-officedocument.presentationml.presentation` | 0 | 1 | 1 | 24 |
-| `#` | `N` | PPS | `application/vnd.ms-powerpoint` | 0 | 1 | 1 | 25 |
-| `$` | `N` | PPSX | `application/vnd.openxmlformats-officedocument.presentationml.slideshow` | 0 | 1 | 1 | 26 |
-| `%` | `N` | POT | `application/vnd.ms-powerpoint` | 0 | 1 | 1 | 27 |
-| `^` | `N` | POTX | `application/vnd.openxmlformats-officedocument.presentationml.template` | 0 | 1 | 1 | 28 |
-| `&` | `N` | PPTM | `application/vnd.ms-powerpoint.presentation.macroEnabled.12` | 0 | 1 | 1 | 29 |
-| `*` | `N` | PPSM | `application/vnd.ms-powerpoint.slideshow.macroEnabled.12` | 0 | 1 | 1 | 30 |
-| `+` | `N` | POTM | `application/vnd.ms-powerpoint.template.macroEnabled.12` | 0 | 1 | 1 | 31 |
-| `G` | `G` | GDOC | `application/vnd.google-apps.document` | 0 | 1 | 1 | 32 |
-| `O` | `D` | ODT | `application/vnd.oasis.opendocument.text` | 0 | 1 | 1 | 33 |
-| `B` | `?` | BIN | `application/octet-stream` | 0 | 1 | 0 | 99 |
+<table class="topic-table">
+  <thead>
+    <tr>
+      <th scope="col">Code</th>
+      <th scope="col">FormatType</th>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">IsText</th>
+      <th scope="col">IsBinary</th>
+      <th scope="col">IsRenderable</th>
+      <th scope="col">SortOrder</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`T`</td>
+      <td>`T`</td>
+      <td>TXT</td>
+      <td>`text/plain`</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>`M`</td>
+      <td>`M`</td>
+      <td>MD</td>
+      <td>`text/markdown`</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>`H`</td>
+      <td>`H`</td>
+      <td>HTML</td>
+      <td>`text/html`</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>`C`</td>
+      <td>`H`</td>
+      <td>HTM</td>
+      <td>`text/htm`</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>`R`</td>
+      <td>`R`</td>
+      <td>RTF</td>
+      <td>`application/rtf`</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>`J`</td>
+      <td>`J`</td>
+      <td>JSON</td>
+      <td>`application/json`</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>`E`</td>
+      <td>`E`</td>
+      <td>EPUB</td>
+      <td>`application/epub+zip`</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>`P`</td>
+      <td>`P`</td>
+      <td>PDF</td>
+      <td>`application/pdf`</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>`I`</td>
+      <td>`I`</td>
+      <td>JPG</td>
+      <td>`image/jpeg`</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>`N`</td>
+      <td>`I`</td>
+      <td>PNG</td>
+      <td>`image/png`</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>`F`</td>
+      <td>`I`</td>
+      <td>GIF</td>
+      <td>`image/gif`</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>`S`</td>
+      <td>`I`</td>
+      <td>SVG</td>
+      <td>`image/svg+xml`</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <td>`W`</td>
+      <td>`I`</td>
+      <td>WEBP</td>
+      <td>`image/webp`</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <td>`A`</td>
+      <td>`A`</td>
+      <td>MP3</td>
+      <td>`audio/mpeg`</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <td>`U`</td>
+      <td>`A`</td>
+      <td>WAV</td>
+      <td>`audio/wav`</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>`Q`</td>
+      <td>`A`</td>
+      <td>OGG</td>
+      <td>`audio/ogg`</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <td>`D`</td>
+      <td>`W`</td>
+      <td>DOCX</td>
+      <td>`application/vnd.openxmlformats-officedocument.wordprocessingml.document`</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <td>`X`</td>
+      <td>`W`</td>
+      <td>DOCM</td>
+      <td>`application/vnd.ms-word.document.macroEnabled.12`</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <td>`Y`</td>
+      <td>`W`</td>
+      <td>DOTX</td>
+      <td>`application/vnd.openxmlformats-officedocument.wordprocessingml.template`</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>19</td>
+    </tr>
+    <tr>
+      <td>`Z`</td>
+      <td>`W`</td>
+      <td>DOTM</td>
+      <td>`application/vnd.ms-word.template.macroEnabled.12`</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <td>`L`</td>
+      <td>`S`</td>
+      <td>XLS</td>
+      <td>`application/vnd.ms-excel`</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <td>`K`</td>
+      <td>`S`</td>
+      <td>XLSX</td>
+      <td>`application/vnd.openxmlformats-officedocument.spreadsheetml.sheet`</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <td>`!`</td>
+      <td>`N`</td>
+      <td>PPT</td>
+      <td>`application/vnd.ms-powerpoint`</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <td>`@`</td>
+      <td>`N`</td>
+      <td>PPTX</td>
+      <td>`application/vnd.openxmlformats-officedocument.presentationml.presentation`</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <td>`#`</td>
+      <td>`N`</td>
+      <td>PPS</td>
+      <td>`application/vnd.ms-powerpoint`</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <td>`$`</td>
+      <td>`N`</td>
+      <td>PPSX</td>
+      <td>`application/vnd.openxmlformats-officedocument.presentationml.slideshow`</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>26</td>
+    </tr>
+    <tr>
+      <td>`%`</td>
+      <td>`N`</td>
+      <td>POT</td>
+      <td>`application/vnd.ms-powerpoint`</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>27</td>
+    </tr>
+    <tr>
+      <td>`^`</td>
+      <td>`N`</td>
+      <td>POTX</td>
+      <td>`application/vnd.openxmlformats-officedocument.presentationml.template`</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>28</td>
+    </tr>
+    <tr>
+      <td>`&amp;`</td>
+      <td>`N`</td>
+      <td>PPTM</td>
+      <td>`application/vnd.ms-powerpoint.presentation.macroEnabled.12`</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>29</td>
+    </tr>
+    <tr>
+      <td>`*`</td>
+      <td>`N`</td>
+      <td>PPSM</td>
+      <td>`application/vnd.ms-powerpoint.slideshow.macroEnabled.12`</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <td>`+`</td>
+      <td>`N`</td>
+      <td>POTM</td>
+      <td>`application/vnd.ms-powerpoint.template.macroEnabled.12`</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>31</td>
+    </tr>
+    <tr>
+      <td>`G`</td>
+      <td>`G`</td>
+      <td>GDOC</td>
+      <td>`application/vnd.google-apps.document`</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <td>`O`</td>
+      <td>`D`</td>
+      <td>ODT</td>
+      <td>`application/vnd.oasis.opendocument.text`</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>33</td>
+    </tr>
+    <tr>
+      <td>`B`</td>
+      <td>`?`</td>
+      <td>BIN</td>
+      <td>`application/octet-stream`</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>99</td>
+    </tr>
+  </tbody>
+</table>
 
 ### Table: `WorkflowStatus`
 
 Defines the editorial state of content and staged content.
 
-| Column | Type | Nullability | Constraints / purpose |
-| :--- | :--- | :--- | :--- |
-| `Code` | `char(1)` | NOT NULL | Primary key |
-| `Title` | `nvarchar(50)` | NOT NULL | Short status title |
-| `Description` | `nvarchar(200)` | NULL | Status explanation |
-| `SortOrder` | `int` | NOT NULL | Workflow order |
+<table class="topic-table">
+  <thead>
+    <tr>
+      <th scope="col">Column</th>
+      <th scope="col">Type</th>
+      <th scope="col">Nullability</th>
+      <th scope="col">Constraints / purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`Code`</td>
+      <td>`char(1)`</td>
+      <td>NOT NULL</td>
+      <td>Primary key</td>
+    </tr>
+    <tr>
+      <td>`Title`</td>
+      <td>`nvarchar(50)`</td>
+      <td>NOT NULL</td>
+      <td>Short status title</td>
+    </tr>
+    <tr>
+      <td>`Description`</td>
+      <td>`nvarchar(200)`</td>
+      <td>NULL</td>
+      <td>Status explanation</td>
+    </tr>
+    <tr>
+      <td>`SortOrder`</td>
+      <td>`int`</td>
+      <td>NOT NULL</td>
+      <td>Workflow order</td>
+    </tr>
+  </tbody>
+</table>
 
 **Current sample data:**
 
-| Code | Title | Description | SortOrder |
-| :--- | :--- | :--- | ---: |
-| `D` | Draft | Content is newly curated or created | 1 |
-| `R` | Review | Content needs review | 2 |
-| `A` | Approved | Content has been approved but not published | 3 |
-| `X` | Rejected | Content has been rejected | 4 |
-| `P` | Published | Content has been published | 5 |
+<table class="topic-table">
+  <thead>
+    <tr>
+      <th scope="col">Code</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">SortOrder</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`D`</td>
+      <td>Draft</td>
+      <td>Content is newly curated or created</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>`R`</td>
+      <td>Review</td>
+      <td>Content needs review</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>`A`</td>
+      <td>Approved</td>
+      <td>Content has been approved but not published</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>`X`</td>
+      <td>Rejected</td>
+      <td>Content has been rejected</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>`P`</td>
+      <td>Published</td>
+      <td>Content has been published</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
 
 ---
 
@@ -235,20 +1082,80 @@ Defines the editorial state of content and staged content.
 
 ### Table: `MenuItem`
 
-`MenuItem` is the runtime menu model. A row represents one menu node. Parent-child relationships are represented by the self-referencing `ParentMenuItemID`; a `NULL` parent identifies a top-level item.
+`MenuItem` is the runtime menu model. A row represents one menu node. Parent-child relationships are represented by the self-referencing `ParentMenuItemID`.md/"> a `NULL` parent identifies a top-level item.
 
-| Column | Type | Nullability | Constraints / purpose |
-| :--- | :--- | :--- | :--- |
-| `MenuItemID` | `int identity(1,1)` | NOT NULL | Clustered primary key |
-| `ParentMenuItemID` | `int` | NULL | Self-FK to `MenuItem.MenuItemID` |
-| `Title` | `nvarchar(200)` | NOT NULL | Menu label |
-| `RouteType` | `char(1)` | NOT NULL | FK to `RouteType.Code` |
-| `RouteTarget` | `nvarchar(200)` | NOT NULL | Route-specific target value |
-| `VisitorMask` | `varchar(10)` | NOT NULL | Allowed visitor-type codes |
-| `SortOrder` | `int` | NOT NULL | Defaults to `0`; must be non-negative |
-| `IsActive` | `bit` | NOT NULL | Defaults to `1`; controls visibility |
-| `CreatedDate` | `datetime2(0)` | NOT NULL | Defaults to `sysdatetime()` |
-| `ModifiedDate` | `datetime2(0)` | NOT NULL | Defaults to `sysdatetime()` |
+<table class="topic-table">
+  <thead>
+    <tr>
+      <th scope="col">Column</th>
+      <th scope="col">Type</th>
+      <th scope="col">Nullability</th>
+      <th scope="col">Constraints / purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`MenuItemID`</td>
+      <td>`int identity(1,1)`</td>
+      <td>NOT NULL</td>
+      <td>Clustered primary key</td>
+    </tr>
+    <tr>
+      <td>`ParentMenuItemID`</td>
+      <td>`int`</td>
+      <td>NULL</td>
+      <td>Self-FK to `MenuItem.MenuItemID`</td>
+    </tr>
+    <tr>
+      <td>`Title`</td>
+      <td>`nvarchar(200)`</td>
+      <td>NOT NULL</td>
+      <td>Menu label</td>
+    </tr>
+    <tr>
+      <td>`RouteType`</td>
+      <td>`char(1)`</td>
+      <td>NOT NULL</td>
+      <td>FK to `RouteType.Code`</td>
+    </tr>
+    <tr>
+      <td>`RouteTarget`</td>
+      <td>`nvarchar(200)`</td>
+      <td>NOT NULL</td>
+      <td>Route-specific target value</td>
+    </tr>
+    <tr>
+      <td>`VisitorMask`</td>
+      <td>`varchar(10)`</td>
+      <td>NOT NULL</td>
+      <td>Allowed visitor-type codes</td>
+    </tr>
+    <tr>
+      <td>`SortOrder`</td>
+      <td>`int`</td>
+      <td>NOT NULL</td>
+      <td>Defaults to `0`.md/&quot;&gt; must be non-negative</td>
+    </tr>
+    <tr>
+      <td>`IsActive`</td>
+      <td>`bit`</td>
+      <td>NOT NULL</td>
+      <td>Defaults to `1`.md/&quot;&gt; controls visibility</td>
+    </tr>
+    <tr>
+      <td>`CreatedDate`</td>
+      <td>`datetime2(0)`</td>
+      <td>NOT NULL</td>
+      <td>Defaults to `sysdatetime()`</td>
+    </tr>
+    <tr>
+      <td>`ModifiedDate`</td>
+      <td>`datetime2(0)`</td>
+      <td>NOT NULL</td>
+      <td>Defaults to `sysdatetime()`</td>
+    </tr>
+  </tbody>
+</table>
 
 Constraints:
 
@@ -262,15 +1169,84 @@ Constraints:
 
 The visitor route selects or changes the visitor persona. The current Welcome branch contains seven active records: one parent and six visitor choices.
 
-| MenuItemID | ParentMenuItemID | Title | RouteTarget | VisitorMask | SortOrder | IsActive |
-| ---: | ---: | :--- | :--- | :--- | ---: | ---: |
-| 1 | NULL | Welcome | `/visitor?v=Register` | `PCMDVR` | 1 | 1 |
-| 2 | 1 | &nbsp;&nbsp;Patient | `/visitor?v=Patient` | `PCMDVR` | 1 | 1 |
-| 3 | 1 | &nbsp;&nbsp;Caregiver | `/visitor?v=Caregiver` | `PCMDVR` | 2 | 1 |
-| 4 | 1 | &nbsp;&nbsp;Provider | `/visitor?v=Provider` | `PCMDVR` | 3 | 1 |
-| 5 | 1 | &nbsp;&nbsp;Pharmaceutical | `/visitor?v=Pharmaceutical` | `PCMDVR` | 4 | 1 |
-| 6 | 1 | &nbsp;&nbsp;Visitor | `/visitor?v=Visitor` | `PCMDVR` | 5 | 1 |
-| 7 | 1 | &nbsp;&nbsp;Register | `/visitor?v=Register` | `PCMDVR` | 6 | 1 |
+<table class="topic-table">
+  <thead>
+    <tr>
+      <th scope="col">MenuItemID</th>
+      <th scope="col">ParentMenuItemID</th>
+      <th scope="col">Title</th>
+      <th scope="col">RouteTarget</th>
+      <th scope="col">VisitorMask</th>
+      <th scope="col">SortOrder</th>
+      <th scope="col">IsActive</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>NULL</td>
+      <td>Welcome</td>
+      <td>`/visitor?v=Register`</td>
+      <td>`PCMDVR`</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>1</td>
+      <td>&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;Patient</td>
+      <td>`/visitor?v=Patient`</td>
+      <td>`PCMDVR`</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>1</td>
+      <td>&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;Caregiver</td>
+      <td>`/visitor?v=Caregiver`</td>
+      <td>`PCMDVR`</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>1</td>
+      <td>&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;Provider</td>
+      <td>`/visitor?v=Provider`</td>
+      <td>`PCMDVR`</td>
+      <td>3</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>1</td>
+      <td>&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;Pharmaceutical</td>
+      <td>`/visitor?v=Pharmaceutical`</td>
+      <td>`PCMDVR`</td>
+      <td>4</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>1</td>
+      <td>&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;Visitor</td>
+      <td>`/visitor?v=Visitor`</td>
+      <td>`PCMDVR`</td>
+      <td>5</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>1</td>
+      <td>&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;Register</td>
+      <td>`/visitor?v=Register`</td>
+      <td>`PCMDVR`</td>
+      <td>6</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
 
 All seven rows have `RouteType = 'V'`.
 
@@ -278,24 +1254,182 @@ All seven rows have `RouteType = 'V'`.
 
 `About PG` demonstrates a content route with a root menu item, child menu items, and third-level submenu items. The hierarchy below is the complete active descendant tree for `MenuItemID = 8`.
 
-| MenuItemID | ParentMenuItemID | Level | Title | RouteTarget | VisitorMask | SortOrder | IsActive |
-| ---: | ---: | ---: | :--- | :--- | :--- | ---: | ---: |
-| 8 | NULL | 0 | About PG | `/content?c=about%20pg` | `PCMDVR` | 2 | 1 |
-| 9 | 8 | 1 | &nbsp;&nbsp;What is PG | `/content?c=what%20is%20pg` | `PCMDVR` | 1 | 1 |
-| 10 | 8 | 1 | &nbsp;&nbsp;Clinical Topics | `/content?c=clinical%20topics` | `PCMDVR` | 2 | 1 |
-| 17 | 8 | 1 | &nbsp;&nbsp;Living With PG | `/content?c=living%20with%20pg` | `PCMDVR` | 3 | 1 |
-| 11 | 10 | 2 | &nbsp;&nbsp;&nbsp;&nbsp;Symptoms | `/content?c=symptoms` | `PCMDVR` | 1 | 1 |
-| 12 | 10 | 2 | &nbsp;&nbsp;&nbsp;&nbsp;Diagnosis | `/content?c=diagnosis` | `PCMDVR` | 2 | 1 |
-| 13 | 10 | 2 | &nbsp;&nbsp;&nbsp;&nbsp;Treatment | `/content?c=treatment` | `PCMDVR` | 3 | 1 |
-| 14 | 10 | 2 | &nbsp;&nbsp;&nbsp;&nbsp;Wound Care | `/content?c=wound%20care` | `PCMDVR` | 4 | 1 |
-| 15 | 10 | 2 | &nbsp;&nbsp;&nbsp;&nbsp;Pain Management | `/content?c=pain%20management` | `PCMDVR` | 5 | 1 |
-| 16 | 10 | 2 | &nbsp;&nbsp;&nbsp;&nbsp;Outcomes | `/content?c=outcomes` | `PCMDVR` | 6 | 1 |
-| 18 | 17 | 2 | &nbsp;&nbsp;&nbsp;&nbsp;Emotional Journey | `/content?c=emotional%20journey` | `PCMDVR` | 1 | 1 |
-| 19 | 17 | 2 | &nbsp;&nbsp;&nbsp;&nbsp;Loss of Mobility | `/content?c=loss%20of%20mobility` | `PCMDVR` | 2 | 1 |
-| 20 | 17 | 2 | &nbsp;&nbsp;&nbsp;&nbsp;Loss of Identity | `/content?c=loss%20of%20identity` | `PCMDVR` | 3 | 1 |
-| 21 | 17 | 2 | &nbsp;&nbsp;&nbsp;&nbsp;Avoiding Mistakes | `/content?c=avoiding%20mistakes` | `PCMDVR` | 4 | 1 |
-| 22 | 17 | 2 | &nbsp;&nbsp;&nbsp;&nbsp;Managing Disability | `/content?c=managing%20disability` | `PCMDVR` | 5 | 1 |
-| 23 | 17 | 2 | &nbsp;&nbsp;&nbsp;&nbsp;Comorbidities | `/content?c=comorbidities` | `PCMDVR` | 6 | 1 |
+<table class="topic-table">
+  <thead>
+    <tr>
+      <th scope="col">MenuItemID</th>
+      <th scope="col">ParentMenuItemID</th>
+      <th scope="col">Level</th>
+      <th scope="col">Title</th>
+      <th scope="col">RouteTarget</th>
+      <th scope="col">VisitorMask</th>
+      <th scope="col">SortOrder</th>
+      <th scope="col">IsActive</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>8</td>
+      <td>NULL</td>
+      <td>0</td>
+      <td>About PG</td>
+      <td>`/content?c=about%20pg`</td>
+      <td>`PCMDVR`</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>8</td>
+      <td>1</td>
+      <td>&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;What is PG</td>
+      <td>`/content?c=what%20is%20pg`</td>
+      <td>`PCMDVR`</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>8</td>
+      <td>1</td>
+      <td>&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;Clinical Topics</td>
+      <td>`/content?c=clinical%20topics`</td>
+      <td>`PCMDVR`</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>8</td>
+      <td>1</td>
+      <td>&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;Living With PG</td>
+      <td>`/content?c=living%20with%20pg`</td>
+      <td>`PCMDVR`</td>
+      <td>3</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>10</td>
+      <td>2</td>
+      <td>&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;Symptoms</td>
+      <td>`/content?c=symptoms`</td>
+      <td>`PCMDVR`</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>10</td>
+      <td>2</td>
+      <td>&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;Diagnosis</td>
+      <td>`/content?c=diagnosis`</td>
+      <td>`PCMDVR`</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>10</td>
+      <td>2</td>
+      <td>&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;Treatment</td>
+      <td>`/content?c=treatment`</td>
+      <td>`PCMDVR`</td>
+      <td>3</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>10</td>
+      <td>2</td>
+      <td>&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;Wound Care</td>
+      <td>`/content?c=wound%20care`</td>
+      <td>`PCMDVR`</td>
+      <td>4</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>10</td>
+      <td>2</td>
+      <td>&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;Pain Management</td>
+      <td>`/content?c=pain%20management`</td>
+      <td>`PCMDVR`</td>
+      <td>5</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>10</td>
+      <td>2</td>
+      <td>&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;Outcomes</td>
+      <td>`/content?c=outcomes`</td>
+      <td>`PCMDVR`</td>
+      <td>6</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>17</td>
+      <td>2</td>
+      <td>&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;Emotional Journey</td>
+      <td>`/content?c=emotional%20journey`</td>
+      <td>`PCMDVR`</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>17</td>
+      <td>2</td>
+      <td>&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;Loss of Mobility</td>
+      <td>`/content?c=loss%20of%20mobility`</td>
+      <td>`PCMDVR`</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>17</td>
+      <td>2</td>
+      <td>&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;Loss of Identity</td>
+      <td>`/content?c=loss%20of%20identity`</td>
+      <td>`PCMDVR`</td>
+      <td>3</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>17</td>
+      <td>2</td>
+      <td>&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;Avoiding Mistakes</td>
+      <td>`/content?c=avoiding%20mistakes`</td>
+      <td>`PCMDVR`</td>
+      <td>4</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>17</td>
+      <td>2</td>
+      <td>&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;Managing Disability</td>
+      <td>`/content?c=managing%20disability`</td>
+      <td>`PCMDVR`</td>
+      <td>5</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>17</td>
+      <td>2</td>
+      <td>&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;Comorbidities</td>
+      <td>`/content?c=comorbidities`</td>
+      <td>`PCMDVR`</td>
+      <td>6</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
 
 All rows in this example have `RouteType = 'C'`.
 
@@ -303,13 +1437,72 @@ All rows in this example have `RouteType = 'C'`.
 
 The remaining route types currently represented in `MenuItem` are page routes (`P`) and redirects (`R`).
 
-| MenuItemID | ParentMenuItemID | Title | RouteType | RouteTarget | VisitorMask | SortOrder | IsActive |
-| ---: | ---: | :--- | :---: | :--- | :--- | ---: | ---: |
-| 64 | 59 | Clinic Finder | `P` (Page) | `/page?p=clinicfinder.html` | `PCMD` | 5 | 1 |
-| 66 | 65 | All Things Pyoderma 4.2k members | `R` (Redirect) | `/redirect?r=https://www.facebook.com/groups/368163159232` | `PCMD` | 1 | 1 |
-| 67 | 65 | PG Support Group 2.6k member | `R` (Redirect) | `/redirect?r=https://www.facebook.com/groups/56007379235` | `PCMD` | 2 | 1 |
-| 68 | 65 | PG Support and Advocacy 1.4k members | `R` (Redirect) | `/redirect?r=https://www.facebook.com/groups/345212721641027` | `PCMD` | 3 | 1 |
-| 84 | 80 | Global Skin Alliance | `R` (Redirect) | `/redirect?r=https://globalskin.org/` | `PCMDVR` | 4 | 1 |
+<table class="topic-table">
+  <thead>
+    <tr>
+      <th scope="col">MenuItemID</th>
+      <th scope="col">ParentMenuItemID</th>
+      <th scope="col">Title</th>
+      <th scope="col">RouteType</th>
+      <th scope="col">RouteTarget</th>
+      <th scope="col">VisitorMask</th>
+      <th scope="col">SortOrder</th>
+      <th scope="col">IsActive</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>64</td>
+      <td>59</td>
+      <td>Clinic Finder</td>
+      <td>`P` (Page)</td>
+      <td>`/page?p=clinicfinder.html`</td>
+      <td>`PCMD`</td>
+      <td>5</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>66</td>
+      <td>65</td>
+      <td>All Things Pyoderma 4.2k members</td>
+      <td>`R` (Redirect)</td>
+      <td>`/redirect?r=https://www.facebook.com/groups/368163159232`</td>
+      <td>`PCMD`</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>67</td>
+      <td>65</td>
+      <td>PG Support Group 2.6k member</td>
+      <td>`R` (Redirect)</td>
+      <td>`/redirect?r=https://www.facebook.com/groups/56007379235`</td>
+      <td>`PCMD`</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>68</td>
+      <td>65</td>
+      <td>PG Support and Advocacy 1.4k members</td>
+      <td>`R` (Redirect)</td>
+      <td>`/redirect?r=https://www.facebook.com/groups/345212721641027`</td>
+      <td>`PCMD`</td>
+      <td>3</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>84</td>
+      <td>80</td>
+      <td>Global Skin Alliance</td>
+      <td>`R` (Redirect)</td>
+      <td>`/redirect?r=https://globalskin.org/`</td>
+      <td>`PCMDVR`</td>
+      <td>4</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
 
 These rows demonstrate that page and redirect targets can appear beneath other menu items while retaining their own route-specific behavior.
 
@@ -317,25 +1510,90 @@ These rows demonstrate that page and redirect targets can appear beneath other m
 
 `MasterMenu` stores the descriptive master-menu representation used by import, population, or legacy menu workflows. It is separate from the normalized runtime `MenuItem` hierarchy.
 
-| Column | Type | Nullability | Constraints / purpose |
-| :--- | :--- | :--- | :--- |
-| `MenuID` | `int identity(1,1)` | NOT NULL | Identity identifier |
-| `ParentMenuID` | `int` | NULL | Parent reference value |
-| `Parent` | `nvarchar(100)` | NOT NULL | Parent menu label |
-| `Child` | `nvarchar(100)` | NOT NULL | Child menu label |
-| `SubMenu` | `nvarchar(100)` | NOT NULL | Submenu label |
-| `MenuType` | `nvarchar(10)` | NOT NULL | Menu classification |
-| `VisitorMask` | `nvarchar(20)` | NULL | Visitor visibility mask |
-| `RouteType` | `nvarchar(10)` | NULL | Route classification |
-| `RouteTarget` | `nvarchar(200)` | NULL | Route target |
-| `Description` | `nvarchar(200)` | NOT NULL | Menu description |
-| `Notes` | `nvarchar(200)` | NULL | Additional notes |
+<table class="topic-table">
+  <thead>
+    <tr>
+      <th scope="col">Column</th>
+      <th scope="col">Type</th>
+      <th scope="col">Nullability</th>
+      <th scope="col">Constraints / purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`MenuID`</td>
+      <td>`int identity(1,1)`</td>
+      <td>NOT NULL</td>
+      <td>Identity identifier</td>
+    </tr>
+    <tr>
+      <td>`ParentMenuID`</td>
+      <td>`int`</td>
+      <td>NULL</td>
+      <td>Parent reference value</td>
+    </tr>
+    <tr>
+      <td>`Parent`</td>
+      <td>`nvarchar(100)`</td>
+      <td>NOT NULL</td>
+      <td>Parent menu label</td>
+    </tr>
+    <tr>
+      <td>`Child`</td>
+      <td>`nvarchar(100)`</td>
+      <td>NOT NULL</td>
+      <td>Child menu label</td>
+    </tr>
+    <tr>
+      <td>`SubMenu`</td>
+      <td>`nvarchar(100)`</td>
+      <td>NOT NULL</td>
+      <td>Submenu label</td>
+    </tr>
+    <tr>
+      <td>`MenuType`</td>
+      <td>`nvarchar(10)`</td>
+      <td>NOT NULL</td>
+      <td>Menu classification</td>
+    </tr>
+    <tr>
+      <td>`VisitorMask`</td>
+      <td>`nvarchar(20)`</td>
+      <td>NULL</td>
+      <td>Visitor visibility mask</td>
+    </tr>
+    <tr>
+      <td>`RouteType`</td>
+      <td>`nvarchar(10)`</td>
+      <td>NULL</td>
+      <td>Route classification</td>
+    </tr>
+    <tr>
+      <td>`RouteTarget`</td>
+      <td>`nvarchar(200)`</td>
+      <td>NULL</td>
+      <td>Route target</td>
+    </tr>
+    <tr>
+      <td>`Description`</td>
+      <td>`nvarchar(200)`</td>
+      <td>NOT NULL</td>
+      <td>Menu description</td>
+    </tr>
+    <tr>
+      <td>`Notes`</td>
+      <td>`nvarchar(200)`</td>
+      <td>NULL</td>
+      <td>Additional notes</td>
+    </tr>
+  </tbody>
+</table>
 
 ### Tables: `MasterMenuStage` and `MasterMenu_Stage`
 
 These tables support staged or imported master-menu data. They retain the parent, child, submenu, menu type, visitor, routing, description, and notes fields before or during menu population.
 
-`MasterMenuStage` has an identity `MenuID` and uses `MenuType`. `MasterMenu_Stage` has an identity `LoadOrder` and uses `Type`; it does not define a primary key or foreign keys.
+`MasterMenuStage` has an identity `MenuID` and uses `MenuType`. `MasterMenu_Stage` has an identity `LoadOrder` and uses `Type`.md/"> it does not define a primary key or foreign keys.
 
 ---
 
@@ -345,18 +1603,78 @@ These tables support staged or imported master-menu data. They retain the parent
 
 Stores the document-level descriptor associated with a menu item. A content document is the parent of one or more ordered `ContentElement` rows.
 
-| Column | Type | Nullability | Constraints / purpose |
-| :--- | :--- | :--- | :--- |
-| `ContentDocumentID` | `int identity(1,1)` | NOT NULL | Clustered primary key |
-| `MenuItemID` | `int` | NOT NULL | FK to `MenuItem.MenuItemID` |
-| `ContentType` | `char(1)` | NOT NULL | FK to `ContentType.Code` |
-| `Description` | `nvarchar(500)` | NOT NULL | Document description |
-| `MetaData` | `nvarchar(max)` | NOT NULL | JSON document metadata |
-| `WorkflowStatus` | `char(1)` | NOT NULL | Defaults to `D`; FK to `WorkflowStatus.Code` |
-| `IsPublished` | `bit` | NOT NULL | Public visibility flag |
-| `PublishedDate` | `datetime2(0)` | NULL | Publication timestamp |
-| `CreatedDate` | `datetime2(0)` | NOT NULL | Defaults to `sysdatetime()` |
-| `ModifiedDate` | `datetime2(0)` | NOT NULL | Defaults to `sysdatetime()` |
+<table class="topic-table">
+  <thead>
+    <tr>
+      <th scope="col">Column</th>
+      <th scope="col">Type</th>
+      <th scope="col">Nullability</th>
+      <th scope="col">Constraints / purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`ContentDocumentID`</td>
+      <td>`int identity(1,1)`</td>
+      <td>NOT NULL</td>
+      <td>Clustered primary key</td>
+    </tr>
+    <tr>
+      <td>`MenuItemID`</td>
+      <td>`int`</td>
+      <td>NOT NULL</td>
+      <td>FK to `MenuItem.MenuItemID`</td>
+    </tr>
+    <tr>
+      <td>`ContentType`</td>
+      <td>`char(1)`</td>
+      <td>NOT NULL</td>
+      <td>FK to `ContentType.Code`</td>
+    </tr>
+    <tr>
+      <td>`Description`</td>
+      <td>`nvarchar(500)`</td>
+      <td>NOT NULL</td>
+      <td>Document description</td>
+    </tr>
+    <tr>
+      <td>`MetaData`</td>
+      <td>`nvarchar(max)`</td>
+      <td>NOT NULL</td>
+      <td>JSON document metadata</td>
+    </tr>
+    <tr>
+      <td>`WorkflowStatus`</td>
+      <td>`char(1)`</td>
+      <td>NOT NULL</td>
+      <td>Defaults to `D`.md/&quot;&gt; FK to `WorkflowStatus.Code`</td>
+    </tr>
+    <tr>
+      <td>`IsPublished`</td>
+      <td>`bit`</td>
+      <td>NOT NULL</td>
+      <td>Public visibility flag</td>
+    </tr>
+    <tr>
+      <td>`PublishedDate`</td>
+      <td>`datetime2(0)`</td>
+      <td>NULL</td>
+      <td>Publication timestamp</td>
+    </tr>
+    <tr>
+      <td>`CreatedDate`</td>
+      <td>`datetime2(0)`</td>
+      <td>NOT NULL</td>
+      <td>Defaults to `sysdatetime()`</td>
+    </tr>
+    <tr>
+      <td>`ModifiedDate`</td>
+      <td>`datetime2(0)`</td>
+      <td>NOT NULL</td>
+      <td>Defaults to `sysdatetime()`</td>
+    </tr>
+  </tbody>
+</table>
 
 Constraints:
 
@@ -368,19 +1686,84 @@ Constraints:
 
 Stores an ordered or independently addressable content block belonging to a document.
 
-| Column | Type | Nullability | Constraints / purpose |
-| :--- | :--- | :--- | :--- |
-| `ContentElementID` | `int identity(1,1)` | NOT NULL | Clustered primary key |
-| `ContentDocumentID` | `int` | NOT NULL | FK to `ContentDocument.ContentDocumentID` |
-| `FormatType` | `char(1)` | NOT NULL | FK to `FormatType.Code` |
-| `MimeType` | `char(1)` | NOT NULL | FK to `MimeType.Code` |
-| `BlockInfo` | `nvarchar(max)` | NOT NULL | JSON block metadata |
-| `TextContent` | `nvarchar(max)` | NULL | Text, HTML, or other textual payload |
-| `BinaryContent` | `varbinary(max)` | NULL | Binary payload |
-| `LocalFilePath` | `nvarchar(255)` | NULL | Local server file reference |
-| `ExternalFilePath` | `nvarchar(255)` | NULL | External file reference |
-| `CreatedDate` | `datetime2(0)` | NOT NULL | Defaults to `sysdatetime()` |
-| `ModifiedDate` | `datetime2(0)` | NOT NULL | Defaults to `sysdatetime()` |
+<table class="topic-table">
+  <thead>
+    <tr>
+      <th scope="col">Column</th>
+      <th scope="col">Type</th>
+      <th scope="col">Nullability</th>
+      <th scope="col">Constraints / purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`ContentElementID`</td>
+      <td>`int identity(1,1)`</td>
+      <td>NOT NULL</td>
+      <td>Clustered primary key</td>
+    </tr>
+    <tr>
+      <td>`ContentDocumentID`</td>
+      <td>`int`</td>
+      <td>NOT NULL</td>
+      <td>FK to `ContentDocument.ContentDocumentID`</td>
+    </tr>
+    <tr>
+      <td>`FormatType`</td>
+      <td>`char(1)`</td>
+      <td>NOT NULL</td>
+      <td>FK to `FormatType.Code`</td>
+    </tr>
+    <tr>
+      <td>`MimeType`</td>
+      <td>`char(1)`</td>
+      <td>NOT NULL</td>
+      <td>FK to `MimeType.Code`</td>
+    </tr>
+    <tr>
+      <td>`BlockInfo`</td>
+      <td>`nvarchar(max)`</td>
+      <td>NOT NULL</td>
+      <td>JSON block metadata</td>
+    </tr>
+    <tr>
+      <td>`TextContent`</td>
+      <td>`nvarchar(max)`</td>
+      <td>NULL</td>
+      <td>Text, HTML, or other textual payload</td>
+    </tr>
+    <tr>
+      <td>`BinaryContent`</td>
+      <td>`varbinary(max)`</td>
+      <td>NULL</td>
+      <td>Binary payload</td>
+    </tr>
+    <tr>
+      <td>`LocalFilePath`</td>
+      <td>`nvarchar(255)`</td>
+      <td>NULL</td>
+      <td>Local server file reference</td>
+    </tr>
+    <tr>
+      <td>`ExternalFilePath`</td>
+      <td>`nvarchar(255)`</td>
+      <td>NULL</td>
+      <td>External file reference</td>
+    </tr>
+    <tr>
+      <td>`CreatedDate`</td>
+      <td>`datetime2(0)`</td>
+      <td>NOT NULL</td>
+      <td>Defaults to `sysdatetime()`</td>
+    </tr>
+    <tr>
+      <td>`ModifiedDate`</td>
+      <td>`datetime2(0)`</td>
+      <td>NOT NULL</td>
+      <td>Defaults to `sysdatetime()`</td>
+    </tr>
+  </tbody>
+</table>
 
 Constraint: `CK_ContentElement_BlockInfo_IsJSON` requires valid JSON in `BlockInfo`. Deleting a document cascades to its elements.
 
@@ -392,17 +1775,72 @@ Staging tables represent content before it is promoted to the operational conten
 
 ### Table: `StagingDocument`
 
-| Column | Type | Nullability | Constraints / purpose |
-| :--- | :--- | :--- | :--- |
-| `StagingDocumentID` | `int identity(1,1)` | NOT NULL | Clustered primary key |
-| `MenuItemID` | `int` | NULL | Optional FK to `MenuItem.MenuItemID` |
-| `Title` | `nvarchar(255)` | NOT NULL | Staged document title |
-| `Description` | `nvarchar(500)` | NOT NULL | Staged document description |
-| `ContentType` | `char(1)` | NOT NULL | FK to `ContentType.Code` |
-| `Metadata` | `nvarchar(max)` | NOT NULL | JSON staging metadata |
-| `WorkflowStatus` | `char(1)` | NOT NULL | Staging workflow state |
-| `CreatedDate` | `datetime2(0)` | NOT NULL | Defaults to `sysdatetime()` |
-| `ModifiedDate` | `datetime2(0)` | NOT NULL | Defaults to `sysdatetime()` |
+<table class="topic-table">
+  <thead>
+    <tr>
+      <th scope="col">Column</th>
+      <th scope="col">Type</th>
+      <th scope="col">Nullability</th>
+      <th scope="col">Constraints / purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`StagingDocumentID`</td>
+      <td>`int identity(1,1)`</td>
+      <td>NOT NULL</td>
+      <td>Clustered primary key</td>
+    </tr>
+    <tr>
+      <td>`MenuItemID`</td>
+      <td>`int`</td>
+      <td>NULL</td>
+      <td>Optional FK to `MenuItem.MenuItemID`</td>
+    </tr>
+    <tr>
+      <td>`Title`</td>
+      <td>`nvarchar(255)`</td>
+      <td>NOT NULL</td>
+      <td>Staged document title</td>
+    </tr>
+    <tr>
+      <td>`Description`</td>
+      <td>`nvarchar(500)`</td>
+      <td>NOT NULL</td>
+      <td>Staged document description</td>
+    </tr>
+    <tr>
+      <td>`ContentType`</td>
+      <td>`char(1)`</td>
+      <td>NOT NULL</td>
+      <td>FK to `ContentType.Code`</td>
+    </tr>
+    <tr>
+      <td>`Metadata`</td>
+      <td>`nvarchar(max)`</td>
+      <td>NOT NULL</td>
+      <td>JSON staging metadata</td>
+    </tr>
+    <tr>
+      <td>`WorkflowStatus`</td>
+      <td>`char(1)`</td>
+      <td>NOT NULL</td>
+      <td>Staging workflow state</td>
+    </tr>
+    <tr>
+      <td>`CreatedDate`</td>
+      <td>`datetime2(0)`</td>
+      <td>NOT NULL</td>
+      <td>Defaults to `sysdatetime()`</td>
+    </tr>
+    <tr>
+      <td>`ModifiedDate`</td>
+      <td>`datetime2(0)`</td>
+      <td>NOT NULL</td>
+      <td>Defaults to `sysdatetime()`</td>
+    </tr>
+  </tbody>
+</table>
 
 `CK_StagingDocument_Metadata_IsJSON` validates `Metadata`. The menu-item relationship is optional so a staged document can exist before it is assigned to navigation.
 
@@ -410,20 +1848,90 @@ Staging tables represent content before it is promoted to the operational conten
 
 Stores staged content blocks associated with a staged document.
 
-| Column | Type | Nullability | Constraints / purpose |
-| :--- | :--- | :--- | :--- |
-| `StagingElementID` | `int identity(1,1)` | NOT NULL | Clustered primary key |
-| `StagingDocumentID` | `int` | NOT NULL | FK to `StagingDocument.StagingDocumentID` |
-| `WorkflowStatus` | `char(1)` | NOT NULL | Element workflow state; FK to `WorkflowStatus.Code` |
-| `FormatType` | `char(1)` | NOT NULL | FK to `FormatType.Code` |
-| `MimeType` | `char(1)` | NOT NULL | FK to `MimeType.Code` |
-| `Metadata` | `nvarchar(max)` | NOT NULL | JSON rendering metadata |
-| `TextContent` | `nvarchar(max)` | NULL | Staged text payload |
-| `BinaryContent` | `varbinary(max)` | NULL | Staged binary payload |
-| `LocalFilePath` | `nvarchar(255)` | NULL | Local file reference |
-| `ExternalFilePath` | `nvarchar(255)` | NULL | External file reference |
-| `CreatedDate` | `datetime2(0)` | NOT NULL | Defaults to `sysdatetime()` |
-| `ModifiedDate` | `datetime2(0)` | NOT NULL | Defaults to `sysdatetime()` |
+<table class="topic-table">
+  <thead>
+    <tr>
+      <th scope="col">Column</th>
+      <th scope="col">Type</th>
+      <th scope="col">Nullability</th>
+      <th scope="col">Constraints / purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`StagingElementID`</td>
+      <td>`int identity(1,1)`</td>
+      <td>NOT NULL</td>
+      <td>Clustered primary key</td>
+    </tr>
+    <tr>
+      <td>`StagingDocumentID`</td>
+      <td>`int`</td>
+      <td>NOT NULL</td>
+      <td>FK to `StagingDocument.StagingDocumentID`</td>
+    </tr>
+    <tr>
+      <td>`WorkflowStatus`</td>
+      <td>`char(1)`</td>
+      <td>NOT NULL</td>
+      <td>Element workflow state.md/&quot;&gt; FK to `WorkflowStatus.Code`</td>
+    </tr>
+    <tr>
+      <td>`FormatType`</td>
+      <td>`char(1)`</td>
+      <td>NOT NULL</td>
+      <td>FK to `FormatType.Code`</td>
+    </tr>
+    <tr>
+      <td>`MimeType`</td>
+      <td>`char(1)`</td>
+      <td>NOT NULL</td>
+      <td>FK to `MimeType.Code`</td>
+    </tr>
+    <tr>
+      <td>`Metadata`</td>
+      <td>`nvarchar(max)`</td>
+      <td>NOT NULL</td>
+      <td>JSON rendering metadata</td>
+    </tr>
+    <tr>
+      <td>`TextContent`</td>
+      <td>`nvarchar(max)`</td>
+      <td>NULL</td>
+      <td>Staged text payload</td>
+    </tr>
+    <tr>
+      <td>`BinaryContent`</td>
+      <td>`varbinary(max)`</td>
+      <td>NULL</td>
+      <td>Staged binary payload</td>
+    </tr>
+    <tr>
+      <td>`LocalFilePath`</td>
+      <td>`nvarchar(255)`</td>
+      <td>NULL</td>
+      <td>Local file reference</td>
+    </tr>
+    <tr>
+      <td>`ExternalFilePath`</td>
+      <td>`nvarchar(255)`</td>
+      <td>NULL</td>
+      <td>External file reference</td>
+    </tr>
+    <tr>
+      <td>`CreatedDate`</td>
+      <td>`datetime2(0)`</td>
+      <td>NOT NULL</td>
+      <td>Defaults to `sysdatetime()`</td>
+    </tr>
+    <tr>
+      <td>`ModifiedDate`</td>
+      <td>`datetime2(0)`</td>
+      <td>NOT NULL</td>
+      <td>Defaults to `sysdatetime()`</td>
+    </tr>
+  </tbody>
+</table>
 
 `CK_StagingElement_Metadata_IsJSON` validates `Metadata`. The staging document relationship is not configured with cascade delete.
 
@@ -435,19 +1943,84 @@ Stores staged content blocks associated with a staged document.
 
 Stores registered users and visitor-persona preferences.
 
-| Column | Type | Nullability | Constraints / purpose |
-| :--- | :--- | :--- | :--- |
-| `RegistrationID` | `int identity(1,1)` | NOT NULL | Clustered primary key |
-| `Email` | `nvarchar(500)` | NOT NULL | Unique login/contact address |
-| `PasswordHash` | `varbinary(256)` | NULL | Password hash |
-| `PasswordSalt` | `varbinary(256)` | NULL | Password salt |
-| `VisitorType` | `char(1)` | NOT NULL | FK to `VisitorType.Code` |
-| `IsMember` | `bit` | NOT NULL | Membership flag |
-| `IsVolunteer` | `bit` | NOT NULL | Volunteer flag |
-| `IsNewsLetter` | `bit` | NOT NULL | Newsletter subscription flag |
-| `IsFundraising` | `bit` | NOT NULL | Fundraising communication flag |
-| `IsActive` | `bit` | NOT NULL | Account-active flag |
-| `CreatedDate`, `ModifiedDate` | `datetime2(0)` | NOT NULL | Audit timestamps |
+<table class="topic-table">
+  <thead>
+    <tr>
+      <th scope="col">Column</th>
+      <th scope="col">Type</th>
+      <th scope="col">Nullability</th>
+      <th scope="col">Constraints / purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`RegistrationID`</td>
+      <td>`int identity(1,1)`</td>
+      <td>NOT NULL</td>
+      <td>Clustered primary key</td>
+    </tr>
+    <tr>
+      <td>`Email`</td>
+      <td>`nvarchar(500)`</td>
+      <td>NOT NULL</td>
+      <td>Unique login/contact address</td>
+    </tr>
+    <tr>
+      <td>`PasswordHash`</td>
+      <td>`varbinary(256)`</td>
+      <td>NULL</td>
+      <td>Password hash</td>
+    </tr>
+    <tr>
+      <td>`PasswordSalt`</td>
+      <td>`varbinary(256)`</td>
+      <td>NULL</td>
+      <td>Password salt</td>
+    </tr>
+    <tr>
+      <td>`VisitorType`</td>
+      <td>`char(1)`</td>
+      <td>NOT NULL</td>
+      <td>FK to `VisitorType.Code`</td>
+    </tr>
+    <tr>
+      <td>`IsMember`</td>
+      <td>`bit`</td>
+      <td>NOT NULL</td>
+      <td>Membership flag</td>
+    </tr>
+    <tr>
+      <td>`IsVolunteer`</td>
+      <td>`bit`</td>
+      <td>NOT NULL</td>
+      <td>Volunteer flag</td>
+    </tr>
+    <tr>
+      <td>`IsNewsLetter`</td>
+      <td>`bit`</td>
+      <td>NOT NULL</td>
+      <td>Newsletter subscription flag</td>
+    </tr>
+    <tr>
+      <td>`IsFundraising`</td>
+      <td>`bit`</td>
+      <td>NOT NULL</td>
+      <td>Fundraising communication flag</td>
+    </tr>
+    <tr>
+      <td>`IsActive`</td>
+      <td>`bit`</td>
+      <td>NOT NULL</td>
+      <td>Account-active flag</td>
+    </tr>
+    <tr>
+      <td>`CreatedDate`, `ModifiedDate`</td>
+      <td>`datetime2(0)`</td>
+      <td>NOT NULL</td>
+      <td>Audit timestamps</td>
+    </tr>
+  </tbody>
+</table>
 
 `UQ_Registration_Email` enforces unique email addresses.
 
@@ -455,56 +2028,231 @@ Stores registered users and visitor-persona preferences.
 
 Stores contact and address details for a registration.
 
-| Column | Type | Nullability | Purpose |
-| :--- | :--- | :--- | :--- |
-| `ContactID` | `int identity(1,1)` | NOT NULL | Primary key |
-| `RegistrationID` | `int` | NOT NULL | FK to `Registration.RegistrationID` |
-| `FirstName`, `LastName`, `MiddleName` | `varchar(100)` | First/last NOT NULL; middle NULL | Name fields |
-| `MobilePhone`, `HomePhone`, `WorkPhone` | `varchar(20)` | NULL | Phone fields |
-| `WorkEmail` | `varchar(500)` | NULL | Work email |
-| `AddressLine1`, `AddressLine2` | `varchar(200)` | NULL | Address fields |
-| `ForeignAddress` | `varchar(500)` | NULL | Non-domestic address |
-| `City`, `StateProvince`, `Country` | `varchar(100)` | NULL | Location fields |
-| `PostalCode` | `varchar(20)` | NULL | Postal code |
-| `DateOfBirth` | `date` | NULL | Birth date |
-| `CreatedDate`, `ModifiedDate` | `datetime2(0)` | NOT NULL | Audit timestamps |
+<table class="topic-table">
+  <thead>
+    <tr>
+      <th scope="col">Column</th>
+      <th scope="col">Type</th>
+      <th scope="col">Nullability</th>
+      <th scope="col">Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`ContactID`</td>
+      <td>`int identity(1,1)`</td>
+      <td>NOT NULL</td>
+      <td>Primary key</td>
+    </tr>
+    <tr>
+      <td>`RegistrationID`</td>
+      <td>`int`</td>
+      <td>NOT NULL</td>
+      <td>FK to `Registration.RegistrationID`</td>
+    </tr>
+    <tr>
+      <td>`FirstName`, `LastName`, `MiddleName`</td>
+      <td>`varchar(100)`</td>
+      <td>First/last NOT NULL.md/&quot;&gt; middle NULL</td>
+      <td>Name fields</td>
+    </tr>
+    <tr>
+      <td>`MobilePhone`, `HomePhone`, `WorkPhone`</td>
+      <td>`varchar(20)`</td>
+      <td>NULL</td>
+      <td>Phone fields</td>
+    </tr>
+    <tr>
+      <td>`WorkEmail`</td>
+      <td>`varchar(500)`</td>
+      <td>NULL</td>
+      <td>Work email</td>
+    </tr>
+    <tr>
+      <td>`AddressLine1`, `AddressLine2`</td>
+      <td>`varchar(200)`</td>
+      <td>NULL</td>
+      <td>Address fields</td>
+    </tr>
+    <tr>
+      <td>`ForeignAddress`</td>
+      <td>`varchar(500)`</td>
+      <td>NULL</td>
+      <td>Non-domestic address</td>
+    </tr>
+    <tr>
+      <td>`City`, `StateProvince`, `Country`</td>
+      <td>`varchar(100)`</td>
+      <td>NULL</td>
+      <td>Location fields</td>
+    </tr>
+    <tr>
+      <td>`PostalCode`</td>
+      <td>`varchar(20)`</td>
+      <td>NULL</td>
+      <td>Postal code</td>
+    </tr>
+    <tr>
+      <td>`DateOfBirth`</td>
+      <td>`date`</td>
+      <td>NULL</td>
+      <td>Birth date</td>
+    </tr>
+    <tr>
+      <td>`CreatedDate`, `ModifiedDate`</td>
+      <td>`datetime2(0)`</td>
+      <td>NOT NULL</td>
+      <td>Audit timestamps</td>
+    </tr>
+  </tbody>
+</table>
 
 ### Table: `Email`
 
 Stores outbound email messages.
 
-| Column | Type | Nullability | Purpose |
-| :--- | :--- | :--- | :--- |
-| `EmailID` | `int identity(1,1)` | NOT NULL | Primary key |
-| `Subject` | `varchar(200)` | NOT NULL | Subject |
-| `BodyText` | `nvarchar(max)` | NULL | Message body |
-| `SentDate` | `datetime2(7)` | NOT NULL | Defaults to `sysutcdatetime()` |
-| `CreatedDate`, `ModifiedDate` | `datetime2(0)` | NOT NULL | Audit timestamps |
+<table class="topic-table">
+  <thead>
+    <tr>
+      <th scope="col">Column</th>
+      <th scope="col">Type</th>
+      <th scope="col">Nullability</th>
+      <th scope="col">Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`EmailID`</td>
+      <td>`int identity(1,1)`</td>
+      <td>NOT NULL</td>
+      <td>Primary key</td>
+    </tr>
+    <tr>
+      <td>`Subject`</td>
+      <td>`varchar(200)`</td>
+      <td>NOT NULL</td>
+      <td>Subject</td>
+    </tr>
+    <tr>
+      <td>`BodyText`</td>
+      <td>`nvarchar(max)`</td>
+      <td>NULL</td>
+      <td>Message body</td>
+    </tr>
+    <tr>
+      <td>`SentDate`</td>
+      <td>`datetime2(7)`</td>
+      <td>NOT NULL</td>
+      <td>Defaults to `sysutcdatetime()`</td>
+    </tr>
+    <tr>
+      <td>`CreatedDate`, `ModifiedDate`</td>
+      <td>`datetime2(0)`</td>
+      <td>NOT NULL</td>
+      <td>Audit timestamps</td>
+    </tr>
+  </tbody>
+</table>
 
 ### Table: `EmailRecipient`
 
 Associates an email with a registered recipient.
 
-| Column | Type | Nullability | Purpose |
-| :--- | :--- | :--- | :--- |
-| `EmailRecipientID` | `int identity(1,1)` | NOT NULL | Primary key |
-| `EmailID` | `int` | NOT NULL | FK to `Email.EmailID`; cascade delete |
-| `RegistrationID` | `int` | NOT NULL | FK to `Registration.RegistrationID`; cascade delete |
-| `DateSent` | `datetime2(7)` | NULL | Delivery timestamp |
-| `CreatedDate` | `datetime2(0)` | NOT NULL | Creation timestamp |
+<table class="topic-table">
+  <thead>
+    <tr>
+      <th scope="col">Column</th>
+      <th scope="col">Type</th>
+      <th scope="col">Nullability</th>
+      <th scope="col">Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`EmailRecipientID`</td>
+      <td>`int identity(1,1)`</td>
+      <td>NOT NULL</td>
+      <td>Primary key</td>
+    </tr>
+    <tr>
+      <td>`EmailID`</td>
+      <td>`int`</td>
+      <td>NOT NULL</td>
+      <td>FK to `Email.EmailID`.md/&quot;&gt; cascade delete</td>
+    </tr>
+    <tr>
+      <td>`RegistrationID`</td>
+      <td>`int`</td>
+      <td>NOT NULL</td>
+      <td>FK to `Registration.RegistrationID`.md/&quot;&gt; cascade delete</td>
+    </tr>
+    <tr>
+      <td>`DateSent`</td>
+      <td>`datetime2(7)`</td>
+      <td>NULL</td>
+      <td>Delivery timestamp</td>
+    </tr>
+    <tr>
+      <td>`CreatedDate`</td>
+      <td>`datetime2(0)`</td>
+      <td>NOT NULL</td>
+      <td>Creation timestamp</td>
+    </tr>
+  </tbody>
+</table>
 
 ### Table: `EmailAttachment`
 
 Stores binary files attached to an email.
 
-| Column | Type | Nullability | Purpose |
-| :--- | :--- | :--- | :--- |
-| `EmailAttachmentID` | `int identity(1,1)` | NOT NULL | Primary key |
-| `EmailID` | `int` | NOT NULL | FK to `Email.EmailID`; cascade delete |
-| `FileName` | `varchar(255)` | NOT NULL | File name |
-| `FileType` | `varchar(50)` | NOT NULL | File type |
-| `FileData` | `varbinary(max)` | NOT NULL | File contents |
-| `CreatedDate` | `datetime2(0)` | NOT NULL | Creation timestamp |
+<table class="topic-table">
+  <thead>
+    <tr>
+      <th scope="col">Column</th>
+      <th scope="col">Type</th>
+      <th scope="col">Nullability</th>
+      <th scope="col">Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`EmailAttachmentID`</td>
+      <td>`int identity(1,1)`</td>
+      <td>NOT NULL</td>
+      <td>Primary key</td>
+    </tr>
+    <tr>
+      <td>`EmailID`</td>
+      <td>`int`</td>
+      <td>NOT NULL</td>
+      <td>FK to `Email.EmailID`.md/&quot;&gt; cascade delete</td>
+    </tr>
+    <tr>
+      <td>`FileName`</td>
+      <td>`varchar(255)`</td>
+      <td>NOT NULL</td>
+      <td>File name</td>
+    </tr>
+    <tr>
+      <td>`FileType`</td>
+      <td>`varchar(50)`</td>
+      <td>NOT NULL</td>
+      <td>File type</td>
+    </tr>
+    <tr>
+      <td>`FileData`</td>
+      <td>`varbinary(max)`</td>
+      <td>NOT NULL</td>
+      <td>File contents</td>
+    </tr>
+    <tr>
+      <td>`CreatedDate`</td>
+      <td>`datetime2(0)`</td>
+      <td>NOT NULL</td>
+      <td>Creation timestamp</td>
+    </tr>
+  </tbody>
+</table>
 
 ### Tables: `Newsletter` and `PublishedNewsletter`
 
@@ -518,16 +2266,56 @@ Stores binary files attached to an email.
 
 Stores typed application and database configuration values.
 
-| Column | Type | Nullability | Purpose |
-| :--- | :--- | :--- | :--- |
-| `SettingID` | `int identity(1,1)` | NOT NULL | Primary key |
-| `SettingKey` | `varchar(50)` | NOT NULL | Unique uppercase setting key |
-| `SettingType` | `varchar(50)` | NOT NULL | Uppercase type such as `STRING`, `JSON`, `GUID`, `INTEGER`, or `BOOLEAN` |
-| `SettingGroup` | `varchar(50)` | NOT NULL | Uppercase group: `GLOBALVAR`, `APPLICATION`, `DATABASE`, or `SYSTEM` |
-| `SettingValue` | `sql_variant` | NULL | Typed setting value |
-| `LastUpdated` | `datetime2(7)` | NOT NULL | Defaults to `sysdatetime()` |
+<table class="topic-table">
+  <thead>
+    <tr>
+      <th scope="col">Column</th>
+      <th scope="col">Type</th>
+      <th scope="col">Nullability</th>
+      <th scope="col">Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`SettingID`</td>
+      <td>`int identity(1,1)`</td>
+      <td>NOT NULL</td>
+      <td>Primary key</td>
+    </tr>
+    <tr>
+      <td>`SettingKey`</td>
+      <td>`varchar(50)`</td>
+      <td>NOT NULL</td>
+      <td>Unique uppercase setting key</td>
+    </tr>
+    <tr>
+      <td>`SettingType`</td>
+      <td>`varchar(50)`</td>
+      <td>NOT NULL</td>
+      <td>Uppercase type such as `STRING`, `JSON`, `GUID`, `INTEGER`, or `BOOLEAN`</td>
+    </tr>
+    <tr>
+      <td>`SettingGroup`</td>
+      <td>`varchar(50)`</td>
+      <td>NOT NULL</td>
+      <td>Uppercase group: `GLOBALVAR`, `APPLICATION`, `DATABASE`, or `SYSTEM`</td>
+    </tr>
+    <tr>
+      <td>`SettingValue`</td>
+      <td>`sql_variant`</td>
+      <td>NULL</td>
+      <td>Typed setting value</td>
+    </tr>
+    <tr>
+      <td>`LastUpdated`</td>
+      <td>`datetime2(7)`</td>
+      <td>NOT NULL</td>
+      <td>Defaults to `sysdatetime()`</td>
+    </tr>
+  </tbody>
+</table>
 
-The table enforces uppercase keys, types, and groups; valid setting types and groups; JSON and GUID validity where applicable; required values for non-string/list types; and a unique setting key.
+The table enforces uppercase keys, types, and groups.md/"> valid setting types and groups.md/"> JSON and GUID validity where applicable.md/"> required values for non-string/list types.md/"> and a unique setting key.
 
 ### Table: `SystemSettings_Audit`
 
@@ -537,12 +2325,42 @@ Stores historical setting values and update timestamps. It contains `AuditID`, t
 
 Registers database tables for system discovery and diagnostics.
 
-| Column | Type | Nullability | Constraints / purpose |
-| :--- | :--- | :--- | :--- |
-| `TableID` | `int identity(1,1)` | NOT NULL | Primary key |
-| `TableName` | `varchar(50)` | NOT NULL | Unique table name |
-| `TableType` | `varchar(15)` | NOT NULL | `Registration`, `Menu`, `Staging`, `Content`, `Lookup`, or `System` |
-| `SortOrder` | `int` | NOT NULL | Display order |
+<table class="topic-table">
+  <thead>
+    <tr>
+      <th scope="col">Column</th>
+      <th scope="col">Type</th>
+      <th scope="col">Nullability</th>
+      <th scope="col">Constraints / purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`TableID`</td>
+      <td>`int identity(1,1)`</td>
+      <td>NOT NULL</td>
+      <td>Primary key</td>
+    </tr>
+    <tr>
+      <td>`TableName`</td>
+      <td>`varchar(50)`</td>
+      <td>NOT NULL</td>
+      <td>Unique table name</td>
+    </tr>
+    <tr>
+      <td>`TableType`</td>
+      <td>`varchar(15)`</td>
+      <td>NOT NULL</td>
+      <td>`Registration`, `Menu`, `Staging`, `Content`, `Lookup`, or `System`</td>
+    </tr>
+    <tr>
+      <td>`SortOrder`</td>
+      <td>`int`</td>
+      <td>NOT NULL</td>
+      <td>Display order</td>
+    </tr>
+  </tbody>
+</table>
 
 ### Table: `Numbers`
 
@@ -620,17 +2438,52 @@ Normalization functions enforce consistent values before validation or persisten
 
 Stored procedures are organized by responsibility:
 
-| Responsibility | Procedures |
-| :--- | :--- |
-| Initialization and deployment | `Initialize_Database`, `Create_Tables`, `Create_Lookup_Tables`, `Create_Content_Tables`, `Create_Staging_Tables`, `Create_System_Tables`, `Create_Registration_Tables`, `Create_Numbers_Table`, `Create_MenuItem_Table`, `Create_MasterMenu_Table`, `Create_ErrorLog_Table`, `Create_SystemSettings_Table`, `Create_SystemTables_Table`, `Create_TableList_Table` |
-| Content | `Insert_ContentDocument`, `Insert_ContentElement`, `Insert_Content_Placeholder`, `Delete_Content`, `Populate_ContentDocument` |
-| Menu | `Insert_MenuItem`, `Insert_MenuItem_Parent`, `Insert_MenuItem_Child`, `Delete_MenuItem`, `Populate_MenuItems`, `Populate_MasterMenu`, `Perform_MenuItem_Validation` |
-| Staging | `Populate_Staging`, `Delete_Staging`, `Validate_Staging` |
-| Lookup population | `Populate_ContentType`, `Populate_FormatType`, `Populate_MimeType`, `Populate_RouteType`, `Populate_VisitorType`, `Populate_WorkflowStatus`, `Populate_Lookup_Tables` |
-| System data | `Populate_SystemSettings`, `Populate_SystemTables`, `Populate_Numbers_Table`, `Set_SystemSetting`, `Get_SystemInfo` |
-| Validation and inspection | `Validate_Database`, `Validate_Content`, `Validate_MenuItem`, `Perform_Table_Check`, `Show_Tables`, `Show_Schema`, `Show_Foreign_Keys` |
-| Logging and messaging | `Log_Error`, `Log_Debug`, `Clear_ErrorLog`, `Print_Messages`, `Opening_Message`, `Success_Message` |
-| Test support | `Create_TestHarness`, `Populate_TestHarness`, `Execute_TestHarness`, `Create_TempTable_FromCSV` |
+<table class="topic-table">
+  <thead>
+    <tr>
+      <th scope="col">Responsibility</th>
+      <th scope="col">Procedures</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Initialization and deployment</td>
+      <td>`Initialize_Database`, `Create_Tables`, `Create_Lookup_Tables`, `Create_Content_Tables`, `Create_Staging_Tables`, `Create_System_Tables`, `Create_Registration_Tables`, `Create_Numbers_Table`, `Create_MenuItem_Table`, `Create_MasterMenu_Table`, `Create_ErrorLog_Table`, `Create_SystemSettings_Table`, `Create_SystemTables_Table`, `Create_TableList_Table`</td>
+    </tr>
+    <tr>
+      <td>Content</td>
+      <td>`Insert_ContentDocument`, `Insert_ContentElement`, `Insert_Content_Placeholder`, `Delete_Content`, `Populate_ContentDocument`</td>
+    </tr>
+    <tr>
+      <td>Menu</td>
+      <td>`Insert_MenuItem`, `Insert_MenuItem_Parent`, `Insert_MenuItem_Child`, `Delete_MenuItem`, `Populate_MenuItems`, `Populate_MasterMenu`, `Perform_MenuItem_Validation`</td>
+    </tr>
+    <tr>
+      <td>Staging</td>
+      <td>`Populate_Staging`, `Delete_Staging`, `Validate_Staging`</td>
+    </tr>
+    <tr>
+      <td>Lookup population</td>
+      <td>`Populate_ContentType`, `Populate_FormatType`, `Populate_MimeType`, `Populate_RouteType`, `Populate_VisitorType`, `Populate_WorkflowStatus`, `Populate_Lookup_Tables`</td>
+    </tr>
+    <tr>
+      <td>System data</td>
+      <td>`Populate_SystemSettings`, `Populate_SystemTables`, `Populate_Numbers_Table`, `Set_SystemSetting`, `Get_SystemInfo`</td>
+    </tr>
+    <tr>
+      <td>Validation and inspection</td>
+      <td>`Validate_Database`, `Validate_Content`, `Validate_MenuItem`, `Perform_Table_Check`, `Show_Tables`, `Show_Schema`, `Show_Foreign_Keys`</td>
+    </tr>
+    <tr>
+      <td>Logging and messaging</td>
+      <td>`Log_Error`, `Log_Debug`, `Clear_ErrorLog`, `Print_Messages`, `Opening_Message`, `Success_Message`</td>
+    </tr>
+    <tr>
+      <td>Test support</td>
+      <td>`Create_TestHarness`, `Populate_TestHarness`, `Execute_TestHarness`, `Create_TempTable_FromCSV`</td>
+    </tr>
+  </tbody>
+</table>
 
 The `Testing` folder contains non-build versions and focused scripts for setup, population, normalization, URL validation, menu validation, schema display, and test execution.
 
@@ -675,3 +2528,4 @@ WorkflowStatus ---- ContentDocument / StagingElement
 ## 12. Source of Truth
 
 This document describes the current SQL project, but the `.sql` object definitions remain authoritative when a description and implementation differ. Any future schema change should update the corresponding SQL object and this document in the same change.
+

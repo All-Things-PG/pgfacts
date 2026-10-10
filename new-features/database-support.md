@@ -8,5 +8,3 @@ permalink: /new-features/database-support/
 ---
 
 # Database Support
-
-Database support will provide the structure needed for features like the knowledge base and dynamic menus.

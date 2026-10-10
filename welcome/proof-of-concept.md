@@ -28,7 +28,7 @@ The Proof of Concept was created to answer several critical questions:
 - Can the platform scale as content volume and organizational needs grow?
 - Can a single system support multiple audiences with different goals and interests?
 
-The POC successfully demonstrates that the answer to each of these questions is yes.
+The POC successfully demonstrates that the answer to each of these questions is yes. But lets not kid ourselves - there's no way I'm throwing away a years worth of effort and starting over, even if that is standard practice.  What I've create is a stable plaltform and database that works now. It will likely just continue to grow into the final version.
 
 ### What the Proof of Concept Demonstrates
 

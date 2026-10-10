@@ -8,5 +8,3 @@ permalink: /new-features/leo-enhancements/
 ---
 
 # Leo Enhancements
-
-This page tracks improvements and additions for the Leo experience.

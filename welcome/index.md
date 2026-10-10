@@ -1,5 +1,5 @@
 ---
 layout: redirect
 permalink: /welcome/
-redirect_to: /home/home/
+redirect_to: /welcome/home/
 ---

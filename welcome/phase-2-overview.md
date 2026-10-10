@@ -6,14 +6,14 @@ breadcrumb: Welcome > Phase 2 Overview
 description: Browse documentation by topic.
 permalink: /welcome/phase-2-overview/
 ---
-# Phase 2 is coming together!
+# Phase 2 Overview
 
-## Overview
+## Phase 2 is coming together!
 
-The design and documentation of Phase 2 of www.allthingspg.org is well under way and has been over the course of a year.  Progress to date has been to build a potential design, create a working database, build a proof of concept and create a documentation site.  As a software engineering project, process and planning are the keys to a successful development project that meets the needs of the entire PG community.  So far so good.
+The design and documentation of Phase 2 is well under way and has been over the course of a year.  Progress to date has been to build a potential design, create a working database, build a proof of concept and create a documentation site.  As a software engineering project, process and planning are the keys to a successful development project that meets the needs of the entire PG community.  So far so good.
 
 
-### Project Plan for Phase 2
+### Project Plan for Phase 2	
 
 <table class="topic-table topic-table--numbered">
 	<thead>
@@ -200,9 +200,3 @@ The key vision and objectives for Phase 2 will be:
 
 At the top of every page you will see tiles, or bubbles as some call them.  These are just buttons that take you to the most interesting content within that topic area.  They act like menu items, so just click on them.  
 
-### What are some of the key documents to get me started?
-
-- [Executive Summary]({{ '/dcms/DCMS_Executive_Summary.html' | relative_url }})
-- [What is a DCMS Database]({{ '/dcms/DCMS_Portal_Experience.html' | relative_url }})
-- [Creating a Portal Experience]({{ '/dcms/DCMS_Portal_Experience.html' | relative_url }})
-- [Curating and Publishing Content]({{ '/dcms/DCMS_Curating_Content.html' | relative_url }})

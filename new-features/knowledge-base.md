@@ -9,17 +9,15 @@ permalink: /new-features/knowledge-base/
 
 # Knowledge Base
 
-The knowledge base is the primary feature of Phase 2.
-
-It will be a searchable collection of trusted All Things PG information that helps visitors find what they need quickly, whether they are patients, caregivers, providers, or other users looking for curated guidance.
-
 ## Overview
 
-DCMS gives us the structure to curate content and connect it to menu items, visitor types, and supporting metadata. The knowledge base builds on that foundation by turning published content into something searchable and discoverable.
+The **Knowledge Base** (KB) is THE primary feature of Phase 2, so gets its own page as a new feature. The KB is a fully searchable table, or collection of data, that consists of all content within the ATPG database.  All articles are stored in the KB.  All clinical trials are stored in the KB.  Essentially, and thing that is searchable, is considered part of the KB.
 
-The first proof of concept may not include the full search engine or database indexing layer, but the goal is clear: Phase 2 should evolve into a live, searchable knowledge base rather than a static set of pages.
+Our goal is that the KB is used by visitors to solve problems.  The ATPG website is not just a collection of articles and a reliable source of information.  Information on PG exist throughout the internet, and with modern use of AI, is easy to find.  We need to go beyond static information.  
 
-## What the knowledge base can include
+We want Phase 2 of the ATPG website to help users find and apply information specific to their needs, whether they be patients, caregivers, providers, pharmaceutical reps, or guests.  The KB turns Phase 2 into something living, data with a purpose, which is much different than a set of static pages in Phase 1.  
+
+### What will the knowledge base include?
 
 The knowledge base should grow beyond simple text pages and eventually include:
 
@@ -33,7 +31,7 @@ The knowledge base should grow beyond simple text pages and eventually include:
 
 Each content type can be published through DCMS, then surfaced in a way that makes sense for the visitor and the topic.
 
-## Why DCMS matters
+### Why DCMS matters
 
 DCMS lets us create menu items, content documents, and content elements in a controlled way. That means we can curate content instead of scattering it across separate static pages.
 
@@ -44,7 +42,7 @@ For the knowledge base, that is important because:
 3. search results can point users to the right menu item or document
 4. content can be expanded over time without redesigning the whole site
 
-## Dynamic menus and content
+### Dynamic menus and content
 
 Dynamic menus and content are the layer that makes the knowledge base usable in the site itself.
 
@@ -57,13 +55,13 @@ The knowledge base does not live by search alone. It depends on a content model 
 
 That is why the menu system matters so much. It is not just navigation. It is part of the structure that makes the knowledge base feel coherent instead of random.
 
-## Provider directory
+### Provider directory
 
 The provider directory is part of the knowledge base story, not a separate idea.
 
 Right now it may be a manual list or a managed CMS entry set, but the long-term goal is to treat providers and related facilities as searchable reference data. That allows the site to grow into a practical directory as well as a documentation site.
 
-## Searchable result set
+### Searchable result set
 
 When the search experience is built, the result set should do more than return a title. It should show enough information for a visitor to decide whether to click.
 

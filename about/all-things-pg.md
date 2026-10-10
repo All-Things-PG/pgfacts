@@ -7,21 +7,21 @@ permalink: /about/all-things-pg/
 ---
 # All Things PG
 
-All Things PG is a nonprofit organization dedicated to improving the lives of those affected by Pyoderma Gangrenosum (PG). We connect patients, caregivers, and medical professionals and pharmaceuticals with trusted information and resources, and work to advance PG awareness, advocacy, and support.  All Things PG is the first and only PG Foundation working hard to make a difference.
-
-### Our Mission
+## Our Mission
 
 ***All Things PG is dedicated to improving the lives of those affected by Pyoderma Gangrenosum (PG) by connecting them with trusted resources and organizations for help.  We strive to empower patients, caregivers and medical professionals through knowledge, advocacy, and raising PG awareness.***
 
-Living with PG can mean navigating pain, costly treatments, wound care, reduced mobility, employment challenges, and changes to relationships and daily life. The condition's effects can extend beyond the skin, affecting physical, mental, and emotional well-being.
+Living with PG can mean navigating pain, costly treatments, wound care, reduced mobility, employment challenges, and changes to relationships and daily life. PG complications extend well beyond the skin, affecting a person's physical, mental, and emotional well-being, and their caregivers and family members as well.
 
-People affected by PG have expressed a need for a reliable place to find vetted information about the condition, emerging treatments, providers, research opportunities, and physical, mental, and emotional support. All Things PG aims to help meet that need by bringing useful resources and connections together.  The name of the organization indicates we want to be a central hub for ALL things relating to Pyoderma Gangrenosum.  Phase 2 is a major step towards that objective.
+People affected by PG have expressed the need for a reliable place to find vetted information about this condition, emerging treatments, expert providers, clinical trial, knowledge about PG, physical, mental, and emotional support in coping with the illness. PG affects every aspect of a person's life and the lives of their families and close relationsihps, as well as their employment.  Many patients become permanently disabled. 
+
+All Things PG aims to meet those needs by bringing together all the information, resources and connections available to help patients caregivers, medical professionals pharmacy reps and more.  The name of the organization indicates we want to be ALL the things we can be, as a central hub for for anything relating to Pyoderma Gangrenosum.  Phase 2 is a major step towards that objective.
 
 ### Our goals
 
 We aim to:
 
-- Make trusted PG information and resources easier to find.
+- Create a Knowledge Base of trusted PG information and resources and make it easier to find.
 - Raise awareness of PG and support timely recognition.
 - Help patients and caregivers connect with support and each other.
 - Share information about providers, research, and treatment developments.
@@ -45,13 +45,13 @@ Our goal is for All Things PG to serve as a hub for resources, peer connection, 
 	</thead>
 	<tbody>
 		<tr>
-			<td><a href="https://www.allthingspg.org/alex-ortega">Dr. Alex Ortega</a></td>
+			<td><a href="https://www.allthingspg.org/dr-alex-ortega-loayza">Dr. Alex Ortega</a></td>
 			<td>Co-Founder</td>
 			<td>Medical Director</td>
 		</tr>
 		<tr>
 			<td><a href="https://www.allthingspg.org/corlis-watkins-nass">Corlis Watkins-Nass</a></td>
-			<td>Co-Founder and President</td>
+			<td>President and Co-Founder</td>
 			<td>Marketing Director</td>
 		</tr>
 		<tr>
@@ -60,7 +60,7 @@ Our goal is for All Things PG to serve as a hub for resources, peer connection, 
 			<td>Technology Director</td>
 		</tr>
 		<tr>
-			<td><a href="https://www.allthingspg.org/legail-odoms">LeGail Odoms</a></td>
+			<td><a href="https://www.allthingspg.org/lagail-odoms">LeGail Odoms</a></td>
 			<td>Secretary</td>
 			<td>Legal Director</td>
 		</tr>
@@ -76,12 +76,12 @@ Our goal is for All Things PG to serve as a hub for resources, peer connection, 
 		</tr>
 		<tr>
 			<td>Katie Hobbs</td>
-			<td>Executive Director</td>
+			<td>Executive Director (OHSU)</td>
 			<td>Non-voting participant</td>
 		</tr>
 		<tr>
 			<td>Kellen Strickland</td>
-			<td>Senior Administrator</td>
+			<td>Senior Administrator (OHSU)</td>
 			<td>Non-voting participant</td>
 		</tr>
 	</tbody>

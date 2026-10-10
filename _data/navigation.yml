@@ -1,9 +1,9 @@
 - key: welcome
   label: Welcome
-  url: /home/home/
+  url: /welcome/home/
   children:
     - label: Home
-      url: /home/home/
+      url: /welcome/home/
     - label: Phase 2 Overview 
       url: /welcome/phase-2-overview/
     - label: Executive Summary
@@ -38,6 +38,8 @@
   label: New Features
   url: /new-features/
   children:
+    - label: Wish List
+      url: /new-features/wish-list/
     - label: Knowledge Base
       url: /new-features/knowledge-base/
     - label: Dynamic Menus and Content
@@ -48,6 +50,8 @@
       url: /new-features/database-support/
     - label: Leo Enhancements
       url: /new-features/leo-enhancements/
+    - label: Leo Deliverables
+      url: /new-features/leo-deliverables/
 - key: technical
   label: Technical
   url: /technical/
@@ -58,6 +62,8 @@
       url: /technical/managing-tiles/
     - label: PG Facts Site Guide
       url: /technical/pgfacts-site-guide/
+    - label: Document Inventory
+      url: /technical/document-inventory/
 - key: dcms
   label: DCMS
   url: /dcms/

@@ -14,3 +14,5 @@ topic_key: technical
 </section>
 
 <p>Start with the <a href="{{ '/technical/pgfacts-site-guide/' | relative_url }}">PG Facts Site Guide</a>, then read the <a href="{{ '/technical/managing-pages/' | relative_url }}">Managing Pages</a> and <a href="{{ '/technical/managing-tiles/' | relative_url }}">Managing Tiles</a> guides.</p>
+
+<p>Document inventory: <a href="{{ '/technical/document-inventory/' | relative_url }}">document-inventory.md</a></p>

@@ -13,12 +13,12 @@ pages:
     description: Information about the site developer.
     url: /about/the-developer/
 tiles:
-  - title: Pyoderma Gangrenosum
-    description: About the condition behind the mission.
-    url: /about/pyoderma-gangrenosum/
-  - title: All Things PG
-    description: About the organization behind this site.
-    url: /about/all-things-pg/
-  - title: The Developer
-    description: About the person who developed the site.
-    url: /about/the-developer/
+  - title: Executive Summary
+    description: The executive summary provides an overview of the purpose, scope, and goals for Phase 2 of the sAll Things PG Website.
+    url: /welcome/executive-summary/
+  - title: Welcome Home
+    description: A guided starting point for the project's analysis and design documents.
+    url: /welcome/home/
+  - title: Wish List
+    description: Proposed Phase 2 capabilities and their priorities.
+    url: /new-features/wish-list/

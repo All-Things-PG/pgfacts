@@ -2,99 +2,54 @@
 layout: page
 title: Curating Content
 breadcrumb: DCMS > Curating Content
-description: Workflow for collecting, reviewing, and publishing structured content.
-updated: 2026-09-18
+description: How structured PG content will be captured, reviewed, and published.
+updated: 2026-10-10
+permalink: /dcms/DCMS_Curating_Content/
 ---
-# DCMS - Curating Content
 
-## Overview
+# Curating Content in DCMS
 
-DCMS curating content is about taking useful PG information from many sources and turning it into structured content that can be searched, reused, and managed without hard-coding everything by hand.
+DCMS is designed to hold a curated, structured PG knowledge base. Content is stored as database records linked to the dynamic menu, rather than as hard-coded HTML pages. That design makes it possible to organize information by audience, reuse a stable menu, and later search across the content library.
 
-The main idea is simple: content should be connected to menu items, supported by search, and moved through a review workflow before it reaches production.
+The database structure is in place, but the current content state is still empty. Menu content routes have generated placeholder documents so each menu item already has its own identity. The placeholders are marked Unknown and Draft and are not published. They are scaffolding, not articles. There is not yet an authored PG library or a production search experience.
 
-## FAQ
+### Content structure
 
-### What is curating content?
+A MenuItem represents a navigation choice. A content route gets a ContentDocument linked to that MenuItem. ContentDocument has its own ContentDocumentID, content type, description, metadata, workflow status, publication flag, and dates. ContentElement stores the document's typed blocks: format and MIME codes, block metadata, text or binary payload, and optional file paths.
 
-Curating content is identifying useful material, breaking it into manageable pieces, and storing it in a way that can be assembled into pages and reused across the site.
+This allows the same title to appear in different audience branches while each menu item points to a separate document. For example, patient and provider versions of a diagnosis article can share a visible menu title but have distinct menu IDs, visitor masks, and content document IDs.
 
-At its core, it means:
+### Two separate data paths
 
-- review and organize content before publishing
-- keep content separate from presentation
-- reuse the same content in more than one place
-- support different content types over time
-- keep the site maintainable as it grows
+### Master menu path
 
-### How do we migrate content from Phase 1 to Phase 2?
+Master_Menu.csv is the source for the proposed menu tree. Populate_MasterMenu loads it using the MASTER_MENU setting, normalizes the hierarchy and route values, and stages menu rows for validation. Content-route rows receive placeholder documents so their content identities exist before articles are written.
 
-Migration is the bridge from legacy content into the Phase 2 model. The first pass can use staging tables or other temporary structures to capture content, review it, and decide what belongs in production.
+The current Populate_MenuItems flow initializes and rebuilds the database menu. It clears content and migration rows as part of initialization, and Publish_Staging replaces the runtime menu/content baseline. This is a full rebuild intended for the current empty-content state. It must gain preservation behavior before authored content is loaded and routine menu edits are made against valuable content.
 
-### How does content data move through the system?
+### Legacy content migration path
 
-The general flow is:
+Legacy website material was captured into MigrationDocument and MigrationElement, with MigrationMapping linking legacy menu titles to the new MenuItem IDs. Perform_Migration loads and then publishes the migration data into ContentDocument and ContentElement. This is separate from the menu staging tables and is the route for scraped legacy content.
 
-1. capture legacy content into migration tables
-2. move migration data to staging for review
-3. map the content to menu items
-4. refine the page format using the content block information
-5. publish the content, which moves data from staging to production
+A migration mapping is not the same as approval. Captured or imported material still needs editorial review for accuracy, audience, format, and publication readiness. The current publish routine is a batch operation and clears existing content before applying the mapping, so it must be treated as a rebuild against an empty or disposable content database.
 
-For the POC, the goal is to get useful content into the site correctly, not to rush past review.
+### Editorial workflow
 
-### Content curation vs content storage?
+The intended content lifecycle is:
 
-A page is not valuable because it exists in a database. It is valuable because it is understandable, accurate, and easy to maintain. Curating content is the process that makes that possible.
+1. Identify or capture a useful source and record its provenance.
+2. Map it to the correct menu item and audience.
+3. Organize it into ContentDocument and ContentElement records.
+4. Review the wording, accuracy, audience, format, and links.
+5. Set its workflow state and publication fields only after approval.
+6. Publish it so the application can serve the approved article.
 
-Good curation helps the organization:
+The database includes Draft, Review, Approved, Rejected, Published, and Staging workflow codes. The schema supports those states; the complete authoring, review, permissions, and preservation workflow remains work to be finished.
 
-- ensure the content is accurate
-- keep content aligned with the audience
-- avoid duplicates and dead ends
-- present content in the right order
-- present content linked to a good menu item
+### What the knowledge base can grow to include
 
-This is especially important for a rare-disease organization, where clarity and trust matter.
+The relational model can support curated explanations of PG, diagnosis and treatment resources, wound care, pain and lived experience, provider education, research and clinical trials, and directories for providers and care facilities. Those resources can be linked, filtered, and searched when content and the corresponding application features are built.
 
-### What can be improved later?
+A database makes this structure possible; it does not guarantee that material is current or medically reviewed. Content governance, expert review, source dates, ownership, search behavior, and safe publication controls are part of delivering a trustworthy knowledge base.
 
-The first pass does not need to be perfect.
-
-Later improvements might include:
-
-- richer metadata
-- notes and history
-- content versioning and status
-- page-level migration tracking
-- better element-level structure
-- better mapping between old and new titles
-- more precise treatment of forms, lists, and special cases
-- a GUI interface for drag and drop
-
-### Why is this a strong foundation?
-
-The content curation model is strong because it supports both speed and control while keeping the content accurate and useful.
-
-When completed:
-
-- anyone can curate content
-- we can identify new content outside of the organization
-- preserve important content and discard the rest
-- improve the structure over time
-- keep the site maintainable
-- prepare for future growth without rethinking the entire system
-- build the framework first, then use it to load content
-
-For sponsors, that means the platform is not a one-time build. It is an asset that can continue to improve.
-
-### Summary
-
-Curating content in DCMS is about moving useful PG material into a structured system where it can be reviewed, reused, searched, and published safely.
-
-### Cleanup notes
-
-- The page still repeats the same idea in a few places: DCMS as a content model, DCMS as a knowledge-base enabler, and DCMS as a workflow.
-- The migration / staging / approval story is useful, but it overlaps with the general curating concept and could be shortened more.
-- The document still mixes concept, workflow, and implementation detail; that is the main source of repetition.
-- The Phase 3 GUI discussion is a side topic and could be trimmed further if you want this page to stay purely conceptual.
+For the actual table definitions and seeded codes, see the [database schema](/database/DCMS_Database_Schema/). For the current import and publication behavior, see the [menu and content workflow](/dcms/DCMS_Menu_Workflow/).

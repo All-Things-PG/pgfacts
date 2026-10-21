@@ -10,6 +10,12 @@ pages:
   - title: Copilot Analysis
     description: How Copilot was used to support the work.
     url: /phase-1/copilot-analysis/
+  - title: AI Comparison
+    description: Comparison of the ChatGPT and Copilot analysis reports.
+    url: /phase-1/ai-comparison/
+  - title: Developer Analysis
+    description: Analysis from the site developer.
+    url: /phase-1/developer-analysis/
   - title: Technology Platform
     description: Platform choices and design direction.
     url: /phase-1/technology-platform/
@@ -17,12 +23,12 @@ pages:
     description: How the Phase 1 work is kept current.
     url: /phase-1/how-it-is-maintained/
 tiles:
-  - title: ChatGPT Analysis
-    description: AI-assisted planning and analysis.
-    url: /phase-1/chatgpt-analysis/
-  - title: Copilot Analysis
-    description: Copilot-assisted planning and editing.
-    url: /phase-1/copilot-analysis/
-  - title: Technology Platform
-    description: The tools and platform used for the work.
-    url: /phase-1/technology-platform/
+  - title: What is DCMS?
+    description: How the database-backed content and menu system supports site management.
+    url: /dcms/what-is-dcms/
+  - title: Why Have a Database?
+    description: Why a database enables searchable content, provider finding, and growth.
+    url: /database/why-have-a-database/
+  - title: Knowledge Base
+    description: Search PG information, trials, providers, research opportunities, and care resources using everyday questions.
+    url: /new-features/knowledge-base/

@@ -1,7 +1,7 @@
 title: User Experience
-description: Portal experiences for each visitor type.
+description: How All Things PG guides visitors through audience-aware portal experiences.
 summary: >-
-  Explore how visitors choose a persona and find information suited to their needs.
+  See how one shared site can present different starting pages, navigation, and content emphasis for patients, caregivers, providers, industry visitors, and guests.
 pages:
   - title: What is a Portal?
     description: An introduction to portal-style experiences.
@@ -22,15 +22,18 @@ pages:
     description: Portal needs and content for pharmaceutical visitors.
     url: /user-experience/pharmaceutical/
   - title: Guest
-    description: The experience available to guest visitors.
+    description: A general entry path for visitors exploring All Things PG.
     url: /user-experience/guest/
+  - title: Mobile Friendly
+    description: Designing the site for clear, usable mobile experiences.
+    url: /user-experience/mobile-friendly/
 tiles:
-  - title: What is a Portal?
-    description: An introduction to portal-style experiences.
-    url: /user-experience/what-is-a-portal/
-  - title: Selecting a User Experience
-    description: Choose an experience based on visitor needs.
-    url: /user-experience/selecting-a-user-experience/
-  - title: Patients
-    description: Explore the patient experience.
-    url: /user-experience/patients/
+  - title: Knowledge Base
+    description: Search PG information, trials, providers, research opportunities, and care resources using everyday questions.
+    url: /new-features/knowledge-base/
+  - title: Dynamic Menus and Content
+    description: How reviewed menu and content updates can go live without additional programming.
+    url: /new-features/dynamic-menus-and-content/
+  - title: Enhanced User Experience
+    description: Audience-focused design that helps visitors find relevant information and services.
+    url: /new-features/enhanced-user-experience/

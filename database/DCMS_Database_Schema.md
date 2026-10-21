@@ -3,29 +3,30 @@ layout: page
 title: Database Schema
 breadcrumb: Database > Schema
 description: Define the structure of the database.
-updated: 2026-09-18
+updated: 2026-10-10
+permalink: /database/DCMS_Database_Schema/
 ---
 
 # DCMS - Dynamic Content and Menuing System
 
-## Database Schema
+### Database Schema
 
-This document describes the database schema for  **AllThingsPG** SQL Server database.  Schema is the structure of the database, for tables, stored procedures, functions, constraints and much more.  Schema is the definition of the database. All databases have schema, which is a description of things like table columns, type etc.  A table in a database is much like an Excel spreadsheet, where each column has a name and type (integer, text, currency etc).  The definition of a table defines what type of data can be put in that table, and where to put it. This document, and other database documents, are part of the developer specs, and not attempt (other than this paragraph) will be made to explain terminology.
+This document describes the database schema for  **AllThingsPG** SQL Server database.  Schema is the structure of the database, for tables, stored procedures, functions, constraints and much more.  Schema is the definition of the database. All databases have schema, which is a description of things like table columns, type etc.  A table in a database is much like an Excel spreadsheet, where each column has a name and type (integer, text, currency etc).  The definition of a table defines what type of data can be put in that table, and where to put it. This document and the related database pages are developer references; they focus on the implemented schema and data model.
 
-The SQL project under `Database\AllThingsPG.Database` is the implementation baseline for table names, column definitions, constraints, relationships, views, functions, procedures, and deployment behavior.  It is the master source of truth.  Even the database itself is not, it is the schema defined in the database project that is.  Like the POC and eventualy Phase2 website, the db project is in a Github repository and securely stored with our nonprofit All Things PG organization (or will be soon).
+The SQL project at AllThingsPG.Database is the implementation baseline for table names, column definitions, constraints, relationships, views, functions, procedures, and deployment behavior. It is the master source of truth.  Even the database itself is not, it is the schema defined in the database project that is.  Like the POC and eventual Phase 2 website, the db project is in a Github repository and securely stored with our nonprofit All Things PG organization (or will be soon).
 
 The schema defines various categories of tables:
 
-- lookup data tha defines valid domain values
+- lookup data that defines valid domain values
 - menu and route definitions used to build navigation
-- content documents and ordered content elements
+- content documents and typed content elements (the schema does not currently store an element SortOrder)
 - staging records used before content is published
 - master menu, menu items, portal menu
 - registration, communication, emails, contacts
 - system settings, error log
 - test harness and staging
 
-## Database Project
+### Database Project
 
 <table class="topic-table">
   <thead>
@@ -108,102 +109,23 @@ The schema defines various categories of tables:
 
 ---
 
-## 1. Lookup Tables
+### 1. Lookup Tables
 
 Lookup tables provide validated domain values referenced by transactional tables. Their codes are deliberately compact because they are used as foreign-key values in menu, content, registration, staging, and rendering records.
 
-### Table: `VisitorType`
+### Table: VisitorType
 
-Defines visitor personas used by registration and menu visibility rules.
+VisitorType defines the personas that can be selected by the application and used by menu visibility rules. Populate_VisitorType clears and reseeds these five rows.
 
-<table class="topic-table">
-  <thead>
-    <tr>
-      <th scope="col">Column</th>
-      <th scope="col">Type</th>
-      <th scope="col">Nullability</th>
-      <th scope="col">Constraints / purpose</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>`Code`</td>
-      <td>`char(1)`</td>
-      <td>NOT NULL</td>
-      <td>Primary key</td>
-    </tr>
-    <tr>
-      <td>`Description`</td>
-      <td>`nvarchar(200)`</td>
-      <td>NOT NULL</td>
-      <td>Persona description</td>
-    </tr>
-    <tr>
-      <td>`SortOrder`</td>
-      <td>`int`</td>
-      <td>NOT NULL</td>
-      <td>Display order</td>
-    </tr>
-    <tr>
-      <td>`IsDefault`</td>
-      <td>`bit`</td>
-      <td>NOT NULL</td>
-      <td>Identifies the default persona</td>
-    </tr>
-  </tbody>
-</table>
+| Code | Description | SortOrder | IsDefault |
+| :---: | :--- | ---: | :---: |
+| P | Patient | 1 | 0 |
+| C | Caregiver | 2 | 0 |
+| M | Provider | 3 | 0 |
+| D | Pharmaceutical | 4 | 0 |
+| V | Guest | 5 | 1 |
 
-**Current sample data:**
-
-<table class="topic-table">
-  <thead>
-    <tr>
-      <th scope="col">Code</th>
-      <th scope="col">Description</th>
-      <th scope="col">SortOrder</th>
-      <th scope="col">IsDefault</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>`P`</td>
-      <td>Patient</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>`C`</td>
-      <td>Caregiver</td>
-      <td>2</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>`M`</td>
-      <td>Provider</td>
-      <td>3</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>`D`</td>
-      <td>Pharmaceutical</td>
-      <td>4</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <td>`V`</td>
-      <td>Visitor</td>
-      <td>5</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>`R`</td>
-      <td>Register</td>
-      <td>6</td>
-      <td>0</td>
-    </tr>
-  </tbody>
-</table>
-
+A VisitorMask is normalized against these lookup rows. ALL expands to the current codes in lookup order, which is PCMDV. The MenuItem and StagingMenuItem check constraints also allow the character R, but R is not a VisitorType inserted by the current population routine. RouteType R separately means Redirect.
 ### Table: `RouteType`
 
 Defines how a menu item route is interpreted by the application.
@@ -1078,11 +1000,11 @@ Defines the editorial state of content and staged content.
 
 ---
 
-## 2. Menu and Routing Tables
+### 2. Menu and Routing Tables
 
 ### Table: `MenuItem`
 
-`MenuItem` is the runtime menu model. A row represents one menu node. Parent-child relationships are represented by the self-referencing `ParentMenuItemID`.md/"> a `NULL` parent identifies a top-level item.
+`MenuItem` is the runtime menu model. A row represents one menu node. Parent-child relationships are represented by the self-referencing `ParentMenuItemID`. A `NULL` parent identifies a top-level item.
 
 <table class="topic-table">
   <thead>
@@ -1134,13 +1056,13 @@ Defines the editorial state of content and staged content.
       <td>`SortOrder`</td>
       <td>`int`</td>
       <td>NOT NULL</td>
-      <td>Defaults to `0`.md/&quot;&gt; must be non-negative</td>
+      <td>Defaults to `0`; must be non-negative</td>
     </tr>
     <tr>
       <td>`IsActive`</td>
       <td>`bit`</td>
       <td>NOT NULL</td>
-      <td>Defaults to `1`.md/&quot;&gt; controls visibility</td>
+      <td>Defaults to `1`; controls visibility</td>
     </tr>
     <tr>
       <td>`CreatedDate`</td>
@@ -1165,347 +1087,27 @@ Constraints:
 * `CK_MenuItem_Title_Normalized` rejects reserved URL, markup, and query characters.
 * `CK_MenuItem_VisitorMask` permits only `P`, `C`, `M`, `D`, `V`, and `R`, and requires a non-empty mask.
 
-### Visitor Types (`RouteType = V`)
+### Current MenuItem data from MenuItemList
 
-The visitor route selects or changes the visitor persona. The current Welcome branch contains seven active records: one parent and six visitor choices.
+The current menu has a separate runtime MenuItem row for each navigation choice. RouteTarget is stored as a route string. For a content route, its target parameter contains the linked ContentDocumentID.
 
-<table class="topic-table">
-  <thead>
-    <tr>
-      <th scope="col">MenuItemID</th>
-      <th scope="col">ParentMenuItemID</th>
-      <th scope="col">Title</th>
-      <th scope="col">RouteTarget</th>
-      <th scope="col">VisitorMask</th>
-      <th scope="col">SortOrder</th>
-      <th scope="col">IsActive</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td>NULL</td>
-      <td>Welcome</td>
-      <td>`/visitor?v=Register`</td>
-      <td>`PCMDVR`</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>1</td>
-      <td>&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;Patient</td>
-      <td>`/visitor?v=Patient`</td>
-      <td>`PCMDVR`</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>1</td>
-      <td>&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;Caregiver</td>
-      <td>`/visitor?v=Caregiver`</td>
-      <td>`PCMDVR`</td>
-      <td>2</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>1</td>
-      <td>&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;Provider</td>
-      <td>`/visitor?v=Provider`</td>
-      <td>`PCMDVR`</td>
-      <td>3</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>1</td>
-      <td>&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;Pharmaceutical</td>
-      <td>`/visitor?v=Pharmaceutical`</td>
-      <td>`PCMDVR`</td>
-      <td>4</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>6</td>
-      <td>1</td>
-      <td>&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;Visitor</td>
-      <td>`/visitor?v=Visitor`</td>
-      <td>`PCMDVR`</td>
-      <td>5</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>7</td>
-      <td>1</td>
-      <td>&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;Register</td>
-      <td>`/visitor?v=Register`</td>
-      <td>`PCMDVR`</td>
-      <td>6</td>
-      <td>1</td>
-    </tr>
-  </tbody>
-</table>
+| MenuItemID | ParentMenuItemID | Title | RouteType | RouteTarget | VisitorMask | ContentDocumentID | IsPublished |
+| ---: | ---: | :--- | :---: | :--- | :--- | ---: | ---: |
+| 1 | NULL | Welcome | V | /visitor?target=Guest | PCMDV | — | — |
+| 2 | 1 | Patient | V | /visitor?target=Patient | PCMDV | — | — |
+| 8 | NULL | About PG | C | /content?target=1 | PCMDV | 1 | 0 |
+| 9 | 8 | What is PG | C | /content?target=2 | PCMDV | 2 | 0 |
+| 18 | 17 | Emotional Journey | C | /content?target=11 | PCMDV | 11 | 0 |
+| 25 | 24 | Emotional Journey | C | /content?target=18 | P | 18 | 0 |
+| 32 | 31 | Emotional Journey | C | /content?target=25 | C | 25 | 0 |
+| 38 | NULL | Being a Provider | C | /content?target=31 | M | 31 | 0 |
+| 39 | 38 | Early Diagnosis | C | /content?target=32 | M | 32 | 0 |
+| 72 | 67 | Clinic Finder | P | /page?target=clinicfinder.cshtml | PCMDV | — | — |
+| 74 | 73 | All Things Pyoderma 4.2k members | R | /redirect?target=https://www.facebook.com/groups/368163159232 | PCMDV | — | — |
 
-All seven rows have `RouteType = 'V'`.
+The repeated Emotional Journey title demonstrates the audience-aware design. The general menu item and the patient and caregiver menu items each have a different MenuItemID and ContentDocumentID. When articles are authored, the three records can hold distinct content while retaining the same familiar title.
 
-### Content Example (`RouteType = C`)
-
-`About PG` demonstrates a content route with a root menu item, child menu items, and third-level submenu items. The hierarchy below is the complete active descendant tree for `MenuItemID = 8`.
-
-<table class="topic-table">
-  <thead>
-    <tr>
-      <th scope="col">MenuItemID</th>
-      <th scope="col">ParentMenuItemID</th>
-      <th scope="col">Level</th>
-      <th scope="col">Title</th>
-      <th scope="col">RouteTarget</th>
-      <th scope="col">VisitorMask</th>
-      <th scope="col">SortOrder</th>
-      <th scope="col">IsActive</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>8</td>
-      <td>NULL</td>
-      <td>0</td>
-      <td>About PG</td>
-      <td>`/content?c=about%20pg`</td>
-      <td>`PCMDVR`</td>
-      <td>2</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>9</td>
-      <td>8</td>
-      <td>1</td>
-      <td>&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;What is PG</td>
-      <td>`/content?c=what%20is%20pg`</td>
-      <td>`PCMDVR`</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>10</td>
-      <td>8</td>
-      <td>1</td>
-      <td>&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;Clinical Topics</td>
-      <td>`/content?c=clinical%20topics`</td>
-      <td>`PCMDVR`</td>
-      <td>2</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>17</td>
-      <td>8</td>
-      <td>1</td>
-      <td>&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;Living With PG</td>
-      <td>`/content?c=living%20with%20pg`</td>
-      <td>`PCMDVR`</td>
-      <td>3</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>11</td>
-      <td>10</td>
-      <td>2</td>
-      <td>&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;Symptoms</td>
-      <td>`/content?c=symptoms`</td>
-      <td>`PCMDVR`</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>12</td>
-      <td>10</td>
-      <td>2</td>
-      <td>&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;Diagnosis</td>
-      <td>`/content?c=diagnosis`</td>
-      <td>`PCMDVR`</td>
-      <td>2</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>13</td>
-      <td>10</td>
-      <td>2</td>
-      <td>&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;Treatment</td>
-      <td>`/content?c=treatment`</td>
-      <td>`PCMDVR`</td>
-      <td>3</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>14</td>
-      <td>10</td>
-      <td>2</td>
-      <td>&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;Wound Care</td>
-      <td>`/content?c=wound%20care`</td>
-      <td>`PCMDVR`</td>
-      <td>4</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>15</td>
-      <td>10</td>
-      <td>2</td>
-      <td>&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;Pain Management</td>
-      <td>`/content?c=pain%20management`</td>
-      <td>`PCMDVR`</td>
-      <td>5</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>16</td>
-      <td>10</td>
-      <td>2</td>
-      <td>&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;Outcomes</td>
-      <td>`/content?c=outcomes`</td>
-      <td>`PCMDVR`</td>
-      <td>6</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>18</td>
-      <td>17</td>
-      <td>2</td>
-      <td>&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;Emotional Journey</td>
-      <td>`/content?c=emotional%20journey`</td>
-      <td>`PCMDVR`</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>19</td>
-      <td>17</td>
-      <td>2</td>
-      <td>&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;Loss of Mobility</td>
-      <td>`/content?c=loss%20of%20mobility`</td>
-      <td>`PCMDVR`</td>
-      <td>2</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>20</td>
-      <td>17</td>
-      <td>2</td>
-      <td>&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;Loss of Identity</td>
-      <td>`/content?c=loss%20of%20identity`</td>
-      <td>`PCMDVR`</td>
-      <td>3</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>21</td>
-      <td>17</td>
-      <td>2</td>
-      <td>&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;Avoiding Mistakes</td>
-      <td>`/content?c=avoiding%20mistakes`</td>
-      <td>`PCMDVR`</td>
-      <td>4</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>22</td>
-      <td>17</td>
-      <td>2</td>
-      <td>&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;Managing Disability</td>
-      <td>`/content?c=managing%20disability`</td>
-      <td>`PCMDVR`</td>
-      <td>5</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>23</td>
-      <td>17</td>
-      <td>2</td>
-      <td>&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;&amp;nbsp.md/&quot;&gt;Comorbidities</td>
-      <td>`/content?c=comorbidities`</td>
-      <td>`PCMDVR`</td>
-      <td>6</td>
-      <td>1</td>
-    </tr>
-  </tbody>
-</table>
-
-All rows in this example have `RouteType = 'C'`.
-
-### Other RouteTypes (`P` and `R`)
-
-The remaining route types currently represented in `MenuItem` are page routes (`P`) and redirects (`R`).
-
-<table class="topic-table">
-  <thead>
-    <tr>
-      <th scope="col">MenuItemID</th>
-      <th scope="col">ParentMenuItemID</th>
-      <th scope="col">Title</th>
-      <th scope="col">RouteType</th>
-      <th scope="col">RouteTarget</th>
-      <th scope="col">VisitorMask</th>
-      <th scope="col">SortOrder</th>
-      <th scope="col">IsActive</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>64</td>
-      <td>59</td>
-      <td>Clinic Finder</td>
-      <td>`P` (Page)</td>
-      <td>`/page?p=clinicfinder.html`</td>
-      <td>`PCMD`</td>
-      <td>5</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>66</td>
-      <td>65</td>
-      <td>All Things Pyoderma 4.2k members</td>
-      <td>`R` (Redirect)</td>
-      <td>`/redirect?r=https://www.facebook.com/groups/368163159232`</td>
-      <td>`PCMD`</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>67</td>
-      <td>65</td>
-      <td>PG Support Group 2.6k member</td>
-      <td>`R` (Redirect)</td>
-      <td>`/redirect?r=https://www.facebook.com/groups/56007379235`</td>
-      <td>`PCMD`</td>
-      <td>2</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>68</td>
-      <td>65</td>
-      <td>PG Support and Advocacy 1.4k members</td>
-      <td>`R` (Redirect)</td>
-      <td>`/redirect?r=https://www.facebook.com/groups/345212721641027`</td>
-      <td>`PCMD`</td>
-      <td>3</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>84</td>
-      <td>80</td>
-      <td>Global Skin Alliance</td>
-      <td>`R` (Redirect)</td>
-      <td>`/redirect?r=https://globalskin.org/`</td>
-      <td>`PCMDVR`</td>
-      <td>4</td>
-      <td>1</td>
-    </tr>
-  </tbody>
-</table>
-
-These rows demonstrate that page and redirect targets can appear beneath other menu items while retaining their own route-specific behavior.
-
+In this snapshot all content-route documents are placeholders: ContentType U (Unknown), WorkflowStatus D (Draft), and IsPublished = 0. The database contains no authored PG articles or published content at this time.
 ### Table: `MasterMenu`
 
 `MasterMenu` stores the descriptive master-menu representation used by import, population, or legacy menu workflows. It is separate from the normalized runtime `MenuItem` hierarchy.
@@ -1593,15 +1195,15 @@ These rows demonstrate that page and redirect targets can appear beneath other m
 
 These tables support staged or imported master-menu data. They retain the parent, child, submenu, menu type, visitor, routing, description, and notes fields before or during menu population.
 
-`MasterMenuStage` has an identity `MenuID` and uses `MenuType`. `MasterMenu_Stage` has an identity `LoadOrder` and uses `Type`.md/"> it does not define a primary key or foreign keys.
+`MasterMenuStage` has an identity `MenuID` and uses `MenuType`. `MasterMenu_Stage` has an identity `LoadOrder` and uses `Type`; it does not define a primary key or foreign keys.
 
 ---
 
-## 3. Content Tables
+### 3. Content Tables
 
 ### Table: `ContentDocument`
 
-Stores the document-level descriptor associated with a menu item. A content document is the parent of one or more ordered `ContentElement` rows.
+Stores the document-level descriptor associated with a menu item. A content document is the parent of zero or more typed `ContentElement` rows. The current schema does not persist their editorial order.
 
 <table class="topic-table">
   <thead>
@@ -1647,7 +1249,7 @@ Stores the document-level descriptor associated with a menu item. A content docu
       <td>`WorkflowStatus`</td>
       <td>`char(1)`</td>
       <td>NOT NULL</td>
-      <td>Defaults to `D`.md/&quot;&gt; FK to `WorkflowStatus.Code`</td>
+      <td>Defaults to `D`; FK to `WorkflowStatus.Code`</td>
     </tr>
     <tr>
       <td>`IsPublished`</td>
@@ -1684,7 +1286,7 @@ Constraints:
 
 ### Table: `ContentElement`
 
-Stores an ordered or independently addressable content block belonging to a document.
+Stores a content block belonging to a document. The table currently has no persisted SortOrder column, so editorial block order is not yet defined by the schema.
 
 <table class="topic-table">
   <thead>
@@ -1769,7 +1371,7 @@ Constraint: `CK_ContentElement_BlockInfo_IsJSON` requires valid JSON in `BlockIn
 
 ---
 
-## 4. Staging Tables
+### 4. Staging Tables
 
 Staging tables represent content before it is promoted to the operational content tables.
 
@@ -1874,7 +1476,7 @@ Stores staged content blocks associated with a staged document.
       <td>`WorkflowStatus`</td>
       <td>`char(1)`</td>
       <td>NOT NULL</td>
-      <td>Element workflow state.md/&quot;&gt; FK to `WorkflowStatus.Code`</td>
+      <td>Element workflow state; FK to `WorkflowStatus.Code`</td>
     </tr>
     <tr>
       <td>`FormatType`</td>
@@ -1937,7 +1539,7 @@ Stores staged content blocks associated with a staged document.
 
 ---
 
-## 5. Registration and Communication Tables
+### 5. Registration and Communication Tables
 
 ### Table: `Registration`
 
@@ -2053,7 +1655,7 @@ Stores contact and address details for a registration.
     <tr>
       <td>`FirstName`, `LastName`, `MiddleName`</td>
       <td>`varchar(100)`</td>
-      <td>First/last NOT NULL.md/&quot;&gt; middle NULL</td>
+      <td>First and last names are NOT NULL; middle name is NULL</td>
       <td>Name fields</td>
     </tr>
     <tr>
@@ -2178,13 +1780,13 @@ Associates an email with a registered recipient.
       <td>`EmailID`</td>
       <td>`int`</td>
       <td>NOT NULL</td>
-      <td>FK to `Email.EmailID`.md/&quot;&gt; cascade delete</td>
+      <td>FK to `Email.EmailID`; cascade delete</td>
     </tr>
     <tr>
       <td>`RegistrationID`</td>
       <td>`int`</td>
       <td>NOT NULL</td>
-      <td>FK to `Registration.RegistrationID`.md/&quot;&gt; cascade delete</td>
+      <td>FK to `Registration.RegistrationID`; cascade delete</td>
     </tr>
     <tr>
       <td>`DateSent`</td>
@@ -2225,7 +1827,7 @@ Stores binary files attached to an email.
       <td>`EmailID`</td>
       <td>`int`</td>
       <td>NOT NULL</td>
-      <td>FK to `Email.EmailID`.md/&quot;&gt; cascade delete</td>
+      <td>FK to `Email.EmailID`; cascade delete</td>
     </tr>
     <tr>
       <td>`FileName`</td>
@@ -2260,7 +1862,7 @@ Stores binary files attached to an email.
 
 ---
 
-## 6. System and Utility Tables
+### 6. System and Utility Tables
 
 ### Table: `SystemSettings`
 
@@ -2315,7 +1917,7 @@ Stores typed application and database configuration values.
   </tbody>
 </table>
 
-The table enforces uppercase keys, types, and groups.md/"> valid setting types and groups.md/"> JSON and GUID validity where applicable.md/"> required values for non-string/list types.md/"> and a unique setting key.
+The table enforces uppercase keys, valid setting types and groups, JSON and GUID validity where applicable, required values for non-string/list types, and a unique setting key.
 
 ### Table: `SystemSettings_Audit`
 
@@ -2372,7 +1974,7 @@ Stores database diagnostics. It includes `ProcedureName`, error details, seriali
 
 ---
 
-## 7. Test-Support Tables
+### 7. Test-Support Tables
 
 These tables support database validation and test harness execution. They are included in the database project but are not part of the public runtime content model.
 
@@ -2386,7 +1988,7 @@ Stores menu-specific test definitions and outcomes, including parent test relati
 
 ---
 
-## 8. Views
+### 8. Views
 
 ### `MenuItemList`
 
@@ -2410,7 +2012,7 @@ Reports expected or registered tables that are missing from the database.
 
 ---
 
-## 9. Functions
+### 9. Functions
 
 The project defines the following reusable functions:
 
@@ -2434,7 +2036,7 @@ Normalization functions enforce consistent values before validation or persisten
 
 ---
 
-## 10. Stored Procedures
+### 10. Stored Procedures
 
 Stored procedures are organized by responsibility:
 
@@ -2489,7 +2091,7 @@ The `Testing` folder contains non-build versions and focused scripts for setup, 
 
 ---
 
-## 11. Deployment and Data Flow
+### 11. Deployment and Data Flow
 
 1. SSDT builds the schema objects listed in the project file.
 2. `Pre-Deployment.sql` and `Scripts\PreDeploy\01_Backup.sql` provide pre-deployment preparation and backup behavior.
@@ -2525,7 +2127,6 @@ MimeType   ---- ContentElement / StagingElement
 WorkflowStatus ---- ContentDocument / StagingElement
 ```
 
-## 12. Source of Truth
+### 12. Source of Truth
 
 This document describes the current SQL project, but the `.sql` object definitions remain authoritative when a description and implementation differ. Any future schema change should update the corresponding SQL object and this document in the same change.
-

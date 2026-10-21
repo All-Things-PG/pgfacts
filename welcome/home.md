@@ -8,42 +8,46 @@ permalink: /welcome/home/
 
 # Welcome to the Phase 2 Documentation Site
 
-This site was created for you, **the reviewer**, to present to you all the documentation that has been written so far about Phase 2.  It is presented in a way that makes it easier to discover.  Easier, doesn't mean easy.  I appreciate that yes, there is much to read and learn about the proposed changes.  It takes time and effort and is very much appreciated.  
+### Overview
 
-I'm very pleased that you are taking your valuable time to review the information presented. There's a lot.  Even more useful however is your ability to become part of the discovery process by making a comment, suggestion or to point out errors and inconsitencies (proof reading).  Making a comment or suggestion is easy - simply click the **Contact US** button at the top right.  It will open up your favorite email client, preloaded with a special email account that will be monitored for that purpose.  If it does NOT open your email, send your comment to ***suggestions@allthingspg.org***.  Send as many emails as you like. Each email will be reviewed and used to improve the documentation.  Please indicate if you expect a reply and I'll do my best to get back to you asap.
+This site was created for you, **the reviewer**, to present to you all the documentation written for our Phase 2 project to enhance [www.allthingspg.org](https://www.allthingspg.org). It is my hope to present all the documentation in a format that is easier to read versus a boring set of Word documents. Easier doesn’t mean easy. It will take time and effort to do a good review, and your time and effort are most valuable and appreciated.
 
-The primary reasons to use a Documentation Site to present Phase 2 are:
+It is my hope that your review is more than proofreading. You have the opportunity here to be part of the design process by sending me your feedback, not on the documentation site, but on the designs for Phase 2. Please click the **Contact Us** button at the top right as often as you like. This should open your preferred email client prefilled with values and ready to send after adding your comments and suggestions. These emails will go to a special email account I’ve created for that purpose. If it fails to open your email client, send your comment to **suggestions@allthingspg.org**. Please indicate if you expect a reply, and I’ll do my best to get back to you as soon as possible.
 
-1. Fits the Software Engineering methodology of design, document and involve stakeholders first
-2. Serves as developer specifications for creating Phase 2
-3. Lets you know when you're done the project
-4. Makes distribution of documentation easy
-5. Allows for immediate feedback (contact us)
-6. A lot nice to browse a website than read boring word documents scattered everywhere
-7. Serves as a central source of truth.  All documents are the master copies.
+The primary reasons to use a Documentation Site for Phase 2 are:
 
-### Structure of the website
+1. Fits the Software Engineering methodology of design, document, and involve stakeholders first.
+2. Serves as my developer specifications for creating Phase 2.
+3. Specs let me know when the project is done.
+4. Makes distribution of documentation easy.
+5. Allows for immediate feedback (Contact Us).
+6. It’s nicer to browse a website than to read documents.
+7. Serves as a central source of truth. All documents here are the master copies.
 
-The top-level menu (without clicking anything) is the main list of Topics (Welcome, Phase 1, Phase 2, New Features etc). Each topic is layed out in the order that makes the most sense for review, reading left to right.  Within each topic are sub menu items, the best order is from top to bottom. This is a suggested logical progression, but is by no means a requirement. Feel free to read about something that interests you.
+### Structure of the Website
 
-Each page will have the same header, with our PG logo, menu and contact us button.  Below that is the Title Bar, showing a functional breadcrumb and brief description of the page on the  right side. Below that is the Tile Bar.  There are 3 tiles per page, and they're different for each page.  These are buttons that act like a menu item, but are intended to help guide you to related content, or relevant content for that page. Try them out, but remembe where you came from!  After the Tile Bar is the Page Content.  Whenever you click a link, it opens up a page starting at this point. The first line of any page is the the Page Title, which usually represents the description of the menu item you just clicked.  There is considerable design to build a coherent framework, even for a documentation site.
+The top-level menu items indicate topics (when you click the top menu). This will open the home page for that topic. If you scroll down to the menu items in that topic and click, that will open a page with the same name and display its content.
 
-### Technical vs Non-Technical
+Each topic (Welcome, Phase 1, Phase 2, New Features, etc.) is laid out left to right in an order that makes sense for review. All the menu items within each topic are laid out top to bottom in an order that makes sense. You are of course free to review in any order you like, but you may learn more by following the suggested order: working left to right among topics, and top to bottom within a topic.
 
-These are design specs.  As such, design specs are usually very technical in nature, and solely for the developer as the intended audience.  They are on the documentation site because everything on this site is the master from which to build the Phase 2 website, particularly for such things as database, new features etc.  These specs define the entire scope of what is to be included in Phase 2, so it has to be here.
+Each page has the same header, with the PG logo, menu, and Contact Us button. Below that is the Title Bar, showing a functional breadcrumb and brief description of the page on the right side. Below that is the Tile Bar. There are three tiles per page, and they’re different for each topic. All menu items within the same topic have the same tiles. These are shortcuts to related topics, like clicking a menu item, but are also intended to provide guidance for next steps. The tile bar is meant to enhance a guided experience. After the Tile Bar is the actual Page Content, starting with a Page Title.
 
-However, this is also part of the proposal.  It's meant for the stakeholders, articles such as the Executive Summary.  Those are intentially non-technical.  Many documents will contain technical details with non-technical explanations.  
+### Technical vs. Non-Technical
 
-The best approach is to review everything together, and skip over the really technical stuff.  It's not there to impress anyone, its there as real design spec to build a real website and simply part of the Software Engineering process.
+The documentation site contains a combination of analysis, commentary, opinion, and design specs. As such, some is non-technical, some is in the middle, and some is technical. Feel free to read all types, but realize the technical material is not meant to scare anybody, but is actually used as requirements or specs for creating the software. The commentary is useful to provide analysis and background information, and much of it will make it into the final proposal to be presented to the Board for a vote. It’s also meant for the stakeholders, as is the Executive Summary. Those are intentionally non-technical. Stakeholders have the opportunity to make changes before the final proposal is presented and voted on.
 
-### Where to begin
+### Where to Begin
 
-What you're reading now is the **HOME** page.  It is the first page shown when entring the site.  You can return to this page by clicking the PG Logo, or the Welcome / Home menu item (Yes, Welcome Home is a play on words). As already mentioned, the best order for review is to work your way through topics left to right, top to bottom within a topic, but this is a suggestion only.  Read and comment on whatever interests you.  
+What you’re reading now is the **HOME** page for the documentation site. It is the first page shown when entering the site. You can return to this page by clicking the PG Logo or the Welcome / Home menu item (yes, Welcome Home is a play on words). As already mentioned, the best order for review is to work your way through topics left to right, top to bottom within a topic, but this is a suggestion only. Read and comment on whatever interests you, and by all means, click Contact Us to send feedback on the specifications, proposed new features, wish-list items, anything you like.
 
 The rest of the Welcome menu will show:
 
-1. Review the [Phase 2 Overview]({{ '/welcome/phase-2-overview/' | relative_url }}).
 1. Read the [Executive Summary]({{ '/welcome/executive-summary/' | relative_url }}).
-1. Read about the [Proof of Concept]({{ '/welcome/proof-of-concept/' | relative_url }}).
+2. Review the [Phase 2 Overview]({{ '/welcome/phase-2-overview/' | relative_url }}).
+3. Read about the [Proof of Concept]({{ '/welcome/proof-of-concept/' | relative_url }}).
 
-Thank you for your time and effort!
+I sincerely thank you for your time and effort! Feel free to start with the Phase 2 Overview next.
+
+Dave DePottie  
+Chairman and IT Director  
+All Things PG

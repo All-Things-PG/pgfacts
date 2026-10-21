@@ -7,14 +7,14 @@ permalink: /phase-1/copilot-analysis/
 ---
 # Copilot Analysis
 
-**Website reviewed:** https://www.allthingspg.org/<br>
+***Note: Instructions used to create this report are the same that were provided to [CHATGPT](/phase-1/chatgpt-analysis/)***
+
+***I need an in-depth analysis of our website www.allthingspg.org The focus should be on usability and scalability, not so much on content itself, although it should be helpful information to the target audience. I'm interested to know - is it a good web site or not, and areas for improvement. it can be as detailed as you like, as long as you long. Examine as many pages as you can, identify faults, compare to modern websites and standards, and make recommendations for improvement. Save the report as a .md file, using #, ### headers.***
+
+    **Website reviewed:** https://www.allthingspg.org/<br>
 **Review date:** October 2026<br>
 **Primary focus:** usability and scalability<br>
 **Secondary focus:** content quality as it affects the target audience, modern web standards, and areas for improvement<br>
-
-### Instructions to create the report
-
-***I need an in-depth analysis of our website www.allthingspg.org The focus should be on usability and scalability, not so much on content itself, although it should be helpful information to the target audience. I'm interested to know - is it a good web site or not, and areas for improvement. it can be as detailed as you like, as long as you long. Examine as many pages as you can, identify faults, compare to modern websites and standards, and make recommendations for improvement. Save the report as a .md file, using #, ### headers.***
 
 ## Executive Summary
 

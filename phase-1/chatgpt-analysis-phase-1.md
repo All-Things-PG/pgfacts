@@ -7,15 +7,15 @@ permalink: /phase-1/chatgpt-analysis/
 ---
 # ChatGPT Analysis
 
+***Note: Instructions used to create this report are the same that were provided to [COPILOT](/phase-1/copilot-analysis/)***
+
+***I need an in-depth analysis of our website www.allthingspg.org The focus should be on usability and scalability, not so much on content itself, although it should be helpful information to the target audience. I'm interested to know - is it a good web site or not, and areas for improvement. it can be as detailed as you like, as long as you long. Examine as many pages as you can, identify faults, compare to modern websites and standards, and make recommendations for improvement. Save the report as a .md file, using #, ### headers.***
+
 **Website audited:** https://www.allthingspg.org/  <br>
 **Audit date:** October 3, 2026  <br>
 **Primary focus:** usability, information architecture, accessibility, task completion, maintainability, scalability, and future growth  <br>
 **Secondary focus:** trust, SEO/discoverability, performance risk, and content governance where those affect usability  <br>
 **Overall conclusion:** **Good foundation, but not yet a strong modern patient-service website.**<br>
-
-### Instructions to create the report
-
-***I need an in-depth analysis of our website www.allthingspg.org The focus should be on usability and scalability, not so much on content itself, although it should be helpful information to the target audience. I'm interested to know - is it a good web site or not, and areas for improvement. it can be as detailed as you like, as long as you long. Examine as many pages as you can, identify faults, compare to modern websites and standards, and make recommendations for improvement. Save the report as a .md file, using #, ### headers.***
 
 ## Overview
 
@@ -23,9 +23,9 @@ This audit is intentionally weighted toward how the site works as a product rath
 
 The biggest opportunity is to move from a **collection of pages** to a **task-oriented patient information system**. That means organizing around what people are trying to accomplish, making the highest-value actions obvious, using real content types and structured data behind the scenes, and making accessibility/testing part of the design process rather than a final check.
 
-## Executive Assessment
+### Executive Assessment
 
-### The answer to “is it a good website?”
+#s### The answer to “is it a good website?”
 
 **Yes, in the sense that it is credible, useful, understandable, and functional. No, in the sense that it is not yet operating at the level of a modern, scalable patient-support website.**
 
@@ -168,7 +168,7 @@ Those items are nevertheless included as explicit test requirements where the cu
 
 ---
 
-### The Current Site's Biggest Strength
+## The Current Site's Biggest Strength
 
 ### It has the right ingredients
 
@@ -204,7 +204,7 @@ Sources:
 
 ---
 
-### Homepage Assessment
+## Homepage Assessment
 
 ### What works
 
@@ -3405,4 +3405,3 @@ All Things PG could become a much stronger destination:
 - more defensible as a long-term patient resource
 
 **The site does not need to be thrown away. It needs to evolve from a good information website into a well-structured patient-service platform.**
-

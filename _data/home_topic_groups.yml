@@ -1,17 +1,12 @@
-# List of tiles per topic
+# Tile row shared by the Welcome landing and pages that opt into the home group.
 home:
   tiles:
-    # DCMS tile
-    - title: DCMS
-      url: /dcms/
-      description: Document the content model, dynamic menus, and dynamic content flow.
-
-    # User Experience tile
-    - title: User Experience
-      url: /user-experience/
-      description: Show how visitors choose a persona and move through the site.
-
-    # Database tile
-    - title: Database
-      url: /database/
-      description: Capture the tables, schema diagrams, and supporting structure.
+    - title: Pyoderma Gangrenosum
+      url: /about/pyoderma-gangrenosum/
+      description: Plain-language background on PG, including symptoms, related conditions, and care challenges.
+    - title: The Developer
+      url: /about/the-developer/
+      description: Learn about the developer's background and experience behind the site work.
+    - title: Developer Analysis
+      url: /phase-1/developer-analysis/
+      description: The developer's perspective on the Phase 1 site's strengths, limitations, and trade-offs.

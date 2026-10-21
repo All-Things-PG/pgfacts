@@ -1,30 +1,48 @@
+---
+layout: page
+title: Rendering Content
+nav_label: DCMS
+breadcrumb: DCMS > Rendering Content
+description: How DCMS renders database content through reusable content cards.
+permalink: /dcms/rendering-content/
+topic_key: dcms
+---
+
 <a id="top"></a>
 
-# DCMS - Content Rendering
+# DCMS - Rendering Content
 
 ## Overview
 
-DCMS stores page content in the database and renders it through a small set of specialized Razor Pages and reusable content-card partials.
+DCMS stores page content in the database and renders the content within an HTML page through a set of reusable **partil** Razor Pages I'm calling **Content Cards (CC)** .  Each CC knows how to render exactly one type of content.  The easiest content to render of course is Text, either in the form of HTML or MD (MarkDown). Other types would be Audio, Video, Images etc.  Each different type is called a **Mime Type**, The goal of using CCs is to write the code to render all Mime Ty[e used by the systme once, and never have to write that code again.
 
-The goal is not to create one universal page that understands every possible content format. The goal is to create a consistent entry point with enough flexibility to support different kinds of pages:
+It's easy to render say, an image.  You don't need a CC to do that.  Not only does the CC know as well, it also has properties that know WHERE to put the image, using a field in the database called **BlockInfo**.
+
+We do not have to create CCs for all possible Mime Types, only the ones we use.  The general process for all CC type is as follows:
 
 ```text
 /Content/Index?target={ContentDocumentID}
-    -> load the content document
-    -> identify its ContentType
-    -> select the appropriate content page
-    -> load and render the document's elements
+    -> load the content document and its elements (pieces of the content)
+    -> identify its ContentType, FormatType and MimeType
+    -> select the appropriate content page based on ContentType
+    -> create CCs as needed, based on the different MimeTypes of all the elements
+    -> identify where to put the CC in relation to all the other CCs (in order, with positioning)
 ```
 
 For example:
 
 ```text
 ContentType = Article
-    /Content/Article
-
-ContentType = Gallery
-    /Content/Gallery
-```
+-- the MenuItem indicates which content record to load, such as /content?target=11
+-- the system reads ContentDocument = 11 and any ContentElements
+-- we now have the RouteType = 'C', ContentType = 'A', and various MimeTypes of the elements
+-- the system routes the request to /Content/Index.cshtml which knows how to handle 'Content'
+-- after doing whatever it has to do, it sends the request to /Content/Article page
+-- it sees the next MimeType is 'M' for MD and creates a MarkDown CC
+-- it sets the CC text to the text of the ContentElement record
+-- it sets the position of the CC based on the BlockInfo
+-- the system adds any additional elements to the page
+-- the system then renders the entire page as HTML to the website
 
 An article page and a gallery page can use different layouts and different content cards without requiring `/Content/Index` to understand every presentation detail.
 
@@ -602,9 +620,9 @@ This sequence delivers useful content rendering quickly while preserving the arc
 
 ---
 
-## Glossary
-
+## Glossary 
 [Return to top](#top)
+
 
 | Term | Non-programmer explanation |
 | :--- | :--- |
@@ -651,3 +669,4 @@ Content card
 ```
 
 `/Content/Index` remains the consistent dispatcher, while pages such as `/Content/Article` and `/Content/Gallery` provide the flexibility to handle genuinely different content. A document may contain one complete Markdown element or many ordered elements. The system can grow incrementally without requiring one universal page to handle every possible format.
+

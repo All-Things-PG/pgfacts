@@ -13,13 +13,16 @@ pages:
   - title: Managing Tiles
     description: Step-by-step instructions for adding and editing topic tiles.
     url: /technical/managing-tiles/
+  - title: "Topic Tile Mapping"
+    description: Current tile destinations and brief descriptions for each top-level topic.
+    url: /technical/topic-tile-mapping/
 tiles:
   - title: PG Facts Site Guide
-    description: Learn how the site is structured.
+    description: Where navigation, layouts, tiles, and site settings are maintained.
     url: /technical/pgfacts-site-guide/
   - title: Managing Pages
-    description: Add and maintain topic pages.
+    description: How to add pages and keep them aligned with the shared topic structure.
     url: /technical/managing-pages.html
-  - title: Managing Tiles
-    description: Add or edit the topic tile rows.
-    url: /technical/managing-tiles/
+  - title: Rendering Content
+    description: How content is displayed as reusable cards on web pages.
+    url: /dcms/rendering-content/

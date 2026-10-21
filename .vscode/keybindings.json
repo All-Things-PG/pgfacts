@@ -1,0 +1,7 @@
+[
+  {
+    "key": "ctrl+right",
+    "command": "cursorWordEndRight",
+    "when": "textInputFocus && !editorReadonly"
+  }
+]

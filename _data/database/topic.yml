@@ -4,27 +4,24 @@ summary: >-
   Explore the database concepts, tables, and schema supporting the Phase 2 site.
 pages:
   - title: Why Have a Database?
-    description: The role of the database in the Phase 2 design.
+    description: Why a relational database supports DCMS and what is implemented so far.
     url: /database/why-have-a-database/
   - title: Main Tables
-    description: Overview of the database's main tables.
+    description: Core tables and examples from the current MenuItemList data.
     url: /database/main-tables/
   - title: Schema
-    description: Database schema and relationships.
+    description: Schema, seeded lookup values, constraints, and representative data.
     url: /database/schema/
   - title: Diagrams
-    description: Visual diagrams of the database structure.
+    description: Relationships and the two current menu and migration data flows.
     url: /database/diagrams/
 tiles:
-  - title: Why Have a Database?
-    description: Why the Phase 2 site needs a database.
-    url: /database/why-have-a-database/
-  - title: Main Tables
-    description: The principal tables in the data model.
-    url: /database/main-tables/
-  - title: Schema
-    description: How the database tables relate.
-    url: /database/schema/
-  - title: Diagrams
-    description: Visual views of the database structure.
-    url: /database/diagrams/
+  - title: What is DCMS?
+    description: How the database-backed content and menu system supports site management.
+    url: /dcms/what-is-dcms/
+  - title: Knowledge Base
+    description: Search PG information, trials, providers, research opportunities, and care resources using everyday questions.
+    url: /new-features/knowledge-base/
+  - title: Proof of Concept
+    description: A working prototype of the database-backed site, navigation, and content model.
+    url: /welcome/proof-of-concept/

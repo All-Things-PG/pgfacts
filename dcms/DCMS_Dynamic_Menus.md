@@ -4,13 +4,14 @@ title: Dynamic Menus
 breadcrumb: DCMS > Dynamic Menus
 description: Dynamic menu loading and hierarchy from database records.
 updated: 2026-09-18
+permalink: /dcms/DCMS_Dynamic_Menus/
 ---
 
 <a id="top"></a>
 
 # DCMS - Dynamic Content and Menuing System
 
-## Dynamic Menus
+### Dynamic Menus
 
 This document explains how the proof-of-concept menu is loaded from the `AllThingsPG` database and displayed through the shared Razor partial view named `_Menu.cshtml`.
 
@@ -18,7 +19,7 @@ The menu is called a [dynamic menu](#glossary) because its labels, [hierarchy](#
 
 ---
 
-## Overview: Why Use Dynamic Menus?
+### Overview: Why Use Dynamic Menus?
 
 A static menu can provide reliable navigation, but a dynamic menu can provide a more personal and useful experience. AllThingsPG is intended to serve several audiences, including patients, caregivers, medical professionals, pharmaceutical representatives, and general visitors. Those audiences may need different information, different levels of detail, and different paths through the site.
 
@@ -37,7 +38,7 @@ Current visitor: Patient
     "Diagnosis" -> patient-oriented explanation
 ```
 
-The title may be the same because it is familiar and meaningful to every audience. The underlying `MenuItemID`, [visitor mask](#glossary), [URL](#glossary), and associated content distinguish the records. This lets the application reuse clear navigation language without forcing every audience to receive the same material.
+The title may be the same because it is familiar and meaningful to every audience. The underlying MenuItemID, visitor mask, RouteTarget, and associated ContentDocument distinguish the records. This lets the application reuse clear navigation language without forcing every audience to receive the same material.
 
 Dynamic menus therefore support two related goals:
 
@@ -52,14 +53,14 @@ This approach also keeps the application flexible. Adding or changing audience-s
 
 The menu system has four main parts:
 
-1. The [`MenuItem`](#glossary) table stores the menu records.
+1. The [`MenuItem`](#glossary) table stores the menu records and RouteTarget values.
 2. [`PageBase`](#glossary) loads active menu records for a request.
 3. [`_Layout.cshtml`](#glossary) prepares a [`MenuViewModel`](#glossary) and calls `_Menu.cshtml`.
 4. `_Menu.cshtml` filters, orders, and recursively renders the menu hierarchy.
 
 ---
 
-## 1. What “Dynamic Menu” Means
+### 1. What “Dynamic Menu” Means
 
 A traditional static menu might contain the complete menu directly in a Razor file:
 
@@ -78,7 +79,7 @@ The proof-of-concept menu instead obtains the same information from `MenuItem` r
 | :--- | :--- |
 | `Title` | Text displayed to the visitor |
 | `ParentMenuItemID` | Where the item appears in the hierarchy |
-| `Url` | Address followed when the item is selected |
+| `RouteTarget` | Route string followed or interpreted when the item is selected |
 | [`RouteType`](#glossary) | Application classification for the destination |
 | `VisitorMask` | Visitor types allowed to see the item |
 | [`SortOrder`](#glossary) | Position among items with the same parent |
@@ -88,7 +89,7 @@ The database supplies the menu data. Razor supplies the HTML structure.
 
 ---
 
-## 2. The `MenuItem` Table
+### 2. The `MenuItem` Table
 
 The runtime menu is stored in `dbo.MenuItem`.
 
@@ -97,7 +98,7 @@ The runtime menu is stored in `dbo.MenuItem`.
 | `MenuItemID` | Unique identifier for the menu record |
 | `ParentMenuItemID` | The identifier of this item's parent; `NULL` means top-level |
 | `Title` | Label shown to the visitor |
-| `Url` | Complete destination address |
+| `RouteTarget` | Route string interpreted by the application |
 | `RouteType` | One-character classification such as Visitor, Content, Page, or Redirect |
 | `VisitorMask` | Concatenated visitor codes allowed to see the item |
 | `SortOrder` | Relative order among items with the same parent |
@@ -127,7 +128,7 @@ The hierarchy is stored as IDs, not as indentation or hard-coded HTML.
 
 ---
 
-## 3. Loading the Menu from the Database
+### 3. Loading the Menu from the Database
 
 Pages that use the shared [layout](#glossary) inherit from `PageBase`. `PageBase` receives an `AllThingsPgContext`, which is the [Entity Framework Core](#glossary) connection to the database.
 
@@ -168,7 +169,7 @@ The parent-child relationships are not flattened into separate HTML rows by the 
 
 ---
 
-## 4. Passing Menu Data to the Layout
+### 4. Passing Menu Data to the Layout
 
 The shared layout is:
 
@@ -213,7 +214,7 @@ This means the menu is part of the common page frame. Pages do not each need to 
 
 ---
 
-## 5. The `_Menu.cshtml` Partial
+### 5. The `_Menu.cshtml` Partial
 
 The partial is located at:
 
@@ -246,7 +247,7 @@ The CSS classes control appearance. The partial controls which items exist and h
 
 ---
 
-## 6. Visitor Filtering
+### 6. Visitor Filtering
 
 The current visitor is obtained by `PageBase.CurrentVisitor`. The selected visitor code is stored in [session](#glossary) under `PersonaCode`. If there is no valid session value, `PageBase` falls back to the lookup row whose `IsDefault` value is true.
 
@@ -263,18 +264,18 @@ The mask is a compact list of allowed visitor codes:
 
 | VisitorMask | Meaning |
 | :--- | :--- |
-| `PCMDVR` | Visible to all current visitor types |
+| `PCMDV` | Visible to all current visitor types |
 | `P` | Visible to Patients |
 | `PC` | Visible to Patients and Caregivers |
 | `MD` | Visible to Providers and Pharmaceutical visitors |
 
-For example, if the current visitor code is `P`, an item with mask `PCMDVR` is visible and an item with mask `C` is not.
+For example, if the current visitor code is `P`, an item with mask `PCMDV` is visible and an item with mask `C` is not.
 
 The current implementation uses `string.Contains`. Because visitor codes are single characters, each code is treated as one character in the mask.
 
 ---
 
-## 7. Finding Top-Level Items
+### 7. Finding Top-Level Items
 
 Top-level items have no parent:
 
@@ -311,7 +312,7 @@ This allows a parent menu item to act as a category heading while child records 
 
 ---
 
-## 8. Rendering Child Menus Recursively
+### 8. Rendering Child Menus Recursively
 
 Child records are found by matching their [`ParentMenuItemID`](#glossary) to the current parent's `MenuItemId`:
 
@@ -347,36 +348,21 @@ This is what allows the same code to display a menu with one level or several le
 
 ---
 
-## 9. Building the Link
+### 9. Building the Link
 
-The `MenuItem.Extensions.cs` file contains the [`GetUrl()`](#glossary) URL helper:
+The database column is RouteTarget. It stores the route string used by the application; it is not a slug that the application must resolve by matching a title. For content routes, the target is the ContentDocumentID assigned to the placeholder document. MenuItemID and ContentDocumentID remain separate identities.
 
-```csharp
-public string GetUrl() =>
-    !string.IsNullOrEmpty(Url)
-        ? Url
-        : throw new InvalidOperationException(
-            $"MenuItem '{Title}' (ID: {MenuItemId}) has no Url defined.");
-```
+The supplied MenuItemList data includes these route forms:
 
-The current proof of concept stores the complete URL in `MenuItem.Url`. `GetUrl()` returns that URL without rebuilding it from `RouteType`.
-
-Examples from the current data include:
-
-| RouteType | Example URL | Behavior represented |
+| RouteType | RouteTarget example | Meaning |
 | :---: | :--- | :--- |
-| `V` | `/visitor?v=Patient` | Selects a visitor type |
-| `C` | `/content?c=about%20pg` | Requests content |
-| `P` | `/page?p=clinicfinder.html` | Requests a page |
-| `R` | `/redirect?r=https://globalskin.org/` | Requests a redirect |
+| V | /visitor?target=Patient | Selects the Patient visitor experience. |
+| C | /content?target=18 | Loads the content document with ID 18. |
+| P | /page?target=clinicfinder.cshtml | Opens an application page. |
+| R | /redirect?target=https://www.facebook.com/groups/368163159232 | Redirects to an external destination. |
 
-`RouteType` is available as metadata for the destination behavior, but URL construction is not currently performed by `GetUrl()`.
-
-If `Url` is empty, the helper throws an exception instead of silently creating a broken link. This makes missing menu data visible during development.
-
----
-
-## 10. Caching the Menu
+MenuItemList exposes RouteTarget and the linked content fields; it does not calculate or synthesize the URL. The POC uses the route string from the menu record and adds menu context using the MenuItemID. Confirm the route handler whenever route behavior changes.
+### 10. Caching the Menu
 
 The partial uses [`IMemoryCache`](#glossary) and a [cache](#glossary):
 
@@ -405,7 +391,7 @@ When menu records are changed, an already-cached menu can remain visible until i
 
 ---
 
-## 11. End-to-End Processing Flow
+### 11. End-to-End Processing Flow
 
 The complete current flow is:
 
@@ -464,7 +450,7 @@ Browser receives the completed page
 
 ---
 
-## 12. Responsibilities by File
+### 12. Responsibilities by File
 
 | File | Responsibility |
 | :--- | :--- |
@@ -480,7 +466,7 @@ Browser receives the completed page
 
 ---
 
-## 13. Current Design Boundaries
+### 13. Current Design Boundaries
 
 The current proof of concept intentionally keeps responsibilities separate:
 
@@ -499,7 +485,7 @@ The partial does not create content, query content documents, or decide how a de
 
 ---
 
-## 14. Future Considerations
+### 14. Future Considerations
 
 These are design considerations rather than claims about the current implementation:
 
@@ -514,7 +500,10 @@ These changes would extend the current approach; they are not required to unders
 
 ---
 
-## Summary
+### Current data status
+
+The supplied MenuItemList extract confirms that the menu is populated and that each content-route row has its own linked placeholder document. Those placeholders are Draft and unpublished; authored PG articles have not yet been loaded. Repeated labels such as Emotional Journey have separate MenuItemID and ContentDocumentID values for different menu branches and visitor masks.
+### Summary
 
 The dynamic menu is a database-backed navigation component. `PageBase` loads active `MenuItem` rows into `MenuTree`, `_Layout.cshtml` packages that data into a `MenuViewModel`, and `_Menu.cshtml` renders the visible hierarchy.
 
@@ -522,7 +511,7 @@ The partial uses the current visitor code to apply `VisitorMask`, uses `ParentMe
 
 ---
 
-## Glossary
+### Glossary
 
 [Return to top](#top)
 
@@ -552,10 +541,10 @@ The partial uses the current visitor code to apply `VisitorMask`, uses `ParentMe
 | `RouteType` | A database classification describing the general kind of destination, such as Visitor, Content, Page, or Redirect. |
 | `SortOrder` | The number used to arrange menu items among other items with the same parent. |
 | Session | Short-lived server-side information associated with one visitor's browser. This proof of concept uses it to remember the selected visitor code. |
-| `Url` | The web address stored on a menu item and followed when that link is selected. |
+| `RouteTarget` | Route string stored on a menu item and interpreted by the application. |
 | Visitor code | The short code representing a visitor type, such as `P` for Patient or `C` for Caregiver. |
-| Visitor mask | A compact string listing the visitor codes allowed to see a menu item, such as `PC` or `PCMDVR`. |
+| Visitor mask | A compact string listing visitor codes allowed to see a menu item, such as `PC` or `PCMDV`. |
 | Visitor type | A database lookup record describing an audience category and its display order. |
 | `_Layout.cshtml` | The shared Razor layout that prepares the menu view model and invokes `_Menu.cshtml`. |
 | `_Menu.cshtml` | The shared Razor partial that filters, orders, nests, caches, and renders the menu records as HTML. |
-| `GetUrl()` | The helper that returns the stored URL for a menu item and reports an error when the URL is missing. |
+| `GetUrl()` | The POC helper that returns the application URL for a menu item; the database column is RouteTarget. |

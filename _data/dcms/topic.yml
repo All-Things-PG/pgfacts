@@ -1,24 +1,30 @@
 title: DCMS
 description: Dynamic content and menuing system documentation.
 summary: >-
-  Explore the content model, dynamic content, and menu structure that make up DCMS.
+  Understand the DCMS design, its implemented proof of concept, and the current state of content and menus.
 pages:
   - title: What is DCMS?
     description: Overview of the Dynamic Content and Menuing System.
     url: /dcms/what-is-dcms/
   - title: Dynamic Content
-    description: How content is organized and presented.
+    description: How content documents and typed blocks connect to menu items, and what the database contains today.
     url: /dcms/dynamic-content/
   - title: Dynamic Menus
-    description: How topic navigation is organized.
+    description: How database records define menu hierarchy, audience visibility, routes, and publication.
     url: /dcms/dynamic-menus/
+  - title: Dynamic Routing
+    description: How the custom DCMS route model directs menu selections to their destinations.
+    url: /dcms/dynamic-routing/
+  - title: Knowledge Base
+    description: The searchable collection of trusted PG information.
+    url: /dcms/knowledge-base/
 tiles:
-  - title: What is DCMS?
-    description: An overview of the content and menuing system.
-    url: /dcms/what-is-dcms/
-  - title: Dynamic Content
-    description: How content is organized and presented.
-    url: /dcms/dynamic-content/
-  - title: Dynamic Menus
-    description: How topic navigation is organized.
-    url: /dcms/dynamic-menus/
+  - title: Why Have a Database?
+    description: Why a database enables searchable content, provider finding, and growth.
+    url: /database/why-have-a-database/
+  - title: Knowledge Base
+    description: Search PG information, trials, providers, research opportunities, and care resources using everyday questions.
+    url: /new-features/knowledge-base/
+  - title: Proof of Concept
+    description: A working prototype of the database-backed site, navigation, and content model.
+    url: /welcome/proof-of-concept/

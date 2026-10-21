@@ -44,7 +44,7 @@ The main layout files are:
 		</tr>
 		<tr>
 			<td><a href="{{ '/_includes/topic-tiles.html' | relative_url }}">_includes/topic-tiles.html</a></td>
-			<td>Chooses the topic tiles from <a href="{{ '/_data/topic_pages.yml' | relative_url }}">_data/topic_pages.yml</a> or the home tiles from <a href="{{ '/_data/home_topic_groups.yml' | relative_url }}">_data/home_topic_groups.yml</a>.</td>
+			<td>Chooses topic tiles from each topic's <code>_data/&lt;topic&gt;/topic.yml</code> file or a named tile group from <a href="{{ '/_data/home_topic_groups.yml' | relative_url }}">_data/home_topic_groups.yml</a>.</td>
 		</tr>
 		<tr>
 			<td><a href="{{ '/assets/css/style.css' | relative_url }}">assets/css/style.css</a></td>
@@ -117,7 +117,7 @@ The most common fields are:
 		</tr>
 		<tr>
 			<td><code>topic_key</code></td>
-			<td>Looks up the matching topic in <a href="{{ '/_data/topic_pages.yml' | relative_url }}">_data/topic_pages.yml</a> for tiles and page lists.</td>
+			<td>Legacy topic identifier; the current tile include first selects topic data from <code>_data/&lt;topic&gt;/topic.yml</code> based on the page folder.</td>
 		</tr>
 		<tr>
 			<td><code>banner_tile_group</code></td>
@@ -144,9 +144,9 @@ This file controls the top-level menu labels and the basic descriptions associat
 
 Edit:
 
-- [_data/topic_pages.yml](../_data/topic_pages.yml)
+- Topic data files such as [_data/database/topic.yml](../_data/database/topic.yml)
 
-This file is the main source of truth for:
+Each topic data file is the source of truth for:
 
 - topic summaries
 - topic landing page document lists
@@ -289,7 +289,7 @@ This folder contains older public documentation and archive-style supporting pag
 This folder stores the site’s structured data.
 
 - [_data/navigation.yml](../_data/navigation.yml) controls the top menu
-- [_data/topic_pages.yml](../_data/topic_pages.yml) controls topic summaries, tiles, and page lists
+- Topic data files such as [_data/database/topic.yml](../_data/database/topic.yml) control each topic's summary, tiles, and page list
 
 ### `_includes/`
 
@@ -338,7 +338,7 @@ The page title is a Markdown heading in the page content. The menu label comes f
 
 Page descriptions are what you see in the title bar next to the label. They should come from the page front matter when possible, or from the topic registry when the landing page is being generated.
 
-Use the descriptions in [_data/topic_pages.yml](../_data/topic_pages.yml) when you want to maintain the page list and the page descriptions in one place.
+Use the topic data file's `pages` list to maintain the landing-page links and descriptions in one place.
 
 ## Images, diagrams, and bitmaps
 
@@ -367,12 +367,12 @@ When adding a new page:
 1. Create the Markdown file in the topic folder.
 2. Add `title`, `description`, a topic breadcrumb, and a permalink in front matter.
 3. Add a Markdown `#` heading for the visible page title.
-4. Add the page to [_data/topic_pages.yml](../_data/topic_pages.yml) and [_data/navigation.yml](../_data/navigation.yml).
+4. Add the page to the topic's `pages` list in `_data/<topic>/topic.yml` and to its submenu in [_data/navigation.yml](../_data/navigation.yml).
 5. Build and check the page from the topic landing page and the menu.
 
 When changing a topic:
 
-1. Update the topic summary in [_data/topic_pages.yml](../_data/topic_pages.yml).
+1. Update the topic summary in `_data/<topic>/topic.yml`.
 2. Update the topic landing page content.
 3. Add or remove page links in the topic page list.
 4. Adjust tile text if the topic has tiles.

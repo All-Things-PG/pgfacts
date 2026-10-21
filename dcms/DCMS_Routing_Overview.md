@@ -6,15 +6,19 @@ This document describes the current POC routing model and the broader DCMS ideas
 
 ### 1. Current POC routing model
 
-Every `MenuItem` record still carries a `RouteType` and `RouteTarget`, but the POC resolves them through page-specific handlers:
+Every `MenuItem` record carries a `RouteType` and `RouteTarget`. The current lookup defines four destination types, resolved through page-specific handlers:
 
-| RouteType | Current POC behavior |
-|---|---|
-| `V` | `/Visitor/Index?target=<visitor>` selects a persona and redirects to that visitor home page |
-| `P` | `/Page/Index?target=<page>` dispatches to a dedicated page such as `BoardMembers` |
-| `C` | `/Content/Index?...` resolves a content target when content pages are used |
-| `R` | External redirect |
-| `M` | Menu expansion / submenu behavior |
+<table class="topic-table">
+  <thead><tr><th>RouteType</th><th>Current POC behavior</th></tr></thead>
+  <tbody>
+    <tr><td><code>V</code></td><td><code>/Visitor/Index?target=&lt;visitor&gt;</code> selects a persona and redirects to that visitor home page.</td></tr>
+    <tr><td><code>P</code></td><td><code>/Page/Index?target=&lt;page&gt;</code> dispatches to a dedicated page such as <code>BoardMembers</code>.</td></tr>
+    <tr><td><code>C</code></td><td><code>/Content/Index</code> resolves a content target when content pages are used.</td></tr>
+    <tr><td><code>R</code></td><td>Follows an external redirect.</td></tr>
+  </tbody>
+</table>
+
+Menu hierarchy and submenu expansion are handled separately through parent/child relationships and the navigation interface.
 
 The menu system generates links from `MenuItem.GetUrl()` and `GetUrlWithMenu()`. The route target is semantic input, not a hard-coded browser path.
 

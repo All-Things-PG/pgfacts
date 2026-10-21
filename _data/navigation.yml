@@ -4,12 +4,14 @@
   children:
     - label: Home
       url: /welcome/home/
-    - label: Phase 2 Overview 
-      url: /welcome/phase-2-overview/
     - label: Executive Summary
       url: /welcome/executive-summary/
+    - label: Phase 2 Overview 
+      url: /welcome/phase-2-overview/
     - label: Proof of Concept
       url: /welcome/proof-of-concept/
+    - label: Document Inventory
+      url: /docs/document-inventory/
 - key: phase-1
   label: Phase 1
   url: /phase-1/
@@ -18,36 +20,40 @@
       url: /phase-1/chatgpt-analysis/
     - label: Copilot Analysis Phase 1
       url: /phase-1/copilot-analysis/
-    - label: How was it Developed?
-      url: /phase-1/how-was-it-developed/
-    - label: How is it Maintained?
-      url: /phase-1/how-it-is-maintained/
-    - label: Technology Platform
-      url: /phase-1/technology-platform/
+    - label: AI Comparison
+      url: /phase-1/ai-comparison/
+    - label: Developer Analysis
+      url: /phase-1/developer-analysis/
 - key: phase-2
   label: Phase 2
   url: /phase-2/
   children:
-    - label: How is it Developed?
+    - label: How it will be Developed
       url: /phase-2/how-is-it-developed/
-    - label: How it is Maintained?
+    - label: How it will be Maintained
       url: /phase-2/how-it-is-maintained/
-    - label: Technology Platform
+    - label: New Technology Platform
       url: /phase-2/technology-platform/
+    - label: Database Support
+      url: /phase-2/adding-a-database/
 - key: new-features
   label: New Features
   url: /new-features/
   children:
     - label: Wish List
       url: /new-features/wish-list/
+    - label: Adding a Database
+      url: /new-features/adding-a-database/
     - label: Knowledge Base
       url: /new-features/knowledge-base/
     - label: Dynamic Menus and Content
       url: /new-features/dynamic-menus-and-content/
     - label: Enhanced User Experience
       url: /new-features/enhanced-user-experience/
-    - label: Database Support
-      url: /new-features/database-support/
+    - label: User Registration
+      url: /new-features/user-registration/
+    - label: Emails and Newsletters
+      url: /new-features/emails-and-newsletters/
     - label: Leo Enhancements
       url: /new-features/leo-enhancements/
     - label: Leo Deliverables
@@ -64,6 +70,8 @@
       url: /technical/pgfacts-site-guide/
     - label: Document Inventory
       url: /technical/document-inventory/
+    - label: Topic Tile Mapping
+      url: /technical/topic-tile-mapping/
 - key: dcms
   label: DCMS
   url: /dcms/
@@ -74,6 +82,12 @@
       url: /dcms/dynamic-content/
     - label: Dynamic Menus
       url: /dcms/dynamic-menus/
+    - label: Dynamic Routing
+      url: /dcms/dynamic-routing/
+    - label: Knowledge Base
+      url: /dcms/knowledge-base/
+    - label: Rendering Content
+      url: /dcms/rendering-content/
 - key: database
   label: Database
   url: /database/
@@ -82,9 +96,9 @@
       url: /database/why-have-a-database/
     - label: Main Tables
       url: /database/main-tables/
-    - label: Database Schema
+    - label: Schema
       url: /database/schema/
-    - label: Database Diagrams
+    - label: Diagrams
       url: /database/diagrams/
 - key: user-experience
   label: User Experience
@@ -104,6 +118,8 @@
       url: /user-experience/pharmaceutical/
     - label: Guests
       url: /user-experience/guest/
+    - label: Mobile Friendly
+      url: /user-experience/mobile-friendly/
 - key: about
   label: About
   url: /about/
@@ -115,3 +131,9 @@
     - label: The Developer
       url: /about/the-developer/
     
+
+
+
+
+
+

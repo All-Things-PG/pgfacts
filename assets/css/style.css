@@ -44,10 +44,10 @@ h6,
 }
 
 .oldsite-header-inner {
-  min-height: 56px;
+  min-height: 50px;
   display: flex;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.4rem;
   padding: 0;
 }
 
@@ -95,6 +95,7 @@ h6,
 
 .oldsite-page-description {
   margin-left: auto;
+  color: var(--oldsite-orange);
 }
 
 .pg-home-topic-grid {
@@ -126,7 +127,7 @@ h6,
 }
 
 .pg-home-topic-tile strong {
-  margin-bottom: 0.1rem;
+  margin-bottom: 0.4rem;
   color: #000000;
   font-size: 0.92rem;
 }
@@ -214,7 +215,7 @@ h6,
 
 .oldsite-header .pg-logo {
   display: block;
-  max-height: 54px;
+  max-height: 50px;
   width: auto;
   margin: 0;
 }
@@ -245,9 +246,9 @@ h6,
 .oldsite-navigation .pg-nav-links a {
   display: block;
   color: var(--oldsite-text);
-  font-size: 0.86rem;
+  font-size: 0.78rem;
   font-weight: 500;
-  padding: 0.1rem 0.22rem;
+  padding: 0.1rem 0.18rem;
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 0.01em;
@@ -298,7 +299,8 @@ h6,
 }
 
 .oldsite-navigation .pg-nav-links .pg-submenu a {
-  padding: 0.55rem 1rem;
+  font-size: 0.74rem;
+  padding: 0.25rem 1rem;
 }
 
 .oldsite-donate-button {
@@ -377,6 +379,13 @@ h6,
   word-break: break-word;
 }
 
+table th:first-child,
+table td:first-child {
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
 .topic-table th {
   text-align: left;
   font-size: 13px;
@@ -397,11 +406,19 @@ h6,
   text-align: left;
 }
 
-/* Allow a page to widen/narrow specific columns without re-introducing
-   the overlap bug, since wrapping is always on by default above. */
+/* Optional sizing for numbered tables; first-column labels stay intact while
+   the remaining cells can wrap to fit the available width. */
 .topic-table--wide-first th:first-child,
 .topic-table--wide-first td:first-child {
-  width: 40%;
+  width: 4.5rem;
+  white-space: nowrap;
+  text-align: left;
+}
+
+.topic-table--wide-first th:nth-child(2),
+.topic-table--wide-first td:nth-child(2) {
+  width: 11rem;
+  min-width: 9rem;
 }
 
 @media (max-width: 480px) {
@@ -434,4 +451,84 @@ h6,
   background: #fff;
   border-radius: 12px;
   padding: 20px 22px;
+}
+
+.back-to-top {
+  margin: 1.25rem 0 0;
+  text-align: left;
+  font-size: 0.92rem;
+}
+
+.back-to-top a {
+  color: var(--oldsite-orange-dark);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.back-to-top a:hover,
+.back-to-top a:focus {
+  text-decoration: underline;
+}
+
+.azure-summary,
+.platform-summary {
+  margin: 1rem 0 1.25rem;
+  padding: 1rem 1.1rem;
+  background: #ffffff;
+  border: 1px solid #e0d2bf;
+  border-radius: 12px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03);
+}
+
+.azure-summary-title,
+.platform-summary-title {
+  margin: 0 0 0.6rem;
+  font-size: 1.02rem;
+  color: #000000;
+}
+
+.azure-summary p,
+.platform-summary p {
+  margin: 0 0 0.8rem;
+}
+
+.azure-summary ul,
+.platform-summary ul {
+  margin: 0 0 0.9rem 1.25rem;
+  padding: 0;
+}
+
+.azure-summary li,
+.platform-summary li {
+  margin: 0 0 0.35rem;
+}
+
+.oldsite-page-content blockquote.platform-summary > p:first-child {
+  text-align: center;
+}
+
+.schema-diagram-callout {
+  width: min(100%, 1200px);
+  box-sizing: border-box;
+  margin: 1.25rem auto 1.75rem;
+  padding: 1rem 1.25rem 1.25rem;
+  background: #ffffff;
+  border: 1px solid #e0d2bf;
+  border-radius: 12px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03);
+  text-align: center;
+}
+
+.schema-diagram-callout h2 {
+  margin: 0 0 1rem;
+  color: #000000;
+  font-size: 1.15rem;
+  text-align: center;
+}
+
+.schema-diagram-callout img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
 }

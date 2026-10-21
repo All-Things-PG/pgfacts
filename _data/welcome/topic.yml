@@ -14,12 +14,12 @@ pages:
     description: Curated documentation index for the project.
     url: /docs/
 tiles:
-  - title: DCMS
-    description: Document the content model and menus.
-    url: /dcms/
-  - title: User Experience
-    description: Describe the portal experiences by visitor type.
-    url: /user-experience/
-  - title: Database
-    description: Capture the data model and diagrams.
-    url: /database/
+  - title: Pyoderma Gangrenosum
+    description: Plain-language background on PG, including symptoms, related conditions, and care challenges.
+    url: /about/pyoderma-gangrenosum/
+  - title: The Developer
+    description: Learn about the developer's background and experience behind the site work.
+    url: /about/the-developer/
+  - title: Developer Analysis
+    description: The developer's perspective on the Phase 1 site's strengths, limitations, and trade-offs.
+    url: /phase-1/developer-analysis/

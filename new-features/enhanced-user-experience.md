@@ -24,6 +24,8 @@ That difference matters. The site should help each visitor feel like the content
 
 The goal is to present the right kind of information at the right time, so visitors can move forward more quickly and with less confusion.
 
+Registration can support this experience while respecting privacy. Visitors can start with only an email address and visitor type, then choose whether to provide more information or select specific email updates. See [User Registration](/new-features/user-registration/) for the registration design direction.
+
 ### Why this helps
 
 This approach makes the site feel more thoughtful and more relevant. It reduces the need for visitors to sift through pages that do not match what they need right now.

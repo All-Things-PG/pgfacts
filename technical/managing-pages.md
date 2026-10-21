@@ -28,7 +28,7 @@ Each topic has a folder and an `index.md` landing page. Store a topic's supporti
    ```
 
 3. Add a Markdown `#` heading matching the page title.
-4. Add the page to the topic's `pages` list in `_data/topic_pages.yml` and to its submenu in `_data/navigation.yml`.
+4. Add the page to the topic's `pages` list in `_data/<topic>/topic.yml` and to its submenu in `_data/navigation.yml`.
 5. Build the site and follow the links from the topic menu and landing page.
 
-Use `_layouts/page.html` for a regular document and `_layouts/home.html` for a topic landing page. Keep `topic_key`, breadcrumb, and folder aligned. The shared tile include uses these to find the topic's tiles; if none are configured, it shows three non-linked `Default Tile` placeholders. The breadcrumb description uses `description`, falling back to the page title when no description is supplied.
+Use `_layouts/page.html` for a regular document and `_layouts/home.html` for a topic landing page. Keep `topic_key`, breadcrumb, and folder aligned. The shared tile include selects tile data from the page's topic folder; it can use `topic_key` or the breadcrumb as a fallback. If no tiles are configured, no tile links appear. The breadcrumb description uses `description`, falling back to the page title when no description is supplied.

@@ -6,6 +6,8 @@ plugins:
   - jekyll-feed
 header_pages:
   - docs/index.md
+exclude:
+  - welcome/proof-of-concept2.md
 gateway:
   allow_blank_development: false
 defaults:

@@ -13,6 +13,9 @@ pages:
   - title: How it is Maintained?
     description: Keeping the site current and consistent.
     url: /phase-2/how-it-is-maintained/
+  - title: Adding a Database
+    description: How Phase 2 will introduce database support.
+    url: /phase-2/adding-a-database/
 tiles:
   - title: Technology Platform
     description: The platform that supports Phase 2.
@@ -23,3 +26,6 @@ tiles:
   - title: How it is Maintained?
     description: The upkeep model for the site.
     url: /phase-2/how-it-is-maintained/
+  - title: Adding a Database
+    description: Planning for database-backed Phase 2 features.
+    url: /phase-2/adding-a-database/

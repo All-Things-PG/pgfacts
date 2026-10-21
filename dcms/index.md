@@ -1,21 +1,16 @@
 ---
-layout: page
-title: What is DCMS?
-breadcrumb: DCMS > What is DCMS?
-description: Overview of the Dynamic Content and Menuing System.
-updated: 2026-09-18
+layout: home
+title: DCMS
+nav_label: DCMS
+breadcrumb: DCMS
+description: "Dynamic Content and Menuing System: the design behind Phase 2 content and navigation."
+permalink: /dcms/
+topic_key: dcms
 ---
 
-# DCMS - Dynamic Content and Menuing System
-
-### Executive Summary
-
-All Things PG needs a website that does more than present information. It needs a platform that can grow with the organization, serve different audiences well, and keep content maintainable over time.
-
-The **Dynamic Content and Menuing System (DCMS)** is the proposed Phase 2 platform. It is designed to turn the website into a durable community resource for patients, caregivers, healthcare professionals, researchers, industry partners, and supporters.
-
-The goal is simple:
-
-* **Right Audience** &rarr; Right Navigation &rarr; Right Content &rarr; Right Tools &rarr; Right Next Step
-
-This is a focused content platform built around the real needs of the PG community.
+<section class="home-hero">
+  <h1>Dynamic Content and Menuing System</h1>
+  <p>DCMS connects audience-aware navigation with structured content records. Its purpose is to support a growing All Things PG resource site, including the searchable knowledge base at the heart of the Phase 2 vision.</p>
+  <p>The database schema and menu workflow are implemented, and the proof of concept demonstrates dynamic menus, visitor filtering, and content retrieval. The current database has unpublished placeholders, not authored PG articles; search and editorial workflows remain to be completed.</p>
+  <p><a href="/dcms/what-is-dcms/">Learn how DCMS fits together</a> · <a href="/dcms/dynamic-content/">Explore dynamic content</a> · <a href="/dcms/dynamic-menus/">Explore dynamic menus</a></p>
+</section>

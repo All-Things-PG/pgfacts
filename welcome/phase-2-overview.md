@@ -10,8 +10,9 @@ permalink: /welcome/phase-2-overview/
 
 ## Phase 2 is coming together!
 
-The design and documentation of Phase 2 is well under way and has been over the course of a year.  Progress to date has been to build a potential design, create a working database, build a proof of concept and create a documentation site.  As a software engineering project, process and planning are the keys to a successful development project that meets the needs of the entire PG community.  So far so good.
+The design and documentation of Phase 2 is well under way and has been over the course of a year.  Progress to date has been to build a potential design, create a working database, build a proof of concept and create a documentation site.  As a software engineering project, process and planning are the keys to a successful development project that meets the needs of the entire PG community.  
 
+So far so good.
 
 ### Project Plan for Phase 2	
 
@@ -182,21 +183,25 @@ The key vision and objectives for Phase 2 will be:
 
 ### How best to review the documentation?
 
-1. Browse pages and ask questions by submitting comments (Contact Us).  There is a lot to learn and understand about Phase 2 but can be worth the effort if you are a stakeholder.  Be involved in the discovery process.  If there is a concern, or if there are new feature you might be interested in, now is the time to make that known.  Once the system is designed or even developed it becomes difficult to stop mid-stream to add anything significant without a redesign and reintegration.  This happens all the time in the real world because things do change, but also because of the initial lack of attention to detail.
-
-2. Try to understand the key reasons for building Phase 2 from the Executive Summary and other documents.  The main 'feature' is that Phase 2 will becomes a searchable and easily expandable full knowledge base of published information about PG, on any topic, for any user.  A search will quickly list all the menu items and articles that target the information you're looking for.
-
-3. Start by learning about DCMS as a design, which supports the main feature of Phase 2 which is a searchable knowledge base.  DCMS was invented for curating dynamic content and associating with dynamic menu items, which is essential to both building a knowledge base and enhancing the user experience.
-
-4. Learn about the concept of a Portal.  Each user has a visitor type, either Patient, Caregiver, Provider, Pharmaceutical or initially as a Guest.  Each visitor type has a unique portal which provides a customized user experience.  Different 'portals' can look identical, or they can look absolutely the same.  What is a portal?  Its just a view of the website from your perspective.  But the concept, combined with DCMS, allows you to be a patient, or a doctor.  If desired, the content displayed to a patient could be different than a doctor.  A doctor will want to see doctor stuff.  A caregiver may want more information about wound care.  A pharmaceutical may want to know about how to do Clinical Trials for PG patients.
-
-5. You never have to 'log in' or register to use the website, you can always view as a Guest, or any other visitor type.  You can select another type if you wish to customize your experience.  You can also register, which will save your selection and allow many  other features like newsletters and such.
-
-6. Identify the new features that interest you.  Ask questions, submit feedback early and often. Make sure Phase 2 offers the solutions you need.
-
-7. Report any errors in documentation.  Very much appreciated.
+> **Review Steps**
+>
+> 1. Browse pages and ask questions by submitting comments (Contact Us).  There is a lot to learn and understand about Phase 2 but can be worth the effort if you are a stakeholder.  Be involved in the discovery process.  If there is a concern, or if there are new feature you might be interested in, now is the time to make that known.  Once the system is designed or even developed it becomes difficult to stop mid-stream to add anything significant without a redesign and reintegration.  This happens all the time in the real world because things do change, but also because of the initial lack of attention to detail.
+>
+> 2. Try to understand the key reasons for building Phase 2 from the Executive Summary and the Phase 1 AI Analysis, and other documents.  The main 'feature' is that Phase 2 will add a database, which will provide becomes a searchable and easily expandable **Knowledge Base (KB)** of published information about PG, on any topic, for any user.  A search will quickly list all the menu items and articles that target the information you're looking for.  
+>
+> 3. Start by learning about **DCMS** as a design, which supports the main feature of the Phase 2 which is a searchable KB.  DCMS was invented inside the database for curating dynamic content and associating with dynamic menu items, which is essential to both building the KB and enhancing the user experience.
+>
+> 4. Learn about the concept of a **Portal**.  Each user has a visitor type, either Patient, Caregiver, Provider, Pharmaceutical or initially as a Guest.  Each visitor type has a unique portal which provides a customized user experience.  Different 'portals' can look identical, or they can look absolutely the same.  What is a portal?  Its just a view of the website from your perspective.  But the concept, combined with DCMS, allows you to be a patient, or a doctor.  If desired, the content displayed to a patient could be different than a doctor.  A doctor will want to see doctor stuff.  A caregiver may want more information about wound care.  A pharmaceutical may want to know about how to do Clinical Trials for PG patients.
+>
+> 5. You never have to 'log in' or register to use the website, you can always view as a Guest, or any other visitor type.  You can select another type if you wish to customize your experience.  You can also register, which will save your selection and allow many  other features like newsletters and such.
+>
+> 6. Identify the new features that interest you.  Ask questions, submit feedback early and often. Make sure Phase 2 offers the solutions you need.
+>
+> 7. Report any errors in documentation.  Very much appreciated.
+{: .platform-summary}
 
 ### Use of Tiles
 
 At the top of every page you will see tiles, or bubbles as some call them.  These are just buttons that take you to the most interesting content within that topic area.  They act like menu items, so just click on them.  
 
+You can now proceed to the [Executive Summary]({{ '/welcome/executive-summary/' | relative_url }}), or any other Tile or Menu Item of your choice.

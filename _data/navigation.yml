@@ -11,7 +11,7 @@
     - label: Proof of Concept
       url: /welcome/proof-of-concept/
     - label: Document Inventory
-      url: /docs/document-inventory/
+      url: /welcome/document-inventory/
 - key: phase-1
   label: Phase 1
   url: /phase-1/
@@ -108,16 +108,10 @@
       url: /user-experience/selecting-a-user-experience/
     - label: What is a Portal?
       url: /user-experience/what-is-a-portal/
-    - label: Patients
+    - label: "Example 1: Patients"
       url: /user-experience/patients/
-    - label: Caregivers
-      url: /user-experience/caregivers/
-    - label: Providers
+    - label: "Example 2: Providers"
       url: /user-experience/providers/
-    - label: Pharmaceutical
-      url: /user-experience/pharmaceutical/
-    - label: Guests
-      url: /user-experience/guest/
     - label: Mobile Friendly
       url: /user-experience/mobile-friendly/
 - key: about

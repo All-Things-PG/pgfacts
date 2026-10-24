@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 310" role="img" aria-labelledby="title desc">
+  <title id="title">A visitor moves through a tailored DCMS menu</title>
+  <desc id="desc">The user picks Patient. The system builds a patient menu. The user clicks a patient menu item. The system displays content tailored to a patient.</desc>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L10,5 L0,10 z" fill="#52758b" /></marker></defs>
+  <rect width="1200" height="310" rx="18" fill="#f1f1f1" />
+  <g font-family="Arial, Helvetica, sans-serif" fill="#263746">
+    <rect x="22" y="50" width="255" height="210" rx="14" fill="#fff" stroke="#e07822" stroke-width="2" />
+    <text x="149.5" y="88" text-anchor="middle" font-size="15" font-weight="700" letter-spacing=".4">SELECT VISITOR TYPE</text>
+    <rect x="54" y="108" width="191" height="94" rx="8" fill="#fbf4e8" stroke="#d8c7ad" />
+    <circle cx="112" cy="153" r="18" fill="#e07822" /><path d="M82 191c4-19 15-28 30-28s26 9 30 28" fill="#e07822" />
+    <text x="183" y="160" text-anchor="middle" font-size="18" font-weight="700">Patient</text>
+    <text x="149.5" y="232" text-anchor="middle" font-size="13" fill="#485965">User picks Patient</text>
+
+    <rect x="322" y="50" width="255" height="210" rx="14" fill="#fff" stroke="#e07822" stroke-width="2" />
+    <text x="449.5" y="88" text-anchor="middle" font-size="16" font-weight="700" letter-spacing=".6">BUILD MENU</text>
+    <rect x="354" y="108" width="191" height="94" rx="8" fill="#fff" stroke="#d8c7ad" />
+    <path d="M354 139h191" stroke="#d8c7ad" />
+    <circle cx="371" cy="123" r="4" fill="#e07822" /><path d="M384 123h67" stroke="#8696a0" stroke-width="3" stroke-linecap="round" />
+    <circle cx="371" cy="154" r="4" fill="#e07822" /><path d="M384 154h120" stroke="#8696a0" stroke-width="3" stroke-linecap="round" />
+    <circle cx="371" cy="184" r="4" fill="#e07822" /><path d="M384 184h92" stroke="#8696a0" stroke-width="3" stroke-linecap="round" />
+    <text x="449.5" y="232" text-anchor="middle" font-size="13" fill="#485965">System builds a patient menu</text>
+
+    <rect x="622" y="50" width="255" height="210" rx="14" fill="#fff" stroke="#e07822" stroke-width="2" />
+    <text x="749.5" y="88" text-anchor="middle" font-size="15" font-weight="700" letter-spacing=".4">SELECT MENU ITEM</text>
+    <rect x="654" y="108" width="191" height="94" rx="8" fill="#fff" stroke="#d8c7ad" />
+    <path d="M654 139h191" stroke="#d8c7ad" />
+    <path d="M670 123h10" stroke="#e07822" stroke-width="4" stroke-linecap="round" /><text x="690" y="128" font-size="13">About PG</text>
+    <rect x="663" y="143" width="173" height="26" rx="5" fill="#e7f2f7" /><path d="M670 156h10" stroke="#52758b" stroke-width="4" stroke-linecap="round" /><text x="690" y="161" font-size="13" font-weight="700">Living with PG</text>
+    <path d="M670 184h10" stroke="#e07822" stroke-width="4" stroke-linecap="round" /><text x="690" y="189" font-size="13">Patient Stories</text>
+    <text x="749.5" y="232" text-anchor="middle" font-size="13" fill="#485965">User clicks a patient menu item</text>
+
+    <rect x="922" y="50" width="255" height="210" rx="14" fill="#fff" stroke="#e07822" stroke-width="2" />
+    <text x="1049.5" y="88" text-anchor="middle" font-size="15" font-weight="700" letter-spacing=".4">DISPLAY CONTENT</text>
+    <rect x="954" y="108" width="191" height="94" rx="8" fill="#fff" stroke="#d8c7ad" />
+    <text x="970" y="132" font-size="14" font-weight="700">Living with PG</text>
+    <path d="M970 148h158m-158 13h145m-145 13h153m-153 13h110" stroke="#8696a0" stroke-width="3" stroke-linecap="round" />
+    <text x="1049.5" y="228" text-anchor="middle" font-size="12.5" fill="#485965">System shows patient-tailored</text>
+    <text x="1049.5" y="245" text-anchor="middle" font-size="12.5" fill="#485965">content</text>
+  </g>
+  <path d="M285 155h25" fill="none" stroke="#52758b" stroke-width="3" marker-end="url(#arrow)" />
+  <path d="M585 155h25" fill="none" stroke="#52758b" stroke-width="3" marker-end="url(#arrow)" />
+  <path d="M885 155h25" fill="none" stroke="#52758b" stroke-width="3" marker-end="url(#arrow)" />
+</svg>

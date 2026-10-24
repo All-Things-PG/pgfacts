@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" role="img" aria-labelledby="title desc">
+  <title id="title">Conceptual ASP.NET Core rendering of a multi-element article</title>
+  <desc id="desc">A menu item points to an article document with multiple content elements. ASP.NET Core interprets each element's format, MIME type, and layout hints, then renders supported elements as content cards on one article page.</desc>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L10,5 L0,10 z" fill="#52758b" /></marker></defs>
+  <rect width="1200" height="320" rx="18" fill="#f1f1f1" />
+  <g font-family="Arial, Helvetica, sans-serif" fill="#52758b" font-size="12" font-weight="700" letter-spacing="1">
+    <text x="299.5" y="22" text-anchor="middle">DATABASE</text><path d="M34 35h531m-531 0v8m531-8v8" fill="none" stroke="#52758b" stroke-width="2" />
+    <text x="749.5" y="22" text-anchor="middle">ASP.NET CORE</text><path d="M634 35h231m-231 0v8m231-8v8" fill="none" stroke="#52758b" stroke-width="2" />
+    <text x="1049.5" y="22" text-anchor="middle">BROWSER</text><path d="M934 35h231m-231 0v8m231-8v8" fill="none" stroke="#52758b" stroke-width="2" />
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#263746">
+    <rect x="22" y="49" width="255" height="214" rx="14" fill="#fff" stroke="#e07822" stroke-width="2" />
+    <text x="149.5" y="82" text-anchor="middle" font-size="15" font-weight="700">MENU ITEM</text>
+    <rect x="53" y="101" width="193" height="91" rx="8" fill="#fbf4e8" stroke="#d8c7ad" />
+    <circle cx="78" cy="126" r="7" fill="#e07822" /><text x="96" y="132" font-size="15" font-weight="600">What Is PG?</text>
+    <path d="M72 151h154m-154 13h130" stroke="#8696a0" stroke-width="3" stroke-linecap="round" />
+    <text x="149.5" y="229" text-anchor="middle" font-size="13" fill="#485965">Points to a content document</text>
+
+    <rect x="322" y="49" width="255" height="214" rx="14" fill="#fff" stroke="#e07822" stroke-width="2" />
+    <text x="449.5" y="82" text-anchor="middle" font-size="15" font-weight="700">CONTENT DOCUMENT</text>
+    <rect x="350" y="98" width="199" height="112" rx="8" fill="#fff" stroke="#d8c7ad" />
+    <rect x="363" y="109" width="173" height="26" rx="4" fill="#fbf4e8" /><text x="374" y="127" font-size="12" font-weight="600">Element 1 · text/markdown</text>
+    <rect x="363" y="141" width="173" height="26" rx="4" fill="#e7f2f7" /><text x="374" y="159" font-size="12" font-weight="600">Element 2 · image/png</text>
+    <rect x="363" y="173" width="173" height="26" rx="4" fill="#fbf4e8" /><text x="374" y="191" font-size="12" font-weight="600">Element 3 · text/markdown</text>
+    <text x="449.5" y="239" text-anchor="middle" font-size="13" fill="#485965">One article, multiple elements</text>
+
+    <rect x="622" y="49" width="255" height="214" rx="14" fill="#fff" stroke="#e07822" stroke-width="2" />
+    <text x="749.5" y="82" text-anchor="middle" font-size="15" font-weight="700">RENDER ELEMENTS</text>
+    <rect x="649" y="101" width="201" height="85" rx="8" fill="#e7f2f7" stroke="#9ab9c9" />
+    <text x="749.5" y="124" text-anchor="middle" font-size="13" font-weight="600">FormatType · source format</text>
+    <text x="749.5" y="147" text-anchor="middle" font-size="13" font-weight="600">MimeType · data type</text>
+    <text x="749.5" y="170" text-anchor="middle" font-size="13" font-weight="600">BlockInfo · layout hints</text>
+    <text x="749.5" y="220" text-anchor="middle" font-size="13" fill="#485965">Choose a supported card renderer</text>
+    <text x="749.5" y="239" text-anchor="middle" font-size="13" fill="#485965">for each element</text>
+
+    <rect x="922" y="49" width="255" height="214" rx="14" fill="#fff" stroke="#e07822" stroke-width="2" />
+    <text x="1049.5" y="82" text-anchor="middle" font-size="15" font-weight="700">ARTICLE PAGE</text>
+    <rect x="953" y="96" width="193" height="137" rx="8" fill="#fff" stroke="#d8c7ad" />
+    <rect x="966" y="106" width="167" height="34" rx="5" fill="#fbf4e8" /><text x="1049.5" y="128" text-anchor="middle" font-size="12" font-weight="600">Text card</text>
+    <rect x="966" y="146" width="167" height="35" rx="5" fill="#e7f2f7" /><path d="M978 169l13-14 9 9 8-7 17 18h-47z" fill="#8cb4c7" /><circle cx="1013" cy="157" r="3" fill="#e07822" /><text x="1091" y="168" font-size="12">Image</text>
+    <rect x="966" y="187" width="167" height="34" rx="5" fill="#fbf4e8" /><text x="1049.5" y="209" text-anchor="middle" font-size="12" font-weight="600">Text card</text>
+    <text x="1049.5" y="251" text-anchor="middle" font-size="13" fill="#485965">Cards form one article</text>
+  </g>
+  <path d="M285 155h25" fill="none" stroke="#52758b" stroke-width="3" marker-end="url(#arrow)" />
+  <path d="M585 155h25" fill="none" stroke="#52758b" stroke-width="3" marker-end="url(#arrow)" />
+  <path d="M885 155h25" fill="none" stroke="#52758b" stroke-width="3" marker-end="url(#arrow)" />
+  <text x="600" y="295" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#485965">Conceptual example: element order and the full set of card renderers still need to be defined.</text>
+</svg>

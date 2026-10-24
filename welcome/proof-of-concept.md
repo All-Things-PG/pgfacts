@@ -5,6 +5,7 @@ nav_label: Welcome
 breadcrumb: Welcome > Proof of Conceptv
 description: Proof of Concept
 permalink: /welcome/proof-of-concept/
+work_in_progress: false
 ---
 # Proof of Concept
 
@@ -20,26 +21,29 @@ During the early planning stages of the project, it became apparent that a tradi
 
 The Proof of Concept was created to answer several critical key questions:
 
-- Can we build a knowledge base to store all kinds of content for Pyoderma Gangrenosum
-- Can content be managed dynamically through a database rather than static web pages?
-- Can menus be managed dynamically through a database rather than static web pages?
-- Can information be organized around user needs rather than fixed for all users?
-- Can the platform scale as content volume and traffic increases?
-- Can we migrate content and functionality in Phase 1 to Phase 2?
+> - Can we build a knowledge base to store all kinds of content for Pyoderma Gangrenosum
+> - Can content be managed dynamically through a database rather than static web pages?
+> - Can menus be managed dynamically through a database rather than static web pages?
+> - Can information be organized around user needs rather than fixed for all users?
+> - Can the platform scale as content volume and traffic increases?
+> - Can we migrate content and functionality in Phase 1 to Phase 2?
+{: .simple-blockquote}
 
-The answer to all these questions is **Yes**
+The answer is **yes** to all these, thus proving the technology works!
 
-<div class="platform-summary">
-  <p><strong>Phase 1 Migration</strong><br><br>
+### Phase 1 Migration into Phase 2
 
-  Although the new platform will use a different architecture and a database, the content and capabilities established in Phase 1 remain valuable. The POC includes a limited migration test to demonstrate how existing website content can be transferred into the new data model. Current testing uses AI-assisted discovery to identify content on the existing site and map it into migration tables. This is a proof of the migration approach; it is not intended to represent a complete transfer of the Phase 1 site.</p>
-</div>
+Although the new platform will use a different technology platform, architecture and database, the content and capabilities established in Phase 1 still remains valuable. There is no need to throw away what we have now, rather we perform a migratoin to copy the conten from Phase 1 into Phase 2.
 
-### What the Proof of Concept Proves
+The POC includes a limited migration test to demonstrate how existing website content can be transferred into the new data model using AI.  Current POC testing uses AI-assisted discovery to 'scrape' content on the existing site and map it into migration tables in the database, and then merge the migration content into regular content tables. 
 
-The current prototype includes a functional database, dynamic menu generation, content management capabilities, navigation structures, and an operational web interface.
+Some of this may be a manual effort of discovery and review to get it right.  The POC is a limited effort towards migration, mostly to show the concept.  The real migration would be a thorough analysis and more advanced discovery and confirmaton of curated/vetted content.
 
-Content is stored within the database and presented dynamically to users based on the Visitor Type. Menus and navigation structures are generated from data rather than being manually hard-coded into individual web pages. This approach enables far greater flexibility, maintainability, and scalability compared to traditional website designs. It also offers the ability to present different menu items and content  to different types of users.
+### What the Proof of Concept Shows
+
+The current prototype includes a functional database, dynamic menu generation, content management capabilities, dynamic navigation and an operational web interface, some with screens that are similar to the original.
+
+Content is succdssfully stored within a database and uses the DCMS routing to dynamically generate menu items based on the Visitor Type. Menus and navigattional structures are generated from data rather vs hard-coded into individual web pages. This approach enables far greater flexibility, maintainability, and scalability compared to traditional website designs. It also offers the ability to present different menu items and content  to different types of users.
 
 The Proof of Concept also serves as the primary demonstration platform, and is an essential part of any proposal.  Anyone interest can receive a demo of the prototype through a Teams meeting.  The POC is not available on the internet.
 
@@ -125,6 +129,8 @@ The prototype demonstrates a design principle: visitors should be able to find i
   <img src="/assets/images/poc-provider-menu.png" alt="The provider menu presents navigation options tailored to healthcare providers.">
 </div>
 
-These examples illustrate how different menus can lead to content relevant to each audience. They are prototype examples; the content and navigation shown here are not a complete production resource.
+### Summary
+
+These examples illustrate that you can have a different menus for a Patient vs a Doctor, and how different menus can lead to zdifferent content relevant to each audience. The content and navigation shown here is not a complete representation of production resource and capabilities.  It's only a POC.
 
 

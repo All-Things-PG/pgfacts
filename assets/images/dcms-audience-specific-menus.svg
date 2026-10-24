@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 340" role="img" aria-labelledby="title desc">
+  <title id="title">The same menu title can lead to audience-specific content</title>
+  <desc id="desc">Separate Diagnosis menu items have patient, caregiver, and provider masks, and link to different versions of diagnosis content.</desc>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L10,5 L0,10 z" fill="#52758b" /></marker></defs>
+  <rect width="1200" height="340" rx="18" fill="#f1f1f1" />
+  <g font-family="Arial, Helvetica, sans-serif" fill="#263746">
+    <text x="181" y="45" text-anchor="middle" font-size="15" font-weight="700" letter-spacing=".5">VISITOR TYPE</text>
+    <text x="575" y="45" text-anchor="middle" font-size="15" font-weight="700" letter-spacing=".5">DYNAMIC MENU ITEM</text>
+    <text x="1003" y="45" text-anchor="middle" font-size="15" font-weight="700" letter-spacing=".5">LINKED CONTENT</text>
+    <g>
+      <rect x="38" y="67" width="286" height="66" rx="10" fill="#fff" stroke="#d8c7ad" /><text x="181" y="107" text-anchor="middle" font-size="17">Patient · P</text>
+      <rect x="407" y="67" width="336" height="66" rx="10" fill="#fff" stroke="#e07822" stroke-width="2" /><text x="575" y="96" text-anchor="middle" font-size="17" font-weight="700">Diagnosis</text><text x="575" y="118" text-anchor="middle" font-size="13" fill="#485965">Mask: P</text>
+      <rect x="827" y="67" width="352" height="66" rx="10" fill="#fff" stroke="#d8c7ad" /><text x="1003" y="107" text-anchor="middle" font-size="16">Patient-friendly diagnosis guide</text>
+      <path d="M337 100h58m355 0h65" stroke="#52758b" stroke-width="3" marker-end="url(#arrow)" fill="none" />
+    </g>
+    <g>
+      <rect x="38" y="147" width="286" height="66" rx="10" fill="#fff" stroke="#d8c7ad" /><text x="181" y="187" text-anchor="middle" font-size="17">Caregiver · C</text>
+      <rect x="407" y="147" width="336" height="66" rx="10" fill="#fff" stroke="#e07822" stroke-width="2" /><text x="575" y="176" text-anchor="middle" font-size="17" font-weight="700">Diagnosis</text><text x="575" y="198" text-anchor="middle" font-size="13" fill="#485965">Mask: C</text>
+      <rect x="827" y="147" width="352" height="66" rx="10" fill="#fff" stroke="#d8c7ad" /><text x="1003" y="187" text-anchor="middle" font-size="16">Guidance for supporting someone</text>
+      <path d="M337 180h58m355 0h65" stroke="#52758b" stroke-width="3" marker-end="url(#arrow)" fill="none" />
+    </g>
+    <g>
+      <rect x="38" y="227" width="286" height="66" rx="10" fill="#e7f2f7" stroke="#52758b" stroke-width="2" /><text x="181" y="267" text-anchor="middle" font-size="17" font-weight="700">Provider · M</text>
+      <rect x="407" y="227" width="336" height="66" rx="10" fill="#e7f2f7" stroke="#52758b" stroke-width="2" /><text x="575" y="256" text-anchor="middle" font-size="17" font-weight="700">Diagnosis</text><text x="575" y="278" text-anchor="middle" font-size="13" fill="#485965">Mask: M</text>
+      <rect x="827" y="227" width="352" height="66" rx="10" fill="#e7f2f7" stroke="#52758b" stroke-width="2" /><text x="1003" y="267" text-anchor="middle" font-size="16">Clinical diagnosis detail</text>
+      <path d="M337 260h58m355 0h65" stroke="#52758b" stroke-width="3" marker-end="url(#arrow)" fill="none" />
+    </g>
+  </g>
+  <text x="600" y="324" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#485965">The title can stay familiar while the visitor mask and linked content differ.</text>
+</svg>

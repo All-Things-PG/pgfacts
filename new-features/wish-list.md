@@ -5,12 +5,21 @@ nav_label: Wish List
 breadcrumb: New Features in Phase 2 > Wish List
 description: General Ideas for Phase 2.
 permalink: /new-features/wish-list/
+work_in_progress: false
 ---
 # Phase 2 Wish List
 
-The following wish list items are ideas that have recently surfaced once DCMS and the Proof of Concept (POC) showed how easy it was to add features to Phase 2.  Note: Leo Enhancements are on a separate page. Each item has a proposed Priority, which is entirely subjective on my part. I wish all items were High   Not all items will make it into Phase 2 because there are too many, so by default we can imagine there may be a Phase 3 down the road.  
+The following wish list items are ideas are a combination of original thoughts on our website, and those that I've recently surfaced once I saw the capabilities of DCMS and the Proof of Concept (POC), and how I was able to add new content and features to Phase 2.  
 
-Do you have any wish list items of your own?  Feel free to click ***Contact Us*** and let us know if something is missing.  It might even make it into Phase 2.
+**Note: Leo Enhancements are on a separate page.** 
+
+Each item has a proposed Priority, which is entirely subjective on my part. I wish all items were High, and budgets along with it.   As such, not all items will make it into Phase 2, either because there are too many or too low of priority.  Anything that doesn't make it in to Phase 2 you can imagine there may be a Phase 3 one day.
+
+Do you have any wish list items of your own?  
+
+Please feel free to click ***Contact Us*** and let us know if I missed something.  It might even make it into Phase 2.
+
+### Phase 2 Wish-List Items
 
 <table class="topic-table topic-table--numbered" aria-label="Phase 2 wish list">
 	<thead>
@@ -60,3 +69,6 @@ Do you have any wish list items of your own?  Feel free to click ***Contact Us**
 		<tr><td>36</td><td>Discover who is visting the website to provide an enhanced user experience</td><td>Medium</td></tr>
 	</tbody>
 </table>
+<p>
+<a class="orange-link" href="mailto:suggestions@allthingspg.org?cc=dave@allthingspg.org&amp;subject=PG%20Facts%20wish%20list%20suggestion&amp;body=Please%20tell%20us%20about%20the%20item%20you%20would%20like%20to%20suggest.%0D%0A%0D%0A">Suggest an Item</a>
+</p>

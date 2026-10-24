@@ -9,7 +9,7 @@ permalink: /phase-1/copilot-analysis/
 
 ***Note: Instructions used to create this report are the same that were provided to [CHATGPT](/phase-1/chatgpt-analysis/)***
 
-***I need an in-depth analysis of our website www.allthingspg.org The focus should be on usability and scalability, not so much on content itself, although it should be helpful information to the target audience. I'm interested to know - is it a good web site or not, and areas for improvement. it can be as detailed as you like, as long as you long. Examine as many pages as you can, identify faults, compare to modern websites and standards, and make recommendations for improvement. Save the report as a .md file, using #, ### headers.***
+***I need an in-depth analysis of our website [www.allthingspg.org](https://www.allthingspg.org) The focus should be on usability and scalability, not so much on content itself, although it should be helpful information to the target audience. I'm interested to know - is it a good web site or not, and areas for improvement. it can be as detailed as you like, as long as you long. Examine as many pages as you can, identify faults, compare to modern websites and standards, and make recommendations for improvement. Save the report as a .md file, using #, ### headers.***
 
     **Website reviewed:** https://www.allthingspg.org/<br>
 **Review date:** October 2026<br>
@@ -18,7 +18,7 @@ permalink: /phase-1/copilot-analysis/
 
 ## Executive Summary
 
-www.allthingspg.org is a small nonprofit website built to support patients and caregivers affected by Pyoderma Gangrenosum (PG), a rare and painful skin disease. The content is a genuine strength: the site explains an obscure, frightening medical condition in plain, compassionate language, offers a real self-service tool (a provider Clinic Finder), and runs several active community and research programs — a Patient & Family Advisory Committee (PFAC), a patient survey, an industry-partner program, and a rare-disease affiliate network.
+[www.allthingspg.org](https://www.allthingspg.org) is a small nonprofit website built to support patients and caregivers affected by Pyoderma Gangrenosum (PG), a rare and painful skin disease. The content is a genuine strength: the site explains an obscure, frightening medical condition in plain, compassionate language, offers a real self-service tool (a provider Clinic Finder), and runs several active community and research programs — a Patient & Family Advisory Committee (PFAC), a patient survey, an industry-partner program, and a rare-disease affiliate network.
 
 As a piece of software, the site behaves like a simple brochure built page by page rather than a modern content system. There is no on-site search, no filtering or categorization anywhere, and every program (PFAC, survey, clinic finder, news) lives as a handful of disconnected pages rather than a connected journey. Several small but telling defects — a password published in plain text, duplicated page titles, repeated typos, and run-together text with missing spaces — suggest a publishing process with no proofing or quality-control step. None of this makes the site unusable today, but it does mean the site is not yet built to absorb growth gracefully: more providers, more events, more trials, more languages, and more partners will each require manually building more one-off pages rather than filling in a structured template.
 
@@ -513,3 +513,4 @@ The right next step is not a cosmetic redesign. It's deciding, deliberately, wha
 </table>
 
 *This review was conducted by retrieving publicly available page text. It did not include direct inspection of page source code, a rendered browser session, a lab-based performance test, or any authenticated/admin view of the site's content system. Items that specifically require one of those methods — exact heading-tag levels, color contrast ratios, Core Web Vitals scores, keyboard/screen-reader behavior, and `robots.txt`/`sitemap.xml` contents — are flagged throughout as unverified and recommended for a dedicated follow-up check, rather than stated as confirmed findings.*
+

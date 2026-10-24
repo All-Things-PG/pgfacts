@@ -6,20 +6,20 @@ summary: >-
 pages:
   - title: Home
     description: Landing page for the Phase 2 documentation.
-    url: /home/
+    url: /welcome/home/
   - title: Executive Summary
     description: Overview of the site direction and goals.
-    url: /dcms/DCMS_Executive_Summary.html
-  - title: Explore Documentation
-    description: Curated documentation index for the project.
-    url: /docs/
+    url: /welcome/executive-summary/
+  - title: Document Inventory
+    description: Complete inventory of project documents and their review status.
+    url: /welcome/document-inventory/
 tiles:
-  - title: DCMS
-    description: Document the content model and menus.
-    url: /dcms/
-  - title: User Experience
-    description: Describe the portal experiences by visitor type.
-    url: /user-experience/
-  - title: Database
-    description: Capture the data model and diagrams.
-    url: /database/
+  - title: Executive Summary
+    description: The case for Phase 2 and a searchable PG Knowledge Base.
+    url: /welcome/executive-summary/
+  - title: Phase 2 Overview
+    description: Review the project plan, current status, and proof of concept.
+    url: /welcome/phase-2-overview/
+  - title: Document Inventory
+    description: Browse the documents and track their review status.
+    url: /welcome/document-inventory/

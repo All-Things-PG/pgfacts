@@ -12,7 +12,7 @@ banner_tile_group: home
 
 ### Overview
 
-All Things PG (ATPG), as a new nonprofit organization in July 2025, established an early online presence in September 2025 by introducting releasing relelase **Phase 1** of www.allthingspg.org.  That fulfilled an urgent need to establish a PG Foundational presense and to begin our work of Raising PG Awarenewss.  The website created visibilty as a nonprofit organization, gave us credility within the a rare-disease community, and provided need informational support to those affected by Pyoderm Gangrenosum (PG). Phase 1 was an early success!
+All Things PG (ATPG), as a new nonprofit organization in July 2025, established an early online presence in September 2025 by introducting releasing relelase **Phase 1** of [www.allthingspg.org](https://www.allthingspg.org).  That fulfilled an urgent need to establish a PG Foundational presense and to begin our work of Raising PG Awarenewss.  The website created visibilty as a nonprofit organization, gave us credility within the a rare-disease community, and provided need informational support to those affected by Pyoderm Gangrenosum (PG). Phase 1 was an early success!
 
 ATPG just celebrated our first year anniversary on July 7, 2026.  It was a time to reflect on some amazing accomplishments and our has expanded well beyond our initial first efforts.  Board Members have engaged in research opportunites with medical professionals clinical trials with pharmaceuticals, drug development participation with the FDA, attending conferences with our own All Things PG booth and printed materials, created connections and industry engagements with other associations, continued our education and advocacy with our website and PFAC activities, as well as numerous newsletters and fundraisers on our website.  Yes, we've had a very busy year, and every board member should be very proud of their efforts and achievemnts as a productive team effort!  The Phase 1 website may be static - but we are not!
 
@@ -51,7 +51,7 @@ The website must serve more than just Patients and Caregivers.  Clinicians may n
 The goal of All Things PG is to be **all** things related to the rare disease, not just clinical information that you can easily search with Google or an AI tool.  We want to build a growing KB over time and improve search capabilities.
 xxx
 
-Phase 1 of www.allthingspg.org has been generally well received as an attractive first attempt to provide PG related content, resources, and organizational awareness.  The About US section of the website has links to the Clinic Finder, Our Mission and Our People, which shows the [Board of Directors](https://www.allthingspg.org/our-people) and their bios.
+Phase 1 of [www.allthingspg.org](https://www.allthingspg.org) has been generally well received as an attractive first attempt to provide PG related content, resources, and organizational awareness.  The About US section of the website has links to the Clinic Finder, Our Mission and Our People, which shows the [Board of Directors](https://www.allthingspg.org/our-people) and their bios.
 
 Phase 1 fulfilled initial goals for a startup nonprofit organization:
 
@@ -149,4 +149,5 @@ Dave DePottie<br>
 Chairman and IT Director<br>
 All Things PG
 dave@allthingpg.org
+
 

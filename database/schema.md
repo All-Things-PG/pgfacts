@@ -9,7 +9,7 @@ updated: 2026-10-19
 
 # Database Schema
 
-The documentation site describes the schema for the AllThingsPG database in SQL Server.  AllThingsDB is a [**relational database**](/database/) that contains both data and business logic and will be used by the Phase 2 version of www.allthingspg.org. Refer to a link for a discusson on Databases.
+The documentation site describes the schema for the AllThingsPG database in SQL Server.  AllThingsDB is a [**relational database**](/database/) that contains both data and business logic and will be used by the Phase 2 version of [www.allthingspg.org](https://www.allthingspg.org). Refer to a link for a discusson on Databases.
 
  The schema for the database is created, maintained and deployed by a SSDT project in VS 2022 called **AllThingsPG.Database** contained in GitHub, and is considered the master source of all schema The database will be developed and tested on a local SQL Server, and when ready, will be deployed to a staging environment in Azure to a Azure SQL database. Refer to Builds and Deployments for more information.
  
@@ -1753,6 +1753,7 @@ The following lists cover every view, function, and stored procedure in the data
     <tr><td style="white-space: nowrap; width: 1%;">Validate_Staging</td><td>Validates staging content to ensure all StagingElements reference an existing StagingDocument. Writes validation errors to ErrorLog and sets @IsValid accordingly.</td></tr>
   </tbody>
 </table>
+
 
 
 

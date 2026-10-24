@@ -4,7 +4,7 @@ title: Phase 2 Overview
 nav_label: Welcome
 breadcrumb: Welcome > Phase 2 Overview
 description: Browse documentation by topic.
-permalink: /welcome/phase-2-overview/
+work_in_progress: false
 ---
 # Phase 2 Overview
 
@@ -109,7 +109,7 @@ The key vision and objectives for Phase 2 will be:
 		</tr>
 		<tr>
 			<td>6</td>
-			<td>Eollect data to support development of future releases (usuage data, logs, error logs, profile information etc)</td>
+			<td>Collect data to support development of future releases (usuage data, logs, error logs, profile information etc)</td>
 		</tr>
 		<tr>
 			<td>7</td>
@@ -128,11 +128,12 @@ The key vision and objectives for Phase 2 will be:
 
 ### What is the current status of things?
 
-<table class="topic-table topic-table--numbered">
+<table class="topic-table topic-table--numbered topic-table--status">
 	<thead>
 		<tr>
 			<th>Item</th>
 			<th>Description</th>
+			<th>% Done</th>
 			<th>Status</th>
 		</tr>
 	</thead>
@@ -140,42 +141,56 @@ The key vision and objectives for Phase 2 will be:
 		<tr>
 			<td>1</td>
 			<td>Design and create a Proof of Concept Database that supports mission objectives</td>
-			<td>Mostly done</td>
+			<td>95%</td>
+			<td>95% done.  Still a bit of work on Registration</td>
 		</tr>
 		<tr>
 			<td>2</td>
 			<td>Plan some of the new features</td>
-			<td>Framework features are in good shape, need to include Leo additions</td>
+			<td>70%</td>
+			<td>Framework features are in good shape, need to include Leo additions after review.</td>
 		</tr>
 		<tr>
 			<td>3</td>
 			<td>Apply for and build a nonprofit technology platform based on Azure</td>
+			<td>100%</td>
 			<td>Approved - M365 Business Basic license for 300 users plus a $2000 grant per year</td>
 		</tr>
 		<tr>
 			<td>4</td>
 			<td>Apply for a nonprofit organizational license with GitHub</td>
+			<td>100%</td>
 			<td>Approved - Github is THE platform for source control and AI development</td>
 		</tr>
 		<tr>
 			<td>5</td>
 			<td>Explore current technology, given environment and circumstances</td>
-			<td>MS SQL, ASP.NET Core, GitHub Pages, Azure, AI</td>
+			<td>50%</td>
+			<td>MS SQL, ASP.NET Core, GitHub Pages, Azure, AI.  DB will be Azure SQL, in staging and production</td>
 		</tr>
 		<tr>
 			<td>6</td>
 			<td>Document planned changes in writing, host on pgfacts.org</td>
+			<td>70%</td>
 			<td>On-going</td>
 		</tr>
 		<tr>
 			<td>7</td>
 			<td>Build a proof of concept (POC) that proves the new design concepts</td>
-			<td>90% done</td>
+			<td>95%</td> 
+			<td>Would like to flush out a Registration example</td> 
 		</tr>
 		<tr>
-			<td>7</td>
+			<td>8</td>
 			<td>Demo the Proof of Concept</td>
-			<td>Done - I was able to show the prototype to Strom at the ODS Conference</td>
+			<td>50%</td>
+			<td>I was able to show the prototype to Strom at ODS.  Want to present to the Board soon.</td>
+		</tr>
+		<tr>
+			<td>9</td>
+			<td>Work with Leo on Requirements</td>
+			<td>5%</td>
+			<td> I was able to get a contact person to talk to about the phase 2 Leo requirements.</td>
 		</tr>
 	</tbody>
 </table>
@@ -183,8 +198,6 @@ The key vision and objectives for Phase 2 will be:
 
 ### How best to review the documentation?
 
-> **Review Steps**
->
 > 1. Browse pages and ask questions by submitting comments (Contact Us).  There is a lot to learn and understand about Phase 2 but can be worth the effort if you are a stakeholder.  Be involved in the discovery process.  If there is a concern, or if there are new feature you might be interested in, now is the time to make that known.  Once the system is designed or even developed it becomes difficult to stop mid-stream to add anything significant without a redesign and reintegration.  This happens all the time in the real world because things do change, but also because of the initial lack of attention to detail.
 >
 > 2. Try to understand the key reasons for building Phase 2 from the Executive Summary and the Phase 1 AI Analysis, and other documents.  The main 'feature' is that Phase 2 will add a database, which will provide becomes a searchable and easily expandable **Knowledge Base (KB)** of published information about PG, on any topic, for any user.  A search will quickly list all the menu items and articles that target the information you're looking for.  
@@ -198,10 +211,13 @@ The key vision and objectives for Phase 2 will be:
 > 6. Identify the new features that interest you.  Ask questions, submit feedback early and often. Make sure Phase 2 offers the solutions you need.
 >
 > 7. Report any errors in documentation.  Very much appreciated.
-{: .platform-summary}
+{: .simple-blockquote}
 
 ### Use of Tiles
 
 At the top of every page you will see tiles, or bubbles as some call them.  These are just buttons that take you to the most interesting content within that topic area.  They act like menu items, so just click on them.  
 
 You can now proceed to the [Executive Summary]({{ '/welcome/executive-summary/' | relative_url }}), or any other Tile or Menu Item of your choice.
+
+
+

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 310" role="img" aria-labelledby="title desc">
+  <title id="title">The intended dynamic content lifecycle</title>
+  <desc id="desc">Content is gathered, organized in staging, reviewed, published, then connected to menu items and displayed. The authoring and review workflow is still to be completed.</desc>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L10,5 L0,10 z" fill="#52758b" /></marker></defs>
+  <rect width="1200" height="310" rx="18" fill="#f1f1f1" />
+  <g font-family="Arial, Helvetica, sans-serif" fill="#263746">
+    <rect x="20" y="45" width="200" height="200" rx="14" fill="#fff" stroke="#e07822" stroke-width="2" />
+    <text x="120" y="80" text-anchor="middle" font-size="15" font-weight="700">CONTENT SOURCES</text>
+    <rect x="40" y="98" width="160" height="90" rx="8" fill="#fbf4e8" stroke="#d8c7ad" />
+    <text x="120" y="128" text-anchor="middle" font-size="15" font-weight="600">Articles</text><text x="120" y="151" text-anchor="middle" font-size="14">Stories · directories</text><text x="120" y="173" text-anchor="middle" font-size="14">Images · media</text>
+    <text x="120" y="219" text-anchor="middle" font-size="13" fill="#485965">Find or create useful content</text>
+
+    <rect x="260" y="45" width="200" height="200" rx="14" fill="#fff" stroke="#e07822" stroke-width="2" />
+    <text x="360" y="80" text-anchor="middle" font-size="15" font-weight="700">STAGE &amp; ORGANIZE</text>
+    <rect x="280" y="98" width="160" height="90" rx="8" fill="#fff" stroke="#d8c7ad" />
+    <rect x="303" y="116" width="114" height="25" rx="4" fill="#fbf4e8" /><text x="360" y="133" text-anchor="middle" font-size="13" font-weight="600">Content document</text>
+    <rect x="303" y="147" width="114" height="25" rx="4" fill="#e7f2f7" /><text x="360" y="164" text-anchor="middle" font-size="13">Content blocks</text>
+    <text x="360" y="219" text-anchor="middle" font-size="13" fill="#485965">Prepare in staging</text>
+
+    <rect x="500" y="45" width="200" height="200" rx="14" fill="#fff" stroke="#e07822" stroke-width="2" />
+    <text x="600" y="80" text-anchor="middle" font-size="15" font-weight="700">REVIEW</text>
+    <rect x="520" y="98" width="160" height="90" rx="8" fill="#fbf4e8" stroke="#d8c7ad" />
+    <circle cx="546" cy="122" r="7" fill="#43845a" /><path d="m542 122 3 3 6-7" fill="none" stroke="#fff" stroke-width="2" /><text x="561" y="127" font-size="13">Source</text>
+    <circle cx="546" cy="145" r="7" fill="#43845a" /><path d="m542 145 3 3 6-7" fill="none" stroke="#fff" stroke-width="2" /><text x="561" y="150" font-size="13">Accuracy</text>
+    <circle cx="546" cy="168" r="7" fill="#43845a" /><path d="m542 168 3 3 6-7" fill="none" stroke="#fff" stroke-width="2" /><text x="561" y="173" font-size="13">Audience</text>
+    <text x="600" y="219" text-anchor="middle" font-size="13" fill="#485965">Check before approval</text>
+
+    <rect x="740" y="45" width="200" height="200" rx="14" fill="#fff" stroke="#e07822" stroke-width="2" />
+    <text x="840" y="80" text-anchor="middle" font-size="15" font-weight="700">PUBLISH</text>
+    <rect x="760" y="98" width="160" height="90" rx="8" fill="#e7f2f7" stroke="#9ab9c9" />
+    <circle cx="840" cy="137" r="21" fill="#43845a" /><path d="m830 137 7 7 14-16" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="840" y="174" text-anchor="middle" font-size="13" font-weight="600">Approved content</text>
+    <text x="840" y="219" text-anchor="middle" font-size="13" fill="#485965">Move to production</text>
+
+    <rect x="980" y="45" width="200" height="200" rx="14" fill="#fff" stroke="#e07822" stroke-width="2" />
+    <text x="1080" y="80" text-anchor="middle" font-size="15" font-weight="700">MENU &amp; DISPLAY</text>
+    <rect x="1000" y="98" width="160" height="90" rx="8" fill="#fff" stroke="#d8c7ad" />
+    <rect x="1013" y="112" width="134" height="24" rx="4" fill="#fbf4e8" /><text x="1080" y="129" text-anchor="middle" font-size="13" font-weight="600">Menu item</text>
+    <path d="M1080 138v13" stroke="#52758b" stroke-width="2" marker-end="url(#arrow)" />
+    <text x="1080" y="174" text-anchor="middle" font-size="13">Linked content</text>
+    <text x="1080" y="219" text-anchor="middle" font-size="13" fill="#485965">Show to its audience</text>
+  </g>
+  <path d="M228 145h23" fill="none" stroke="#52758b" stroke-width="3" marker-end="url(#arrow)" /><path d="M468 145h23" fill="none" stroke="#52758b" stroke-width="3" marker-end="url(#arrow)" /><path d="M708 145h23" fill="none" stroke="#52758b" stroke-width="3" marker-end="url(#arrow)" /><path d="M948 145h23" fill="none" stroke="#52758b" stroke-width="3" marker-end="url(#arrow)" />
+  <text x="600" y="281" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#485965">Intended lifecycle — complete authoring, review, and publication tools are still to be built.</text>
+</svg>

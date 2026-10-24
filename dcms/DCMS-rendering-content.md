@@ -43,6 +43,7 @@ ContentType = Article
 -- it sets the position of the CC based on the BlockInfo
 -- the system adds any additional elements to the page
 -- the system then renders the entire page as HTML to the website
+```
 
 An article page and a gallery page can use different layouts and different content cards without requiring `/Content/Index` to understand every presentation detail.
 
@@ -50,6 +51,20 @@ The design follows this rule:
 
 > **The document identifies the kind of page. The elements supply the page's content. The content page controls composition. The content cards control presentation.**
 
+
+### Conceptual model 1: From menu selection to rendered page
+
+ASP.NET Core receives the selected content document, loads its elements, chooses the page type, and uses supported content cards to produce the HTML page. This is a high-level model; not every renderer shown in the design is implemented.
+
+![Conceptual rendering pipeline: a menu item identifies a document, ASP.NET Core loads it and selects a page, content cards render its elements, and the browser receives the composed page](/assets/images/dcms-rendering-pipeline.svg)
+
+### Conceptual model 2: One article, multiple content cards
+
+This article example shows how one `ContentDocument` can contain several `ContentElement` records. Each supported element can be rendered by an appropriate card, and `BlockInfo` can provide optional layout hints.
+
+![Conceptual article example: one content document contains Markdown and image elements that render as separate text and image cards within one article page](/assets/images/dcms-article-rendering.svg)
+
+The element sequence in this example is illustrative. The current schema does not persist an explicit order, and the complete set of supported card renderers remains to be defined.
 ---
 
 ## 1. Content Responsibilities

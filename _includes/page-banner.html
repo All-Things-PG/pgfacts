@@ -34,8 +34,8 @@
           <span class="oldsite-breadcrumb-current">{{ page.title }}</span>
         {% endif %}
       </nav>
-      {% if site.debug %}
-        <span class="oldsite-page-source">Debug: {{ page.path }}</span>
+      {% if page.work_in_progress != false %}
+        <span class="oldsite-page-source"><strong><span class="work-in-progress-label">Work In Progress:</span> {{ page.path }}</strong></span>
       {% endif %}
       {% assign banner_description = page.description | default: page.title %}
       {% if banner_description %}
@@ -44,3 +44,5 @@
     </div>
   </div>
 </div>
+
+

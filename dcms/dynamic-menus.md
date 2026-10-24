@@ -11,6 +11,15 @@ updated: 2026-10-10
 
 The DCMS menu is stored as data rather than as a fixed list of links in page markup. Each MenuItem record has a title, optional parent, route type, route target, visitor mask, sort order, and active state. ParentMenuItemID forms the hierarchy; SortOrder arranges siblings; VisitorMask determines which selected audience sees each item.
 
+### How the visitor mask filters the menu
+
+Each menu item has a visitor mask: the visitor types allowed to see it. When a Provider (`M`) is selected, for example, the website shows menu items whose masks include `M`. Items for other visitor types are left out of that menu.
+
+![Visitor mask example: the selected Provider type filters dynamic menu items, and only matching items appear in the Provider menu](/assets/images/dcms-visitor-mask.svg)
+
+A shared title can also have separate menu records for different audiences. Each record can link to content written for that visitor type.
+
+![Audience-specific menu example: separate Diagnosis menu items for patients, caregivers, and providers link to different content](/assets/images/dcms-audience-specific-menus.svg)
 ### Menu identity and content identity
 
 MenuItemID identifies the navigation choice. ContentDocumentID identifies its associated article. For a content route, the menu item is created first, then a placeholder document supplies its ContentDocumentID. The RouteTarget carries the route to that document, for example `/content?target=18`.

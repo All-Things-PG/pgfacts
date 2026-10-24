@@ -3,83 +3,154 @@ layout: page
 title: What is a Portal?
 nav_label: User Experience
 breadcrumb: User Experience > What is a Portal?
-description: A role-aware starting point within one shared All Things PG site.
+description: Five audience splash screens help visitors find a useful starting point on All Things PG.
 permalink: /user-experience/what-is-a-portal/
 ---
 
 <style>
-.poc-screenshot-frame {
-  width: min(100%, 923px);
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
+.portal-intro {
+  max-width: 58rem;
+  margin: 0 auto 2rem;
+  color: #34444d;
+  font-size: 1.08rem;
+  line-height: 1.65;
+}
+
+.portal-intro h2 { color: #d96500; }
+.portal-hero {
+  --hero-image: none;
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
   align-items: center;
-  justify-content: flex-start;
-  gap: 12px;
-  margin: 1rem 0 1.5rem;
-  padding: 12px;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  box-sizing: border-box;
+  min-height: 340px;
+  margin: 1.5rem 0;
+  padding: clamp(1.5rem, 5vw, 4rem);
   overflow: hidden;
-  border: 1px solid #cbd5e1;
-  border-radius: 6px;
-  background: #f8fafc;
+  border: 1px solid #e5d8c8;
+  border-radius: 14px;
+  background: #f8f5ef;
+  color: #26394a;
 }
-
-.poc-screenshot-frame h3 {
-  flex: none;
-  margin: 0;
-  text-align: center;
-  font-size: 1rem;
-  line-height: 1.3;
+.portal-hero::before {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  content: "";
+  background-image: var(--hero-image);
+  background-size: cover;
+  background-position: center;
 }
-
-.poc-screenshot-frame img {
-  display: block;
-  max-width: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
+.portal-hero::after {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  content: "";
+  background: linear-gradient(90deg, rgba(250,248,242,.95) 0%, rgba(250,248,242,.88) 48%, rgba(250,248,242,.58) 100%);
 }
-
-@media (max-width: 600px) {
-  .poc-screenshot-frame {
-    width: 100%;
-  }
+.portal-hero--patient { --hero-image: url('/assets/images/caregiver-wheelchair-hero.png'); background-position: center 52%; }
+.portal-hero--caregiver { --hero-image: url('/assets/images/caregiver-wheelchair-hero.png'); }
+.portal-hero--provider { --hero-image: url('/assets/images/provider-exam-room-hero.png'); background-position: center 52%; }
+.portal-hero--pharma { --hero-image: url('/assets/images/poc-provider-portal.png'); }
+.portal-hero--guest { --hero-image: url('/assets/images/poc-home-visitor-experiences.png'); }
+.portal-hero__intro h2 { margin: 0 0 .7rem; color: #a94d00; font-size: clamp(1.7rem, 3vw, 2.35rem); text-shadow: 0 1px 0 rgba(255,255,255,.45); }
+.portal-hero__intro p { max-width: 34rem; margin: 0; font-size: 1.05rem; line-height: 1.6; }
+.portal-hero__features { padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
+.portal-hero__features h3 { margin: 0 0 .7rem; color: #a94d00; font-size: 1.15rem; }
+.portal-hero__features ul { margin: 0; padding-left: 1.2rem; }
+.portal-hero__features li { margin: .48rem 0; line-height: 1.45; }
+.portal-hero--pharma::after { background: linear-gradient(90deg, rgba(250,248,242,.98) 0%, rgba(250,248,242,.94) 55%, rgba(250,248,242,.72) 100%); }
+.portal-hero--guest::after { background: linear-gradient(90deg, rgba(250,248,242,.96) 0%, rgba(250,248,242,.88) 55%, rgba(250,248,242,.48) 100%); }
+@media (max-width: 700px) {
+  .portal-hero { grid-template-columns: 1fr; min-height: 0; gap: 1.25rem; padding: 1.25rem; }
+  .portal-hero::after { background: rgba(250,248,242,.88); }
 }
 </style>
 
-
 # What is a Portal?
 
-A portal is a starting point organized around why someone came to All Things PG. It gives visitors a clearer route into the site without turning each visitor experience into a separate website.
-
-For example, a patient may want plain-language information about PG, treatment, daily life, and support. A clinician may need concise clinical context, evidence, research, or links to further resources. Both may be interested in the same subject, but the most useful presentation can differ.
-
-### A shared site with tailored paths
-
-The portal pattern combines a common All Things PG identity and site structure with differences in the first page, menu, emphasis, and selected content. Visitors can start with Patient, Caregiver, Provider, Pharmaceutical, or Guest. The selected experience helps guide what they see first.
-
-<div class="poc-screenshot-frame">
-  <h3>Patient Portal</h3>
-  <img src="/assets/images/poc-patient-portal.png" alt="The POC patient portal shows a patient-oriented landing page and experience selector.">
+<div class="portal-intro">
+  <h2>A more helpful starting point</h2>
+  <p>All Things PG serves people who come to the site with different questions and goals. These splash screens introduce five ways into the same shared site. Visitors can choose a path from the Welcome menu or change the active experience with the “Choose Your Experience” drop-down. Each splash screen pairs a short welcome with useful topics, helping visitors find a relevant place to begin.</p>
 </div>
 
-<div class="poc-screenshot-frame">
-  <h3>Provider Portal</h3>
-  <img src="/assets/images/poc-provider-portal.png" alt="The POC provider portal shows a clinical starting point with its own navigation.">
-</div>
+<section class="portal-hero portal-hero--patient" aria-labelledby="patient-splash-title">
+  <div class="portal-hero__intro">
+    <h2 id="patient-splash-title">Patient</h2>
+    <p>Living with pyoderma gangrenosum can bring difficult questions at every stage. Start with clear information, explore options, and find support at a pace that feels right for you.</p>
+  </div>
+  <div class="portal-hero__features">
+    <h3>Find a helpful next step</h3>
+    <ul>
+      <li>Understand PG, symptoms, and what to expect.</li>
+      <li>Explore treatment options and practical wound care.</li>
+      <li>Connect with patient stories, community, and support.</li>
+    </ul>
+  </div>
+</section>
 
-The portal does not have to duplicate every article for every audience. DCMS can associate menu items and content with visitor experiences so the site can present appropriate destinations and context. Where the same topic needs distinct patient and provider treatments, the system can route each path to the intended content.
+<section class="portal-hero portal-hero--caregiver" aria-labelledby="caregiver-splash-title">
+  <div class="portal-hero__intro">
+    <h2 id="caregiver-splash-title">Caregiver</h2>
+    <p>Supporting someone with PG can mean helping with appointments, treatment, daily care, and uncertainty. Find practical guidance while making room for your own questions and wellbeing.</p>
+  </div>
+  <div class="portal-hero__features">
+    <h3>Support for the journey</h3>
+    <ul>
+      <li>Prepare for appointments and care conversations.</li>
+      <li>Find information about treatment and day-to-day support.</li>
+      <li>Explore caregiver stories, community, and resources for yourself.</li>
+    </ul>
+  </div>
+</section>
 
-### What the POC demonstrates
+<section class="portal-hero portal-hero--provider" aria-labelledby="provider-splash-title">
+  <div class="portal-hero__intro">
+    <h2 id="provider-splash-title">Provider</h2>
+    <p>Whether PG is familiar or new to your practice, find a focused starting point for clinical context, current evidence, and resources that support coordinated care.</p>
+  </div>
+  <div class="portal-hero__features">
+    <h3>Clinical resources</h3>
+    <ul>
+      <li>Review diagnosis and treatment guidance.</li>
+      <li>Find research, evidence, and clinical trial information.</li>
+      <li>Explore professional resources and multidisciplinary care.</li>
+    </ul>
+  </div>
+</section>
 
-The POC shows the shared visual shell, visitor-experience selector, separate landing pages, and audience-specific menus. It makes the portal idea tangible and demonstrates that the experience can be shaped by visitor type.
+<section class="portal-hero portal-hero--pharma" aria-labelledby="pharma-splash-title">
+  <div class="portal-hero__intro">
+    <h2 id="pharma-splash-title">Pharmaceutical</h2>
+    <p>Learn about the public work, research landscape, and patient perspectives shaping the PG community. This path helps industry visitors find relevant information and understand where to learn more.</p>
+  </div>
+  <div class="portal-hero__features">
+    <h3>Research and collaboration</h3>
+    <ul>
+      <li>Learn about research priorities and unmet needs.</li>
+      <li>Understand patient perspectives and educational efforts.</li>
+      <li>Find public information about collaboration and next steps.</li>
+    </ul>
+  </div>
+</section>
 
-The POC’s example text is intentionally limited. These screenshots document a working design pattern, not a finished set of patient or clinical materials, a complete requirements specification, or the final visual design.
+<section class="portal-hero portal-hero--guest" aria-labelledby="guest-splash-title">
+  <div class="portal-hero__intro">
+    <h2 id="guest-splash-title">Guest</h2>
+    <p>New to All Things PG, or just looking around? Begin with a broad introduction to PG and the community, then choose a topic or audience path that fits what brought you here.</p>
+  </div>
+  <div class="portal-hero__features">
+    <h3>Explore All Things PG</h3>
+    <ul>
+      <li>Get to know PG and the All Things PG community.</li>
+      <li>Discover the main topics and public resources on the site.</li>
+      <li>Choose another experience whenever it better fits your needs.</li>
+    </ul>
+  </div>
+</section>
 
-### What a portal is not
 
-Selecting Patient, Caregiver, Provider, Pharmaceutical, or Guest expresses the visitor’s preferred experience. It is not identity verification, a clinical credential check, or a security boundary. If a future feature needs restricted information, authentication and authorization must be designed separately.
 
-### Connection to DCMS
-
-Portals are the visitor-facing result of the DCMS content and menu model. The experience selector supplies visitor context; the menu and content relationships determine which paths and material are presented. See [Dynamic Menus](/dcms/dynamic-menus/) and [Dynamic Content](/dcms/dynamic-content/) for the system design behind that behavior.

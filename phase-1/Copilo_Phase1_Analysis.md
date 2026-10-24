@@ -1,6 +1,6 @@
 # All Things PG Website Analysis — Phase 1
 
-**Site reviewed:** www.allthingspg.org
+**Site reviewed:** [www.allthingspg.org](https://www.allthingspg.org)
 **Review date:** October 3, 2026
 **Pages reviewed:** Home, Mission Statement, Our People, What is PG, PG Symptoms, How to Identify PG, Talking About PG, Clinic Finder, News & Events (index + 7 individual articles/events), Contact Us, Donate, Data and Privacy — 17+ unique URLs in total.
 
@@ -308,3 +308,4 @@ The site is a static site: every page is an independently generated, standalone 
 </table>
 
 *This review was conducted via automated retrieval of publicly available page content. It did not include direct inspection of underlying page source, live browser rendering, or authenticated/admin views of the website's content system. Visual, color-contrast, and mobile-responsiveness observations are flagged throughout as unverified where applicable.*
+

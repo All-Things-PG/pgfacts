@@ -27,24 +27,24 @@ The main layout files are:
 	</thead>
 	<tbody>
 		<tr>
-			<td><a href="{{ '/_layouts/default.html' | relative_url }}">_layouts/default.html</a></td>
+			<td><code>_layouts/default.html</code></td>
 			<td>Includes the site header and page banner around the page layout.</td>
 		</tr>
 		<tr>
-			<td><a href="{{ '/_layouts/page.html' | relative_url }}">_layouts/page.html</a> and <a href="{{ '/_layouts/home.html' | relative_url }}">_layouts/home.html</a></td>
+			<td><code>_layouts/page.html</code> and <code>_layouts/home.html</code></td>
 			<td>Place the shared topic tiles before the page content.</td>
 		</tr>
 		<tr>
-			<td><a href="{{ '/_includes/site-header.html' | relative_url }}">_includes/site-header.html</a></td>
-			<td>Renders the logo and menu from <a href="{{ '/_data/navigation.yml' | relative_url }}">_data/navigation.yml</a>.</td>
+			<td><code>_includes/site-header.html</code></td>
+			<td>Renders the logo and menu from <code>_data/navigation.yml</code>.</td>
 		</tr>
 		<tr>
-			<td><a href="{{ '/_includes/page-banner.html' | relative_url }}">_includes/page-banner.html</a></td>
+			<td><code>_includes/page-banner.html</code></td>
 			<td>Renders the breadcrumb and page description.</td>
 		</tr>
 		<tr>
-			<td><a href="{{ '/_includes/topic-tiles.html' | relative_url }}">_includes/topic-tiles.html</a></td>
-			<td>Chooses topic tiles from each topic's <code>_data/&lt;topic&gt;/topic.yml</code> file or a named tile group from <a href="{{ '/_data/home_topic_groups.yml' | relative_url }}">_data/home_topic_groups.yml</a>.</td>
+			<td><code>_includes/topic-tiles.html</code></td>
+			<td>Chooses topic tiles from each topic's <code>_data/&lt;topic&gt;/topic.yml</code> file or a named tile group from <code>_data/home_topic_groups.yml</code>.</td>
 		</tr>
 		<tr>
 			<td><a href="{{ '/assets/css/style.css' | relative_url }}">assets/css/style.css</a></td>
@@ -121,7 +121,7 @@ The most common fields are:
 		</tr>
 		<tr>
 			<td><code>banner_tile_group</code></td>
-			<td>Uses a non-topic tile group from <a href="{{ '/_data/home_topic_groups.yml' | relative_url }}">_data/home_topic_groups.yml</a>.</td>
+			<td>Uses a non-topic tile group from <code>_data/home_topic_groups.yml</code>.</td>
 		</tr>
 		<tr>
 			<td><code>redirect_to</code></td>
@@ -136,7 +136,7 @@ The most common fields are:
 
 Edit:
 
-- [_data/navigation.yml](../_data/navigation.yml)
+- `_data/navigation.yml`
 
 This file controls the top-level menu labels and the basic descriptions associated with them.
 
@@ -144,7 +144,7 @@ This file controls the top-level menu labels and the basic descriptions associat
 
 Edit:
 
-- Topic data files such as [_data/database/topic.yml](../_data/database/topic.yml)
+- Topic data files such as `_data/database/topic.yml`
 
 Each topic data file is the source of truth for:
 
@@ -159,15 +159,15 @@ Redirect pages use `layout: redirect` and a `redirect_to` value. The redirect la
 
 Current redirect examples in this site:
 
-- [index.md](../index.md) redirects `/` to `/home/`
+- [`index.md`](/home/) redirects `/` to `/home/`
 
-The redirect behavior itself is defined in [_layouts/redirect.html](../_layouts/redirect.html).
+The redirect behavior itself is defined in `_layouts/redirect.html`.
 
 ### Change the header/menu behavior
 
 Edit:
 
-- [_includes/site-header.html](../_includes/site-header.html)
+- `_includes/site-header.html`
 
 This file controls:
 
@@ -180,7 +180,7 @@ This file controls:
 
 Edit:
 
-- [_includes/page-banner.html](../_includes/page-banner.html)
+- `_includes/page-banner.html`
 
 This is where the menu/topic label and short description appear under the header.
 
@@ -188,8 +188,8 @@ This is where the menu/topic label and short description appear under the header
 
 Edit:
 
-- [_includes/site-gate.html](../_includes/site-gate.html)
-- [assets/css/style.css](../assets/css/style.css)
+- `_includes/site-gate.html`
+- [`assets/css/style.css`](/assets/css/style.css)
 
 The gate is the overlay shown before access. The code is case-insensitive for `ATPG`.
 
@@ -197,17 +197,17 @@ The gate is the overlay shown before access. The code is case-insensitive for `A
 
 Edit:
 
-- [_layouts/home.html](../_layouts/home.html)
-- [_layouts/page.html](../_layouts/page.html)
-- [_layouts/default.html](../_layouts/default.html)
+- `_layouts/home.html`
+- `_layouts/page.html`
+- `_layouts/default.html`
 
-These control the page wrappers. Both layouts use [_includes/topic-tiles.html](../_includes/topic-tiles.html) to render the correct tile bar before page content.
+These control the page wrappers. Both layouts use `_includes/topic-tiles.html` to render the correct tile bar before page content.
 
 ### Change the site look and spacing
 
 Edit:
 
-- [assets/css/style.css](../assets/css/style.css)
+- [`assets/css/style.css`](/assets/css/style.css)
 
 This file controls:
 
@@ -229,91 +229,89 @@ The front matter guidance now lives in this page. Use the front matter section a
 
 The home section contains the landing page for the site.
 
-- [home/index.md](../home/index.md) is the home page entry point
-- [home/home.md](../home/home.md) is the page content that appears on the home page
+- [`home/index.md`](/home/) is the home page entry point
+- [`home/home.md`](/welcome/home/) is the page content that appears on the home page
 
 ### `dcms/`
 
 This folder contains the DCMS topic pages.
 
-- [dcms/index.md](../dcms/index.md) is the DCMS landing page
-- [dcms/what-is-dcms.md](../dcms/what-is-dcms.md)
-- [dcms/dynamic-content.md](../dcms/dynamic-content.md)
-- [dcms/dynamic-menus.md](../dcms/dynamic-menus.md)
+- [`dcms/index.md`](/dcms/) is the DCMS landing page
+- [`dcms/what-is-dcms.md`](/dcms/what-is-dcms/)
+- [`dcms/dynamic-content.md`](/dcms/dynamic-content/)
+- [`dcms/dynamic-menus.md`](/dcms/dynamic-menus/)
 - and the other DCMS-related documents
 
 ### `database/`
 
 This folder contains the database topic pages.
 
-- [database/index.md](../database/index.md) is the Database landing page
-- [database/why-have-a-database.md](../database/why-have-a-database.md)
-- [database/main-tables.md](../database/main-tables.md)
-- [database/schema.md](../database/schema.md)
-- [database/diagrams.md](../database/diagrams.md)
+- [`database/index.md`](/database/) is the Database landing page
+- [`database/why-have-a-database.md`](/database/why-have-a-database/)
+- [`database/main-tables.md`](/database/main-tables/)
+- [`database/schema.md`](/database/schema/)
+- [`database/diagrams.md`](/database/diagrams/)
 
 ### `user-experience/`
 
-This folder contains the persona / portal pages.
+This folder contains shared experience pages and the patient and provider portal examples.
 
-- [user-experience/index.md](../user-experience/index.md) is the User Experience landing page
-- [user-experience/what-is-a-portal.md](../user-experience/what-is-a-portal.md)
-- [user-experience/selecting-a-user-experience.md](../user-experience/selecting-a-user-experience.md)
-- [user-experience/patients.md](../user-experience/patients.md)
-- [user-experience/caregivers.md](../user-experience/caregivers.md)
-- [user-experience/providers.md](../user-experience/providers.md)
-- [user-experience/pharmaceutical.md](../user-experience/pharmaceutical.md)
-- [user-experience/guest.md](../user-experience/guest.md)
-
+- [`user-experience/index.md`](/user-experience/) is the User Experience landing page
+- [`user-experience/what-is-a-portal.md`](/user-experience/what-is-a-portal/)
+- [`user-experience/selecting-a-user-experience.md`](/user-experience/selecting-a-user-experience/)
+- [`user-experience/patients.md`](/user-experience/patients/) is Example 1: Patients
+- [`user-experience/providers.md`](/user-experience/providers/) is Example 2: Providers
+- [`user-experience/mobile-friendly.md`](/user-experience/mobile-friendly/)
+- Retired Caregiver, Pharmaceutical, and Guest portal drafts are retained in `user-experience/_archive/` and are not published.
 ### `technical/`
 
 This folder contains the working documentation and maintenance guides for the site.
 
-- [technical/index.md](../technical/index.md) is the Technical topic landing page
-- [technical/managing-tiles.md](../technical/managing-tiles.md)
-- [technical/managing-pages.md](../technical/managing-pages.md)
-- [technical/pgfacts-site-guide.md](../technical/pgfacts-site-guide.md) is the full maintenance guide
+- [`technical/index.md`](/technical/) is the Technical topic landing page
+- [`technical/managing-tiles.md`](/technical/managing-tiles/)
+- [`technical/managing-pages.md`](/technical/managing-pages.html)
+- [`technical/pgfacts-site-guide.md`](/technical/pgfacts-site-guide/) is the full maintenance guide
 
 ### `docs/`
 
 This folder contains older public documentation and archive-style supporting pages.
 
-- [docs/index.md](../docs/index.md) is the Documents page
-- [docs/executive-summary.md](../docs/executive-summary.md)
-- [docs/curating-content.md](../docs/curating-content.md)
-- [docs/managing-tiles.md](../docs/managing-tiles.md)
-- [docs/portal-experience.md](../docs/portal-experience.md)
+- [`docs/index.md`](/docs/) is the Documents page
+- `docs/DCMS_Executive_Summary.md`
+- [`docs/DCMS_Curating_Content.md`](/docs/DCMS_Curating_Content/)
+- `docs/DCMS_Managing_Tiles.md`
+- `docs/DCMS_Portal_Experience.md`
 
 ### `_data/`
 
 This folder stores the site’s structured data.
 
-- [_data/navigation.yml](../_data/navigation.yml) controls the top menu
-- Topic data files such as [_data/database/topic.yml](../_data/database/topic.yml) control each topic's summary, tiles, and page list
+- `_data/navigation.yml` controls the top menu
+- Topic data files such as `_data/database/topic.yml` control each topic's summary, tiles, and page list
 
 ### `_includes/`
 
 Reusable pieces of the layout live here.
 
-- [_includes/site-header.html](../_includes/site-header.html)
-- [_includes/page-banner.html](../_includes/page-banner.html)
-- [_includes/site-gate.html](../_includes/site-gate.html)
+- `_includes/site-header.html`
+- `_includes/page-banner.html`
+- `_includes/site-gate.html`
 
 ### `_layouts/`
 
 Page templates live here.
 
-- [_layouts/default.html](../_layouts/default.html)
-- [_layouts/home.html](../_layouts/home.html)
-- [_layouts/page.html](../_layouts/page.html)
-- [_layouts/redirect.html](../_layouts/redirect.html)
+- `_layouts/default.html`
+- `_layouts/home.html`
+- `_layouts/page.html`
+- `_layouts/redirect.html`
 
 ### `assets/`
 
 Shared styling and images live here.
 
-- [assets/css/style.css](../assets/css/style.css)
-- [assets/images/pg-logo.png](../assets/images/pg-logo.png)
+- [`assets/css/style.css`](/assets/css/style.css)
+- [`assets/images/pg-logo.png`](/assets/images/pg-logo.png)
 
 ## Navigation behavior
 
@@ -367,7 +365,7 @@ When adding a new page:
 1. Create the Markdown file in the topic folder.
 2. Add `title`, `description`, a topic breadcrumb, and a permalink in front matter.
 3. Add a Markdown `#` heading for the visible page title.
-4. Add the page to the topic's `pages` list in `_data/<topic>/topic.yml` and to its submenu in [_data/navigation.yml](../_data/navigation.yml).
+4. Add the page to the topic's `pages` list in `_data/<topic>/topic.yml` and to its submenu in `_data/navigation.yml`.
 5. Build and check the page from the topic landing page and the menu.
 
 When changing a topic:

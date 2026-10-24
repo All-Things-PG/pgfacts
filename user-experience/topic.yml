@@ -1,7 +1,7 @@
 title: User Experience
 description: How All Things PG guides visitors through audience-aware portal experiences.
 summary: >-
-  See how one shared site can present different starting pages, navigation, and content emphasis for patients, caregivers, providers, industry visitors, and guests.
+  Two portal examples show how the same site can tailor its starting content and navigation for different audiences.
 pages:
   - title: What is a Portal?
     description: An introduction to portal-style experiences.
@@ -9,28 +9,20 @@ pages:
   - title: Selecting a User Experience
     description: How visitors choose the experience that fits them.
     url: /user-experience/selecting-a-user-experience/
-  - title: Patients
-    description: A patient path centered on understanding PG, getting help, and finding practical support.
+  - title: "Example 1: Patients"
+    description: A sample Patient Portal screen with its audience menu open.
     url: /user-experience/patients/
-  - title: Caregivers
-    description: Practical, supportive information for people caring for someone with PG.
-    url: /user-experience/caregivers/
-  - title: Providers
-    description: Clinical context and practical routes into PG evidence and resources.
+  - title: "Example 2: Providers"
+    description: A sample Provider Portal screen with its audience menu open.
     url: /user-experience/providers/
-  - title: Pharmaceutical
-    description: A public, research-oriented path for pharmaceutical and industry visitors.
-    url: /user-experience/pharmaceutical/
-  - title: Guest
-    description: A general entry path for visitors exploring All Things PG.
-    url: /user-experience/guest/
+  - title: Mobile Friendly
+    description: Designing the site for clear, usable mobile experiences.
+    url: /user-experience/mobile-friendly/
+
 tiles:
-  - title: What is a Portal?
-    description: An introduction to portal-style experiences.
-    url: /user-experience/what-is-a-portal/
-  - title: Selecting a User Experience
-    description: Choose an experience based on visitor needs.
-    url: /user-experience/selecting-a-user-experience/
-  - title: Patients
-    description: Explore the patient experience.
+  - title: "Example 1: Patients"
+    description: Patient Portal sample with visitor-focused menu and content.
     url: /user-experience/patients/
+  - title: "Example 2: Providers"
+    description: Provider Portal sample with clinical menu and content.
+    url: /user-experience/providers/

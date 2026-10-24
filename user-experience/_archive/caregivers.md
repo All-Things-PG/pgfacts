@@ -45,12 +45,45 @@ permalink: /user-experience/caregivers/
     width: 100%;
   }
 }
+.caregiver-hero {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  min-height: 300px;
+  margin: 1rem 0 1.5rem;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  overflow: hidden;
+  border: 1px solid #e5d8c8;
+  border-radius: 14px;
+  background-image:
+    linear-gradient(90deg, rgba(250, 248, 242, .96) 0%, rgba(250, 248, 242, .86) 42%, rgba(250, 248, 242, .38) 100%),
+    url('/assets/images/caregiver-wheelchair-hero.png');
+  background-size: cover;
+  background-position: center 52%;
+}
+
+.caregiver-hero__content { max-width: 34rem; }
+.caregiver-hero h1 { margin: 0 0 .75rem; color: #f58220; }
+.caregiver-hero p { margin: 0; color: #34444d; font-size: 1.08rem; line-height: 1.55; }
+
+@media (max-width: 600px) {
+  .caregiver-hero {
+    min-height: 340px;
+    background-image:
+      linear-gradient(90deg, rgba(250, 248, 242, .93), rgba(250, 248, 242, .62)),
+      url('/assets/images/caregiver-wheelchair-hero.png');
+    background-position: 57% center;
+  }
+}
 </style>
 
 
-# Caregivers
-
-Caregivers often help someone navigate appointments, treatment, wound care, daily activities, and the emotional impact of PG. Their experience is connected to the patient’s, but their questions and responsibilities are not identical.
+<section class="caregiver-hero">
+  <div class="caregiver-hero__content">
+    <h1>Caregivers</h1>
+    <p>Caregivers often help someone navigate appointments, treatment, wound care, daily activities, and the emotional impact of PG. Their experience is connected to the patient’s, but their questions and responsibilities are not identical.</p>
+  </div>
+</section>
 
 ### A caregiver-focused path
 
@@ -69,3 +102,7 @@ The POC gives caregivers a distinct experience choice and menu. The example navi
 - Make it easier to find support, stories, and resources for the caregiver’s own wellbeing.
 
 Specific care instructions should be developed with appropriate clinical review. The portal’s purpose is to help people find trustworthy resources and support, not replace an individual’s care team.
+
+
+
+

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 430" role="img" aria-labelledby="title desc">
+  <title id="title">A dynamic menu item routes to its destination</title>
+  <desc id="desc">After a menu item is selected, the system uses its route type and target to direct the visitor to a visitor experience, content document, application feature, or redirect destination.</desc>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L10,5 L0,10 z" fill="#52758b" /></marker></defs>
+  <rect width="1200" height="430" rx="18" fill="#f1f1f1" />
+  <g font-family="Arial, Helvetica, sans-serif" fill="#263746">
+    <rect x="28" y="137" width="235" height="156" rx="14" fill="#fff" stroke="#e07822" stroke-width="2" />
+    <text x="145.5" y="174" text-anchor="middle" font-size="15" font-weight="700" letter-spacing=".5">MENU ITEM SELECTED</text>
+    <rect x="55" y="194" width="181" height="51" rx="8" fill="#fbf4e8" stroke="#d8c7ad" />
+    <text x="145.5" y="226" text-anchor="middle" font-size="17" font-weight="600">Find a Clinic</text>
+    <text x="145.5" y="273" text-anchor="middle" font-size="13" fill="#485965">Each item has a destination</text>
+
+    <rect x="337" y="137" width="270" height="156" rx="14" fill="#fff" stroke="#e07822" stroke-width="2" />
+    <text x="472" y="174" text-anchor="middle" font-size="15" font-weight="700" letter-spacing=".5">SYSTEM READS ROUTE</text>
+    <rect x="368" y="194" width="208" height="51" rx="8" fill="#e7f2f7" stroke="#9ab9c9" />
+    <text x="472" y="215" text-anchor="middle" font-size="15" font-weight="600">Route Type + Target</text>
+    <text x="472" y="234" text-anchor="middle" font-size="12" fill="#485965">Selects how to handle the click</text>
+    <text x="472" y="273" text-anchor="middle" font-size="13" fill="#485965">The stored route directs the next step</text>
+
+    <rect x="706" y="26" width="462" height="76" rx="12" fill="#fff" stroke="#d8c7ad" />
+    <circle cx="744" cy="64" r="22" fill="#fbf4e8" stroke="#d8c7ad" /><text x="744" y="70" text-anchor="middle" font-size="17" font-weight="700">V</text>
+    <text x="780" y="58" font-size="16" font-weight="700">Visitor experience</text><text x="780" y="81" font-size="14" fill="#485965">Choose a visitor type or portal</text>
+
+    <rect x="706" y="125" width="462" height="76" rx="12" fill="#fff" stroke="#d8c7ad" />
+    <circle cx="744" cy="163" r="22" fill="#fbf4e8" stroke="#d8c7ad" /><text x="744" y="169" text-anchor="middle" font-size="17" font-weight="700">C</text>
+    <text x="780" y="157" font-size="16" font-weight="700">Content document</text><text x="780" y="180" font-size="14" fill="#485965">Display the linked article or resource</text>
+
+    <rect x="706" y="224" width="462" height="76" rx="12" fill="#fff" stroke="#d8c7ad" />
+    <circle cx="744" cy="262" r="22" fill="#fbf4e8" stroke="#d8c7ad" /><text x="744" y="268" text-anchor="middle" font-size="17" font-weight="700">P</text>
+    <text x="780" y="256" font-size="16" font-weight="700">Application page</text><text x="780" y="279" font-size="14" fill="#485965">Open a tool such as Clinic Finder</text>
+
+    <rect x="706" y="323" width="462" height="76" rx="12" fill="#fff" stroke="#d8c7ad" />
+    <circle cx="744" cy="361" r="22" fill="#fbf4e8" stroke="#d8c7ad" /><text x="744" y="367" text-anchor="middle" font-size="17" font-weight="700">R</text>
+    <text x="780" y="355" font-size="16" font-weight="700">Redirect</text><text x="780" y="378" font-size="14" fill="#485965">Go to another internal or external destination</text>
+  </g>
+  <path d="M274 215h52" fill="none" stroke="#52758b" stroke-width="3" marker-end="url(#arrow)" />
+  <path d="M618 215h37M655 64v297M655 64h42M655 163h42M655 262h42M655 361h42" fill="none" stroke="#52758b" stroke-width="2.5" />
+  <path d="M681 64h16M681 163h16M681 262h16M681 361h16" fill="none" stroke="#52758b" stroke-width="2.5" marker-end="url(#arrow)" />
+  <text x="600" y="416" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#485965">The route type determines the destination; the visitor mask determines who sees the menu item.</text>
+</svg>

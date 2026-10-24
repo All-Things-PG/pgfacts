@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="1060" viewBox="0 0 980 1060" role="img" aria-labelledby="title desc">
+<title id="title">Two states of the All Things PG mobile experience</title>
+<desc id="desc">Two smartphone mockups using the actual All Things PG logo. First, the home screen shows the visitor experience selector set to Patient. Second, the same screen still shows that selector while an open navigation drawer covers the page from the left. About PG and Clinical Topics are expanded, exposing submenu choices such as Symptoms, Diagnosis, Treatment, Wound Care, Pain Management, and Outcomes. This is a proposed Phase 2 concept.</desc>
+<defs>
+ <filter id="shadow" x="-30%" y="-20%" width="160%" height="150%"><feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#1f3040" flood-opacity=".18"/></filter>
+ <clipPath id="sc1"><rect x="92" y="175" width="336" height="754" rx="38"/></clipPath>
+ <clipPath id="sc2"><rect x="552" y="175" width="336" height="754" rx="38"/></clipPath>
+ <linearGradient id="hero" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#607a48"/><stop offset=".54" stop-color="#a18841"/><stop offset="1" stop-color="#423b31"/></linearGradient>
+</defs>
+<rect width="980" height="1060" rx="28" fill="#f7f4ee"/>
+<text x="490" y="55" text-anchor="middle" font-family="Arial,sans-serif" font-size="27" font-weight="700" fill="#26394a">A mobile experience in two steps</text>
+<text x="260" y="105" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#26394a">1 · Choose your experience</text>
+<text x="720" y="105" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#26394a">2 · Open the menu</text>
+<g filter="url(#shadow)"><rect x="78" y="130" width="364" height="824" rx="58" fill="#18232d"/><rect x="89" y="141" width="342" height="802" rx="48" fill="#101820"/><rect x="92" y="175" width="336" height="754" rx="38" fill="#fffdf9"/><rect x="203" y="147" width="114" height="24" rx="12" fill="#101820"/></g>
+<g filter="url(#shadow)"><rect x="538" y="130" width="364" height="824" rx="58" fill="#18232d"/><rect x="549" y="141" width="342" height="802" rx="48" fill="#101820"/><rect x="552" y="175" width="336" height="754" rx="38" fill="#fffdf9"/><rect x="663" y="147" width="114" height="24" rx="12" fill="#101820"/></g>
+<!-- First screen: home with experience selection -->
+<g clip-path="url(#sc1)" font-family="Arial,sans-serif">
+ <rect x="92" y="175" width="336" height="754" fill="#fffdf9"/><text x="111" y="202" font-size="12" font-weight="700" fill="#26394a">9:41</text>
+ <g fill="#26394a"><rect x="370" y="191" width="4" height="8" rx="1"/><rect x="377" y="188" width="4" height="11" rx="1"/><rect x="384" y="185" width="4" height="14" rx="1"/><path d="M395 191q8-9 16 0l-8 9z"/><rect x="412" y="186" width="10" height="14" rx="2" fill="none" stroke="#26394a" stroke-width="1.5"/></g>
+ <rect x="92" y="214" width="336" height="92" fill="#fff"/><rect x="101" y="235" width="36" height="36" rx="8" fill="#fff7ef" stroke="#f0781b"/><path d="M109 245h20M109 253h20M109 261h20" stroke="#26394a" stroke-width="2" stroke-linecap="round"/><image href="/assets/images/pg-logo.png" x="145" y="225" width="52" height="52"/><text x="197" y="244" font-size="11" font-weight="700" fill="#26394a">ALL THINGS PG</text><text x="197" y="259" font-size="8" font-weight="700" fill="#26394a">PYODERMA GANGRENOSUM</text><rect x="352" y="235" width="64" height="36" rx="18" fill="#fff" stroke="#f0781b"/><text x="384" y="258" text-anchor="middle" font-size="10" font-weight="700" fill="#d65f13">DONATE</text>
+ <rect x="92" y="306" width="336" height="62" fill="#f58220"/><text x="108" y="330" font-size="10" font-weight="700" letter-spacing=".5" fill="#fff">CHOOSE YOUR EXPERIENCE</text><rect x="108" y="337" width="304" height="25" rx="5" fill="#fff"/><text x="120" y="354" font-size="12" font-weight="700" fill="#26394a">Patient</text><path d="m394 346 5 5 5-5" fill="none" stroke="#26394a" stroke-width="1.5"/>
+ <rect x="92" y="368" width="336" height="561" fill="url(#hero)"/><circle cx="344" cy="446" r="94" fill="#e2b644" opacity=".28"/><path d="M92 590q100-165 195-41t141-55v435H92z" fill="#263f32" opacity=".5"/>
+ <text x="112" y="453" font-size="28" font-weight="700" fill="#fff">Welcome to</text><text x="112" y="487" font-size="28" font-weight="700" fill="#fff">Our Community</text><text x="112" y="522" font-size="13" fill="#fff">Information and support for people</text><text x="112" y="541" font-size="13" fill="#fff">living with pyoderma gangrenosum.</text>
+ <rect x="108" y="567" width="304" height="44" rx="22" fill="#fff"/><circle cx="130" cy="588" r="7" fill="none" stroke="#687782" stroke-width="1.8"/><path d="m135 593 5 5" stroke="#687782" stroke-width="1.8"/><text x="151" y="593" font-size="13" fill="#687782">Search PG information</text>
+ <text x="112" y="661" font-size="12" font-weight="700" fill="#fff">Start with what you need today.</text>
+</g>
+<rect x="210" y="937" width="100" height="5" rx="3" fill="#29343c"/>
+<!-- Second screen: the same home and visitor selection, with the menu open over its left side -->
+<g clip-path="url(#sc2)" font-family="Arial,sans-serif">
+ <rect x="552" y="175" width="336" height="754" fill="#fffdf9"/><text x="571" y="202" font-size="12" font-weight="700" fill="#26394a">9:41</text>
+ <g fill="#26394a"><rect x="830" y="191" width="4" height="8" rx="1"/><rect x="837" y="188" width="4" height="11" rx="1"/><rect x="844" y="185" width="4" height="14" rx="1"/><path d="M855 191q8-9 16 0l-8 9z"/><rect x="872" y="186" width="10" height="14" rx="2" fill="none" stroke="#26394a" stroke-width="1.5"/></g>
+ <rect x="552" y="214" width="336" height="92" fill="#fff"/><rect x="561" y="235" width="36" height="36" rx="8" fill="#fff7ef" stroke="#f0781b"/><path d="M569 245h20M569 253h20M569 261h20" stroke="#26394a" stroke-width="2" stroke-linecap="round"/><image href="/assets/images/pg-logo.png" x="605" y="225" width="52" height="52"/><text x="657" y="244" font-size="11" font-weight="700" fill="#26394a">ALL THINGS PG</text><text x="657" y="259" font-size="8" font-weight="700" fill="#26394a">PYODERMA GANGRENOSUM</text><rect x="812" y="235" width="64" height="36" rx="18" fill="#fff" stroke="#f0781b"/><text x="844" y="258" text-anchor="middle" font-size="10" font-weight="700" fill="#d65f13">DONATE</text>
+ <rect x="552" y="306" width="336" height="62" fill="#f58220"/><text x="568" y="330" font-size="10" font-weight="700" letter-spacing=".5" fill="#fff">CHOOSE YOUR EXPERIENCE</text><rect x="568" y="337" width="304" height="25" rx="5" fill="#fff"/><text x="580" y="354" font-size="12" font-weight="700" fill="#26394a">Patient</text><path d="m854 346 5 5 5-5" fill="none" stroke="#26394a" stroke-width="1.5"/>
+ <rect x="552" y="368" width="336" height="561" fill="url(#hero)"/><text x="570" y="460" font-size="25" font-weight="700" fill="#fff">Welcome to</text><text x="570" y="490" font-size="25" font-weight="700" fill="#fff">Our Community</text>
+ <g transform="translate(0,-96)">
+ <rect x="552" y="368" width="276" height="561" fill="#fffdf9" stroke="#dfd6ca"/>
+ <rect x="552" y="368" width="276" height="42" fill="#fff"/><rect x="552" y="408" width="276" height="2" fill="#f58220"/><text x="574" y="394" font-size="13" font-weight="700" letter-spacing=".9" fill="#26394a">MENU</text><path d="m796 380 14 14m0-14-14 14" stroke="#26394a" stroke-width="2" stroke-linecap="round"/>
+ <rect x="552" y="410" width="276" height="37" fill="#fff"/><text x="570" y="434" font-size="12" font-weight="700" fill="#293c49">WELCOME</text><path d="m802 422 5 5-5 5" fill="none" stroke="#7b858b" stroke-width="1.6"/>
+ <rect x="552" y="447" width="276" height="37" fill="#fff1e4"/><rect x="552" y="447" width="4" height="37" fill="#f58220"/><text x="570" y="471" font-size="12" font-weight="700" fill="#b9530b">ABOUT PG</text><path d="m802 459 5 5-5 5" fill="none" stroke="#b9530b" stroke-width="1.6"/>
+ <rect x="552" y="484" width="276" height="30" fill="#fff"/><text x="588" y="504" font-size="11" fill="#394c58">What is PG</text>
+ <rect x="552" y="514" width="276" height="31" fill="#fff"/><text x="588" y="535" font-size="11" font-weight="700" fill="#394c58">Clinical Topics</text><path d="m798 522 5 5 5-5" fill="none" stroke="#f0781b" stroke-width="1.6"/>
+ <rect x="552" y="545" width="276" height="156" fill="#faf7f1"/><rect x="571" y="551" width="2" height="142" rx="1" fill="#e7d8c7"/>
+ <g font-size="11" fill="#394c58"><circle cx="572" cy="563" r="2.5" fill="#f0781b"/><text x="585" y="567">Symptoms</text><circle cx="572" cy="587" r="2.5" fill="#f0781b"/><text x="585" y="591">Diagnosis</text><circle cx="572" cy="611" r="2.5" fill="#f0781b"/><text x="585" y="615">Treatment</text><circle cx="572" cy="635" r="2.5" fill="#f0781b"/><text x="585" y="639">Wound Care</text><circle cx="572" cy="659" r="2.5" fill="#f0781b"/><text x="585" y="663">Pain Management</text><circle cx="572" cy="683" r="2.5" fill="#f0781b"/><text x="585" y="687">Outcomes</text></g>
+ <rect x="552" y="701" width="276" height="32" fill="#fff"/><text x="588" y="722" font-size="11" fill="#394c58">Living with PG</text><path d="m798 710 5 5-5 5" fill="none" stroke="#7b858b" stroke-width="1.6"/>
+ <rect x="552" y="733" width="276" height="34" fill="#fff"/><text x="570" y="755" font-size="11" font-weight="700" fill="#293c49">BEING A GUEST</text><path d="m802 744 5 5-5 5" fill="none" stroke="#7b858b" stroke-width="1.6"/>
+ <rect x="552" y="767" width="276" height="34" fill="#fff"/><text x="570" y="789" font-size="11" font-weight="700" fill="#293c49">TEAM APPROACH</text><path d="m802 778 5 5-5 5" fill="none" stroke="#7b858b" stroke-width="1.6"/>
+ <rect x="552" y="801" width="276" height="34" fill="#fff"/><text x="570" y="823" font-size="11" font-weight="700" fill="#293c49">RESOURCES</text><path d="m802 812 5 5-5 5" fill="none" stroke="#7b858b" stroke-width="1.6"/>
+ <rect x="552" y="835" width="276" height="34" fill="#fff"/><text x="570" y="857" font-size="11" font-weight="700" fill="#293c49">GALLERY</text><path d="m802 846 5 5-5 5" fill="none" stroke="#7b858b" stroke-width="1.6"/>
+ <rect x="821" y="478" width="3" height="258" rx="2" fill="#b9b2aa" opacity=".6"/><rect x="821" y="507" width="3" height="83" rx="2" fill="#827a73"/>
+ </g>
+</g>
+<rect x="670" y="937" width="100" height="5" rx="3" fill="#29343c"/>
+<text x="260" y="997" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#5d6870">Visitor type is selected before browsing.</text>
+<text x="720" y="997" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#5d6870">Menu opens over the same home screen.</text>
+<text x="490" y="1030" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#747d82">Illustrative Phase 2 concept • example labels based on the site navigation shown</text>
+</svg>
+
+
+

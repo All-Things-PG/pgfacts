@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 380" role="img" aria-labelledby="title desc">
+  <title id="title">Visitor mask filters the dynamic menu</title>
+  <desc id="desc">When Provider M is selected, menu items whose visitor masks include M are shown. Items for other audiences are hidden.</desc>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L10,5 L0,10 z" fill="#52758b" /></marker></defs>
+  <rect width="1200" height="380" rx="18" fill="#f1f1f1" />
+  <g font-family="Arial, Helvetica, sans-serif" fill="#263746">
+    <rect x="22" y="42" width="250" height="300" rx="14" fill="#fff" stroke="#e07822" stroke-width="2" />
+    <text x="147" y="76" text-anchor="middle" font-size="15" font-weight="700" letter-spacing=".6">SELECTED VISITOR TYPE</text>
+    <rect x="51" y="99" width="192" height="45" rx="8" fill="#fbf4e8" stroke="#d8c7ad" />
+    <text x="147" y="127" text-anchor="middle" font-size="16">Patient · P</text>
+    <rect x="51" y="154" width="192" height="45" rx="8" fill="#fbf4e8" stroke="#d8c7ad" />
+    <text x="147" y="182" text-anchor="middle" font-size="16">Caregiver · C</text>
+    <rect x="51" y="209" width="192" height="45" rx="8" fill="#e7f2f7" stroke="#52758b" stroke-width="3" />
+    <text x="147" y="237" text-anchor="middle" font-size="16" font-weight="700">Provider · M</text>
+    <rect x="51" y="264" width="192" height="45" rx="8" fill="#fbf4e8" stroke="#d8c7ad" />
+    <text x="147" y="292" text-anchor="middle" font-size="16">Pharmaceutical · D</text>
+    <text x="147" y="329" text-anchor="middle" font-size="15">Guest · V</text>
+
+    <rect x="328" y="42" width="520" height="300" rx="14" fill="#fff" stroke="#e07822" stroke-width="2" />
+    <text x="588" y="76" text-anchor="middle" font-size="15" font-weight="700" letter-spacing=".6">DYNAMIC MENU ITEMS AND MASKS</text>
+    <rect x="354" y="94" width="468" height="49" rx="7" fill="#e7f2f7" stroke="#9ab9c9" />
+    <circle cx="377" cy="118" r="8" fill="#43845a" /><path d="m373 118 3 3 6-7" fill="none" stroke="#fff" stroke-width="2" />
+    <text x="397" y="124" font-size="15" font-weight="600">About PG</text><text x="798" y="124" text-anchor="end" font-size="14" fill="#485965">PCMDV · shown</text>
+    <rect x="354" y="151" width="468" height="49" rx="7" fill="#f5f5f5" stroke="#dedede" />
+    <circle cx="377" cy="175" r="8" fill="#aeb5ba" /><path d="m374 172 6 6m0-6-6 6" stroke="#fff" stroke-width="2" />
+    <text x="397" y="181" font-size="15" fill="#78828a">Living with PG</text><text x="798" y="181" text-anchor="end" font-size="14" fill="#78828a">PC · hidden</text>
+    <rect x="354" y="208" width="468" height="49" rx="7" fill="#e7f2f7" stroke="#9ab9c9" />
+    <circle cx="377" cy="232" r="8" fill="#43845a" /><path d="m373 232 3 3 6-7" fill="none" stroke="#fff" stroke-width="2" />
+    <text x="397" y="238" font-size="15" font-weight="600">Clinical guidance</text><text x="798" y="238" text-anchor="end" font-size="14" fill="#485965">M · shown</text>
+    <rect x="354" y="265" width="468" height="49" rx="7" fill="#f5f5f5" stroke="#dedede" />
+    <circle cx="377" cy="289" r="8" fill="#aeb5ba" /><path d="m374 286 6 6m0-6-6 6" stroke="#fff" stroke-width="2" />
+    <text x="397" y="295" font-size="15" fill="#78828a">Industry resources</text><text x="798" y="295" text-anchor="end" font-size="14" fill="#78828a">D · hidden</text>
+    <text x="588" y="329" text-anchor="middle" font-size="13" fill="#485965">An item is shown when its mask contains M</text>
+
+    <rect x="904" y="42" width="274" height="300" rx="14" fill="#fff" stroke="#e07822" stroke-width="2" />
+    <text x="1041" y="76" text-anchor="middle" font-size="15" font-weight="700" letter-spacing=".5">PROVIDER MENU</text>
+    <rect x="934" y="103" width="214" height="49" rx="7" fill="#fbf4e8" stroke="#d8c7ad" /><text x="953" y="133" font-size="16">About PG</text>
+    <rect x="934" y="164" width="214" height="49" rx="7" fill="#fbf4e8" stroke="#d8c7ad" /><text x="953" y="194" font-size="16">Clinical guidance</text>
+    <path d="M953 239h174m-174 14h151m-151 14h163" stroke="#d6dde1" stroke-width="4" stroke-linecap="round" />
+    <text x="1041" y="310" text-anchor="middle" font-size="13" fill="#485965">Only matching items appear</text>
+  </g>
+  <path d="M283 192h34" fill="none" stroke="#52758b" stroke-width="3" marker-end="url(#arrow)" />
+  <path d="M859 192h34" fill="none" stroke="#52758b" stroke-width="3" marker-end="url(#arrow)" />
+</svg>

@@ -5,16 +5,17 @@ breadcrumb: Welcome > Executive Summary
 permalink: /welcome/executive-summary/
 description: The case for Phase 2 and a searchable PG Knowledge Base.
 updated: 2026-10-20
-banner_tile_group: home
+work_in_progress: false
 ---
 <a id="top"></a>
 # Executive Summary
 
 ### Why Phase 2 Is Needed
 
-All Things PG (ATPG) established an early online presence in September 2025 by releasing **Phase 1** of www.allthingspg.org. This fulfilled an urgent need to establish a PG Foundation and begin our work of raising PG awareness. The website created visibility for ATPG as a nonprofit organization, gave us credibility within the rare-disease community, and provided needed informational support to people affected by Pyoderma Gangrenosum (PG). Phase 1 has been well received. It illustrates our brand and offers information for patients and caregivers, along with features such as surveys, newsletters, and a Clinic Finder.
+All Things PG (ATPG) established an early online presence in September 2025 by releasing [www.allthingspg.org](https://www.allthingspg.org). This fulfilled an urgent need to quickly establish a PG Foundation and begin our work of raising PG awareness. The website created immediate visibility for ATPG as a nonprofit organization, gave us credibility within the rare-disease community, and provided needed informational support to people affected by Pyoderma Gangrenosum (PG).  The current website has been well received asan attractive website that creates and illustrates our branding and offers PG information to patients and caregivers, features such as surveys, newsletters, and the Clinic Finder and more.
 
-Phase 1 was built with a custom editing tool that supports the features it was designed to manage, including pages, surveys, newsletters, providers, news and events, and Board biographies. It has served us well for maintaining those features. However, it can only do what it was designed to do: add and update content within its existing functions. It cannot be extended to add new capabilities such as a searchable Knowledge Base or an expanded Clinic Finder. The Phase 1 website remains a valuable asset, but its current tool cannot meet these new needs.
+**Phase 1** was built with a custom cms editing tool that supports all the features the editing tool was designed to proovide, including add/edit of web pages, surveys, newsletters, providers, news and events, and Board Members with biographies. It can manage news articles and the list of providers available in the Clinic Finder. We can add and change many things, but again, only ever what the tool allows.  There ae definite advantages of using an editing tool like this for **Phase 1**, but there are also disadvantages when it comes to **Phase 2**.  We will discuss those.
+
 
 ### A Year of Growth
 
@@ -34,13 +35,15 @@ These two capabilities are a major change in how people use the website: moving 
 
 ### The Database Foundation
 
-A database is central to Phase 2. It provides the foundation for the Knowledge Base and Clinic Finder and supports the website as it continues to develop. Over time, we can add patient success stories, a video library, a media library, helplines, new categories, and resources that support PFAC activities. As ATPG's needs evolve, the database gives us room to build new capabilities and serve our audiences in new ways. This kind of continued growth is not possible within the Phase 1 framework.
+A database is central to Phase 2. It provides the foundation for the Knowledge Base and expanded Clinic Finder, and many other areas of expansion. Over time, we can add things like patient success stories, a video library, a media library, helplines, PFAC activities with sign-ups (if needed). As ATPG's needs evolve, a database allows us to build out these new capabilities that might serve the PG Community.  A database is designed for growth, without any limitations. This kind of continued growth is not possible within the Phase 1 framework.
 
 ### Summary
 
-Consider a caregiver whose husband has just been diagnosed with PG. She may ask, “How can I help my husband deal with the pain?” A searchable KB can return relevant articles and FAQs to help address that need. Someone looking for care can use the Clinic Finder to narrow nearby options by category. The quality of those results will grow as we add and curate information.  Now we are offering solutions, not just information.
+Consider a caregiver whose husband has just been diagnosed with PG. She may ask, “How can I help my husband deal with the pain?” A searchable Knowledge Base can retrieve content from the database and return a list of relevant articles and FAQs to help address her particular question, and her particular needs. The new Clinic Finder will filter on Facility Type, or Provider Type.  Our caregiver can search the Clinic Finder, set the category, and only see Pain Management clinics nearby.  Our website didn't just present static information on a single page.  Instead, our website now provides answers to her question and solved the problem she was having. She now knows how to help her husband deal the pain!
 
-The goal of All Things PG is to be **all** things to all those affected by Pyoderma Gangrenosum and to raise PG awareness. We need to offer more than information people might find through a Google or AI search. We want to provide trusted, curated resources that help people find solutions, while also sharing the Foundation's work with all the audiences we serve. We want to be All Things PG.
+Of course, the quality of those results depends on the content within, which will continuously grow over time as we curate new content.  Now our website is offering solutions, not just information.
+
+The goal of All Things PG is to be **all** things to all those affected by Pyoderma Gangrenosum, and to raise PG awareness. We need to offer more than information people might find through a Google or AI search. We want to provide trusted, curated resources that help people find solutions, while also sharing the Foundation's work with all the audiences we serve. We want to be All Things PG.
 
 Thank you.
 
@@ -48,6 +51,7 @@ Dave DePottie
 Chairman and IT Director  
 All Things PG
 [About the Developer]({{ '/about/the-developer/' | relative_url }})
+
 
 
 

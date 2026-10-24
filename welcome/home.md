@@ -4,25 +4,28 @@ title: Welcome to Phase 2
 nav_label: Welcome
 description: Welcome to the Phase 2 Documentation Site
 permalink: /welcome/home/
+work_in_progress: false
 ---
 
 # Welcome to the Phase 2 Documentation Site
 
 ### Overview
 
-This site was created for you, **the reviewer**, to present to you all the documentation written for our Phase 2 project to enhance [www.allthingspg.org](https://www.allthingspg.org). It is my hope to present all the documentation in a format that is easier to read versus a boring set of Word documents. Easier doesn’t mean easy. It will take time and effort to do a good review, and your time and effort are most valuable and appreciated.
+Welcome!!  This site was created for you, **the reviewer**, to present to you all the written documentation for our Phase 2 project to enhance [www.allthingspg.org](https://www.allthingspg.org).  It is my hope to present to you documentation on a website to make it easier and more interesting to read versus a boring set of Word documents, perhaps scattered in a number of different locations or emails. None of that.  It's all  here.  When I say easier, that doesn’t mean easy. It will take time and effort to do a decent review to understand and comment on the material.  And we are all busy and have day jobs.  So please know that - whatever time you spend, and whatever effort you make is greatly appreciated!! Also please know, that many documents are still a work in progress and that will be indicated in the breadcrumb bar.  As time goes on, more documents will get completed.
 
-It is my hope that your review is more than proofreading. You have the opportunity here to be part of the design process by sending me your feedback, not on the documentation site, but on the designs for Phase 2. Please click the **Contact Us** button at the top right as often as you like. This should open your preferred email client prefilled with values and ready to send after adding your comments and suggestions. These emails will go to a special email account I’ve created for that purpose. If it fails to open your email client, send your comment to **suggestions@allthingspg.org**. Please indicate if you expect a reply, and I’ll do my best to get back to you as soon as possible.
+It is my hope that your review is more than proofreading. You have the opportunity here to be a part of the design process by sending me your feedback.  No need to comment on the documentation site, but on the content.  Please read and review all the planned new features and designs for Phase 2, and click the **Contact Us** button at the top right as often as you like with your comments. It should open your preferred email client prefilled with values and ready to send after adding your comments and suggestions. These emails will go to a special email account I’ve created for that purpose. If it fails to open your email client, jusst create an email send your comment to **suggestions@allthingspg.org**. Please indicate if you expect a reply, and I’ll do my best to get back to you as soon as possible.
 
-The primary reasons to use a Documentation Site for Phase 2 are:
+### Why do we have a Documentation Site for Phase?
 
-1. Fits the Software Engineering methodology of design, document, and involve stakeholders first.
-2. Serves as my developer specifications for creating Phase 2.
-3. Specs let me know when the project is done.
-4. Makes distribution of documentation easy.
-5. Allows for immediate feedback (Contact Us).
-6. It’s nicer to browse a website than to read documents.
-7. Serves as a central source of truth. All documents here are the master copies.
+> 1. It’s nicer to browse a website than to read documents.
+> 2. Allows for immediate feedback (Contact Us).
+> 3. Allows including Stakeholders in the review and comment process.
+> 4. Centraizes easy distribution of documentation updates.
+> 5. Serves as the single source of truth. All documents here are the master copies.
+> 6. Serves as my design specifications to develop Phase 2 software.
+> 7. Specifications lets me know when the project is done.
+> 8. Fits the Software Engineering methodology of document first then develop the software.
+{: .simple-blockquote}
 
 ### Structure of the Website
 
@@ -51,3 +54,8 @@ I sincerely thank you for your time and effort! Feel free to start with the Phas
 Dave DePottie  
 Chairman and IT Director  
 All Things PG
+
+
+
+
+

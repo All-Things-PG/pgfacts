@@ -10,6 +10,11 @@ updated: 2026-10-10
 # Dynamic Content
 
 In DCMS, a page of information is represented by a **ContentDocument** record and its associated **ContentElement** records. The document holds its identity and document-level metadata; elements hold the typed content blocks, such as text, markup, or media references. Lookup values describe the content type, format, MIME type, and workflow state.
+### Intended content lifecycle
+
+DCMS is intended to support a path from discovering useful information to reviewing and publishing it. The complete authoring and review workflow is not built yet; current documents are unpublished placeholders.
+
+![Conceptual dynamic content lifecycle: sources are organized and reviewed in staging, approved content is published, then linked to menu items for display](/assets/images/dcms-content-lifecycle.svg)
 
 ### Menu item first, document identity next
 

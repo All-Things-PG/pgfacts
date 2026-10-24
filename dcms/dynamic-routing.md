@@ -17,6 +17,8 @@ Dynamic Routing describes the custom way DCMS menu records identify and direct v
 
 The current `RouteType` lookup contains four values:
 
+![Conceptual dynamic routing flow: the system reads a selected menu item’s route type and target, then directs the visitor to one of four destination types](/assets/images/dcms-menu-routing.svg)
+
 <table class="topic-table">
   <thead><tr><th>Code</th><th>Destination</th><th>Example RouteTarget</th></tr></thead>
   <tbody>

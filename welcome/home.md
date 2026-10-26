@@ -49,7 +49,7 @@ The rest of the Welcome menu will show:
 2. Review the [Phase 2 Overview]({{ '/welcome/phase-2-overview/' | relative_url }}).
 3. Read about the [Proof of Concept]({{ '/welcome/proof-of-concept/' | relative_url }}).
 
-I sincerely thank you for your time and effort! Feel free to start with the Phase 2 Overview next.
+I sincerely thank you for your time and effort! Feel free to start with the Phase 2 Overview next. If you're not familiar with a term please check out our ever growing glossary.  
 
 Dave DePottie  
 Chairman and IT Director  

@@ -13,6 +13,9 @@ pages:
   - title: Document Inventory
     description: Complete inventory of project documents and their review status.
     url: /welcome/document-inventory/
+  - title: Glossary
+    description: Definitions for terms used throughout the Phase 2 documentation.
+    url: /welcome/glossary/
 tiles:
   - title: Executive Summary
     description: The case for Phase 2 and a searchable PG Knowledge Base.

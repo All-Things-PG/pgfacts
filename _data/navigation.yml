@@ -12,6 +12,8 @@
       url: /welcome/proof-of-concept/
     - label: Document Inventory
       url: /welcome/document-inventory/
+    - label: Glossary
+      url: /welcome/glossary/
 - key: phase-1
   label: Phase 1
   url: /phase-1/
@@ -125,7 +127,6 @@
     - label: The Developer
       url: /about/the-developer/
     
-
 
 
 

@@ -9,7 +9,7 @@ updated: 2026-10-10
 
 # Dynamic Menus
 
-The DCMS menu is stored as data rather than as a fixed list of links in page markup. Each MenuItem record has a title, optional parent, route type, route target, visitor mask, sort order, and active state. ParentMenuItemID forms the hierarchy; SortOrder arranges siblings; VisitorMask determines which selected audience sees each item.
+The <a href="/welcome/glossary/" target="_blank" rel="noopener">DCMS</a> menu is stored as data rather than as a fixed list of links in page markup. Each MenuItem record has a title, optional parent, route type, route target, visitor mask, sort order, and active state. ParentMenuItemID forms the hierarchy; SortOrder arranges siblings; VisitorMask determines which selected audience sees each item.
 
 ### How the visitor mask filters the menu
 

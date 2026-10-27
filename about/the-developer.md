@@ -20,7 +20,7 @@ You may review Dave's bio at [Dave DePottie](https://www.allthingspg.org/dave-de
 
 ### All Things PG Technology Platform
 
-As IT Director, Dave used his high-tech experience to create a nonprofit tecnhology platform called a **Tenant**, or workspace graciously provided by Microsoft by appoving ourw two nonprofit applications for a M365 Business Licence grant for 300 users, and a $2000 yearly grant toward hosting websites with a database in Azure.  Essentally, free user licenses, free software and free web hosting.  We now have a completely integrated technology platform for the future, with unlimited growth potential (it can always grow).
+As IT Director, Dave used his high-tech experience to create a nonprofit tecnhology platform called a **<a href="/welcome/glossary/" target="_blank" rel="noopener">Tenant</a>**, or workspace graciously provided by Microsoft by appoving ourw two nonprofit applications for a M365 Business Licence grant for 300 users, and a $2000 yearly grant toward hosting websites with a database in Azure.  Essentally, free user licenses, free software and free web hosting.  We now have a completely integrated technology platform for the future, with unlimited growth potential (it can always grow).
 
 Within our **Tenant**, we have our own custom domain and the administrative tools provided through Microsoft 365, including Exchange, SharePoint, Teams, Users and Group management, system security, permissions, and the complete Office suite of application suite. Our nonprofit platform can host websites and databases using the support provided by the $2,000 annual Azure grant, in reality making wwww.allthingspg.org and all our Business licensen for 300 users free of charge.  
 

@@ -9,7 +9,7 @@ permalink: /new-features/dynamic-menus-and-content/
 
 # Dynamic Menus and Content
 
-Dynamic menus and content are the operational side of the Phase 2 knowledge-base story. They are what let us build the site from curated pieces instead of hard-coding every page and navigation link by hand.
+Dynamic menus and <a href="/welcome/glossary/" target="_blank" rel="noopener">content</a> are the operational side of the Phase 2 knowledge-base story. They are what let us build the site from curated pieces instead of hard-coding every page and navigation link by hand.
 
 DCMS is the mechanism that makes this work. It lets us define topics, menu items, content records, and supporting metadata so the site can change as the content grows. In practice, that means a page can be added to a topic, a menu item can be exposed, and a tile can appear in the right place without redesigning the whole site.
 

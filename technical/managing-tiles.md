@@ -9,7 +9,7 @@ topic_key: technical
 
 # Managing Tiles
 
-Tiles are the linked panels displayed above a page's content. A topic's tile list is shared by its pages; changing the list updates the tile row across that topic.
+<a href="/welcome/glossary/" target="_blank" rel="noopener">Tiles</a> are the linked panels displayed above a page's content. A topic's tile list is shared by its pages; changing the list updates the tile row across that topic.
 
 Tiles and dropdown navigation are configured separately. Update the topic's file at `_data/<topic>/topic.yml` to change its tiles. Update `_data/navigation.yml` only when you also want to change the site's dropdown menu.
 

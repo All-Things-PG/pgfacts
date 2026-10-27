@@ -9,7 +9,7 @@ work_in_progress: false
 ---
 # Phase 2 Wish List
 
-The following wish list items are ideas are a combination of original thoughts on our website, and those that I've recently surfaced once I saw the capabilities of DCMS and the Proof of Concept (POC), and how I was able to add new content and features to Phase 2.  
+The following wish list items are ideas are a combination of original thoughts on our website, and those that I've recently surfaced once I saw the capabilities of <a href="/welcome/glossary/" target="_blank" rel="noopener">DCMS</a> and the Proof of Concept (POC), and how I was able to add new content and features to Phase 2.  
 
 **Note: Leo Enhancements are on a separate page.** 
 

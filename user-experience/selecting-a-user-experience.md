@@ -14,7 +14,7 @@ permalink: /user-experience/selecting-a-user-experience/
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-<a href="/welcome/glossary/" target="_blank" rel="noopener">content</a>: flex-start;
   gap: 12px;
   margin: 1rem auto 1.5rem;
   padding: 12px;

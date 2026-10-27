@@ -6,7 +6,7 @@ generated: 2026-10-10
 
 # Documentation Inventory
 
-The database and DCMS pages below describe the current SQL project, seeded lookup data, supplied menu export, and proof-of-concept behavior. The SQL project is authoritative for schema definitions; the menu export and MenuItemList output provide the current menu examples.
+The database and <a href="/welcome/glossary/" target="_blank" rel="noopener">DCMS</a> pages below describe the current SQL project, seeded lookup data, supplied menu export, and proof-of-concept behavior. The SQL project is authoritative for schema definitions; the menu export and MenuItemList output provide the current menu examples.
 
 | Topic | Current page | What it covers |
 | :--- | :--- | :--- |

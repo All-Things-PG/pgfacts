@@ -4,7 +4,7 @@
 
 ## Purpose
 
-Bring the Phase 1 menu and captured page content into the Phase 2 database in a repeatable way. The menu first loads into `MasterMenuStage`; the existing `Populate_MasterMenu` flow and test harness then validate the menu before menu items and content placeholders are built.
+Bring the <a href="/welcome/glossary/" target="_blank" rel="noopener">Phase 1</a> menu and captured page content into the Phase 2 database in a repeatable way. The menu first loads into `MasterMenuStage`; the existing `Populate_MasterMenu` flow and test harness then validate the menu before menu items and content placeholders are built.
 
 The process should be repeatable so the target database can be rebuilt from source routines when needed. Keep the Phase 1 CSV import available as a fallback.
 

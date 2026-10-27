@@ -15,7 +15,7 @@ Living with PG can mean navigating pain, costly treatments, wound care, reduced 
 
 People affected by PG have expressed the need for a reliable place to find vetted information about this condition, emerging treatments, expert providers, clinical trial, knowledge about PG, physical, mental, and emotional support in coping with the illness. PG affects every aspect of a person's life and the lives of their families and close relationsihps, as well as their employment.  Many patients become permanently disabled. 
 
-All Things PG aims to meet those needs by bringing together all the information, resources and connections available to help patients caregivers, medical professionals pharmacy reps and more.  The name of the organization indicates we want to be ALL the things we can be, as a central hub for for anything relating to Pyoderma Gangrenosum.  Phase 2 is a major step towards that objective.
+All Things PG aims to meet those needs by bringing together all the information, resources and connections available to help patients caregivers, medical professionals pharmacy reps and more.  The name of the organization indicates we want to be ALL the things we can be, as a central hub for for anything relating to Pyoderma Gangrenosum.  <a href="/welcome/glossary/" target="_blank" rel="noopener">Phase 2</a> is a major step towards that objective.
 
 ### Our goals
 

@@ -8,7 +8,7 @@ permalink: /phase-2/technology-platform/
 
 # New Technology Platform
 
-Phase 2 will be built for the Azure platform, which is the Microsoft version of AWS.  I've used both, and can honestly say that Azure is equal in capability, but as is often the case, much easier to use, with tons of documentation and support. There is nothing wrong with AWS, we just happen to be given a $2000 **annual** grant to use Azure, eliminating all costs. Over the lifespan say of 10 years, that's a whopping $20,000 for free because we are a nonprofit organization.
+<a href="/welcome/glossary/" target="_blank" rel="noopener">Phase 2</a> will be built for the Azure platform, which is the Microsoft version of AWS.  I've used both, and can honestly say that Azure is equal in capability, but as is often the case, much easier to use, with tons of documentation and support. There is nothing wrong with AWS, we just happen to be given a $2000 **annual** grant to use Azure, eliminating all costs. Over the lifespan say of 10 years, that's a whopping $20,000 for free because we are a nonprofit organization.
 
 ### What is Azure?
 

@@ -21,7 +21,7 @@ This version uses an HTML table and points at the local repo files instead of th
 <tbody>
 <tr>
 <td><a href="dcms/DCMS_Curating_Content.md">DCMS_Curating_Content.md</a></td>
-<td>dcms</td>
+<td><a href="/welcome/glossary/" target="_blank" rel="noopener">dcms</a></td>
 <td>Rewritten this session, draft ready</td>
 <td><strong>Copy</strong></td>
 <td>C:\Users\daved\source\repos\Business\pgfacts\dcms\DCMS_Curating_Content.md</td>

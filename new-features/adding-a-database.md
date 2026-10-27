@@ -10,7 +10,7 @@ work_in_progress: false
 
 # Adding a Database
 
-In truth, if Phase 1 had a database, we would not be adding Phase 2.  All we really want to do is add **Leo Enhancements** and a few of our own.  Of course, once you see what is possible with a Database, and now a Wish-List, you realize why we need to add a Database if we want to grow as an organization, and not just a website.
+In truth, if <a href="/welcome/glossary/" target="_blank" rel="noopener">Phase 1</a> had a database, we would not be adding Phase 2.  All we really want to do is add **Leo Enhancements** and a few of our own.  Of course, once you see what is possible with a Database, and now a Wish-List, you realize why we need to add a Database if we want to grow as an organization, and not just a website.
 
 Phase 1 uses a custom cms editing tool written by Krobe.  We can use it to add basic things to enhance our static website (one means no database or server-side coe), but you can only allow items that the tool is designed to support. This is not a knock against Phase 1, or the tool, that is normal for a nonprofit and a quick release.  Many nonprofit organizations start out, and remain as, static websites because there is rarely any change. It costs money to develop 'an application'.  I do not envision All Things PG to be without change.  Look what we have accomplished in only 1 year?  Look at the attention we have received from outside organizations?  This has brought us new opportunites for exansion, and we have broadened out to many new areas that we can add to our website.  New areas and new capabilities.
 

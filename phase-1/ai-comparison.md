@@ -9,7 +9,7 @@ permalink: /phase-1/ai-comparison/
 
 # AI Comparison
 
-This report brings together two independent analyses of the Phase 1 All Things PG website, along with review of screenshots of the current CMS tool used to maintain the site. It focuses on the substance of the findings and the limits of the Phase 1 cms platform. 
+This report brings together two independent analyses of the <a href="/welcome/glossary/" target="_blank" rel="noopener">Phase 1</a> All Things PG website, along with review of screenshots of the current CMS tool used to maintain the site. It focuses on the substance of the findings and the limits of the Phase 1 cms platform. 
 
 ## Executive Summary
 

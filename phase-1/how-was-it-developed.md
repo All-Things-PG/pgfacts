@@ -9,4 +9,4 @@ permalink: /phase-1/how-was-it-developed/
 
 # How was it Developed?
 
-This page is a starter for documenting how the Phase 1 site was planned, built, and maintained.
+This page is a starter for documenting how the <a href="/welcome/glossary/" target="_blank" rel="noopener">Phase 1</a> site was planned, built, and maintained.

@@ -6,7 +6,7 @@ generated: 2026-10-07
 
 # OneDrive to Repo Sync Report
 
-This report summarizes the Markdown files in the OneDrive inventory that are most likely different from the repo copy. Use the links to open the source file in OneDrive, then decide whether the content should be copied into the repo.
+This report summarizes the Markdown files in the OneDrive inventory that are most likely different from the repo copy. Use the links to open the source file in OneDrive, then decide whether the <a href="/welcome/glossary/" target="_blank" rel="noopener">content</a> should be copied into the repo.
 
 | File | Folder | Inventory status | Action | Open |
 |---|---|---|---|---|

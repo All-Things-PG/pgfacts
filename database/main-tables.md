@@ -19,7 +19,7 @@ This page describes the 25 tables listed in the database's `SystemTables` catalo
     <tr><td>ErrorLog</td><td>System</td><td>Records database messages and errors.</td></tr>
     <tr><td>RouteType</td><td>Lookup</td><td>Names the kinds of menu destinations.</td></tr>
     <tr><td>VisitorType</td><td>Lookup</td><td>Defines visitor audiences.</td></tr>
-    <tr><td>ContentType</td><td>Lookup</td><td>Classifies content documents.</td></tr>
+    <tr><td>ContentType</td><td>Lookup</td><td>Classifies <a href="/welcome/glossary/" target="_blank" rel="noopener">content</a> documents.</td></tr>
     <tr><td>FormatType</td><td>Lookup</td><td>Defines content block formats and file extensions.</td></tr>
     <tr><td>MimeType</td><td>Lookup</td><td>Defines media types and rendering characteristics.</td></tr>
     <tr><td>WorkflowStatus</td><td>Lookup</td><td>Defines content workflow states.</td></tr>

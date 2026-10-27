@@ -11,7 +11,7 @@ topic_key: database
 
 ### Overview
 
-Phase 2 now has a SQL Server database that was originally created using SSMS (SQL Server Management Studio). This is a powerful industry-standard **relational database** used by companies around the world, and we have access to that power for free.
+<a href="/welcome/glossary/" target="_blank" rel="noopener">Phase 2</a> now has a SQL Server database that was originally created using SSMS (SQL Server Management Studio). This is a powerful industry-standard **relational database** used by companies around the world, and we have access to that power for free.
 
 SQL (Structured Query Language) is a database language that has been a published standard since 1986 and has evolved into a powerful industry standard. I've been using SQL for 30 years to create database structures and program business logic for every company I've worked for. For most applications, the entire set of data and logic exists in a secure SQL database that is easily accessed, backed up daily, and, for large companies, managed by a DBA (Database Administrator).
 

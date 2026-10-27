@@ -4,7 +4,7 @@
 
 ### 1. Vision & Purpose
 
-The Dynamic Content and Menuing System (DCMS) delivers a persona-driven, database-backed platform designed specifically to meet the complex needs of the Pyoderma Gangrenosum (PG) community. 
+The Dynamic <a href="/welcome/glossary/" target="_blank" rel="noopener">Content</a> and Menuing System (DCMS) delivers a persona-driven, database-backed platform designed specifically to meet the complex needs of the Pyoderma Gangrenosum (PG) community. 
 
 Historically, patient platforms suffer from "one-size-fits-all" syndrome. A PG Patient requires gentle, empathetic wound-care guides and physical emotional journey tracking, whereas a Healthcare Provider requires technical, evidence-based guidelines, clinical trial registries, and peer-reviewed literature. Conversely, a Caregiver seeks supportive tools to empower a loved one.
 

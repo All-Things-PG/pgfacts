@@ -9,7 +9,7 @@ permalink: /dcms/knowledge-base/
 
 ## Overview
 
-The **Knowledge Base** (KB) is THE primary feature of Phase 2, so gets its own page as a new feature. The KB is a fully searchable table, or collection of data, that consists of all content within the ATPG database.  All articles are stored in the KB.  All clinical trials are stored in the KB.  Essentially, and thing that is searchable, is considered part of the KB.
+The **<a href="/welcome/glossary/" target="_blank" rel="noopener">Knowledge Base</a>** (KB) is THE primary feature of Phase 2, so gets its own page as a new feature. The KB is a fully searchable table, or collection of data, that consists of all content within the ATPG database.  All articles are stored in the KB.  All clinical trials are stored in the KB.  Essentially, and thing that is searchable, is considered part of the KB.
 
 Our goal is that the KB is used by visitors to solve problems.  The ATPG website is not just a collection of articles and a reliable source of information.  Information on PG exist throughout the internet, and with modern use of AI, is easy to find.  We need to go beyond static information.  
 

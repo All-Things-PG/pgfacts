@@ -10,7 +10,7 @@ topic_key: technical
 
 # PG Facts Site Guide
 
-This is the working guide for maintaining the PG Facts Documentation site. This explains where the navigation comes from, which files control page content, how topic tiles are built, and what to edit when you want to add or change descriptions.
+This is the working guide for maintaining the PG Facts <a href="/welcome/glossary/" target="_blank" rel="noopener">Documentation site</a>. This explains where the navigation comes from, which files control page content, how topic tiles are built, and what to edit when you want to add or change descriptions.
 
 ## Site overview
 

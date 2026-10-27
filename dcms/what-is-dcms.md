@@ -9,7 +9,7 @@ updated: 2026-10-10
 
 # What is DCMS?
 
-DCMS stands for **Dynamic Content and Menuing System**. It is a design that I have been working on for more than a year, and based on many years of database experience.  It is the main database design that supports the Phase 2 website as a a data-driven content creation and menu item navigation system. We can add any new content, linked to any new menu item, and it will show up on the website without any additional programming changes.  This allows for unlimited growth, and all the work is done in the database, not in HTML pages.
+<a href="/welcome/glossary/" target="_blank" rel="noopener">DCMS</a> stands for **Dynamic Content and Menuing System**. It is a design that I have been working on for more than a year, and based on many years of database experience.  It is the main database design that supports the Phase 2 website as a a data-driven content creation and menu item navigation system. We can add any new content, linked to any new menu item, and it will show up on the website without any additional programming changes.  This allows for unlimited growth, and all the work is done in the database, not in HTML pages.
 
 Below you will find conceptual diagrams to describe DCMS.  For more detailed diagrams of the database itself refer to [Database Diagrams](/database/diagrams/) to show the underlying table relationships.
 

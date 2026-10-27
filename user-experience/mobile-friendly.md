@@ -10,7 +10,7 @@ permalink: /user-experience/mobile-friendly/
 
 All Things PG should remain clear, readable, and easy to use on phones and tablets as well as desktop screens.
 
-Mobile-friendly design includes responsive layouts, readable text, touch-friendly controls, accessible navigation, appropriately sized images, and content that remains useful without requiring a wide screen.
+Mobile-friendly design includes responsive layouts, readable text, touch-friendly controls, accessible navigation, appropriately sized images, and <a href="/welcome/glossary/" target="_blank" rel="noopener">content</a> that remains useful without requiring a wide screen.
 
 ## A mobile experience in two steps
 

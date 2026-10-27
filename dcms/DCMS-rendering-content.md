@@ -14,7 +14,7 @@ topic_key: dcms
 
 ## Overview
 
-DCMS stores page content in the database and renders the content within an HTML page through a set of reusable **partil** Razor Pages I'm calling **Content Cards (CC)** .  Each CC knows how to render exactly one type of content.  The easiest content to render of course is Text, either in the form of HTML or MD (MarkDown). Other types would be Audio, Video, Images etc.  Each different type is called a **Mime Type**, The goal of using CCs is to write the code to render all Mime Ty[e used by the systme once, and never have to write that code again.
+<a href="/welcome/glossary/" target="_blank" rel="noopener">DCMS</a> stores page content in the database and renders the content within an HTML page through a set of reusable **partil** Razor Pages I'm calling **Content Cards (CC)** .  Each CC knows how to render exactly one type of content.  The easiest content to render of course is Text, either in the form of HTML or MD (MarkDown). Other types would be Audio, Video, Images etc.  Each different type is called a **Mime Type**, The goal of using CCs is to write the code to render all Mime Ty[e used by the systme once, and never have to write that code again.
 
 It's easy to render say, an image.  You don't need a CC to do that.  Not only does the CC know as well, it also has properties that know WHERE to put the image, using a field in the database called **BlockInfo**.
 

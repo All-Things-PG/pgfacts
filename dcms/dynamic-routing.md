@@ -11,7 +11,7 @@ permalink: /dcms/dynamic-routing/
 
 # Dynamic Routing
 
-Dynamic Routing describes the custom way DCMS menu records identify and direct visitors to destinations. It is an application-level design built on top of the web framework; it is not a replacement for standard ASP.NET Core request routing. ASP.NET Core receives a URL and selects a Razor handler. DCMS uses a menu item's `RouteType` and `RouteTarget` to decide what that selection means for the application.
+Dynamic Routing describes the custom way <a href="/welcome/glossary/" target="_blank" rel="noopener">DCMS</a> menu records identify and direct visitors to destinations. It is an application-level design built on top of the web framework; it is not a replacement for standard ASP.NET Core request routing. ASP.NET Core receives a URL and selects a Razor handler. DCMS uses a menu item's `RouteType` and `RouteTarget` to decide what that selection means for the application.
 
 ## The four route types
 

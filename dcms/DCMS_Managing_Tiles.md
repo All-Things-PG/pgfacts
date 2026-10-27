@@ -12,7 +12,7 @@ updated: 2026-09-18
 
 The tile system is a reusable way to present contextual navigation, shortcuts, and featured links anywhere in the site.
 
-The important idea is that tiles are not just for portals. A tile bar can appear on the home page, on persona pages, on content pages, or on any other Razor page that benefits from a compact set of linked choices.
+The important idea is that <a href="/welcome/glossary/" target="_blank" rel="noopener">tiles</a> are not just for portals. A tile bar can appear on the home page, on persona pages, on content pages, or on any other Razor page that benefits from a compact set of linked choices.
 
 ---
 

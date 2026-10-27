@@ -2,7 +2,7 @@
 
 # DCMS - Dynamic Routing
 
-This document describes the route values used by the current AllThingsPG database and Razor proof of concept. ASP.NET Core Razor Pages provide the request handlers; MenuItem records determine the destination and the data to process.
+This document describes the route values used by the current AllThingsPG database and Razor <a href="/welcome/glossary/" target="_blank" rel="noopener">proof of concept</a>. ASP.NET Core Razor Pages provide the request handlers; MenuItem records determine the destination and the data to process.
 
 ### The route fields have distinct jobs
 

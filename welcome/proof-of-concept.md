@@ -11,7 +11,7 @@ work_in_progress: false
 
 ### Overview
 
-The Phase 2 Proof of Concept (POC) is a fully functional website and working prototype, that demonstrates the feasibility, architecture, and core capabilities of the proposed DCMS database platform. The whole point of the POC is to go beyond documentation, and prove that the underlying design actually works.  It does.  It also offers a visual opportunity for stakeholders to see something 'real' on a few number of pages.  The POC  tests mechanical behaviors such as database access and routing, which validates the architecutre of the website itself.
+The <a href="/welcome/glossary/" target="_blank" rel="noopener">Phase 2</a> Proof of Concept (POC) is a fully functional website and working prototype, that demonstrates the feasibility, architecture, and core capabilities of the proposed DCMS database platform. The whole point of the POC is to go beyond documentation, and prove that the underlying design actually works.  It does.  It also offers a visual opportunity for stakeholders to see something 'real' on a few number of pages.  The POC  tests mechanical behaviors such as database access and routing, which validates the architecutre of the website itself.
 
 The purpose of THIS POC is simple: demonstrate that a modern, data-driven platform can successfully organize, manage, and present Pyoderma Gangrenosum information in new ways that are meaningful to different user types: patients, caregivers, healthcare providers, industry partners and guests through the use of Portals, Dynamic Content and Dynamic Menus (DCMS).
 

@@ -10,7 +10,7 @@ updated: 2026-09-18
 
 ### Portal Experience Overview
 
-The portal experience is how All Things PG gives each audience a distinct and meaningful starting point.
+The <a href="/welcome/glossary/" target="_blank" rel="noopener">portal</a> experience is how All Things PG gives each audience a distinct and meaningful starting point.
 
 Patients, caregivers, providers, and pharmaceutical visitors should not feel like they are all entering the same generic page. They should feel that the site recognizes why they are here.
 

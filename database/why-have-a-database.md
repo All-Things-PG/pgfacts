@@ -8,7 +8,7 @@ permalink: /database/why-have-a-database/
 
 # Why Phase 2 Has a Database
 
-As discused in other areas of the documentation site, All Things PG needs a database in order to add new features and capabilites for growth in the future. The Phase 1 static website fine for early Foundational presense, but ATPG has grown and so has our list of activite.  This has opened up and created new opportunites that can be reflected in Phase 2.  Additionally, we have the Leo Grant with a list of new features that MUST be added, and that will require a database.
+As discused in other areas of the <a href="/welcome/glossary/" target="_blank" rel="noopener">documentation site</a>, All Things PG needs a database in order to add new features and capabilites for growth in the future. The Phase 1 static website fine for early Foundational presense, but ATPG has grown and so has our list of activite.  This has opened up and created new opportunites that can be reflected in Phase 2.  Additionally, we have the Leo Grant with a list of new features that MUST be added, and that will require a database.
 
 In most cases, and application is more than a collection of fixed pages. its about data. Data is content.  A nonprofit organization can collect content about their missiona and purpose, in our case its all about Pyoderma Gangrenosum.
 

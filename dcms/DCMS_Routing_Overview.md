@@ -1,6 +1,6 @@
 # DCMS Routing Overview
 
-This document describes the current POC routing model and the broader DCMS ideas that still inform it. The proof-of-concept application uses Razor Pages directly for visible endpoints, with `RouteType` and `RouteTarget` acting as routing inputs rather than a single central `/Menu/Index` dispatcher.
+This document describes the current POC routing model and the broader <a href="/welcome/glossary/" target="_blank" rel="noopener">DCMS</a> ideas that still inform it. The proof-of-concept application uses Razor Pages directly for visible endpoints, with `RouteType` and `RouteTarget` acting as routing inputs rather than a single central `/Menu/Index` dispatcher.
 
 ---
 

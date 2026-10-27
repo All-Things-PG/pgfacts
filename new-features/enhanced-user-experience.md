@@ -9,7 +9,7 @@ permalink: /new-features/enhanced-user-experience/
 
 # Enhanced User Experience
 
-Phase 2 is not just about adding more content. It is about making the experience more useful for the person who is visiting the site.
+<a href="/welcome/glossary/" target="_blank" rel="noopener">Phase 2</a> is not just about adding more content. It is about making the experience more useful for the person who is visiting the site.
 
 The same topic can be presented differently depending on who is viewing it. For example, a caregiver may need practical guidance about wound care, daily support, and what to watch for at home. A doctor may need a more clinical presentation with diagnostic details, treatment considerations, and links to research or related resources.
 

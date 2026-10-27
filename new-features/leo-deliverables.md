@@ -9,7 +9,7 @@ permalink: /new-features/leo-deliverables/
 
 # Leo Deliverables for 2026 Grant
 
-The following items have been identified as deliverables for the 2026 Leo Grant.  Most of these do not involve the website.  Click the menu item [Leo Enhancements]({{ '/new-features/leo-enhancements/' | relative_url }}) to see the short list of items specific to Phase 2. 
+The following items have been identified as deliverables for the 2026 Leo Grant.  Most of these do not involve the website.  Click the menu item [Leo Enhancements]({{ '/new-features/leo-enhancements/' | relative_url }}) to see the short list of items specific to <a href="/welcome/glossary/" target="_blank" rel="noopener">Phase 2</a>. 
 
 ### 1. Website & Digital Infrastructure (All Things PG platform)
 

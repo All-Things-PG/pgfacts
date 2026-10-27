@@ -9,7 +9,7 @@ updated: 2026-09-18
 
 ## Overview
 
-DCMS curating content means taking trusted PG information from many sources and turning it into structured content that can be searched, reused, and managed without hard-coding everything by hand.
+<a href="/welcome/glossary/" target="_blank" rel="noopener">DCMS</a> curating content means taking trusted PG information from many sources and turning it into structured content that can be searched, reused, and managed without hard-coding everything by hand.
 
 The main idea is simple: content should be connected to menu items, supported by search, and moved through a review workflow before it reaches production.
 

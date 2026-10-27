@@ -15,7 +15,7 @@ This inventory summarizes the plans, technical documentation, analyses, and prot
 
 ## Not started or not yet delivered
 
-- **Searchable knowledge base:** The repository describes the intended content and search-result model, but states that authored PG content has not been loaded and production search is future work. A visitor cannot yet search across the site's knowledge base using a question such as “How do I help my husband cope with pain?”
+- **Searchable <a href="/welcome/glossary/" target="_blank" rel="noopener">knowledge base</a>:** The repository describes the intended content and search-result model, but states that authored PG content has not been loaded and production search is future work. A visitor cannot yet search across the site's knowledge base using a question such as “How do I help my husband cope with pain?”
 - **Content authoring, review, and publication workflow:** The database content model is documented, but the technical documentation says there is no finished authoring and review application. The workflow and ownership for adding, reviewing, approving, and maintaining content still need to be established.
 - **Migration of existing website content:** Migration is described as a planned path. The reviewed documentation does not show that Phase 1 content has been migrated into a populated, searchable system.
 - **Searchable provider and facility directories:** The existing Clinic Finder is a promising concept, but the Phase 1 analysis records six provider listings, manual entry, and fixed options. A useful directory with search, filters, verification, and support for other facility types is not delivered.

@@ -10,7 +10,7 @@ topic_key: phase-1
 
 ## Analyzing Phase 1 Website
 
-After doing an in-depth AI unbiased analysis of the existing website and understanding how it was developed, and after working with the original developer to change Squarespace settings to allow ATPG domains, emails, and websites, it became apparent that for allthingspg.org to grow with a database, we needed Phase 2. Once you have a database, you can do just about anything in a future release. Stuff you cannot do with a static web site.
+After doing an in-depth AI unbiased analysis of the existing website and understanding how it was developed, and after working with the original developer to change Squarespace settings to allow ATPG domains, emails, and websites, it became apparent that for allthingspg.org to grow with a database, we needed <a href="/welcome/glossary/" target="_blank" rel="noopener">Phase 2</a>. Once you have a database, you can do just about anything in a future release. Stuff you cannot do with a static web site.
 
 Phase 1 of the website met every goal in the initial design and implementation, which was to establish a presence quickly as a nonprofit organization. It looks amazing and works well, but it is static, with a small set of static information describing Pyoderma Gangrenosum. It was built with a custom web builder where you enter text, and it builds the HTML web pages. It is simple and works very well, but it is meant for static websites. In order to be all things PG, it was clear the website had to grow beyond static pages as the organization grew.
 

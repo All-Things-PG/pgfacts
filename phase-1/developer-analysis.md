@@ -8,7 +8,7 @@ permalink: /phase-1/developer-analysis/
 
 # Developer Analysis
 
-***Here you will find the developer's perspective on the Phase 1 website, including factors such as implementation, technology, strengths, limitations,  for future growth and more. The developer analysis complements the [CHATGPT analysis](/phase-1/chatgpt-analysis/) and [COPILOT analysis](/phase-1/copilot-analysis/) reports by summarizing the pros and cons of each, and adding his own review based on many years of professional software development, mentoring and performaing numerous code reviews of other developers.***
+***Here you will find the developer's perspective on the <a href="/welcome/glossary/" target="_blank" rel="noopener">Phase 1</a> website, including factors such as implementation, technology, strengths, limitations,  for future growth and more. The developer analysis complements the [CHATGPT analysis](/phase-1/chatgpt-analysis/) and [COPILOT analysis](/phase-1/copilot-analysis/) reports by summarizing the pros and cons of each, and adding his own review based on many years of professional software development, mentoring and performaing numerous code reviews of other developers.***
 
 ## Developer Review by Dave DePottie
 

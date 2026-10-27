@@ -28,7 +28,7 @@ permalink: /user-experience/patients/
   background: #fff;
 }
 .patient-screen-header img { display: block; width: 58px; height: 58px; object-fit: contain; }
-.patient-screen-nav { display: flex; flex: 1; align-items: center; justify-content: space-between; gap: .55rem; color: #1e293b; font-size: .72rem; font-weight: 600; letter-spacing: .025em; white-space: nowrap; }
+.patient-screen-nav { display: flex; flex: 1; align-items: center; justify-<a href="/welcome/glossary/" target="_blank" rel="noopener">content</a>: space-between; gap: .55rem; color: #1e293b; font-size: .72rem; font-weight: 600; letter-spacing: .025em; white-space: nowrap; }
 .patient-screen-nav span { margin-left: 0; color: #59636d; font-size: .65rem; }
 .patient-screen-nav .nav-item { display: inline-flex; align-items: center; gap: .15rem; color: #1e293b; font-size: .72rem; }
 .patient-screen-donate { padding: .48rem 1rem; border: 1px solid #f58220; border-radius: 999px; background: #fff; color: #d96500; font: inherit; font-size: .78rem; font-weight: 700; }

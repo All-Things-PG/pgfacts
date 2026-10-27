@@ -1,2 +1,2 @@
 # pgfacts-site
-Documentation for Phase 2 of All Things PG Website
+Documentation for <a href="/welcome/glossary/" target="_blank" rel="noopener">Phase 2</a> of All Things PG Website

@@ -13,7 +13,7 @@ Registration should help visitors get a more relevant experience without making 
 
 ## Start with the essentials
 
-The core registration asks for only an email address and visitor type. This gives the site a basic way to recognize the visitor's chosen experience without requiring a large profile form.
+The core registration asks for only an email address and <a href="/welcome/glossary/" target="_blank" rel="noopener">visitor type</a>. This gives the site a basic way to recognize the visitor's chosen experience without requiring a large profile form.
 
 ## Let people choose whether to add more
 

@@ -9,7 +9,7 @@ permalink: /dcms/DCMS_Curating_Content/
 
 # Curating Content in DCMS
 
-DCMS is designed to hold a curated, structured PG knowledge base. Content is stored as database records linked to the dynamic menu, rather than as hard-coded HTML pages. That design makes it possible to organize information by audience, reuse a stable menu, and later search across the content library.
+<a href="/welcome/glossary/" target="_blank" rel="noopener">DCMS</a> is designed to hold a curated, structured PG knowledge base. Content is stored as database records linked to the dynamic menu, rather than as hard-coded HTML pages. That design makes it possible to organize information by audience, reuse a stable menu, and later search across the content library.
 
 The database structure is in place, but the current content state is still empty. Menu content routes have generated placeholder documents so each menu item already has its own identity. The placeholders are marked Unknown and Draft and are not published. They are scaffolding, not articles. There is not yet an authored PG library or a production search experience.
 

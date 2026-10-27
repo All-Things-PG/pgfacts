@@ -20,7 +20,7 @@ AllThingsPG.org is a patient advocacy website for Pyoderma Gangrenosum (PG), a r
   - HTTPS with HSTS enabled
   - X-Frame-Options: SAMEORIGIN
   - X-XSS-Protection enabled
-  - X-Content-Type-Options: nosniff
+  - X-<a href="/welcome/glossary/" target="_blank" rel="noopener">Content</a>-Type-Options: nosniff
   - Referrer-Policy: origin
 
 ### SEO & Meta Information

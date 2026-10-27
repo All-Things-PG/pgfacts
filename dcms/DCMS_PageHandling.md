@@ -1,7 +1,7 @@
 <a id="top"></a>
 # How ASP.NET Core Razor Pages Handles Requests
 
-This document explains the standard request and page-processing behavior provided by [ASP.NET Core](#glossary) [Razor Pages](#glossary). It intentionally describes the framework without application-specific routing, database, menu, or content-management features.
+This document explains the standard request and page-processing behavior provided by [ASP.NET Core](#glossary) [Razor Pages](#glossary). It intentionally describes the framework without application-specific routing, database, menu, or <a href="/welcome/glossary/" target="_blank" rel="noopener">content</a>-management features.
 
 The goal is to give a non-programmer enough context to understand what happens when a visitor enters a web address and receives a page.
 

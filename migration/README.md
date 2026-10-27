@@ -2,7 +2,7 @@
 
 ## Goal
 
-Load the Phase 1 menu into `AllThingsPG.dbo.MasterMenuStage` table.
+Load the <a href="/welcome/glossary/" target="_blank" rel="noopener">Phase 1</a> menu into `AllThingsPG.dbo.MasterMenuStage` table.
 
 Through one source-side black-box procedure. The source procedure knows the `Migration` schema. The target procedure knows only the result-set contract and the target stage table.
 

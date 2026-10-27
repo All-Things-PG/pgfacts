@@ -10,7 +10,7 @@ topic_key: new-features
 
 {% assign topic = site.data.topic_pages['new-features'] %}
 <section class="home-hero">
-  <h1>New Features in Phase 2</h1>
+  <h1>New Features in <a href="/welcome/glossary/" target="_blank" rel="noopener">Phase 2</a></h1>
   <p>{{ topic.summary }}</p>
 </section>
 

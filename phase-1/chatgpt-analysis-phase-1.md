@@ -9,7 +9,7 @@ permalink: /phase-1/chatgpt-analysis/
 
 **Note: Instructions used to create this report are the same that were provided to [COPILOT](/phase-1/copilot-analysis/)**.
 
-***"I need an in-depth analysis of our website [www.allthingspg.org](https://www.allthingspg.org) The focus should be on usability and scalability, not so much on content itself, although it should be helpful information to the target audience. I'm interested to know - is it a good web site or not, and areas for improvement. it can be as detailed as you like, as long as you long. Examine as many pages as you can, identify faults, compare to modern websites and standards, and make recommendations for improvement. Save the report as a .md file, using #, ### headers".***
+***"I need an in-depth analysis of our website [www.allthingspg.org](https://www.allthingspg.org) The focus should be on usability and scalability, not so much on <a href="/welcome/glossary/" target="_blank" rel="noopener">content</a> itself, although it should be helpful information to the target audience. I'm interested to know - is it a good web site or not, and areas for improvement. it can be as detailed as you like, as long as you long. Examine as many pages as you can, identify faults, compare to modern websites and standards, and make recommendations for improvement. Save the report as a .md file, using #, ### headers".***
 
 **Website audited:** https://www.allthingspg.org/  <br>
 **Audit date:** October 3, 2026  <br>

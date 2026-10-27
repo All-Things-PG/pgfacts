@@ -8,4 +8,4 @@ permalink: /phase-1/technology-platform/
 
 # Technology Platform
 
-Placeholder for the Phase 1 technology platform content.
+Placeholder for the <a href="/welcome/glossary/" target="_blank" rel="noopener">Phase 1</a> technology platform content.

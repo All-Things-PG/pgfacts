@@ -42,7 +42,7 @@ This inventory is a summary of all documents on the document site, even if there
 <tr><td><a href="/database/main-tables/">main-tables.md</a></td><td>database</td><td>Completed</td></tr>
 <tr><td><a href="/database/schema/">schema.md</a></td><td>database</td><td>Completed</td></tr>
 <tr><td><a href="/database/why-have-a-database/">why-have-a-database.md</a></td><td>database</td><td>Completed</td></tr>
-<tr><td><a href="/dcms/DCMS_Curating_Content - Copy (2).html">DCMS_Curating_Content - Copy (2).md</a></td><td>dcms</td><td>Completed</td></tr>
+<tr><td><a href="/dcms/DCMS_Curating_Content - Copy (2).html">DCMS_Curating_Content - Copy (2).md</a></td><td><a href="/welcome/glossary/" target="_blank" rel="noopener">dcms</a></td><td>Completed</td></tr>
 <tr><td><a href="/dcms/DCMS_Curating_Content - Copy.html">DCMS_Curating_Content - Copy.md</a></td><td>dcms</td><td>Completed</td></tr>
 <tr><td><a href="/dcms/DCMS_Curating_Content/">DCMS_Curating_Content.md</a></td><td>dcms</td><td>Completed</td></tr>
 <tr><td><a href="/dcms/DCMS_Database_Schema/">DCMS_Database_Schema.md</a></td><td>dcms</td><td>Work In Progress</td></tr>

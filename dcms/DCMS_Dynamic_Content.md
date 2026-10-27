@@ -9,7 +9,7 @@ permalink: /dcms/DCMS_Dynamic_Content/
 
 # Dynamic Content in DCMS
 
-DCMS stores content as relational records and renders it through the Razor proof of concept. The database schema defines content identity, typed blocks, workflow metadata, and publication state. It does not yet provide a finished authoring and review application or a populated PG knowledge base.
+<a href="/welcome/glossary/" target="_blank" rel="noopener">DCMS</a> stores content as relational records and renders it through the Razor proof of concept. The database schema defines content identity, typed blocks, workflow metadata, and publication state. It does not yet provide a finished authoring and review application or a populated PG knowledge base.
 
 ### The content model
 

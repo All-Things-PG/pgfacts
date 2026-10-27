@@ -9,7 +9,7 @@ permalink: /dcms/DCMS_Menu_Workflow/
 
 # DCMS Menu and Content Workflows
 
-DCMS has two related but separate database workflows: one establishes the menu structure, and another captures and migrates legacy-site content. Both connect content to a menu item, but their source data and staging tables serve different purposes.
+<a href="/welcome/glossary/" target="_blank" rel="noopener">DCMS</a> has two related but separate database workflows: one establishes the menu structure, and another captures and migrates legacy-site content. Both connect content to a menu item, but their source data and staging tables serve different purposes.
 
 ### The menu data model
 

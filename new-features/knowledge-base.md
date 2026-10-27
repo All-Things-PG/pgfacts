@@ -9,7 +9,7 @@ work_in_progress: false
 ---
 # Knowledge Base
 
-A Knowledge Base (KB) is the planned as a searchable collection of trusted, vetted information about Pyoderma Gangrenosum and any associted article contained within this website.  At this time I do not have any designs that might reach out into the AI world to augment the information, but I have thought about it.
+A <a href="/welcome/glossary/" target="_blank" rel="noopener">Knowledge Base (KB)</a> is the planned as a searchable collection of trusted, vetted information about Pyoderma Gangrenosum and any associted article contained within this website.  At this time I do not have any designs that might reach out into the AI world to augment the information, but I have thought about it.
 
 The KB is  to help visitors of all the 5 main types: patients, caregivers, providers, pharmaceuticals and guests, to QUICKLY find relevant articles based on their needs.
 

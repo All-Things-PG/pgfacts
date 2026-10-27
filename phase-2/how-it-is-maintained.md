@@ -8,4 +8,4 @@ permalink: /phase-2/how-it-is-maintained/
 
 # How it will be Maintained
 
-Placeholder for the Phase 2 maintenance content.
+Placeholder for the <a href="/welcome/glossary/" target="_blank" rel="noopener">Phase 2</a> maintenance content.

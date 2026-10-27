@@ -3,7 +3,7 @@
 **Website reviewed:** https://www.allthingspg.org/
 **Review date:** October 2026
 **Primary focus:** usability and scalability
-**Secondary focus:** content quality as it affects the target audience, modern web standards, and areas for improvement
+**Secondary focus:** <a href="/welcome/glossary/" target="_blank" rel="noopener">content</a> quality as it affects the target audience, modern web standards, and areas for improvement
 
 ---
 

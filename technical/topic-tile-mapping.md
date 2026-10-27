@@ -9,7 +9,7 @@ permalink: /technical/topic-tile-mapping/
 
 # Topic Tile Mapping
 
-This page maps each top-level menu topic to the three related tiles currently configured for it. The first table lists the destinations; the second provides a brief description for each tile. A tile can link to a page under any menu topic.
+This page maps each top-level menu topic to the three related <a href="/welcome/glossary/" target="_blank" rel="noopener">tiles</a> currently configured for it. The first table lists the destinations; the second provides a brief description for each tile. A tile can link to a page under any menu topic.
 
 The tile configuration is shared across every page under a topic. Each row therefore shows the same three links that appear on all pages in that topic. The topic data files are the source of the live tile titles, descriptions, and destinations.
 

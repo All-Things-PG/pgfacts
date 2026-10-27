@@ -3,7 +3,7 @@
 **Website audited:** https://www.allthingspg.org/  
 **Audit date:** October 3, 2026  
 **Primary focus:** usability, information architecture, accessibility, task completion, maintainability, scalability, and future growth  
-**Secondary focus:** trust, SEO/discoverability, performance risk, and content governance where those affect usability  
+**Secondary focus:** trust, SEO/discoverability, performance risk, and <a href="/welcome/glossary/" target="_blank" rel="noopener">content</a> governance where those affect usability  
 **Overall conclusion:** **Good foundation, but not yet a strong modern patient-service website.**
 
 This audit is intentionally weighted toward how the site works as a product rather than whether every sentence or medical statement is correct. I reviewed the live site and a broad sample of primary pages, utility pages, articles, people pages, event pages, forms, and linked services. The site has a clear mission, clean URLs, a coherent basic navigation structure, and some genuinely valuable tools—especially the clinic finder, survey, support/community resources, and direct access to the board and organization.

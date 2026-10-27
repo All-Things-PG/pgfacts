@@ -18,13 +18,23 @@
     var submit = document.getElementById("gate-submit");
     var body = document.body;
 
+    function hasAccess() {
+      return document.cookie.split(";").some(function (cookie) {
+        return cookie.trim() === gateKey + "=true";
+      });
+    }
+
     function unlock() {
-      sessionStorage.setItem(gateKey, "true");
+      var cookie = gateKey + "=true; Path=/; SameSite=Lax";
+      if (window.location.protocol === "https:") {
+        cookie += "; Secure";
+      }
+      document.cookie = cookie;
       gate.style.display = "none";
       body.classList.remove("gate-locked");
     }
 
-    if (sessionStorage.getItem(gateKey) === "true") {
+    if (hasAccess()) {
       gate.style.display = "none";
       body.classList.remove("gate-locked");
       return;

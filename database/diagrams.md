@@ -10,7 +10,7 @@ updated: 2026-10-20
 # Database Diagrams
 
 <div class="schema-diagram-callout">
-  <h2>Dynamic Content</h2>
+  <h2>Dynamic <a href="/welcome/glossary/" target="_blank" rel="noopener">Content</a></h2>
   <img src="/assets/images/database-dynamic-content.png" alt="Dynamic Content schema diagram">
 </div>
 

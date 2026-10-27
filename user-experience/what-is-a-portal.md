@@ -8,7 +8,7 @@ permalink: /user-experience/what-is-a-portal/
 ---
 
 <style>
-.portal-intro {
+.<a href="/welcome/glossary/" target="_blank" rel="noopener">portal</a>-intro {
   max-width: 58rem;
   margin: 0 auto 2rem;
   color: #34444d;

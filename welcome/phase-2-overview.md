@@ -1,10 +1,10 @@
 ---
 layout: page
 title: Phase 2 Overview 
-permalink: /welcome/phase-2-overview/
 nav_label: Welcome
 breadcrumb: Welcome > Phase 2 Overview
 description: Browse documentation by topic.
+permalink: /welcome/phase-2-overview/
 work_in_progress: false
 ---
 # Phase 2 Overview

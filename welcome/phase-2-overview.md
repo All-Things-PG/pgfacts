@@ -5,7 +5,7 @@ nav_label: Welcome
 breadcrumb: Welcome > Phase 2 Overview
 description: Browse documentation by topic.
 permalink: /welcome/phase-2-overview/
-work_in_progress: false
+work_in_progress: true
 ---
 # Phase 2 Overview
 
@@ -13,7 +13,7 @@ work_in_progress: false
 
 The design and documentation of <a href="/welcome/glossary/" target="_blank" rel="noopener">Phase 2</a> is well under way and has been over the course of a year.  Progress to date has been to build a potential design, create a working database, build a proof of concept and create a documentation site.  As a software engineering project, process and planning are the keys to a successful development project that meets the needs of the entire PG community.  
 
-So far so good.
+So far so good!
 
 ### Project Plan for Phase 2	
 
